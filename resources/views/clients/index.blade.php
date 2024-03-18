@@ -387,9 +387,9 @@
 											<td class="email align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->email }}</td>
 											<td class="source align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->dossier_origin }}</td>
 											<td class="etapes align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">
-                        {{ $client->contact }}
-                        {{ $client->qualification }}
-                        {{ $client->measure }}
+												{{ $client->contact }}
+												{{ $client->qualification }}
+												{{ $client->measure }}
 												{{ $client->discovery }}
 												{{ $client->solution_plan }}
 												{{ $client->argumentation }} 
@@ -397,7 +397,7 @@
 												{{ $client->handover }}
 												{{ $client->decision }}
 												{{ $client->vente }}
-                      </td>
+                      						</td>
 											<td class="vendeur align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">{{ $client->whoaddit }}</td>
 											<td class="date align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">
 												{{ $client->created_at->format('d/m/Y') }}
