@@ -378,7 +378,7 @@
 										@foreach($clients as $client)
 										<tr>
 											<td class="nom align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">
-												<div><a class="fs-9 fw-bold" href="{{ route('clients.show', $client->id) }}">{{ $client->last_name }} {{ $client->first_name }}</a></div>
+												<div><a class="fs-9 fw-bold" href="{{ route('clients.show', $client->id) }}">{{ $client->gender }} {{ $client->last_name }} {{ $client->first_name }}</a></div>
 											</td>
 											<td class="ville align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->city }}</td>
 											<td class="adresse align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->address }}</td>
@@ -397,7 +397,7 @@
 												{{ $client->handover }}
 												{{ $client->decision }}
 												{{ $client->vente }}
-                      						</td>
+                      </td>
 											<td class="vendeur align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">{{ $client->whoaddit }}</td>
 											<td class="date align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">
 												{{ $client->created_at->format('d/m/Y') }}
