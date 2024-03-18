@@ -359,14 +359,14 @@
 											<div class="mb-3">
 												<div class="d-flex align-items-center mb-1">
 													<span class="me-2 uil uil-phone"> </span>
-													<h5 class="mb-0 text-body-secondary">Type du client</h5>
+													<h5 class="mb-0">Type du client</h5>
 												</div>
 												{{ $client->client_type }}</a>
 											</div>
 											<div>
 												<div class="d-flex align-items-center mb-1">
 													<span class="me-2 uil uil-phone"> </span>
-													<h5 class="mb-0 text-body-secondary">Date de naissance</h5>
+													<h5 class="mb-0">Date de naissance</h5>
 												</div>
 												{{ $client->dob }}</a>
 											</div>
@@ -380,21 +380,21 @@
 											<div class="mb-3">
 												<div class="d-flex align-items-center mb-1">
 													<span class="me-2 uil uil-phone"> </span>
-													<h5 class="mb-0 text-body-secondary">Téléphone mobile</h5>
+													<h5 class="mb-0">Téléphone mobile</h5>
 												</div>
 												{{ $client->mobile_phone }}</a>
 											</div>
 											<div class="mb-3">
 												<div class="d-flex align-items-center mb-1">
 													<span class="me-2 uil uil-phone"> </span>
-													<h5 class="mb-0 text-body-secondary">Téléphone fixe</h5>
+													<h5 class="mb-0">Téléphone fixe</h5>
 												</div>
 												{{ $client->phone}}</a>
 											</div>
 											<div>
 												<div class="d-flex align-items-center mb-1">
 													<span class="me-2 uil uil-envelope-alt"> </span>
-													<h5 class="mb-0 text-body-secondary">Email</h5>
+													<h5 class="mb-0">Email</h5>
 												</div>
 												{{ $client->email}}</a>
 											</div>
@@ -604,7 +604,7 @@
 																<td class="align-middle text-center border-start border-end fw-bold py-2" style="padding-left: 1rem; padding-right: 1rem">
 																	{{ $client->whoaddit }}
 																	<div>
-																		<p class="mb-0 text-left fw-semibold text-opacity-75 text-body-tertiary fs-9">{{ $client->created_at }}</p>
+																		<p class="mb-0 text-left fw-semibold text-opacity-75 text-body-tertiary fs-9">{{ $client->created_at->format('d/m/Y') }} {{ $client->created_at->format('H:i') }}</p>
 																	</div>
 																</td>
 																<td class="align-middle text-center border-start border-end fw-bold py-2" style="padding-left: 1rem; padding-right: 1rem">
