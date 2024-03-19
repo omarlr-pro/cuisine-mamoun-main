@@ -50,87 +50,75 @@
             document.querySelector('body').classList.add(`navbar-${navbarStyle}`);
           }
         </script>
-        <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
-          <!-- scrollbar removed-->
-          <div class="navbar-vertical-content">
-            <ul class="navbar-nav flex-column" id="navbarVerticalNav">
-              <li class="nav-item">
-                <!-- parent pages-->
-                <div class="nav-item-wrapper">
-                  <a class="nav-link dropdown-indicator label-1" href="#nv-home" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-home">
-                    <div class="d-flex align-items-center">
-                      <div class="dropdown-indicator-icon">
-                        <span class="fas fa-caret-right"></span>
-                      </div>
-                      <span class="nav-link-icon">
-                        <span data-feather="pie-chart"></span>
-                      </span>
-                      <span class="nav-link-text">Acceuil</span>
+                <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
+                    <div class="navbar-vertical-content">
+                        <ul class="navbar-nav flex-column" id="navbarVerticalNav">
+
+                           <li class="nav-item">
+                              <p class="navbar-vertical-label">Tableau de bord</p>
+                              <hr class="navbar-vertical-line" />
+                              <div class="nav-item-wrapper">
+                                 <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <div class="d-flex align-items-center">
+                                       <span class="nav-link-icon"><span data-feather="compass"></span></span>
+                                       <span>
+                                          <span class="nav-link-text">Tableau de bord</span>
+                                       </span>
+                                    </div>
+                                 </a>
+                              </div>
+                            </li>
+                           <li class="nav-item">
+                              <p class="navbar-vertical-label">Client</p>
+                              <hr class="navbar-vertical-line" />
+                              <div class="nav-item-wrapper">
+                                 <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <div class="d-flex align-items-center">
+                                       <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                       <span>
+                                          <span class="nav-link-text">Enregistrer un client</span>
+                                       </span>
+                                    </div>
+                                 </a>
+                              </div>
+                              <div class="nav-item-wrapper">
+                                 <a class="nav-link label-1" href="{{ route('clients.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <div class="d-flex align-items-center">
+                                       <span class="nav-link-icon"><span data-feather="list"></span></span>
+                                       <span>
+                                          <span class="nav-link-text">Voir tous les clients</span>
+                                       </span>
+                                    </div>
+                                 </a>
+                              </div>
+                           </li>
+                           <li class="nav-item">
+                              <p class="navbar-vertical-label">Authentification</p>
+                              <hr class="navbar-vertical-line" />
+                              <div class="nav-item-wrapper">
+                                 <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <div class="d-flex align-items-center">
+                                       <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                       <span>
+                                          <span class="nav-link-text">Enregistrer un utilisateur</span>
+                                       </span>
+                                    </div>
+                                 </a>
+                              </div>
+                              <div class="nav-item-wrapper">
+                                 <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <div class="d-flex align-items-center">
+                                       <span class="nav-link-icon"><span data-feather="list"></span></span>
+                                       <span>
+                                          <span class="nav-link-text">Voir tous les utilisateurs</span>
+                                       </span>
+                                    </div>
+                                 </a>
+                              </div>
+                           </li>
+                        </ul>
                     </div>
-                  </a>
-                  <div class="parent-wrapper label-1">
-                    <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-home">
-                      <li class="collapsed-nav-item-title d-none">Acceuil</li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index-2.html" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center">
-                            <span class="nav-link-text">Tableau de bord</span>
-                          </div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
                 </div>
-              </li>
-              <li class="nav-item">
-                <p class="navbar-vertical-label">Client</p>
-                <hr class="navbar-vertical-line" />
-                <div class="nav-item-wrapper"><a class="nav-link dropdown-indicator label-1" href="#nv-contact" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-contact">
-                    <div class="d-flex align-items-center">
-                      <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div><span class="nav-link-icon"><span data-feather="phone"></span></span><span class="nav-link-text">Client</span>
-                    </div>
-                  </a>
-                  <div class="parent-wrapper label-1">
-                    <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-contact">
-                      <li class="collapsed-nav-item-title d-none">Client</li>
-                      <li class="nav-item"><a class="nav-link" href="apps/crm/analytics.html" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Enregistrer un client</span></div>
-                        </a>
-                      </li>
-                      <li class="nav-item"><a class="nav-link" href="apps/crm/analytics.html" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Voir tous les client</span></div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </li>
-              <li class="nav-item">
-                <p class="navbar-vertical-label">Utilisateur</p>
-                <hr class="navbar-vertical-line" />
-                <div class="nav-item-wrapper"><a class="nav-link dropdown-indicator label-1" href="#nv-user" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-user">
-                    <div class="d-flex align-items-center">
-                      <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div><span class="nav-link-icon"><span data-feather="phone"></span></span><span class="nav-link-text">Utilisateur</span>
-                    </div>
-                  </a>
-                  <div class="parent-wrapper label-1">
-                    <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-user">
-                      <li class="collapsed-nav-item-title d-none">Utilisateur</li>
-                      <li class="nav-item"><a class="nav-link" href="apps/crm/analytics.html" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Enregistrer un utilisateur</span></div>
-                        </a>
-                      </li>
-                      <li class="nav-item"><a class="nav-link" href="apps/crm/analytics.html" data-bs-toggle="" aria-expanded="false">
-                          <div class="d-flex align-items-center"><span class="nav-link-text">Voir tous les utilisateur</span></div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
         <div class="navbar-vertical-footer">
           <button class="btn navbar-vertical-toggle border-0 fw-semibold w-100 white-space-nowrap d-flex align-items-center">
             <span class="uil uil-left-arrow-to-left fs-8"></span>
@@ -342,7 +330,7 @@
 							<h5>Informations client</h5>
 							<div class="col-sm-6 col-md-3">
 								<div class="form-floating">
-									<select class="form-select" name="gender" >
+									<select class="form-select" name="civilite" >
 										<option value="M.">Homme</option>
 										<option value="Mme">Femme</option>
 									</select>
@@ -351,19 +339,19 @@
 							</div>
 							<div class="col-sm-6 col-md-3">
 								<div class="form-floating">
-									<input class="form-control" type="text" placeholder="Last name" name="last_name" required="" />
+									<input class="form-control" type="text" placeholder="Last name" name="nom"/>
 									<label for="floatingInputLastname">Nom</label>
 								</div>
 							</div>
 							<div class="col-sm-6 col-md-3">
 								<div class="form-floating">
-									<input class="form-control" type="text" placeholder="First name" name="first_name" required="" />
+									<input class="form-control" type="text" placeholder="First name" name="prenom"/>
 									<label for="floatingInputFirstname">Prénom</label>
 								</div>
 							</div>
 							<div class="col-sm-6 col-md-3">
 								<div class="form-floating">
-									<select class="form-select" name="client_type">
+									<select class="form-select" name="type">
 										<option value="Particulier">Particulier</option>
 										<option value="Porfessionnel">Porfessionnel</option>
 										<option value="CSI">CSI</option>
@@ -386,61 +374,61 @@
 							</div>
 							<div class="col-sm-6 col-md-4">
 								<div class="form-floating">
-									<input class="form-control" type="text" placeholder="Adresse" name="address_additional"/>
+									<input class="form-control" type="text" placeholder="Adresse" name="address_complementaire"/>
 									<label for="floatingInputStreet">Adresse complémentaire</label>
 								</div>
 							</div>
 							<div class="col-sm-6 col-md-2">
 								<div class="form-floating">
-									<input class="form-control" type="text" placeholder="zip code" name="zipcode"/>
+									<input class="form-control" type="text" placeholder="zip code" name="code_postal"/>
 									<label for="floatingInputZipcode">Code postal</label>
 								</div>
 							</div>
 							<div class="col-sm-6 col-md-2">
 								<div class="form-floating">
-									<select class="form-select" name="city">
-                  <option value="Al Hoceïma">Al Hoceïma</option>
-                  <option value="Azilal">Azilal</option>
-                  <option value="Beni Mellal">Beni Mellal</option>
-                  <option value="Berkane">Berkane</option>
-                  <option value="Berréchid">Berrechid</option>
-                  <option value="Casablanca">Casablanca</option>
-                  <option value="Chefchaouen">Chefchaouen</option>
-                  <option value="Dakhla">Dakhla</option>
-                  <option value="El Hajeb">El Hajeb</option>
-                  <option value="El Jadida">El Jadida</option>
-                  <option value="Errachidia">Errachidia</option>
-                  <option value="Essaouira">Essaouira</option>
-                  <option value="Fès">Fès</option>
-                  <option value="Figuig">Figuig</option>
-                  <option value="Guelmim">Guelmim</option>
-                  <option value="Ifrane">Ifrane</option>
-                  <option value="Kénitra">Kénitra</option>
-                  <option value="Khémisset">Khémisset</option>
-                  <option value="Khénifra">Khénifra</option>
-                  <option value="Khouribga">Khouribga</option>
-                  <option value="Laâyoune">Laâyoune</option>
-                  <option value="Larache">Larache</option>
-                  <option value="Marrakech">Marrakech</option>
-                  <option value="Meknès">Meknès</option>
-                  <option value="Mohammedia">Mohammedia</option>
-                  <option value="Nador">Nador</option>
-                  <option value="Ouarzazate">Ouarzazate</option>
-                  <option value="Oujda">Oujda</option>
-                  <option value="Rabat">Rabat</option>
-                  <option value="Safi">Safi</option>
-                  <option value="Salé">Salé</option>
-                  <option value="Sefrou">Sefrou</option>
-                  <option value="Settat">Settat</option>
-                  <option value="Sidi Ifni">Sidi Ifni</option>
-                  <option value="Tanger">Tanger</option>
-                  <option value="Tan-Tan">Tan-Tan</option>
-                  <option value="Taza">Taza</option>
-                  <option value="Témara">Témara</option>
-                  <option value="Tétouan">Tétouan</option>
-                  <option value="Tinghir">Tinghir</option>
-                  <option value="Tiznit">Tiznit</option>
-                  <option value="Youssoufia">Youssoufia</option>
+									<select class="form-select" name="ville">
+										<option value="Al Hoceïma">Al Hoceïma</option>
+										<option value="Azilal">Azilal</option>
+										<option value="Beni Mellal">Beni Mellal</option>
+										<option value="Berkane">Berkane</option>
+										<option value="Berréchid">Berrechid</option>
+										<option value="Casablanca">Casablanca</option>
+										<option value="Chefchaouen">Chefchaouen</option>
+										<option value="Dakhla">Dakhla</option>
+										<option value="El Hajeb">El Hajeb</option>
+										<option value="El Jadida">El Jadida</option>
+										<option value="Errachidia">Errachidia</option>
+										<option value="Essaouira">Essaouira</option>
+										<option value="Fès">Fès</option>
+										<option value="Figuig">Figuig</option>
+										<option value="Guelmim">Guelmim</option>
+										<option value="Ifrane">Ifrane</option>
+										<option value="Kénitra">Kénitra</option>
+										<option value="Khémisset">Khémisset</option>
+										<option value="Khénifra">Khénifra</option>
+										<option value="Khouribga">Khouribga</option>
+										<option value="Laâyoune">Laâyoune</option>
+										<option value="Larache">Larache</option>
+										<option value="Marrakech">Marrakech</option>
+										<option value="Meknès">Meknès</option>
+										<option value="Mohammedia">Mohammedia</option>
+										<option value="Nador">Nador</option>
+										<option value="Ouarzazate">Ouarzazate</option>
+										<option value="Oujda">Oujda</option>
+										<option value="Rabat">Rabat</option>
+										<option value="Safi">Safi</option>
+										<option value="Salé">Salé</option>
+										<option value="Sefrou">Sefrou</option>
+										<option value="Settat">Settat</option>
+										<option value="Sidi Ifni">Sidi Ifni</option>
+										<option value="Tanger">Tanger</option>
+										<option value="Tan-Tan">Tan-Tan</option>
+										<option value="Taza">Taza</option>
+										<option value="Témara">Témara</option>
+										<option value="Tétouan">Tétouan</option>
+										<option value="Tinghir">Tinghir</option>
+										<option value="Tiznit">Tiznit</option>
+										<option value="Youssoufia">Youssoufia</option>
 									</select>
 									<label for="floatingSelectCity">Ville</label>
 								</div>
@@ -448,13 +436,13 @@
 							<h5 class="mt-3">Contact</h5>
 							<div class="col-sm-6 col-md-4">
 								<div class="form-floating">
-									<input class="form-control" type="tel" placeholder="phone" name="mobile_phone" />
+									<input class="form-control" type="tel" placeholder="phone" name="tel_mobile" />
 									<label for="floatingInputPhone">Téléphone mobile</label>
 								</div>
 							</div>
 							<div class="col-sm-6 col-md-4">
 								<div class="form-floating">
-									<input class="form-control" type="tel" placeholder="phone" name="phone"/>
+									<input class="form-control" type="tel" placeholder="phone" name="tel_fixe"/>
 									<label for="floatingInputPhone">Téléphone fixe</label>
 								</div>
 							</div>
@@ -467,7 +455,7 @@
 							<h5 class="mt-3">Dossier</h5>
 							<div class="col-sm-6 col-md-3">
 								<div class="form-floating">
-									<select class="form-select" name="dossier_origin">
+									<select class="form-select" name="origine_dossier">
 										<option disabled selected></option>
 										<option value="Parrainge">Parrainge</option>
 										<option value="Bouche à oreille">Bouche à oreille</option>
@@ -477,7 +465,7 @@
 							</div>
 							<div class="col-sm-6 col-md-3">
 								<div class="form-floating">
-									<select class="form-select" name="project_nature">
+									<select class="form-select" name="nature_project">
 										<option disabled selected></option>
 										<option value="agadir">Agadir</option>
 										<option value="casablanca">Casablanca</option>
@@ -508,13 +496,13 @@
 							<h5 class="mt-3">Catégorie</h5>
 							<div class="col-sm-6 col-md-4">
 								<div class="form-floating">
-									<input class="form-control" type="tel" placeholder="phone" name="category"  />
+									<input class="form-control" type="tel" placeholder="phone" name="categorie"  />
 									<label for="floatingInputPhone">Ajouter un critère</label>
 								</div>
 							</div>
 							<div class="col-sm-6 col-md-4">
 								<div class="form-floating">
-									<select class="form-select" style="padding-top: 9.5px;" name="critere">
+									<select class="form-select" style="padding-top: 9.5px;" name="segment">
 										<option disabled selected>Ségments</option>
 										<option value="Agadir">Agadir</option>
 										<option value="Casablanca">Casablanca</option>
@@ -523,7 +511,7 @@
 							</div>
 							<div class="col-sm-6 col-md-4">
 								<div class="form-floating">
-									<select class="form-select" style="padding-top: 9.5px;" name="qualification">
+									<select class="form-select" style="padding-top: 9.5px;" name="critere">
 										<option disabled selected>Critère</option>
 										<option value="Agadir">Agadir</option>
 										<option value="Casablanca">Casablanca</option>
@@ -534,7 +522,7 @@
 							<h5 class="mt-3">Information complémentaire</h5>
 							<div class="col-sm-6 col-md-12">
 								<div class="form-floating">
-									<input class="form-control" type="tel" placeholder="phone" name="sale" />
+									<input class="form-control" type="tel" placeholder="phone" name="vendu" />
 									<label for="floatingInputPhone">Vendu</label>
 								</div>
 							</div>
@@ -549,11 +537,11 @@
 									<label class="form-check-label" for="qualification">Qualification</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" id="measure" type="checkbox" value="Mesure" name="measure" />
+									<input class="form-check-input" id="measure" type="checkbox" value="Mesure" name="mesure" />
 									<label class="form-check-label" for="measure">Mesure</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" id="discovery" type="checkbox" value="Découverte" name="discovery" />
+									<input class="form-check-input" id="discovery" type="checkbox" value="Découverte" name="decouverte" />
 									<label class="form-check-label" for="discovery">Découverte</label>
 								</div>
 								<div class="form-check form-check-inline">
@@ -561,15 +549,15 @@
 									<label class="form-check-label" for="solution_plan">Solution - Plan</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" id="argumentation" type="checkbox" value="Argumentaire" name="argumentation" />
+									<input class="form-check-input" id="argumentation" type="checkbox" value="Argumentaire" name="argumentaire" />
 									<label class="form-check-label" for="argumentation">Argumentaire</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" id="price_announcement" type="checkbox" value="Annonce de prix" name="price_announcement" />
+									<input class="form-check-input" id="price_announcement" type="checkbox" value="Annonce de prix" name="annonce_prix" />
 									<label class="form-check-label" for="price_announcement">Annonce de prix</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" id="handover" type="checkbox" value="Passage de main" name="handover" />
+									<input class="form-check-input" id="handover" type="checkbox" value="Passage de main" name="passage_main" />
 									<label class="form-check-label" for="handover">Passage de main</label>
 								</div>
 								<div class="form-check form-check-inline">

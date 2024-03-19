@@ -12,12 +12,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
         return view('welcome');
     });
-   
     Route::get('/users', [UserController::class, 'showUsers']);
+    Route::get('/add-user', [UserController::class, 'create'])->name('users.create');
+    Route::post('/add-user', [UserController::class, 'store'])->name('users.store');
 
-    Route::get('/add-user', function () {
-        return view('add-user');
-    });
 });
 
 Route::group(['middleware' => 'guest'], function () {

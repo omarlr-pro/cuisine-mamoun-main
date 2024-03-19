@@ -50,68 +50,75 @@
 					  document.querySelector('body').classList.add(`navbar-${navbarStyle}`);
 					}
 				</script>
-				<div class="collapse navbar-collapse" id="navbarVerticalCollapse">
-					<!-- scrollbar removed-->
-					<div class="navbar-vertical-content">
-						<ul class="navbar-nav flex-column" id="navbarVerticalNav">
-							<li class="nav-item">
-								<!-- parent pages-->
-								<div class="nav-item-wrapper">
-									<a class="nav-link dropdown-indicator label-1" href="#nv-home" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-home">
-										<div class="d-flex align-items-center">
-											<div class="dropdown-indicator-icon">
-												<span class="fas fa-caret-right"></span>
-											</div>
-											<span class="nav-link-icon">
-											<span data-feather="pie-chart"></span>
-											</span>
-											<span class="nav-link-text">Acceuil</span>
-										</div>
-									</a>
-									<div class="parent-wrapper label-1">
-										<ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-home">
-											<li class="collapsed-nav-item-title d-none">Acceuil</li>
-											<li class="nav-item">
-												<a class="nav-link" href="../../index.html" data-bs-toggle="" aria-expanded="false">
-													<div class="d-flex align-items-center">
-														<span class="nav-link-text">Tableau de bord</span>
-													</div>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</li>
-							<li class="nav-item">
-								<p class="navbar-vertical-label">Client</p>
-								<hr class="navbar-vertical-line" />
-								<div class="nav-item-wrapper">
-									<a class="nav-link dropdown-indicator label-1" href="#nv-CRM" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-CRM">
-										<div class="d-flex align-items-center">
-											<div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div>
-											<span class="nav-link-icon"><span data-feather="phone"></span></span><span class="nav-link-text">Client</span>
-										</div>
-									</a>
-									<div class="parent-wrapper label-1">
-										<ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-CRM">
-											<li class="collapsed-nav-item-title d-none">Client</li>
-											<li class="nav-item">
-												<a class="nav-link" href="apps/crm/analytics.html" data-bs-toggle="" aria-expanded="false">
-													<div class="d-flex align-items-center"><span class="nav-link-text">Enregistrer un client</span></div>
-												</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="apps/crm/analytics.html" data-bs-toggle="" aria-expanded="false">
-													<div class="d-flex align-items-center"><span class="nav-link-text">Voir tous les client</span></div>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
+                <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
+                    <div class="navbar-vertical-content">
+                        <ul class="navbar-nav flex-column" id="navbarVerticalNav">
+
+                           <li class="nav-item">
+                              <p class="navbar-vertical-label">Tableau de bord</p>
+                              <hr class="navbar-vertical-line" />
+                              <div class="nav-item-wrapper">
+                                 <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <div class="d-flex align-items-center">
+                                       <span class="nav-link-icon"><span data-feather="compass"></span></span>
+                                       <span>
+                                          <span class="nav-link-text">Tableau de bord</span>
+                                       </span>
+                                    </div>
+                                 </a>
+                              </div>
+                            </li>
+                           <li class="nav-item">
+                              <p class="navbar-vertical-label">Client</p>
+                              <hr class="navbar-vertical-line" />
+                              <div class="nav-item-wrapper">
+                                 <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <div class="d-flex align-items-center">
+                                       <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                       <span>
+                                          <span class="nav-link-text">Enregistrer un client</span>
+                                       </span>
+                                    </div>
+                                 </a>
+                              </div>
+                              <div class="nav-item-wrapper">
+                                 <a class="nav-link label-1" href="{{ route('clients.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <div class="d-flex align-items-center">
+                                       <span class="nav-link-icon"><span data-feather="list"></span></span>
+                                       <span>
+                                          <span class="nav-link-text">Voir tous les clients</span>
+                                       </span>
+                                    </div>
+                                 </a>
+                              </div>
+                           </li>
+                           <li class="nav-item">
+                              <p class="navbar-vertical-label">Authentification</p>
+                              <hr class="navbar-vertical-line" />
+                              <div class="nav-item-wrapper">
+                                 <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <div class="d-flex align-items-center">
+                                       <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                       <span>
+                                          <span class="nav-link-text">Enregistrer un utilisateur</span>
+                                       </span>
+                                    </div>
+                                 </a>
+                              </div>
+                              <div class="nav-item-wrapper">
+                                 <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <div class="d-flex align-items-center">
+                                       <span class="nav-link-icon"><span data-feather="list"></span></span>
+                                       <span>
+                                          <span class="nav-link-text">Voir tous les utilisateurs</span>
+                                       </span>
+                                    </div>
+                                 </a>
+                              </div>
+                           </li>
+                        </ul>
+                    </div>
+                </div>
 				<div class="navbar-vertical-footer">
 					<button class="btn navbar-vertical-toggle border-0 fw-semibold w-100 white-space-nowrap d-flex align-items-center">
 					<span class="uil uil-left-arrow-to-left fs-8"></span>
@@ -378,26 +385,26 @@
 										@foreach($clients as $client)
 										<tr>
 											<td class="nom align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">
-												<div><a class="fs-9 fw-bold" href="{{ route('clients.show', $client->id) }}">{{ $client->gender }} {{ $client->last_name }} {{ $client->first_name }}</a></div>
+												<div><a class="fs-9 fw-bold" href="{{ route('clients.show', $client->id) }}">{{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</a></div>
 											</td>
-											<td class="ville align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->city }}</td>
+											<td class="ville align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->ville }}</td>
 											<td class="adresse align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->address }}</td>
-											<td class="codepostal align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->zipcode }}</td>
-											<td class="tel align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->mobile_phone }}</td>
+											<td class="codepostal align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->code_postal }}</td>
+											<td class="tel align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->tel_mobile }}</td>
 											<td class="email align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->email }}</td>
-											<td class="source align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->dossier_origin }}</td>
+											<td class="source align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->origine_dossier }}</td>
 											<td class="etapes align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">
 												{{ $client->contact }}
 												{{ $client->qualification }}
-												{{ $client->measure }}
-												{{ $client->discovery }}
+												{{ $client->mesure }}
+												{{ $client->decouverte }}
 												{{ $client->solution_plan }}
-												{{ $client->argumentation }} 
-												{{ $client->price_announcement }}
-												{{ $client->handover }}
+												{{ $client->argumentaire }} 
+												{{ $client->annonce_prix }}
+												{{ $client->passage_main }}
 												{{ $client->decision }}
 												{{ $client->vente }}
-                      </td>
+                      						</td>
 											<td class="vendeur align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">{{ $client->whoaddit }}</td>
 											<td class="date align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">
 												{{ $client->created_at->format('d/m/Y') }}

@@ -389,7 +389,7 @@
                         <td class="tel align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->tel }}</td>
                         <td class="email align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->email }}</td>
                         <td class="statut align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">{{ $user->status }}</td>
-                        <td class="date align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">{{ $user->created_at->format('d/m/Y H:i') }}
+                        <td class="date align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">{{ $user->created_at }}
                             <div>
                                 <p class="mb-0 text-center fw-semibold text-opacity-75 text-body-tertiary fs-9">12:30</p>
                             </div>
