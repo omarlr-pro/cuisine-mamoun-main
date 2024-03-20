@@ -13,25 +13,24 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->string('img')->nullable(); 
-            $table->string('identifat')->nullable(); 
-            $table->string('status')->nullable(); 
             $table->string('civilite')->nullable(); 
             $table->string('nom')->nullable(); 
             $table->string('prenom')->nullable(); 
             $table->string('cin')->nullable(); 
-            $table->date('date_naissance')->nullable(); 
-            $table->string('mobile')->nullable(); 
-            $table->string('tel_fix')->nullable(); 
+            $table->date('dob')->nullable(); 
             $table->string('adresse')->nullable(); 
             $table->string('adresse_complementaire')->nullable(); 
-            $table->string('code_postale')->nullable(); 
+            $table->string('code_postal')->nullable(); 
             $table->string('ville')->nullable(); 
+            $table->string('tel_mobile')->nullable(); 
+            $table->string('tel_fixe')->nullable(); 
+            $table->string('email_personnel');
+            $table->string('identifiant')->nullable(); 
+            $table->string('statut')->nullable(); 
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
 

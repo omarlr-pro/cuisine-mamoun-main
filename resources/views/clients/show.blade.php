@@ -53,69 +53,67 @@
                 <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
                     <div class="navbar-vertical-content">
                         <ul class="navbar-nav flex-column" id="navbarVerticalNav">
-
-                           <li class="nav-item">
-                              <p class="navbar-vertical-label">Tableau de bord</p>
-                              <hr class="navbar-vertical-line" />
-                              <div class="nav-item-wrapper">
-                                 <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
-                                    <div class="d-flex align-items-center">
-                                       <span class="nav-link-icon"><span data-feather="compass"></span></span>
-                                       <span>
-                                          <span class="nav-link-text">Tableau de bord</span>
-                                       </span>
-                                    </div>
-                                 </a>
-                              </div>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Tableau de bord</p>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="compass"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Tableau de bord</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
                             </li>
-                           <li class="nav-item">
-                              <p class="navbar-vertical-label">Client</p>
-                              <hr class="navbar-vertical-line" />
-                              <div class="nav-item-wrapper">
-                                 <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
-                                    <div class="d-flex align-items-center">
-                                       <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
-                                       <span>
-                                          <span class="nav-link-text">Enregistrer un client</span>
-                                       </span>
-                                    </div>
-                                 </a>
-                              </div>
-                              <div class="nav-item-wrapper">
-                                 <a class="nav-link label-1" href="{{ route('clients.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
-                                    <div class="d-flex align-items-center">
-                                       <span class="nav-link-icon"><span data-feather="list"></span></span>
-                                       <span>
-                                          <span class="nav-link-text">Voir tous les clients</span>
-                                       </span>
-                                    </div>
-                                 </a>
-                              </div>
-                           </li>
-                           <li class="nav-item">
-                              <p class="navbar-vertical-label">Authentification</p>
-                              <hr class="navbar-vertical-line" />
-                              <div class="nav-item-wrapper">
-                                 <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
-                                    <div class="d-flex align-items-center">
-                                       <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
-                                       <span>
-                                          <span class="nav-link-text">Enregistrer un utilisateur</span>
-                                       </span>
-                                    </div>
-                                 </a>
-                              </div>
-                              <div class="nav-item-wrapper">
-                                 <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
-                                    <div class="d-flex align-items-center">
-                                       <span class="nav-link-icon"><span data-feather="list"></span></span>
-                                       <span>
-                                          <span class="nav-link-text">Voir tous les utilisateurs</span>
-                                       </span>
-                                    </div>
-                                 </a>
-                              </div>
-                           </li>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Client</p>
+                                <hr class="navbar-vertical-line" />
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Enregistrer un client</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="{{ route('clients.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="list"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Voir tous les clients</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Authentification</p>
+                                <hr class="navbar-vertical-line" />
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="{{ route('users.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Enregistrer un utilisateur</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="list"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Voir tous les utilisateurs</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -145,10 +143,10 @@
                         </a>
                     </div>
                     <div class="search-box navbar-top-search-box d-none d-lg-block" data-list='{"valueNames":["title"]}' style="width:50rem;">
-                        <form class="position-relative" data-bs-toggle="search" data-bs-display="static">
+                        <div class="position-relative" data-bs-toggle="search" data-bs-display="static">
                             <input class="form-control search-input fuzzy-search form-control-sm" type="search" placeholder="Rechercher un client" aria-label="Search" />
                             <span class="fas fa-search search-box-icon"></span>
-                        </form>
+                        </div>
                         <div class="btn-close position-absolute end-0 top-50 translate-middle cursor-pointer shadow-none" data-bs-dismiss="search">
                             <button class="btn btn-link p-0" aria-label="Close"></button>
                         </div>
@@ -185,10 +183,10 @@
                         <li class="nav-item">
                             <div class="theme-control-toggle fa-icon-wait px-2">
                                 <input class="form-check-input ms-0 theme-control-toggle-input" type="checkbox" data-theme-control="phoenixTheme" value="dark" id="themeControlToggle" />
-                                <label class="mb-0 theme-control-toggle-label theme-control-toggle-light" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme">
+                                <label class="mb-0 theme-control-toggle-label theme-control-toggle-light" for="themeControlToggle" data-bs-toggle="tooltip">
                                 <span class="icon" data-feather="moon"></span>
                                 </label>
-                                <label class="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme">
+                                <label class="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggle" data-bs-toggle="tooltip">
                                 <span class="icon" data-feather="sun"></span>
                                 </label>
                             </div>
@@ -247,7 +245,8 @@
                                             <div class="avatar avatar-xl ">
                                                 <img class="rounded-soft " src="../../assets/img/team/72x72/57.webp" alt="" />
                                             </div>
-                                            <h6 class="mt-3 text-body-emphasis">{{ Auth::user()->name }} </h6>
+                                            <h6 class="mt-3 text-body-emphasis">{{ Auth::user()->civilite }} {{ Auth::user()->nom }} {{ Auth::user()->prenom }}</h6>
+                                            <h6 class="mt-2 text-opacity-75 text-body-tertiary">{{ Auth::user()->statut }}</h6>
                                         </div>
                                     </div>
                                     <div class="overflow-auto scrollbar p-0 border-top border-translucent" style="height: auto;">
@@ -317,7 +316,11 @@
                                 <h2 class="mb-4">Fiche de {{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</h2>
                                 <div class="d-flex mb-3">
                                     <button class="btn btn-phoenix-secondary me-2 px-6"><span class="fa-solid fa-edit me-sm-2"></span><span class="d-none d-sm-inline">Modifier</span></button>
-                                    <button class="btn btn-phoenix-danger me-2 px-6"><span class="fa-solid fa-trash me-2"></span><span>Supprimer</span></button>
+                                    <button class="btn btn-phoenix-danger me-2 px-6" onclick="event.preventDefault(); document.getElementById('delete-client-form-{{$client->id}}').submit();"><span class="fa-solid fa-trash me-2"></span><span>Supprimer</span></button>
+                                    <form id="delete-client-form-{{$client->id}}" action="{{ route('clients.destroy', $client->id) }}" method="POST" style="display: none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -450,17 +453,17 @@
                                                 <div>
                                                     <p class="fw-semibold text-body-secondary mb-1">Étape achevée</p>
                                                     <h5 class="fw-bolder text-nowrap">
-                                               {{ $client->contact }}
-                                               {{ $client->qualification }}
-                                               {{ $client->mesure }}
-                                               {{ $client->decouverte }}
-                                               {{ $client->solution_plan }}
-                                               {{ $client->argumentaire }} 
-                                               {{ $client->annonce_prix }}
-                                               {{ $client->passage_main }}
-                                               {{ $client->decision }}
-                                               {{ $client->vente }}
-                                                     </h5>
+                                                        {{ $client->contact }}
+                                                        {{ $client->qualification }}
+                                                        {{ $client->mesure }}
+                                                        {{ $client->decouverte }}
+                                                        {{ $client->solution_plan }}
+                                                        {{ $client->argumentaire }} 
+                                                        {{ $client->annonce_prix }}
+                                                        {{ $client->passage_main }}
+                                                        {{ $client->decision }}
+                                                        {{ $client->vente }}
+                                                    </h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -470,17 +473,17 @@
                                                 <div>
                                                     <p class="fw-semibold text-body-secondary mb-1">Étape achevée</p>
                                                     <h5 class="fw-bolder text-nowrap">
-                                               {{ $client->contact }}
-                                               {{ $client->qualification }}
-                                               {{ $client->mesure }}
-                                               {{ $client->decouverte }}
-                                               {{ $client->solution_plan }}
-                                               {{ $client->argumentaire }} 
-                                               {{ $client->annonce_prix }}
-                                               {{ $client->passage_main }}
-                                               {{ $client->decision }}
-                                               {{ $client->vente }}
-                                                     </h5>
+                                                        {{ $client->contact }}
+                                                        {{ $client->qualification }}
+                                                        {{ $client->mesure }}
+                                                        {{ $client->decouverte }}
+                                                        {{ $client->solution_plan }}
+                                                        {{ $client->argumentaire }} 
+                                                        {{ $client->annonce_prix }}
+                                                        {{ $client->passage_main }}
+                                                        {{ $client->decision }}
+                                                        {{ $client->vente }}
+                                                    </h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -490,17 +493,17 @@
                                                 <div>
                                                     <p class="fw-semibold text-body-secondary mb-1">Étape achevée</p>
                                                     <h5 class="fw-bolder text-nowrap">
-                                               {{ $client->contact }}
-                                               {{ $client->qualification }}
-                                               {{ $client->mesure }}
-                                               {{ $client->decouverte }}
-                                               {{ $client->solution_plan }}
-                                               {{ $client->argumentaire }} 
-                                               {{ $client->annonce_prix }}
-                                               {{ $client->passage_main }}
-                                               {{ $client->decision }}
-                                               {{ $client->vente }}
-                                                     </h5>
+                                                        {{ $client->contact }}
+                                                        {{ $client->qualification }}
+                                                        {{ $client->mesure }}
+                                                        {{ $client->decouverte }}
+                                                        {{ $client->solution_plan }}
+                                                        {{ $client->argumentaire }} 
+                                                        {{ $client->annonce_prix }}
+                                                        {{ $client->passage_main }}
+                                                        {{ $client->decision }}
+                                                        {{ $client->vente }}
+                                                    </h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -510,17 +513,17 @@
                                                 <div>
                                                     <p class="fw-semibold text-body-secondary mb-1">Étape achevée</p>
                                                     <h5 class="fw-bolder text-nowrap">
-                                               {{ $client->contact }}
-                                               {{ $client->qualification }}
-                                               {{ $client->mesure }}
-                                               {{ $client->decouverte }}
-                                               {{ $client->solution_plan }}
-                                               {{ $client->argumentaire }} 
-                                               {{ $client->annonce_prix }}
-                                               {{ $client->passage_main }}
-                                               {{ $client->decision }}
-                                               {{ $client->vente }}
-                                                     </h5>
+                                                        {{ $client->contact }}
+                                                        {{ $client->qualification }}
+                                                        {{ $client->mesure }}
+                                                        {{ $client->decouverte }}
+                                                        {{ $client->solution_plan }}
+                                                        {{ $client->argumentaire }} 
+                                                        {{ $client->annonce_prix }}
+                                                        {{ $client->passage_main }}
+                                                        {{ $client->decision }}
+                                                        {{ $client->vente }}
+                                                    </h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -528,207 +531,207 @@
                                 </div>
                             </div>
                             <ul class="nav nav-underline justify-content-center fs-9 deal-details scrollbar flex-nowrap w-100 mb-3" id="myTab" role="tablist" style="overflow-y: hidden;">
-
                                 <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link active" id="etapes-tab" data-bs-toggle="tab" href="#tab-etapes" role="tab" aria-controls="tab-activity" aria-selected="false" tabindex="-1"> <span class="fa-solid fa-chart-line me-2 tab-icon-color"></span>Étape</a></li>
                                 <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link" id="notes-tab" data-bs-toggle="tab" href="#tab-notes" role="tab" aria-controls="tab-notes" aria-selected="false" tabindex="-1"> <span class="fa-solid fa-clipboard me-2 tab-icon-color"></span>Notes</a></li>
-
                                 <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link" id="activity-tab" data-bs-toggle="tab" href="#tab-activity" role="tab" aria-controls="tab-activity" aria-selected="false" tabindex="-1"> <span class="fa-solid fa-clipboard me-2 tab-icon-color"></span>activity</a></li>
-
                                 <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link" id="meeting-tab" data-bs-toggle="tab" href="#tab-meeting" role="tab" aria-controls="tab-meeting" aria-selected="true"> <span class="fa-solid fa-video me-2 tab-icon-color"></span>Meeting</a></li>
-
                                 <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link" id="task-tab" data-bs-toggle="tab" href="#tab-task" role="tab" aria-controls="tab-task" aria-selected="true"> <span class="fa-solid fa-square-check me-2 tab-icon-color"></span>Task</a></li>
-
                                 <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link" id="call-tab" data-bs-toggle="tab" href="#tab-call" role="tab" aria-controls="tab-call" aria-selected="true"> <span class="fa-solid fa-phone me-2 tab-icon-color"></span>Call</a></li>
-
                                 <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link" id="emails-tab" data-bs-toggle="tab" href="#tab-emails" role="tab" aria-controls="tab-emails" aria-selected="true"> <span class="fa-solid fa-envelope me-2 tab-icon-color"></span>Emails </a></li>
-
                                 <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link" id="attachments-tab" data-bs-toggle="tab" href="#tab-attachments" role="tab" aria-controls="tab-attachments" aria-selected="true"> <span class="fa-solid fa-paperclip me-2 tab-icon-color"></span>Attachments</a></li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade active show" id="tab-etapes" role="tabpanel" aria-labelledby="etapes-tab">
-						                  <div class="card card-body mb-3">
-						                    <div class="d-flex justify-content-between align-items-center mb-3" id="scrollspyValider">
-						                      <h3 class="mb-0">Étape à valider</h3>
-						                    </div>
-						                    <div>
-						                      <div class="table-responsive scrollbar mx-n1 px-1">
-						                        <table class="table fs-9 border-top border-bottom">
-						                          <thead>
-						                            <tr>
-						                              <th class="align-middle text-center border-start border-end" style="width:15%;">Crée par</th>
-						                              <th class="align-middle text-center border-end" style="width:15%;">Date de relance</th>
-						                              <th class="align-middle text-center border-end" style="width:70%;">Relance pour l'étape</th>
-						                            </tr>
-						                          </thead>
-						                          <tbody>
-						                            <tr>
-						                              <td class="align-middle text-center border-start border-end fw-bold py-2" style="padding-left: 1rem; padding-right: 1rem">Mamoun Ezzidi
-						                                <div>
-						                                    <p class="mb-0 text-center fw-semibold text-opacity-75 text-body-tertiary fs-9">le 12/05/2024 à 12:30</p>
-						                                  </div>
-						                              </td>
-						                              <td class="align-middle text-center border-end fw-semibold text-opacity-75 text-body-tertiary py-2" style="padding-left: 1rem; padding-right: 1rem">le 12/05/2024 à 12:30
-						                              </td>
-						                              <td class="align-middle text-center border-end fw-semibold py-2">Découverte</td>
-						                            </tr>
-						                          </tbody>
-						                        </table>
-						                      </div>
-						                    </div>
-						                    <div id="ValiderTable" data-list='{"page":5,"pagination":true}'>
-						                      <div>
-						                        <div class="table-responsive scrollbar mx-n1 px-1">
-						                          <table class="table fs-9 mb-1 border-top border-bottom">
-						                            <thead>
-						                              <tr>
-						                                <th class="align-middle text-center border-start border-end" style="width:15%;">Call center</th>
-						                                <th class="align-middle text-center border-end" style="width:85%;">Remarque</th>
-						                              </tr>
-						                            </thead>
-						                            <tbody class="list" id="members-table-body">
-						                              <tr>
-						                                <td class="align-middle text-center border-start border-end fw-bold py-2" style="padding-left: 1rem; padding-right: 1rem">Mamoun Ezzidi
-						                                  <div>
-						                                      <p class="mb-0 text-center fw-semibold text-opacity-75 text-body-tertiary fs-9">le 12/05/2024 à 12:30</p>
-						                                    </div>
-						                                </td>
-						                                <td class="align-middle text-left border-end fw-semibold py-2" style="padding-left: 1rem; padding-right: 1rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						                                </td>
-						                              </tr>
-						                            </tbody>
-						                          </table>
-						                        </div>
-						                        <div class="row align-items-center justify-content-between pt-2 fs-9">
-						                          <div class="col-auto d-flex">
-						                            <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p><a class="fw-semibold" href="#!" data-list-view="*">Voir tout<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">Voir moins<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
-						                          </div>
-						                          <div class="col-auto d-flex"><button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-						                            <ul class="mb-0 pagination"></ul><button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
-						                          </div>
-						                        </div>
-						                      </div>
-						                    </div>
-						                  </div>
-						                  <div class="card card-body mb-3">
-						                    <div class="d-flex justify-content-between align-items-center mb-3" id="scrollspyRelance">
-						                      <h3 class="mb-0">Relance rendez-vous call center</h3><button class="btn btn-primary btn-sm"><span class="fa-solid fa-plus me-2"></span>Ajouter la relance</button>
-						                    </div>
-						                    <div>
-						                      <div>
-						                        <div class="table-responsive scrollbar mx-n1 px-1">
-						                          <table class="table fs-9 mb-1">
-						                            <tbody class="list" id="members-table-body">
-						                              <tr>
-						                                <td class="align-middle text-left fw-bold py-2" style="width:15%; padding-left: 1rem; padding-right: 1rem">Date de l'appel</td>
-						                                <td class="align-middle text-left fw-bold py-2" style="width:70%; padding-left: 1rem; padding-right: 1rem">
-						                                  <div class="row">
-						                                    <div class="col-sm-6 col-md-6" style="padding-right: 0.4rem;">
-						                                      <input class="form-control datetimepicker" id="datepicker" type="text" placeholder="jj/mm/aa" data-options='{"disableMobile":true,"dateFormat":"d/m/Y","allowInput":true}' />
-						                                    </div>
-						                                    <div class="col-sm-6 col-md-6" style="padding-left: 0.4rem;">
-						                                      <input class="form-control datetimepicker" id="timepicker1" type="text" placeholder="heure : minute" data-options='{"enableTime":true,"noCalendar":true,"dateFormat":"H:i","disableMobile":true,"allowInput":true}' />
-						                                    </div>
-						                                  </div>
-						                                </td>
-						                              </tr>
-						                              <tr>
-						                                <td class="align-middle text-left fw-bold py-2" style="width:15%; padding-left: 1rem; padding-right: 1rem">Crée par</td>
-						                                <td class="align-middle text-left fw-semibold text-opacity-75 text-body-tertiary py-2" style="width:70%; padding-left: 1rem; padding-right: 1rem">Mamoun Ezzidi</td>
-						                              </tr>
-						                              <tr>
-						                                <td class="align-middle text-left fw-bold py-2" style="width:15%; padding-left: 1rem; padding-right: 1rem">Prise de rendez-vous</td>
-						                                <td class="align-middle text-left fw-bold py-2" style="width:70%; padding-left: 1rem; padding-right: 1rem">
-						                                  <div class="row">
-						                                    <div class="col-sm-6 col-md-6" style="padding-right: 0.4rem;">
-						                                      <input class="form-control datetimepicker" id="datepicker" type="text" placeholder="jj/mm/aa" data-options='{"disableMobile":true,"dateFormat":"d/m/Y","allowInput":true}' />
-						                                    </div>
-						                                    <div class="col-sm-6 col-md-6" style="padding-left: 0.4rem;">
-						                                      <input class="form-control datetimepicker" id="timepicker1" type="text" placeholder="heure : minute" data-options='{"enableTime":true,"noCalendar":true,"dateFormat":"H:i","disableMobile":true,"allowInput":true}' />
-						                                    </div>
-						                                  </div>
-						                                </td>
-						                              </tr>
-						                              <tr>
-						                                <td class="align-middle text-left fw-bold py-2" style="width:15%; padding-left: 1rem; padding-right: 1rem">Reporter la relance</td>
-						                                <td class="align-middle text-left fw-bold py-2" style="width:70%; padding-left: 1rem; padding-right: 1rem">
-						                                  <div class="row">
-						                                    <div class="col-sm-6 col-md-6" style="padding-right: 0.4rem;">
-						                                      <input class="form-control datetimepicker" id="datepicker" type="text" placeholder="jj/mm/aa" data-options='{"disableMobile":true,"dateFormat":"d/m/Y","allowInput":true}' />
-						                                    </div>
-						                                    <div class="col-sm-6 col-md-6" style="padding-left: 0.4rem;">
-						                                      <input class="form-control datetimepicker" id="timepicker1" type="text" placeholder="heure : minute" data-options='{"enableTime":true,"noCalendar":true,"dateFormat":"H:i","disableMobile":true,"allowInput":true}' />
-						                                    </div>
-						                                  </div>
-						                                </td>
-						                              </tr>
-						                              <tr>
-						                                <td class="align-middle text-left fw-bold py-2" style="width:15%; padding-left: 1rem; padding-right: 1rem">Annuler la relance</td>
-						                                <td class="align-middle text-left fw-semibold text-opacity-75 text-body-tertiary py-2" style="width:70%; padding-left: 1rem; padding-right: 1rem">  <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="" /></td>
-						                              </tr>
-						                              <tr>
-						                                <td class="align-middle text-left fw-bold py-2" style="width:15%; padding-left: 1rem; padding-right: 1rem">Remarque</td>
-						                                <td class="align-middle text-left fw-semibold text-opacity-75 text-body-tertiary py-2" style="width:70%; padding-left: 1rem; padding-right: 1rem"><textarea class="form-control" id="floatingTextarea2" placeholder="Laissez une remarque" style="height: 10px"></textarea></td>
-						                              </tr>
-						                            </tbody>
-						                          </table>
-						                        </div>
-						                      </div>
-						                    </div>
-						                  </div>
-						                  <div class="card card-body">
-						                    <div class="d-flex justify-content-between align-items-center mb-3" id="scrollspyAchevee">
-						                      <h3 class="mb-0">Étape achevée</h3>
-						                    </div>
-						                    <div id="AcheveeTable" data-list='{"page":5,"pagination":true}'>
-						                      <div>
-						                        <div class="table-responsive scrollbar mx-n1 px-1">
-																			<table class="table fs-9 mb-1 border-top border-bottom">
-																				<thead>
-																					<tr>
-																						<th class="align-middle text-center border-start border-end" style="width:15%;">Validée par</th>
-																						<th class="align-middle text-center border-start border-end" style="width:15%;">Étape</th>
-																						<th class="align-middle text-center border-end" style="width:60%;">Remarque</th>
-																					</tr>
-																				</thead>
-																				<tbody class="list" id="members-table-body">
-																					<tr>
-																						<td class="align-middle text-center border-start border-end fw-bold py-2" style="padding-left: 1rem; padding-right: 1rem">
-																							{{ $client->whoaddit }}
-																							<div>
-																								<p class="mb-0 text-left fw-semibold text-opacity-75 text-body-tertiary fs-9">{{ $client->created_at->format('d/m/Y') }} {{ $client->created_at->format('H:i') }}</p>
-																							</div>
-																						</td>
-																						<td class="align-middle text-center border-start border-end fw-bold py-2" style="padding-left: 1rem; padding-right: 1rem">
-						                                {{ $client->contact }}
-						                                {{ $client->qualification }}
-						                                {{ $client->measure }}
-						                                {{ $client->discovery }}
-						                                {{ $client->solution_plan }}
-						                                {{ $client->argumentation }} 
-						                                {{ $client->price_announcement }}
-						                                {{ $client->handover }}
-						                                {{ $client->decision }}
-						                                {{ $client->vente }}
-																						<td class="align-middle text-left border-start border-end fw-bold py-2" style="padding-left: 1rem; padding-right: 1rem">
-																							<div>
-																								<p class="mb-0 text-left fw-semibold text-opacity-75 text-body-tertiary fs-9">{{ $client->description }}</p>
-																							</div>
-																						</td>
-																					</tr>
-																				</tbody>
-																			</table>
-						                        </div>
-						                        <div class="row align-items-center justify-content-between pt-2 fs-9">
-						                          <div class="col-auto d-flex">
-						                            <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p><a class="fw-semibold" href="#!" data-list-view="*">Voir tout<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">Voir moins<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
-						                          </div>
-						                          <div class="col-auto d-flex"><button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-						                            <ul class="mb-0 pagination"></ul><button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
-						                          </div>
-						                        </div>
-						                      </div>
-						                    </div>
-						                  </div>
+                                    <div class="card card-body mb-3">
+                                        <div class="d-flex justify-content-between align-items-center mb-3" id="scrollspyValider">
+                                            <h3 class="mb-0">Étape à valider</h3>
+                                            <button type="button" class="btn btn-phoenix-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap"><span class="fa-solid fa-plus me-2"></span>Ajouter une relance call center</button>
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title text-body-highlight" id="exampleModalLabel">Ajouter une relance rendez-vous call center</h5>
+                                                            <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs-9"></span></button>
+                                                        </div>
+                                                        <form action="{{ route('relance.store') }}" method="POST"  >
+                                                            <div class="modal-body">
+                                                                <div class="table-responsive scrollbar mx-n1 px-1">
+                                                                    <table class="table fs-9 mb-1">
+                                                                        <tbody class="list" id="members-table-body">
+                                                                            <tr>
+                                                                                <td class="align-middle text-body-highlight text-left fw-bold py-2" style="width:25%; padding-left: 1rem; padding-right: 1rem">Prise de rendez-vous</td>
+                                                                                <td class="align-middle text-left fw-bold py-2" style="width:75%; padding-left: 1rem; padding-right: 1rem">
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-6 col-md-6" style="padding-right: 0.4rem;">
+                                                                                            <input class="form-control datetimepicker" id="datepicker" type="text" placeholder="jj/mm/aa" data-options='{"disableMobile":true,"dateFormat":"d/m/Y","allowInput":true}' />
+                                                                                        </div>
+                                                                                        <div class="col-sm-6 col-md-6" style="padding-left: 0.4rem;">
+                                                                                            <input class="form-control datetimepicker" id="timepicker1" type="text" placeholder="heure : minute" data-options='{"enableTime":true,"noCalendar":true,"dateFormat":"H:i","disableMobile":true,"allowInput":true}' />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="align-middle text-body-highlight text-left fw-bold py-2" style="width:25%; padding-left: 1rem; padding-right: 1rem">Reporter la relance</td>
+                                                                                <td class="align-middle text-left fw-bold py-2" style="width:75%; padding-left: 1rem; padding-right: 1rem">
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-6 col-md-6" style="padding-right: 0.4rem;">
+                                                                                            <input class="form-control datetimepicker" id="datepicker" type="text" placeholder="jj/mm/aa" data-options='{"disableMobile":true,"dateFormat":"d/m/Y","allowInput":true}' name="Reporter_la_relance"/>
+                                                                                        </div>
+                                                                                        <div class="col-sm-6 col-md-6" style="padding-left: 0.4rem;">
+                                                                                            <input class="form-control datetimepicker" id="timepicker1" type="text" placeholder="heure : minute" data-options='{"enableTime":true,"noCalendar":true,"dateFormat":"H:i","disableMobile":true,"allowInput":true}' />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="align-middle text-body-highlight text-left fw-bold py-2" style="width:25%; padding-left: 1rem; padding-right: 1rem">Annuler la relance</td>
+                                                                                <td class="align-middle text-left fw-semibold text-opacity-75 text-body-tertiary py-2" style="width:75%; padding-left: 1rem; padding-right: 1rem">  <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="annuler" name="annuler" /></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="align-middle text-body-highlight text-left fw-bold py-2" style="width:25%; padding-left: 1rem; padding-right: 1rem">Remarque</td>
+                                                                                <td class="align-middle text-left fw-semibold text-opacity-75 text-body-tertiary py-2" style="width:75%; padding-left: 1rem; padding-right: 1rem"><textarea class="form-control"  name="remarque" id="floatingTextarea2" placeholder="Laissez une remarque" style="height: 10px"></textarea></td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <input type="text" class="form-control" name="whoaddit" value="{{ Auth::user()->nom }} {{ Auth::user()->prenom }} " readonly style="display: none;">
+                                                                <input type="text" class="form-control" name="client_id" value="{{ $client->id }}" readonly style="display: none;">
+
+                                                                <button class="btn btn-phoenix-primary me-2 px-6" type="button" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
+                                                                <button type="submit" class="btn btn-primary">Enregistrer le relance</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="table-responsive scrollbar mx-n1 px-1">
+                                                <table class="table fs-9 border-top border-bottom">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="align-middle text-center border-start border-end" style="width:15%;">Crée par</th>
+                                                            <th class="align-middle text-center border-end" style="width:15%;">Date de relance</th>
+                                                            <th class="align-middle text-center border-end" style="width:70%;">Relance pour l'étape</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="align-middle text-center border-start border-end fw-bold py-2" style="padding-left: 1rem; padding-right: 1rem">
+                                                                Mamoun Ezzidi
+                                                                <div>
+                                                                    <p class="mb-0 text-center fw-semibold text-opacity-75 text-body-tertiary fs-9">12/05/2024 12:30</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="align-middle text-center border-end fw-semibold text-opacity-75 text-body-tertiary py-2" style="padding-left: 1rem; padding-right: 1rem">12/05/2024 12:30
+                                                            </td>
+                                                            <td class="align-middle text-center border-end fw-semibold py-2">Découverte</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div id="ValiderTable" data-list='{"page":5,"pagination":true}'>
+                                            <div>
+                                                <div class="table-responsive scrollbar mx-n1 px-1">
+                                                    <table class="table fs-9 mb-1 border-top border-bottom">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="align-middle text-center border-start border-end" style="width:15%;">Call center</th>
+                                                                <th class="align-middle text-center border-end" style="width:15%;">Date de relance</th>
+                                                                <th class="align-middle text-center border-end" style="width:70%;">Remarque</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="list" id="members-table-body">
+                                                            <tr>
+                                                                <td class="align-middle text-center border-start border-end fw-bold py-2" style="padding-left: 1rem; padding-right: 1rem">
+                                                                    Mamoun Ezzidi
+                                                                    <div>
+                                                                        <p class="mb-0 text-center fw-semibold text-opacity-75 text-body-tertiary fs-9">12/05/2024 12:30</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="align-middle text-center border-end fw-semibold text-opacity-75 text-body-tertiary py-2" style="padding-left: 1rem; padding-right: 1rem">12/05/2024 12:30
+                                                                </td>
+                                                                <td class="align-middle text-left border-end fw-semibold py-2" style="padding-left: 1rem; padding-right: 1rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="row align-items-center justify-content-between pt-2 fs-9">
+                                                    <div class="col-auto d-flex">
+                                                        <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
+                                                        <a class="fw-semibold" href="#!" data-list-view="*">Voir tout<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">Voir moins<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
+                                                    </div>
+                                                    <div class="col-auto d-flex">
+                                                        <button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
+                                                        <ul class="mb-0 pagination"></ul>
+                                                        <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card card-body">
+                                        <div class="d-flex justify-content-between align-items-center mb-3" id="scrollspyAchevee">
+                                            <h3 class="mb-0">Étape achevée</h3>
+                                        </div>
+                                        <div id="AcheveeTable" data-list='{"page":5,"pagination":true}'>
+                                            <div>
+                                                <div class="table-responsive scrollbar mx-n1 px-1">
+                                                    <table class="table fs-9 mb-1 border-top border-bottom">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="align-middle text-center border-start border-end" style="width:15%;">Validée par</th>
+                                                                <th class="align-middle text-center border-start border-end" style="width:15%;">Étape</th>
+                                                                <th class="align-middle text-center border-end" style="width:70%;">Remarque</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="list" id="members-table-body">
+                                                            <tr>
+                                                                <td class="align-middle text-center border-start border-end fw-bold py-2" style="padding-left: 1rem; padding-right: 1rem">
+                                                                    {{ $client->whoaddit }}
+                                                                    <div>
+                                                                        <p class="mb-0 text-left fw-semibold text-opacity-75 text-body-tertiary fs-9">{{ $client->created_at->format('d/m/Y') }} {{ $client->created_at->format('H:i') }}</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="align-middle text-center border-start border-end fw-bold py-2" style="padding-left: 1rem; padding-right: 1rem">
+                                                                    {{ $client->contact }}
+                                                                    {{ $client->qualification }}
+                                                                    {{ $client->measure }}
+                                                                    {{ $client->discovery }}
+                                                                    {{ $client->solution_plan }}
+                                                                    {{ $client->argumentation }} 
+                                                                    {{ $client->price_announcement }}
+                                                                    {{ $client->handover }}
+                                                                    {{ $client->decision }}
+                                                                    {{ $client->vente }}
+                                                                <td class="align-middle text-left border-start border-end fw-bold py-2" style="padding-left: 1rem; padding-right: 1rem">
+                                                                    <div>
+                                                                        <p class="mb-0 text-left fw-semibold fw-semibold fs-9">{{ $client->description }}</p>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="row align-items-center justify-content-between pt-2 fs-9">
+                                                    <div class="col-auto d-flex">
+                                                        <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
+                                                        <a class="fw-semibold" href="#!" data-list-view="*">Voir tout<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">Voir moins<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
+                                                    </div>
+                                                    <div class="col-auto d-flex">
+                                                        <button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
+                                                        <ul class="mb-0 pagination"></ul>
+                                                        <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="tab-activity" role="tabpanel" aria-labelledby="activity-tab">
                                     <h2 class="mb-4">Activity</h2>
@@ -1763,6 +1766,12 @@
                 </footer>
             </div>
         </main>
+        <script>
+            function refreshPage() {
+              // Recharge la page actuelle
+              location.reload();
+            }
+        </script>
         <script src="../../vendors/popper/popper.min.js"></script>
         <script src="../../vendors/bootstrap/bootstrap.min.js"></script>
         <script src="../../vendors/anchorjs/anchor.min.js"></script>

@@ -14,7 +14,7 @@ class UserController extends Controller
     {
         $users = User::all();
         
-        return view('user', ['users' => $users]);
+        return view('users.index', ['users' => $users]);
     }
 
     /**
@@ -31,37 +31,57 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            
+            'civilite' => 'required',
+            'nom' => 'required',
+            'prenom' => 'required',
+            'cin' => 'required',
+            'dob' => 'required|date',
+            'adresse' => 'required',
+            'code_postal' => 'required',
+            'ville' => 'required',
+            'tel_mobile' => 'required',
+            'email_personnel' => 'required|email|unique:users,email',
+            'identifiant' => 'required|unique:users',
+            'statut' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required', 'string', 'min:8',
         ]);
     
         $user = new User();
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->img = $request->input('img');
-        $user->identifat = $request->input('identifat');
-        $user->status = $request->input('status');
-        $user->password = bcrypt($request->input('password'));
         $user->civilite = $request->input('civilite');
         $user->nom = $request->input('nom');
         $user->prenom = $request->input('prenom');
         $user->cin = $request->input('cin');
-        $user->date_naissance = $request->input('date_naissance');
-        $user->mobile = $request->input('mobile');
-        $user->tel_fix = $request->input('tel_fix');
+        $user->dob = $request->input('dob');
         $user->adresse = $request->input('adresse');
         $user->adresse_complementaire = $request->input('adresse_complementaire');
-        $user->code_postale = $request->input('code_postale');
+        $user->code_postal = $request->input('code_postal');
         $user->ville = $request->input('ville');
+        $user->tel_mobile = $request->input('tel_mobile');
+        $user->tel_fixe = $request->input('tel_fixe');
+        $user->email_personnel = $request->input('email_personnel');
+        $user->identifiant = $request->input('identifiant');
+        $user->statut = $request->input('statut');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+
         
         $user->save();
     
-        return redirect()->route('clients.index')->with('success', 'User created successfully!');
+        return redirect()->route('users.create')->with('success', 'User created successfully!');
     }
     
-
-   
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+        
+        return view('users.show', ['user' => $user]);
+    }
+    public function edit($id)
+{
+    $user = User::findOrFail($id);
+    return view('users.edit', ['user' => $user]);
+}
 
 
   

@@ -382,17 +382,16 @@
                     @foreach($users as $user)
                     <tr>
                         <td class="nom align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">
-                            <div><a class="fs-9 fw-bold" href="contact-info.html">{{ $user->name }}</a></div>
+                          <div><a class="fs-9 fw-bold" href="{{ route('users.show', ['id' => $user->id]) }}">{{ $user->nom }}</a></div>
                         </td>
-                        <td class="ville align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->name }}</td>
+                        <td class="ville align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->prenom }}</td>
                         <td class="adresse align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->adresse }}</td>
-                        <td class="tel align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->tel }}</td>
+                        <td class="tel align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->tel_mobile }}</td>
                         <td class="email align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->email }}</td>
-                        <td class="statut align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">{{ $user->status }}</td>
-                        <td class="date align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">{{ $user->created_at }}
-                            <div>
-                                <p class="mb-0 text-center fw-semibold text-opacity-75 text-body-tertiary fs-9">12:30</p>
-                            </div>
+                        <td class="statut align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">{{ $user->statut }}</td>
+                        <td class="date align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">{{ $user->created_at->format('d/m/Y H:i') }}
+
+                            
                         </td>
                         <td class="align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">
                             <div class="btn-reveal-trigger position-static">

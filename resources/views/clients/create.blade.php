@@ -53,73 +53,71 @@
                 <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
                     <div class="navbar-vertical-content">
                         <ul class="navbar-nav flex-column" id="navbarVerticalNav">
-
-                           <li class="nav-item">
-                              <p class="navbar-vertical-label">Tableau de bord</p>
-                              <hr class="navbar-vertical-line" />
-                              <div class="nav-item-wrapper">
-                                 <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
-                                    <div class="d-flex align-items-center">
-                                       <span class="nav-link-icon"><span data-feather="compass"></span></span>
-                                       <span>
-                                          <span class="nav-link-text">Tableau de bord</span>
-                                       </span>
-                                    </div>
-                                 </a>
-                              </div>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Tableau de bord</p>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="compass"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Tableau de bord</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
                             </li>
-                           <li class="nav-item">
-                              <p class="navbar-vertical-label">Client</p>
-                              <hr class="navbar-vertical-line" />
-                              <div class="nav-item-wrapper">
-                                 <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
-                                    <div class="d-flex align-items-center">
-                                       <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
-                                       <span>
-                                          <span class="nav-link-text">Enregistrer un client</span>
-                                       </span>
-                                    </div>
-                                 </a>
-                              </div>
-                              <div class="nav-item-wrapper">
-                                 <a class="nav-link label-1" href="{{ route('clients.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
-                                    <div class="d-flex align-items-center">
-                                       <span class="nav-link-icon"><span data-feather="list"></span></span>
-                                       <span>
-                                          <span class="nav-link-text">Voir tous les clients</span>
-                                       </span>
-                                    </div>
-                                 </a>
-                              </div>
-                           </li>
-                           <li class="nav-item">
-                              <p class="navbar-vertical-label">Authentification</p>
-                              <hr class="navbar-vertical-line" />
-                              <div class="nav-item-wrapper">
-                                 <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
-                                    <div class="d-flex align-items-center">
-                                       <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
-                                       <span>
-                                          <span class="nav-link-text">Enregistrer un utilisateur</span>
-                                       </span>
-                                    </div>
-                                 </a>
-                              </div>
-                              <div class="nav-item-wrapper">
-                                 <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
-                                    <div class="d-flex align-items-center">
-                                       <span class="nav-link-icon"><span data-feather="list"></span></span>
-                                       <span>
-                                          <span class="nav-link-text">Voir tous les utilisateurs</span>
-                                       </span>
-                                    </div>
-                                 </a>
-                              </div>
-                           </li>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Client</p>
+                                <hr class="navbar-vertical-line" />
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Enregistrer un client</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="{{ route('clients.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="list"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Voir tous les clients</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Authentification</p>
+                                <hr class="navbar-vertical-line" />
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="{{ route('users.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Enregistrer un utilisateur</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="list"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Voir tous les utilisateurs</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
-        <div class="navbar-vertical-footer">
+                <div class="navbar-vertical-footer">
           <button class="btn navbar-vertical-toggle border-0 fw-semibold w-100 white-space-nowrap d-flex align-items-center">
             <span class="uil uil-left-arrow-to-left fs-8"></span>
             <span class="uil uil-arrow-from-right fs-8"></span>
@@ -247,7 +245,7 @@
 											<div class="avatar avatar-xl ">
 												<img class="rounded-soft " src="../../assets/img/team/72x72/57.webp" alt="" />
 											</div>
-											<h6 class="mt-3 text-body-emphasis">{{ Auth::user()->name }} </h6>
+											<h6 class="mt-3 text-body-emphasis">{{ Auth::user()->civilite }}  {{ Auth::user()->nom }} {{ Auth::user()->prenom }}</h6>
 										</div>
 									</div>
                   <div class="overflow-auto scrollbar p-0 border-top border-translucent" style="height: auto;">
@@ -315,10 +313,10 @@
 						<div class="col-xl-12">
 							<div class="d-sm-flex justify-content-between">
 								<h2 class="mb-4">Enregistrer un nouveau client</h2>
-                <div class="d-flex mb-3">
-                  <button onclick="refreshPage()" class="btn btn-phoenix-primary me-2 px-6">Annuler</button>
-                  <a href="{{ route('clients.index') }}" class="btn btn-primary">Voir tous les clients</a>
-                </div>
+			                <div class="d-flex mb-3">
+			                  <button onclick="refreshPage()" class="btn btn-phoenix-primary me-2 px-6">Annuler</button>
+			                  <a href="{{ route('clients.index') }}" class="btn btn-primary">Voir tous les clients</a>
+			                </div>
 							</div>
 						</div>
 					</div>
@@ -571,7 +569,8 @@
 							</div>
 							<div class="form-group row">
 								<div class="col-sm-10">
-									<input type="text" class="form-control" name="whoaddit" value="{{ Auth::user()->name }}" readonly style="display: none;">
+									<input type="text" class="form-control" name="whoaddit" value="{{ Auth::user()->nom }} {{ Auth::user()->prenom }} " readonly style="display: none;">
+								</div> " readonly style="display: none;">
 								</div>
 							</div>
 							<div class="col-sm-6 col-md-12">

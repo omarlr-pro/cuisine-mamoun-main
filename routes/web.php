@@ -12,9 +12,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
         return view('welcome');
     });
-    Route::get('/users', [UserController::class, 'showUsers']);
+    
+    Route::get('/users', [UserController::class, 'showUsers'])->name('users.index');
     Route::get('/add-user', [UserController::class, 'create'])->name('users.create');
     Route::post('/add-user', [UserController::class, 'store'])->name('users.store');
+    Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+    Route::get('/users/update/{id}', [UserController::class, 'edit'])->name('users.edit');
+
+
+
 
 });
 
@@ -24,8 +30,7 @@ Route::group(['middleware' => 'guest'], function () {
     
     
 });
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
+
 
 
 
