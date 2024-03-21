@@ -379,15 +379,14 @@
                         </div>
                         <div class="col-sm-6 col-md-6">
                           <div class="form-floating">
-                            <select class="form-select" name="status">
-                                <option value="admin">Admin</option>
-                                <option value="commercial">Commercial</option>
-                                <option value="call center">Call center</option>
-                            <select/>
+                            <select class="form-select">
+                              <option value="1">Admin</option>
+                              <option value="2">Commercial</option>
+                              <option value="3">Call center</option>
+                            </select>
                             <label for="floatingSelectOwner">Statut</label>
+                          </div>
                         </div>
-                      </div>
-                      
                         <div class="col-sm-6 col-md-6">
                           <div class="form-floating">
                             <input class="form-control" type="text" placeholder="Last name" required="required" />

@@ -42,14 +42,14 @@
     </script>
   </head>
   <body>
-    <main class="main" id="top">
-      <nav class="navbar navbar-vertical navbar-expand-lg" style="display:none;">
-        <script>
-          var navbarStyle = window.config.config.phoenixNavbarStyle;
-          if (navbarStyle && navbarStyle !== 'transparent') {
-            document.querySelector('body').classList.add(`navbar-${navbarStyle}`);
-          }
-        </script>
+        <main class="main" id="top">
+            <nav class="navbar navbar-vertical navbar-expand-lg" style="display:none;">
+                <script>
+                    var navbarStyle = window.config.config.phoenixNavbarStyle;
+                    if (navbarStyle && navbarStyle !== 'transparent') {
+                      document.querySelector('body').classList.add(`navbar-${navbarStyle}`);
+                    }
+                </script>
                 <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
                     <div class="navbar-vertical-content">
                         <ul class="navbar-nav flex-column" id="navbarVerticalNav">
@@ -104,7 +104,7 @@
                                     </a>
                                 </div>
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="{{ route('users.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-icon"><span data-feather="list"></span></span>
                                             <span>
@@ -232,52 +232,53 @@
 								</div>
 							</div>
 						</li>
-						<li class="nav-item dropdown">
-              <a class="nav-link lh-1 pe-0" id="navbarDropdownUser" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
-                <div class="avatar avatar-l ">
-                  <img class="rounded-soft " src="../../assets/img/team/40x40/57.webp" alt="" />
-                </div>
-              </a>
-							<div class="dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-profile shadow border" aria-labelledby="navbarDropdownUser">
-								<div class="card position-relative border-0">
-									<div class="card-body p-0">
-										<div class="text-center pt-3 pb-3">
-											<div class="avatar avatar-xl ">
-												<img class="rounded-soft " src="../../assets/img/team/72x72/57.webp" alt="" />
-											</div>
-											<h6 class="mt-3 text-body-emphasis">{{ Auth::user()->civilite }}  {{ Auth::user()->nom }} {{ Auth::user()->prenom }}</h6>
-										</div>
-									</div>
-                  <div class="overflow-auto scrollbar p-0 border-top border-translucent" style="height: auto;">
-                    <ul class="nav d-flex flex-column mb-2 mt-2">
-                      <li class="nav-item">
-                        <a class="nav-link px-3" href="#!">
-                          <span class="me-2 text-body" data-feather="user"></span>
-                          <span>Profile</span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link px-3" href="#!">
-                          <span class="me-2 text-body" data-feather="settings"></span>Paramètre</a>
-                      </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link lh-1 pe-0" id="navbarDropdownUser" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+                                <div class="avatar avatar-l ">
+                                    <img class="rounded-soft " src="../../assets/img/team/40x40/57.webp" alt="" />
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-profile shadow border" aria-labelledby="navbarDropdownUser">
+                                <div class="card position-relative border-0">
+                                    <div class="card-body p-0">
+                                        <div class="text-center pt-3 pb-3">
+                                            <div class="avatar avatar-xl ">
+                                                <img class="rounded-soft " src="../../assets/img/team/72x72/57.webp" alt="" />
+                                            </div>
+                                            <h6 class="mt-3 text-body-emphasis">{{ Auth::user()->civilite }} {{ Auth::user()->nom }} {{ Auth::user()->prenom }}</h6>
+                                            <h6 class="mt-2 text-opacity-75 text-body-tertiary">{{ Auth::user()->statut }}</h6>
+                                        </div>
+                                    </div>
+                                    <div class="overflow-auto scrollbar p-0 border-top border-translucent" style="height: auto;">
+                                        <ul class="nav d-flex flex-column mb-2 mt-2">
+                                            <li class="nav-item">
+                                                <a class="nav-link px-3" href="{{ route('profile') }}">
+                                                <span class="me-2 text-body" data-feather="user"></span>
+                                                <span>Profile</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link px-3" href="#!">
+                                                <span class="me-2 text-body" data-feather="settings"></span>Paramètre</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer p-0 border-top border-translucent">
+                                        <div class="px-2 my-2">
+                                            <form method="post" action="{{ route('logout') }}">
+                                                @csrf
+                                                <button  type="submit" class="btn btn-phoenix-secondary d-flex flex-center w-100" href="#!">
+                                                <span class="me-2" data-feather="log-out"></span>Se déconnecter</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
-                  </div>
-									<div class="card-footer p-0 border-top border-translucent">
-										<div class="px-2 my-2">
-											<form method="post" action="{{ route('logout') }}">
-												@csrf
-												<button  type="submit" class="btn btn-phoenix-secondary d-flex flex-center w-100" href="#!">
-												<span class="me-2" data-feather="log-out"></span>Se déconnecter</button>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</nav>
-			<script>
+                </div>
+            </nav>
+            <script>
 				var navbarTopShape = window.config.config.phoenixNavbarTopShape;
 				var navbarPosition = window.config.config.phoenixNavbarPosition;
 				var body = document.querySelector('body');
@@ -366,13 +367,13 @@
 							<h5 class="mt-3">Adresse</h5>
 							<div class="col-sm-6 col-md-4">
 								<div class="form-floating">
-									<input class="form-control" type="text" placeholder="Adresse" name="address" />
+									<input class="form-control" type="text" placeholder="Adresse" name="adresse" />
 									<label for="floatingInputStreet">Adresse</label>
 								</div>
 							</div>
 							<div class="col-sm-6 col-md-4">
 								<div class="form-floating">
-									<input class="form-control" type="text" placeholder="Adresse" name="address_complementaire"/>
+									<input class="form-control" type="text" placeholder="Adresse" name="adresse_complementaire"/>
 									<label for="floatingInputStreet">Adresse complémentaire</label>
 								</div>
 							</div>
@@ -567,12 +568,6 @@
 									<label class="form-check-label" for="vente">Vente</label>
 								</div>
 							</div>
-							<div class="form-group row">
-								<div class="col-sm-10">
-									<input type="text" class="form-control" name="whoaddit" value="{{ Auth::user()->nom }} {{ Auth::user()->prenom }} " readonly style="display: none;">
-								</div> " readonly style="display: none;">
-								</div>
-							</div>
 							<div class="col-sm-6 col-md-12">
 								<div class="form-floating">
 									<input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;" name="step_completed_date"/>
@@ -588,6 +583,12 @@
 							<div class="col-12 d-flex justify-content-end mt-4">  
 								<button type="submit" class="btn btn-primary">Enregistrer un nouveau client</button>
 							</div>
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="whoaddit" value="{{ Auth::user()->nom }} {{ Auth::user()->prenom }}" readonly style="display: none;">
+                                </div>
+                            </div>
+                            </div>
 						</form>
 					</div>
 				</div>

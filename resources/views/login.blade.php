@@ -51,7 +51,7 @@
 					<div class="col-lg-6">
 						<div class="row flex-center h-100 g-0 px-4 px-sm-0">
 							<div class="col col-sm-6 col-lg-7 col-xl-8 mb-4">
-								<a class="d-flex flex-center text-decoration-none mb-4">
+								<a class="d-flex flex-center text-decoration-none mb-5">
 									<div class="d-flex align-items-center fw-bolder fs-3 d-inline-block"><img src="../../../assets/img/icons/logo.png" alt="phoenix" width="58" /></div>
 								</a>
 								<div class="text-center">

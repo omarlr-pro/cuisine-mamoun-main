@@ -104,7 +104,7 @@
                                     </a>
                                 </div>
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="{{ route('users.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-icon"><span data-feather="list"></span></span>
                                             <span>
@@ -246,12 +246,13 @@
                                                 <img class="rounded-soft " src="../../assets/img/team/72x72/57.webp" alt="" />
                                             </div>
                                             <h6 class="mt-3 text-body-emphasis">{{ Auth::user()->civilite }} {{ Auth::user()->nom }} {{ Auth::user()->prenom }}</h6>
+                                            <h6 class="mt-2 text-opacity-75 text-body-tertiary">{{ Auth::user()->statut }}</h6>
                                         </div>
                                     </div>
                                     <div class="overflow-auto scrollbar p-0 border-top border-translucent" style="height: auto;">
                                         <ul class="nav d-flex flex-column mb-2 mt-2">
                                             <li class="nav-item">
-                                                <a class="nav-link px-3" href="#!">
+                                                <a class="nav-link px-3" href="{{ route('profile') }}">
                                                 <span class="me-2 text-body" data-feather="user"></span>
                                                 <span>Profile</span>
                                                 </a>
@@ -412,38 +413,19 @@
                                             </td>
                                             <td class="align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">
                                                 <div class="btn-reveal-trigger position-static">
-                                                    <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent">
-                                                    <span class="fas fa-ellipsis-h fs-10"></span>
-                                                    </button>
+                                                    <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
                                                     <div class="dropdown-menu dropdown-menu-end py-2">
                                                         <a class="dropdown-item" href="#!">Modifier</a>
                                                         <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item text-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Supprimer</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Voulez vous vraiment supprimer le client ?</h5>
-                                                        <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs-9"></span></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p class="text-body-tertiary lh-lg mb-1">Toutes les informations associées de <a class="fw-bold text-body-highlight" style="pointer-events: none;">{{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</a> seront effacées.</p>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button onclick="refreshPage()" class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Annuler</button>
-                                                        <button class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('delete-client-form-{{$client->id }}').submit();">Supprimer</button>
+                                                        <a class="dropdown-item text-danger" onclick="event.preventDefault(); document.getElementById('delete-client-form-{{$client->id}}').submit();">Supprimer</a>
                                                         <form id="delete-client-form-{{$client->id}}" action="{{ route('clients.destroy', $client->id) }}" method="POST" style="display: none;">
                                                             @csrf
                                                             @method('DELETE')
                                                         </form>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            </td>
+                                        </tr>
                                         @endforeach
                                     </tbody>
                                 </table>

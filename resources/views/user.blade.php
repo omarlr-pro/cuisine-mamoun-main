@@ -104,7 +104,7 @@
                                     </a>
                                 </div>
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="{{ route('users.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-icon"><span data-feather="list"></span></span>
                                             <span>
@@ -252,7 +252,7 @@
                                     <div class="overflow-auto scrollbar p-0 border-top border-translucent" style="height: auto;">
                                         <ul class="nav d-flex flex-column mb-2 mt-2">
                                             <li class="nav-item">
-                                                <a class="nav-link px-3" href="{{ route('profile') }}">
+                                                <a class="nav-link px-3" href="#!">
                                                 <span class="me-2 text-body" data-feather="user"></span>
                                                 <span>Profile</span>
                                                 </a>
@@ -319,15 +319,8 @@
           </div>
         </div>
         <div>
-        <div id="lealsTable" data-list='{"valueNames":["nom","ville","adresse","codepostal","tel","email","source","etapes","vendeur","date"],"page":20,"pagination":true}'>
+          <div id="lealsTable" data-list='{"valueNames":["nom","ville","adresse","tel","email","statut","date"],"page":10,"pagination":true}'>
             <div class="row justify-content-between mt-3 mb-3">
-                <div class="col-auto">
-                    <div class="d-md-flex justify-content-between">
-                        <div>
-                            <a href="{{ route('users.create') }}"><button class="btn btn-primary me-4">Enregistrer un nouvel utilisateur</button></a>
-                        </div>
-                    </div>
-                </div>
               <div class="col-auto">
               </div>
               <div class="col-auto">
@@ -379,17 +372,16 @@
                     @foreach($users as $user)
                     <tr>
                         <td class="nom align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">
-                            <div><a class="fs-9 fw-bold" href="{{ route('users.show', $user->id) }}">{{ $user->civilite }} {{ $user->nom }} {{ $user->prenom }}</a></div>
+                            <div><a class="fs-9 fw-bold" href="contact-info.html">{{ $user->name }}</a></div>
                         </td>
-                        <td class="ville align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->ville }}</td>
+                        <td class="ville align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->name }}</td>
                         <td class="adresse align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->adresse }}</td>
-                        <td class="tel align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->tel_mobile }}</td>
+                        <td class="tel align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->tel }}</td>
                         <td class="email align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->email }}</td>
-                        <td class="statut align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->statut }}</td>
-                        <td class="date align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">
-                            {{ $user->created_at }}
+                        <td class="statut align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">{{ $user->status }}</td>
+                        <td class="date align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">{{ $user->created_at }}
                             <div>
-                                <p class="mb-0 text-center fw-semibold text-opacity-75 text-body-tertiary fs-9">{{ $user->created_at }}</p>
+                                <p class="mb-0 text-center fw-semibold text-opacity-75 text-body-tertiary fs-9">12:30</p>
                             </div>
                         </td>
                         <td class="align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">
@@ -398,7 +390,7 @@
                                     <span class="fas fa-ellipsis-h fs-10"></span>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end py-2">
-                                    <a class="dropdown-item" href="{{ route('users.edit', $user->id) }}">Modifier</a>
+                                    <a class="dropdown-item" href="#!">Modifier</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item text-danger" href="#!">Supprimer</a>
                                 </div>
@@ -407,6 +399,7 @@
                     </tr>
                     @endforeach
                 </tbody>
+                
                 </table>
               </div>
               <div class="row align-items-center justify-content-between py-2 pe-0 fs-9">

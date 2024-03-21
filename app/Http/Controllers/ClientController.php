@@ -34,8 +34,8 @@ class ClientController extends Controller
         $client->prenom = $request->input('prenom');
         $client->type = $request->input('type');
         $client->dob = $request->input('dob');
-        $client->address = $request->input('address');
-        $client->address_complementaire = $request->input('address_complementaire');
+        $client->adresse = $request->input('adresse');
+        $client->adresse_complementaire = $request->input('adresse_complementaire');
         $client->code_postal = $request->input('code_postal');
         $client->ville = $request->input('ville');
         $client->tel_mobile = $request->input('tel_mobile');
@@ -62,7 +62,6 @@ class ClientController extends Controller
         $client->whoaddit = $request->input('whoaddit'); 
         $client->step_completed_date = $request->input('step_completed_date');
         $client->description = $request->input('description');
-        $client->whoaddit = $request->input('whoaddit');
 
         $client->save();
 
@@ -75,7 +74,8 @@ class ClientController extends Controller
     public function show(string $id)
     {
         $client = Client::findOrFail($id);
-        return view('clients.show', ['client' => $client]);
+        $relances = $client->relances; 
+        return view('clients.show', ['client' => $client, 'relances' =>$relances]);
     }
 
     /**
@@ -98,8 +98,8 @@ class ClientController extends Controller
         $client->prenom = $request->input('prenom');
         $client->type = $request->input('type');
         $client->dob = $request->input('dob');
-        $client->address = $request->input('address');
-        $client->address_complementaire = $request->input('address_complementaire');
+        $client->adresse = $request->input('adresse');
+        $client->adresse_complementaire = $request->input('adresse_complementaire');
         $client->code_postal = $request->input('code_postal');
         $client->ville = $request->input('ville');
         $client->tel_mobile = $request->input('tel_mobile');
@@ -126,7 +126,6 @@ class ClientController extends Controller
         $client->whoaddit = $request->input('whoaddit'); 
         $client->step_completed_date = $request->input('step_completed_date');
         $client->description = $request->input('description');
-        $client->whoaddit = $request->input('whoaddit');
 
         $client->save();
     

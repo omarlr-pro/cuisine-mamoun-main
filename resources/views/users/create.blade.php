@@ -1,132 +1,130 @@
 <!DOCTYPE html>
 <html data-navigation-type="default" data-navbar-horizontal-shape="default" lang="en-US" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Phoenix</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicons/favicon-16x16.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/favicons/favicon.ico">
-    <link rel="manifest" href="../../assets/img/favicons/manifest.json">
-    <meta name="msapplication-TileImage" content="../../assets/img/favicons/mstile-150x150.png">
-    <meta name="theme-color" content="#ffffff">
-    <script src="../../vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="../../vendors/simplebar/simplebar.min.js"></script>
-    <script src="../../assets/js/config.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
-    <link href="../../vendors/simplebar/simplebar.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-    <link href="../../assets/css/theme-rtl.min.css" type="text/css" rel="stylesheet" id="style-rtl">
-    <link href="../../assets/css/theme.min.css" type="text/css" rel="stylesheet" id="style-default">
-    <link href="../../assets/css/user-rtl.min.css" type="text/css" rel="stylesheet" id="user-style-rtl">
-    <link href="../../assets/css/user.min.css" type="text/css" rel="stylesheet" id="user-style-default">
-    <link href="../../vendors/flatpickr/flatpickr.min.css" rel="stylesheet" />
-    <script>
-      var phoenixIsRTL = window.config.config.phoenixIsRTL;
-      if (phoenixIsRTL) {
-        var linkDefault = document.getElementById('style-default');
-        var userLinkDefault = document.getElementById('user-style-default');
-        linkDefault.setAttribute('disabled', true);
-        userLinkDefault.setAttribute('disabled', true);
-        document.querySelector('html').setAttribute('dir', 'rtl');
-      } else {
-        var linkRTL = document.getElementById('style-rtl');
-        var userLinkRTL = document.getElementById('user-style-rtl');
-        linkRTL.setAttribute('disabled', true);
-        userLinkRTL.setAttribute('disabled', true);
-      }
-    </script>
-  </head>
-  <body>
-    <main class="main" id="top">
-      <nav class="navbar navbar-vertical navbar-expand-lg" style="display:none;">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Phoenix</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicons/favicon-16x16.png">
+        <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/favicons/favicon.ico">
+        <link rel="manifest" href="../../assets/img/favicons/manifest.json">
+        <meta name="msapplication-TileImage" content="../../assets/img/favicons/mstile-150x150.png">
+        <meta name="theme-color" content="#ffffff">
+        <script src="../../vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>
+        <script src="../../vendors/simplebar/simplebar.min.js"></script>
+        <script src="../../assets/js/config.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
+        <link href="../../vendors/simplebar/simplebar.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+        <link href="../../assets/css/theme-rtl.min.css" type="text/css" rel="stylesheet" id="style-rtl">
+        <link href="../../assets/css/theme.min.css" type="text/css" rel="stylesheet" id="style-default">
+        <link href="../../assets/css/user-rtl.min.css" type="text/css" rel="stylesheet" id="user-style-rtl">
+        <link href="../../assets/css/user.min.css" type="text/css" rel="stylesheet" id="user-style-default">
+        <link href="../../vendors/flatpickr/flatpickr.min.css" rel="stylesheet" />
         <script>
-          var navbarStyle = window.config.config.phoenixNavbarStyle;
-          if (navbarStyle && navbarStyle !== 'transparent') {
-            document.querySelector('body').classList.add(`navbar-${navbarStyle}`);
-          }
+            var phoenixIsRTL = window.config.config.phoenixIsRTL;
+            if (phoenixIsRTL) {
+              var linkDefault = document.getElementById('style-default');
+              var userLinkDefault = document.getElementById('user-style-default');
+              linkDefault.setAttribute('disabled', true);
+              userLinkDefault.setAttribute('disabled', true);
+              document.querySelector('html').setAttribute('dir', 'rtl');
+            } else {
+              var linkRTL = document.getElementById('style-rtl');
+              var userLinkRTL = document.getElementById('user-style-rtl');
+              linkRTL.setAttribute('disabled', true);
+              userLinkRTL.setAttribute('disabled', true);
+            }
         </script>
+    </head>
+    <body>
+        <main class="main" id="top">
+            <nav class="navbar navbar-vertical navbar-expand-lg" style="display:none;">
+                <script>
+                    var navbarStyle = window.config.config.phoenixNavbarStyle;
+                    if (navbarStyle && navbarStyle !== 'transparent') {
+                      document.querySelector('body').classList.add(`navbar-${navbarStyle}`);
+                    }
+                </script>
                 <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
                     <div class="navbar-vertical-content">
                         <ul class="navbar-nav flex-column" id="navbarVerticalNav">
-
-                           <li class="nav-item">
-                              <p class="navbar-vertical-label">Tableau de bord</p>
-                              <hr class="navbar-vertical-line" />
-                              <div class="nav-item-wrapper">
-                                 <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
-                                    <div class="d-flex align-items-center">
-                                       <span class="nav-link-icon"><span data-feather="compass"></span></span>
-                                       <span>
-                                          <span class="nav-link-text">Tableau de bord</span>
-                                       </span>
-                                    </div>
-                                 </a>
-                              </div>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Tableau de bord</p>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="compass"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Tableau de bord</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
                             </li>
-                           <li class="nav-item">
-                              <p class="navbar-vertical-label">Client</p>
-                              <hr class="navbar-vertical-line" />
-                              <div class="nav-item-wrapper">
-                                 <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
-                                    <div class="d-flex align-items-center">
-                                       <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
-                                       <span>
-                                          <span class="nav-link-text">Enregistrer un client</span>
-                                       </span>
-                                    </div>
-                                 </a>
-                              </div>
-                              <div class="nav-item-wrapper">
-                                 <a class="nav-link label-1" href="{{ route('clients.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
-                                    <div class="d-flex align-items-center">
-                                       <span class="nav-link-icon"><span data-feather="list"></span></span>
-                                       <span>
-                                          <span class="nav-link-text">Voir tous les clients</span>
-                                       </span>
-                                    </div>
-                                 </a>
-                              </div>
-                           </li>
-                           <li class="nav-item">
-                              <p class="navbar-vertical-label">Authentification</p>
-                              <hr class="navbar-vertical-line" />
-                              <div class="nav-item-wrapper">
-                                 <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
-                                    <div class="d-flex align-items-center">
-                                       <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
-                                       <span>
-                                          <span class="nav-link-text">Enregistrer un utilisateur</span>
-                                       </span>
-                                    </div>
-                                 </a>
-                              </div>
-                              <div class="nav-item-wrapper">
-                                 <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
-                                    <div class="d-flex align-items-center">
-                                       <span class="nav-link-icon"><span data-feather="list"></span></span>
-                                       <span>
-                                          <span class="nav-link-text">Voir tous les utilisateurs</span>
-                                       </span>
-                                    </div>
-                                 </a>
-                              </div>
-                           </li>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Client</p>
+                                <hr class="navbar-vertical-line" />
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Enregistrer un client</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="{{ route('clients.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="list"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Voir tous les clients</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Authentification</p>
+                                <hr class="navbar-vertical-line" />
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="{{ route('users.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Enregistrer un utilisateur</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="{{ route('users.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="list"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Voir tous les utilisateurs</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
-        <div class="navbar-vertical-footer">
-          <button class="btn navbar-vertical-toggle border-0 fw-semibold w-100 white-space-nowrap d-flex align-items-center">
-            <span class="uil uil-left-arrow-to-left fs-8"></span>
-            <span class="uil uil-arrow-from-right fs-8"></span>
-            <span class="navbar-vertical-footer-text ms-2">Réduire la vue</span>
-          </button>
-        </div>
-      </nav>
+                <div class="navbar-vertical-footer">
+                    <button class="btn navbar-vertical-toggle border-0 fw-semibold w-100 white-space-nowrap d-flex align-items-center">
+                    <span class="uil uil-left-arrow-to-left fs-8"></span>
+                    <span class="uil uil-arrow-from-right fs-8"></span>
+                    <span class="navbar-vertical-footer-text ms-2">Réduire la vue</span>
+                    </button>
+                </div>
+            </nav>
             <nav class="navbar navbar-top fixed-top navbar-expand" id="navbarDefault" style="display:none;">
                 <div class="collapse navbar-collapse justify-content-between">
                     <div class="navbar-logo">
@@ -235,11 +233,11 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-              <a class="nav-link lh-1 pe-0" id="navbarDropdownUser" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
-                <div class="avatar avatar-l ">
-                  <img class="rounded-soft " src="../../assets/img/team/40x40/57.webp" alt="" />
-                </div>
-              </a>
+                            <a class="nav-link lh-1 pe-0" id="navbarDropdownUser" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+                                <div class="avatar avatar-l ">
+                                    <img class="rounded-soft " src="../../assets/img/team/40x40/57.webp" alt="" />
+                                </div>
+                            </a>
                             <div class="dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-profile shadow border" aria-labelledby="navbarDropdownUser">
                                 <div class="card position-relative border-0">
                                     <div class="card-body p-0">
@@ -248,22 +246,23 @@
                                                 <img class="rounded-soft " src="../../assets/img/team/72x72/57.webp" alt="" />
                                             </div>
                                             <h6 class="mt-3 text-body-emphasis">{{ Auth::user()->civilite }} {{ Auth::user()->nom }} {{ Auth::user()->prenom }}</h6>
+                                            <h6 class="mt-2 text-opacity-75 text-body-tertiary">{{ Auth::user()->statut }}</h6>
                                         </div>
                                     </div>
-                  <div class="overflow-auto scrollbar p-0 border-top border-translucent" style="height: auto;">
-                    <ul class="nav d-flex flex-column mb-2 mt-2">
-                      <li class="nav-item">
-                        <a class="nav-link px-3" href="#!">
-                          <span class="me-2 text-body" data-feather="user"></span>
-                          <span>Profile</span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link px-3" href="#!">
-                          <span class="me-2 text-body" data-feather="settings"></span>Paramètre</a>
-                      </li>
-                    </ul>
-                  </div>
+                                    <div class="overflow-auto scrollbar p-0 border-top border-translucent" style="height: auto;">
+                                        <ul class="nav d-flex flex-column mb-2 mt-2">
+                                            <li class="nav-item">
+                                                <a class="nav-link px-3" href="{{ route('profile') }}">
+                                                <span class="me-2 text-body" data-feather="user"></span>
+                                                <span>Profile</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link px-3" href="#!">
+                                                <span class="me-2 text-body" data-feather="settings"></span>Paramètre</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                     <div class="card-footer p-0 border-top border-translucent">
                                         <div class="px-2 my-2">
                                             <form method="post" action="{{ route('logout') }}">
@@ -316,8 +315,8 @@
                      <div class="d-sm-flex justify-content-between">
                         <h2 class="mb-4">Enregistrer un nouvel utilisateur</h2>
                         <div class="d-flex mb-3">
-                          <button onclick="refreshPage()" class="btn btn-phoenix-primary me-2 px-6">Annuler</button>
-                          <a href="#" class="btn btn-primary">Voir tous les utilisateurs</a>
+                           <button onclick="refreshPage()" class="btn btn-phoenix-primary me-2 px-6">Annuler</button>
+                           <a href="{{ route('users.index') }}" class="btn btn-primary">Voir tous les utilisateurs</a>
                         </div>
                      </div>
                   </div>
@@ -328,20 +327,15 @@
                   <form class="row g-3" method="POST" action="{{ route('users.store') }}">
                      @csrf
                      <h5>Informations de l'utilisateur</h5>
-                     @if (session('success'))
-                     <div class="alert alert-success">
-                         {{ session('success') }}
-                     </div>
-                 @endif
-                    <div class="col-sm-6 col-md-3">
+                     <div class="col-sm-6 col-md-3">
                         <div class="form-floating">
-                            <select class="form-select" name="civilite" >
-                                <option value="M.">Homme</option>
-                                <option value="Mme">Femme</option>
-                            </select>
-                            <label for="floatingSelectOwner">Civilité</label>
+                           <select class="form-select" name="civilite" >
+                              <option value="M.">Homme</option>
+                              <option value="Mme">Femme</option>
+                           </select>
+                           <label for="floatingSelectOwner">Civilité</label>
                         </div>
-                    </div>
+                     </div>
                      <div class="col-sm-6 col-md-3">
                         <div class="form-floating">
                            <input id="nom" type="text" class="form-control" name="nom" placeholder="">
@@ -360,13 +354,13 @@
                            <label for="floatingInputLastname">CIN</label>
                         </div>
                      </div>
-                            <h5 class="mt-3">Date de naissance</h5>
-                    <div class="col-sm-6 col-md-12">
+                     <h5 class="mt-3">Date de naissance</h5>
+                     <div class="col-sm-6 col-md-12">
                         <div class="form-floating">
-                            <input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;" name="dob"/>
+                           <input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;" name="dob"/>
                         </div>
-                    </div>
-                            <h5 class="mt-3">Adresse</h5>
+                     </div>
+                     <h5 class="mt-3">Adresse</h5>
                      <div class="col-sm-6 col-md-4">
                         <div class="form-floating">
                            <input id="adresse" type="text" class="form-control" name="adresse" placeholder="">
@@ -385,56 +379,56 @@
                            <label for="floatingInputZipcode">Code postal</label>
                         </div>
                      </div>
-                    <div class="col-sm-6 col-md-2">
+                     <div class="col-sm-6 col-md-2">
                         <div class="form-floating">
-                            <select class="form-select" name="ville">
-                                <option value="Al Hoceïma">Al Hoceïma</option>
-                                <option value="Azilal">Azilal</option>
-                                <option value="Beni Mellal">Beni Mellal</option>
-                                <option value="Berkane">Berkane</option>
-                                <option value="Berréchid">Berrechid</option>
-                                <option value="Casablanca">Casablanca</option>
-                                <option value="Chefchaouen">Chefchaouen</option>
-                                <option value="Dakhla">Dakhla</option>
-                                <option value="El Hajeb">El Hajeb</option>
-                                <option value="El Jadida">El Jadida</option>
-                                <option value="Errachidia">Errachidia</option>
-                                <option value="Essaouira">Essaouira</option>
-                                <option value="Fès">Fès</option>
-                                <option value="Figuig">Figuig</option>
-                                <option value="Guelmim">Guelmim</option>
-                                <option value="Ifrane">Ifrane</option>
-                                <option value="Kénitra">Kénitra</option>
-                                <option value="Khémisset">Khémisset</option>
-                                <option value="Khénifra">Khénifra</option>
-                                <option value="Khouribga">Khouribga</option>
-                                <option value="Laâyoune">Laâyoune</option>
-                                <option value="Larache">Larache</option>
-                                <option value="Marrakech">Marrakech</option>
-                                <option value="Meknès">Meknès</option>
-                                <option value="Mohammedia">Mohammedia</option>
-                                <option value="Nador">Nador</option>
-                                <option value="Ouarzazate">Ouarzazate</option>
-                                <option value="Oujda">Oujda</option>
-                                <option value="Rabat">Rabat</option>
-                                <option value="Safi">Safi</option>
-                                <option value="Salé">Salé</option>
-                                <option value="Sefrou">Sefrou</option>
-                                <option value="Settat">Settat</option>
-                                <option value="Sidi Ifni">Sidi Ifni</option>
-                                <option value="Tanger">Tanger</option>
-                                <option value="Tan-Tan">Tan-Tan</option>
-                                <option value="Taza">Taza</option>
-                                <option value="Témara">Témara</option>
-                                <option value="Tétouan">Tétouan</option>
-                                <option value="Tinghir">Tinghir</option>
-                                <option value="Tiznit">Tiznit</option>
-                                <option value="Youssoufia">Youssoufia</option>
-                            </select>
-                            <label for="floatingSelectCity">Ville</label>
+                           <select class="form-select" name="ville">
+                              <option value="Al Hoceïma">Al Hoceïma</option>
+                              <option value="Azilal">Azilal</option>
+                              <option value="Beni Mellal">Beni Mellal</option>
+                              <option value="Berkane">Berkane</option>
+                              <option value="Berréchid">Berrechid</option>
+                              <option value="Casablanca">Casablanca</option>
+                              <option value="Chefchaouen">Chefchaouen</option>
+                              <option value="Dakhla">Dakhla</option>
+                              <option value="El Hajeb">El Hajeb</option>
+                              <option value="El Jadida">El Jadida</option>
+                              <option value="Errachidia">Errachidia</option>
+                              <option value="Essaouira">Essaouira</option>
+                              <option value="Fès">Fès</option>
+                              <option value="Figuig">Figuig</option>
+                              <option value="Guelmim">Guelmim</option>
+                              <option value="Ifrane">Ifrane</option>
+                              <option value="Kénitra">Kénitra</option>
+                              <option value="Khémisset">Khémisset</option>
+                              <option value="Khénifra">Khénifra</option>
+                              <option value="Khouribga">Khouribga</option>
+                              <option value="Laâyoune">Laâyoune</option>
+                              <option value="Larache">Larache</option>
+                              <option value="Marrakech">Marrakech</option>
+                              <option value="Meknès">Meknès</option>
+                              <option value="Mohammedia">Mohammedia</option>
+                              <option value="Nador">Nador</option>
+                              <option value="Ouarzazate">Ouarzazate</option>
+                              <option value="Oujda">Oujda</option>
+                              <option value="Rabat">Rabat</option>
+                              <option value="Safi">Safi</option>
+                              <option value="Salé">Salé</option>
+                              <option value="Sefrou">Sefrou</option>
+                              <option value="Settat">Settat</option>
+                              <option value="Sidi Ifni">Sidi Ifni</option>
+                              <option value="Tanger">Tanger</option>
+                              <option value="Tan-Tan">Tan-Tan</option>
+                              <option value="Taza">Taza</option>
+                              <option value="Témara">Témara</option>
+                              <option value="Tétouan">Tétouan</option>
+                              <option value="Tinghir">Tinghir</option>
+                              <option value="Tiznit">Tiznit</option>
+                              <option value="Youssoufia">Youssoufia</option>
+                           </select>
+                           <label for="floatingSelectCity">Ville</label>
                         </div>
-                    </div>
-                            <h5 class="mt-3">Contact</h5>
+                     </div>
+                     <h5 class="mt-3">Contact</h5>
                      <div class="col-sm-6 col-md-4">
                         <div class="form-floating">
                            <input class="form-control" type="tel" placeholder="phone" name="tel_mobile"/ placeholder="">
@@ -453,7 +447,7 @@
                            <label for="floatingInputEmail">Email</label>
                         </div>
                      </div>
-                            <h5 class="mt-3">Information de connexion</h5>
+                     <h5 class="mt-3">Information de connexion</h5>
                      <div class="col-sm-6 col-md-6">
                         <div class="form-floating">
                            <input id="identifiant" type="text" class="form-control" name="identifiant" placeholder="">
@@ -462,14 +456,14 @@
                      </div>
                      <div class="col-sm-6 col-md-6">
                         <div class="form-floating">
-                          <select class="form-select" name="statut">
-                              <option value="admin">Admin</option>
-                              <option value="commercial">Commercial</option>
-                              <option value="call center">Call center</option>
-                          <select/>
-                          <label for="floatingSelectOwner">Statut</label>
-                      </div>
-                    </div>
+                           <select class="form-select" name="statut">
+                           <option value="Admin">Admin</option>
+                           <option value="Commercial">Commercial</option>
+                           <option value="Call center">Call center</option>
+                           <select/>
+                           <label for="floatingSelectOwner">Statut</label>
+                        </div>
+                     </div>
                      <div class="col-sm-6 col-md-6">
                         <div class="form-floating">
                            <input id="email" type="email" class="form-control" name="email" required placeholder="">
@@ -482,7 +476,7 @@
                            <label for="floatingInputEmail">Mot de passe</label>
                         </div>
                      </div>
-                     <div class="col-12 d-flex justify-content-end mt-5">
+                     <div class="col-12 d-flex justify-content-end mt-4">
                         <button type="submit" class="btn btn-primary">
                         Enregistrer l'utilisateur
                         </button>
@@ -503,12 +497,12 @@
             </footer>
          </div>
       </main>
-    <script>
-        function refreshPage() {
-          // Recharge la page actuelle
-          location.reload();
-        }
-    </script>
+      <script>
+         function refreshPage() {
+           // Recharge la page actuelle
+           location.reload();
+         }
+      </script>
       <script src="../../vendors/popper/popper.min.js"></script>
       <script src="../../vendors/bootstrap/bootstrap.min.js"></script>
       <script src="../../vendors/anchorjs/anchor.min.js"></script>

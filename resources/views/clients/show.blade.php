@@ -104,7 +104,7 @@
                                     </a>
                                 </div>
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="{{ route('users.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-icon"><span data-feather="list"></span></span>
                                             <span>
@@ -183,10 +183,10 @@
                         <li class="nav-item">
                             <div class="theme-control-toggle fa-icon-wait px-2">
                                 <input class="form-check-input ms-0 theme-control-toggle-input" type="checkbox" data-theme-control="phoenixTheme" value="dark" id="themeControlToggle" />
-                                <label class="mb-0 theme-control-toggle-label theme-control-toggle-light" for="themeControlToggle" data-bs-toggle="tooltip">
+                                <label class="mb-0 theme-control-toggle-label theme-control-toggle-light" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme">
                                 <span class="icon" data-feather="moon"></span>
                                 </label>
-                                <label class="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggle" data-bs-toggle="tooltip">
+                                <label class="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme">
                                 <span class="icon" data-feather="sun"></span>
                                 </label>
                             </div>
@@ -252,7 +252,7 @@
                                     <div class="overflow-auto scrollbar p-0 border-top border-translucent" style="height: auto;">
                                         <ul class="nav d-flex flex-column mb-2 mt-2">
                                             <li class="nav-item">
-                                                <a class="nav-link px-3" href="#!">
+                                                <a class="nav-link px-3" href="{{ route('profile') }}">
                                                 <span class="me-2 text-body" data-feather="user"></span>
                                                 <span>Profile</span>
                                                 </a>
@@ -300,6 +300,46 @@
                   navbarVertical.setAttribute('data-navbar-appearance', 'darker');
                 }
             </script>
+            <div>
+                <div class="modal fade" id="contact" tabindex="-1" aria-labelledby="contact" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-body-highlight" id="contact">Mettre à jour les informations de contact</h5>
+                                <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs-9"></span></button>
+                            </div>
+                            <form>
+                                <div class="modal-body">
+                                    <div class="table-responsive scrollbar mx-n1 px-1">
+                                        <table class="table fs-9 mb-1">
+                                            <tbody class="list" id="members-table-body">
+                                                <tr>
+                                                    <td class="align-middle text-body-highlight text-left fw-bold py-2" style="width:30%; padding-left: 1rem; padding-right: 1rem">
+                                                        <div class="d-flex align-items-center mb-1">
+                                                            <span class="me-2 uil uil-phone"></span>
+                                                            <h5 class="mb-0">Téléphone mobile</h5>
+                                                        </div>
+                                                    </td>
+                                                    <td class="align-middle text-left fw-semibold text-body-secondary py-2" style="width:30%; padding-left: 1rem; padding-right: 1rem">
+                                                        <h5 class="mb-0">{{ $client->tel_mobile }}</h5>
+                                                    </td>
+                                                    <td class="align-middle text-body-highlight text-left fw-bold py-2" style="width:40%; padding-left: 1rem; padding-right: 1rem">
+                                                        <input class="form-control form-control-sm" id="sizingInputSm" type="text" placeholder=".form-control-sm" />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-phoenix-primary me-2 px-6" type="button" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
+                                    <button type="button" class="btn btn-primary">Mettre à jour</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="content">
                 <nav class="mb-3" aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0">
@@ -363,7 +403,8 @@
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center mb-3">
-                                            <h3>Contact</h3>
+                                            <h3 class="w-100">Contact</h3>
+                                            <button class="btn btn-link px-3" data-bs-toggle="modal" data-bs-target="#contact">Modifier</button>
                                         </div>
                                         <div class="mb-3">
                                             <div class="d-flex align-items-center mb-1">
@@ -391,21 +432,21 @@
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center mb-3">
-                                            <h3>Adresse</h3>
+                                            <h3 class="w-100">Adresse</h3>
                                         </div>
                                         <div class="mb-3">
                                             <div class="d-flex align-items-center mb-1">
                                                 <span class="me-2 uil uil-estate"></span>
                                                 <h5 class="mb-0">Adresse</h5>
                                             </div>
-                                            <p class="mb-0 fw-semibold text-body-secondary">{{ $client->address}}</p>
+                                            <p class="mb-0 fw-semibold text-body-secondary">{{ $client->adresse}}</p>
                                         </div>
                                         <div class="mb-3">
                                             <div class="d-flex align-items-center mb-1">
                                                 <span class="me-2 uil uil-estate"></span>
                                                 <h5 class="mb-0">Adresse complémentaire</h5>
                                             </div>
-                                            <p class="mb-0 fw-semibold text-body-secondary">{{ $client->adress_complementaire }}</p>
+                                            <p class="mb-0 fw-semibold text-body-secondary">{{ $client->adresse_complementaire }}</p>
                                         </div>
                                         <div class="mb-3">
                                             <div class="d-flex align-items-center mb-1">
@@ -545,15 +586,16 @@
                                     <div class="card card-body mb-3">
                                         <div class="d-flex justify-content-between align-items-center mb-3" id="scrollspyValider">
                                             <h3 class="mb-0">Étape à valider</h3>
-                                            <button type="button" class="btn btn-phoenix-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap"><span class="fa-solid fa-plus me-2"></span>Ajouter une relance call center</button>
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <button type="button" class="btn btn-phoenix-primary" data-bs-toggle="modal" data-bs-target="#relancecallcenter" data-bs-whatever="@getbootstrap"><span class="fa-solid fa-plus me-2"></span>Ajouter une relance call center</button>
+                                            <div class="modal fade" id="relancecallcenter" tabindex="-1" aria-labelledby="relancecallcenter" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title text-body-highlight" id="exampleModalLabel">Ajouter une relance rendez-vous call center</h5>
+                                                            <h5 class="modal-title text-body-highlight" id="relancecallcenter">Ajouter une relance rendez-vous call center</h5>
                                                             <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs-9"></span></button>
                                                         </div>
                                                         <form action="{{ route('relance.store') }}" method="POST"  >
+                                                            @csrf
                                                             <div class="modal-body">
                                                                 <div class="table-responsive scrollbar mx-n1 px-1">
                                                                     <table class="table fs-9 mb-1">
@@ -563,10 +605,10 @@
                                                                                 <td class="align-middle text-left fw-bold py-2" style="width:75%; padding-left: 1rem; padding-right: 1rem">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-6 col-md-6" style="padding-right: 0.4rem;">
-                                                                                            <input class="form-control datetimepicker" id="datepicker" type="text" placeholder="jj/mm/aa" data-options='{"disableMobile":true,"dateFormat":"d/m/Y","allowInput":true}' />
+                                                                                            <input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;"/>
                                                                                         </div>
                                                                                         <div class="col-sm-6 col-md-6" style="padding-left: 0.4rem;">
-                                                                                            <input class="form-control datetimepicker" id="timepicker1" type="text" placeholder="heure : minute" data-options='{"enableTime":true,"noCalendar":true,"dateFormat":"H:i","disableMobile":true,"allowInput":true}' />
+                                                                                            <input class="form-control" type="time" id="appt" name="appt" min="09:00" max="18:00"/>
                                                                                         </div>
                                                                                     </div>
                                                                                 </td>
@@ -576,10 +618,10 @@
                                                                                 <td class="align-middle text-left fw-bold py-2" style="width:75%; padding-left: 1rem; padding-right: 1rem">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-6 col-md-6" style="padding-right: 0.4rem;">
-                                                                                            <input class="form-control datetimepicker" id="datepicker" type="text" placeholder="jj/mm/aa" data-options='{"disableMobile":true,"dateFormat":"d/m/Y","allowInput":true}' name="Reporter_la_relance"/>
+                                                                                            <input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;" name="reporter_la_relance"/>
                                                                                         </div>
                                                                                         <div class="col-sm-6 col-md-6" style="padding-left: 0.4rem;">
-                                                                                            <input class="form-control datetimepicker" id="timepicker1" type="text" placeholder="heure : minute" data-options='{"enableTime":true,"noCalendar":true,"dateFormat":"H:i","disableMobile":true,"allowInput":true}' />
+                                                                                            <input class="form-control" type="time" id="appt" name="appt" min="09:00" max="18:00"/>
                                                                                         </div>
                                                                                     </div>
                                                                                 </td>
@@ -597,9 +639,8 @@
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <input type="text" class="form-control" name="whoaddit" value="{{ Auth::user()->nom }} {{ Auth::user()->prenom }} " readonly style="display: none;">
+                                                                <input type="text" class="form-control" name="whoaddit" value="{{ Auth::user()->nom }} {{ Auth::user()->prenom }}" readonly style="display: none;" >
                                                                 <input type="text" class="form-control" name="client_id" value="{{ $client->id }}" readonly style="display: none;">
-
                                                                 <button class="btn btn-phoenix-primary me-2 px-6" type="button" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
                                                                 <button type="submit" class="btn btn-primary">Enregistrer le relance</button>
                                                             </div>
@@ -646,18 +687,20 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody class="list" id="members-table-body">
+                                                            @foreach($relances as $relance)
                                                             <tr>
                                                                 <td class="align-middle text-center border-start border-end fw-bold py-2" style="padding-left: 1rem; padding-right: 1rem">
-                                                                    Mamoun Ezzidi
+                                                                    {{ $relance->whoaddit }}
                                                                     <div>
-                                                                        <p class="mb-0 text-center fw-semibold text-opacity-75 text-body-tertiary fs-9">12/05/2024 12:30</p>
+                                                                        <p class="mb-0 text-center fw-semibold text-opacity-75 text-body-tertiary fs-9">{{ $relance->created_at->format('m/d/Y') }} {{ $relance->created_at->format('H:i') }}</p>
                                                                     </div>
                                                                 </td>
-                                                                <td class="align-middle text-center border-end fw-semibold text-opacity-75 text-body-tertiary py-2" style="padding-left: 1rem; padding-right: 1rem">12/05/2024 12:30
+                                                                <td class="align-middle text-center border-end fw-semibold text-opacity-75 text-body-tertiary py-2" style="padding-left: 1rem; padding-right: 1rem">{{ $relance->reporter_la_relance ->format('H:i') }}
                                                                 </td>
-                                                                <td class="align-middle text-left border-end fw-semibold py-2" style="padding-left: 1rem; padding-right: 1rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+                                                                <td class="align-middle text-left border-end fw-semibold py-2" style="padding-left: 1rem; padding-right: 1rem;">{{ $relance->remarque }}
                                                                 </td>
                                                             </tr>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
                                                 </div>

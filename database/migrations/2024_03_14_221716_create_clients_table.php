@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('prenom');
             $table->string('type');
             $table->date('dob')->nullable();
-            $table->string('address');
-            $table->string('address_complementaire')->nullable();
+            $table->string('adresse');
+            $table->string('adresse_complementaire')->nullable();
             $table->string('code_postal');
             $table->string('ville');
             $table->string('tel_mobile');

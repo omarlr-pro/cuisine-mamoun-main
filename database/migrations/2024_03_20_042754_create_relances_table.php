@@ -5,7 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRelanceTable extends Migration
+class CreateRelancesTable extends Migration
 {
     /**
      * Exécuter les migrations.
@@ -14,9 +14,9 @@ class CreateRelanceTable extends Migration
      */
     public function up()
     {
-        Schema::create('relance', function (Blueprint $table) {
+        Schema::create('relances', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')->constrained();
+            $table->foreignId('client_id') ->constrained()->onDelete('cascade');;
             $table->dateTime('Reporter_la_relance')->nullable();
             $table->string('isannuler')->default("false");
             $table->text('Remarque')->nullable();
@@ -32,6 +32,6 @@ class CreateRelanceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('remarks');
+        Schema::dropIfExists('relances');
     }
 }

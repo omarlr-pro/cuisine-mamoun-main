@@ -252,7 +252,7 @@
                                     <div class="overflow-auto scrollbar p-0 border-top border-translucent" style="height: auto;">
                                         <ul class="nav d-flex flex-column mb-2 mt-2">
                                             <li class="nav-item">
-                                                <a class="nav-link px-3" href="{{ route('profile') }}">
+                                                <a class="nav-link px-3" href="#">
                                                 <span class="me-2 text-body" data-feather="user"></span>
                                                 <span>Profile</span>
                                                 </a>
@@ -301,149 +301,274 @@
                 }
             </script>
             <div class="content">
-        <nav class="mb-3" aria-label="breadcrumb">
-          <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item">
-              <a>Utilisateur</a>
-            </li>
-            <li class="breadcrumb-item">Voir tous les utilisateur</li>
-          </ol>
-        </nav>
-        <div class="border-bottom border-translucent mx-n3 px-2 mx-lg-n6 px-lg-6">
-          <div class="row">
-            <div class="col-xl-12">
-              <div class="d-sm-flex justify-content-between">
-                <h2 class="mb-4">Voir tous les utilisateurs</h2>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-        <div id="lealsTable" data-list='{"valueNames":["nom","ville","adresse","codepostal","tel","email","source","etapes","vendeur","date"],"page":20,"pagination":true}'>
-            <div class="row justify-content-between mt-3 mb-3">
-                <div class="col-auto">
-                    <div class="d-md-flex justify-content-between">
-                        <div>
-                            <a href="{{ route('users.create') }}"><button class="btn btn-primary me-4">Enregistrer un nouvel utilisateur</button></a>
+                <div class="pb-5">
+                    <div class="card mb-5">
+                        <div class="card-header hover-actions-trigger d-flex justify-content-center align-items-end position-relative mb-7 mb-xxl-0" style="height: 125px; ">
+                            <div class="bg-holder rounded-top" style="background-image:url(../../assets/img/generic/cover-photo.png);"></div>
+                            <input class="d-none" id="upload-cover-image" type="file" /><label class="cover-image-file-input" for="upload-cover-image"></label>
+                            <div class="hover-actions end-0 bottom-0 pe-1 pb-2 text-white dark__text-gray-1100"><span class="fa-solid fa-camera me-2 overlay-icon"></span></div>
+                            <input class="d-none" id="upload-porfile-picture" type="file" />
+                            <div class="hoverbox feed-profile" style="width: 150px; height: 150px">
+                                <div class="hoverbox-content rounded-circle d-flex flex-center z-1" style="--phoenix-bg-opacity: .56;"><span class="fa-solid fa-camera fs-1 text-body-quaternary" data-bs-theme="light"></span></div>
+                                <div class="position-relative rounded-soft cursor-pointer d-flex flex-center mb-xxl-7">
+                                    <div class="avatar avatar-5xl"><img class="rounded-soft rounded-soft img-thumbnail shadow-sm border-0" src="../../assets/img/team/9.webp" alt="" /></div>
+                                    <label class="w-100 h-100 position-absolute z-1" for="upload-porfile-picture"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row justify-content-xl-between">
+                                <div class="col-auto">
+                                    <div class="d-flex flex-wrap mb-3 align-items-center">
+                                        <h3>{{ Auth::user()->civilite }} {{ Auth::user()->nom }} {{ Auth::user()->prenom }}</h3>
+                                    </div>
+                                    <p class="fw-semibold text-body-secondary m-0">“Whenever you find yourself on the side of the majority, it is time to pause and reflect.”</p>
+                                </div>
+                                <div class="col-auto d-flex align-items-center">
+                                    <div class="row g-2">
+                                        <div class="col-auto order-xxl-2"><button class="btn btn-primary lh-1"><span class="fa-solid fa-user-plus me-2"></span>Follow Request</button></div>
+                                        <div class="col-auto order-xxl-1"><button class="btn btn-phoenix-primary lh-1"><span class="fa-solid fa-message me-2"></span>Send Message</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="position-relative">
+                        <hr class="bg-body-secondary mt-5 mb-5" />
+                        <div class="divider-content-center"></div>
+                    </div>
+                    <div class="row g-4 g-xl-6">
+                        <div class="col-xl-3 col-xxl-3">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <h3 class="w-100">Contact</h3>
+
+                                        <button class="btn btn-link px-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</button>
+
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title text-body-highlight" id="exampleModalLabel">Modifier les informations de contact</h5>
+                                                        <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs-9"></span></button>
+                                                    </div>
+                                                    <form>
+                                                        <div class="modal-body">
+                                                            <div class="table-responsive scrollbar mx-n1 px-1">
+                                                                <table class="table fs-9 mb-1">
+                                                                    <tbody class="list" id="members-table-body">
+                                                                        <tr>
+                                                                            <td class="align-middle text-body-highlight text-left fw-bold py-2" style="width:25%; padding-left: 1rem; padding-right: 1rem">
+                                                                                
+                                                                                <div class="d-flex align-items-center mb-1">
+                                                                                    <span class="me-2 uil uil-phone"></span>
+                                                                                    <h5 class="mb-0">Téléphone mobile</h5>
+                                                                                </div>
+
+                                                                            </td>
+                                                                            <td class="align-middle text-body-highlight text-left fw-bold py-2" style="width:25%; padding-left: 1rem; padding-right: 1rem">
+                                                                                
+                                                                                <div class="d-flex align-items-center mb-1">
+                                                                                    <h5 class="mb-0 fw-semibold text-body-secondary">{{ Auth::user()->tel_mobile }}</h5>
+                                                                                </div>
+
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-phoenix-primary me-2 px-6" type="button" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
+                                                            <button type="button" class="btn btn-primary">Enregistrer le relance</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-flex align-items-center mb-1">
+                                            <span class="me-2 uil uil-phone"></span>
+                                            <h5 class="mb-0">Téléphone mobile</h5>
+                                        </div>
+                                        <p class="mb-0 fw-semibold text-body-secondary">{{ Auth::user()->tel_mobile }}</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-flex align-items-center mb-1">
+                                            <span class="me-2 uil uil-phone"></span>
+                                            <h5 class="mb-0">Téléphone fixe</h5>
+                                        </div>
+                                        <p class="mb-0 fw-semibold text-body-secondary">{{ Auth::user()->tel_fixe }}</p>
+                                    </div>
+                                    <div>
+                                        <div class="d-flex align-items-center mb-1">
+                                            <span class="me-2 uil uil-envelope-alt"></span>
+                                            <h5 class="mb-0">Email</h5>
+                                        </div>
+                                        <p class="mb-0 fw-semibold text-body-secondary">{{ Auth::user()->email }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <h3 class="w-100">Adresse</h3>
+                                        <button class="btn btn-link px-3" type="button">Modifier</button>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-flex align-items-center mb-1">
+                                            <span class="me-2 uil uil-phone"></span>
+                                            <h5 class="mb-0">Adresse</h5>
+                                        </div>
+                                        <p class="mb-0 fw-semibold text-body-secondary">{{ Auth::user()->adresse }}</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-flex align-items-center mb-1">
+                                            <span class="me-2 uil uil-phone"></span>
+                                            <h5 class="mb-0">Adresse Complémentaire</h5>
+                                        </div>
+                                        <p class="mb-0 fw-semibold text-body-secondary">{{ Auth::user()->adresse_complementaire }}</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-flex align-items-center mb-1">
+                                            <span class="me-2 uil uil-envelope-alt"></span>
+                                            <h5 class="mb-0">Code postal</h5>
+                                        </div>
+                                        <p class="mb-0 fw-semibold text-body-secondary">{{ Auth::user()->code_postal }}</p>
+                                    </div>
+                                    <div>
+                                        <div class="d-flex align-items-center mb-1">
+                                            <span class="me-2 uil uil-envelope-alt"></span>
+                                            <h5 class="mb-0">Ville</h5>
+                                        </div>
+                                        <p class="mb-0 fw-semibold text-body-secondary">{{ Auth::user()->ville }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-9 col-xxl-9">
+                            <div class="card mb-3">
+                                <div class="card-body p-3 p-sm-4">
+                                    <div>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <a href="../../apps/social/profile.html">
+                                                <div class="avatar avatar-xl  me-3">
+                                                    <img class="rounded-soft " src="../../assets/img//team/9.webp" alt="" />
+                                                </div>
+                                            </a>
+                                            <div class="flex-1">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <a class="fw-bold text-body-emphasis">{{ Auth::user()->civilite }} {{ Auth::user()->prenom }} {{ Auth::user()->nom }}</a>
+                                                    <button type="button" class="btn btn-phoenix-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap"><span class="fa-solid fa-plus me-2"></span>Ajouter le statut</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <textarea class="form-control" placeholder="Laissez un commentaire ici" style="height: 50px" name="description"></textarea>
+                                                <label for="floatingProjectOverview">Ajouter un statut sur votre porfil</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-3">
+                                <div class="card-body p-3 p-sm-4">
+                                    <div>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <a href="../../apps/social/profile.html">
+                                                <div class="avatar avatar-xl  me-3">
+                                                    <img class="rounded-soft " src="../../assets/img//team/9.webp" alt="" />
+                                                </div>
+                                            </a>
+                                            <div class="flex-1">
+                                                <a class="fw-bold mb-2 text-body-emphasis">{{ Auth::user()->civilite }} {{ Auth::user()->prenom }} {{ Auth::user()->nom }}</a>
+                                                <p class="fs-9 mb-0 text-body-tertiary text-opacity-85 fw-semibold">le 18/03/2024 à 23:45</p>
+                                            </div>
+                                            <div class="btn-reveal-trigger">
+                                                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none d-flex btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent">
+                                                <span class="fas fa-ellipsis-h"></span>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-end py-2">
+                                                    <a class="dropdown-item" href="#!">Modifier</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item text-danger" href="#!">Supprimer</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="text-body-highlight m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body p-3 p-sm-4">
+                                    <div>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <a href="../../apps/social/profile.html">
+                                                <div class="avatar avatar-xl  me-3">
+                                                    <img class="rounded-soft " src="../../assets/img//team/9.webp" alt="" />
+                                                </div>
+                                            </a>
+                                            <div class="flex-1">
+                                                <a class="fw-bold mb-2 text-body-emphasis">{{ Auth::user()->civilite }} {{ Auth::user()->prenom }} {{ Auth::user()->nom }}</a>
+                                                <p class="fs-9 mb-0 text-body-tertiary text-opacity-85 fw-semibold">le 18/03/2024 à 23:45</p>
+                                            </div>
+                                            <div class="btn-reveal-trigger">
+                                                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none d-flex btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent">
+                                                <span class="fas fa-ellipsis-h"></span>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-end py-2">
+                                                    <a class="dropdown-item" href="#!">Modifier</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item text-danger" href="#!">Supprimer</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="text-body-highlight m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-              <div class="col-auto">
-              </div>
-              <div class="col-auto">
-                <div class="d-flex">
-                  <div class="search-box me-2">
-                    <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input search" type="search" placeholder="Rechercher un utilisateur" aria-label="Search" />
-                      <span class="fas fa-search search-box-icon"></span>
-                    </form>
-                  </div>
-                  <button class="btn px-3 btn-phoenix-secondary" type="button" data-bs-toggle="modal" data-bs-target="#filterModal" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fa-solid fa-filter text-primary" data-fa-transform="down-3"></span></button>
-                  <div class="modal fade" id="filterModal" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                      <div class="modal-content border border-translucent">
-                        <form id="addEventForm" autocomplete="off">
-                          <div class="modal-header border-translucent p-4">
-                            <h5 class="modal-title text-body-highlight fs-6 lh-sm">Filtre par</h5><button class="btn p-1 text-body" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs-9"></span></button>
-                          </div>
-                          <div class="modal-body pt-4 pb-2 px-4">
-                            <div class="mb-3"><label class="fw-bold mb-2 text-body-highlight" for="ville">Ville</label><select class="form-select" id="ville">
-                                <option value="Casablanca" selected="selected">Casablanca</option>
-                                <option value="Rabat">Rabat</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="modal-footer d-flex justify-content-end align-items-center px-4 pb-4 border-0 pt-3"><button class="btn btn-sm btn-phoenix-primary px-4 fs-10 my-0" type="submit"> <span class="fas fa-arrows-rotate me-2 fs-10"></span>Réinitialiser</button><button class="btn btn-sm btn-primary px-9 fs-10 my-0" type="submit">Valider</button></div>
-                        </form>
-                      </div>
+                <div class="navbar-bottom d-xl-none">
+                    <div class="nav"><a class="nav-link" aria-current="page" href="../../apps/social/feed.html"><span class="fa-solid fa-home nav-icon"></span><span class="nav-label">Home</span></a><a class="nav-link active" href="../../apps/social/profile.html"><span class="fa-solid fa-user nav-icon"></span><span class="nav-label">Profile</span></a><a class="nav-link" href="#!"><span class="fa-solid fa-image nav-icon"></span><span class="nav-label">Photos</span></a><a class="nav-link" href="../../apps/chat.html"><span class="fa-solid fa-message nav-icon"></span><span class="nav-label">Messages</span></a><a class="nav-link" href="../../apps/events/event-detail.html"><span class="fa-solid fa-calendar-days nav-icon"></span><span class="nav-label">Events</span></a></div>
+                </div>
+                <footer class="footer position-absolute">
+                    <div class="row g-0 justify-content-between align-items-center h-100">
+                        <div class="col-12 col-sm-auto text-center">
+                            <a class="mb-0 text-body-tertiary text-opacity-85" href="https://sicilia.ma/" target="_blank">Sicilia.ma</a>
+                            <a class="mb-0 text-body-tertiary text-opacity-85"></a>
+                        </div>
+                        <div class="col-12 col-sm-auto text-center">
+                            <p class="mb-0 text-body-tertiary text-opacity-85">Customer Relationship Management - V1.0</p>
+                        </div>
                     </div>
-                  </div>
-                </div>
-              </div>
+                </footer>
             </div>
-            <div class="mx-n4 mx-lg-n6 px-4 px-lg-6 bg-body-emphasis border-y position-relative top-1">
-              <div class="table-responsive scrollbar ms-n1 ps-1">
-                <table class="table table-sm fs-9 mb-0">
-                  <thead>
-                    <tr>
-                      <th class="sort align-middle text-center" scope="col" data-sort="nom" style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Nom</th>
-                      <th class="sort align-middle text-center" scope="col" data-sort="ville" style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Ville</th>
-                      <th class="sort align-middle text-center" scope="col" data-sort="adresse" style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Adresse</th>
-                      <th class="sort align-middle text-center" scope="col" data-sort="tel" style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Tél.</th>
-                      <th class="sort align-middle text-center" scope="col" data-sort="email" style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Email</th>
-                      <th class="sort align-middle text-center" scope="col" data-sort="statut" style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Statut</th>
-                      <th class="sort align-middle text-center" scope="col" data-sort="date" style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Date d'aout</th>
-                      <th class="sort align-middle text-center" scope="col"style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody class="list" id="members-table-body">
-                    @foreach($users as $user)
-                    <tr>
-                        <td class="nom align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">
-                            <div><a class="fs-9 fw-bold" href="{{ route('users.show', $user->id) }}">{{ $user->civilite }} {{ $user->nom }} {{ $user->prenom }}</a></div>
-                        </td>
-                        <td class="ville align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->ville }}</td>
-                        <td class="adresse align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->adresse }}</td>
-                        <td class="tel align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->tel_mobile }}</td>
-                        <td class="email align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->email }}</td>
-                        <td class="statut align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $user->statut }}</td>
-                        <td class="date align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">
-                            {{ $user->created_at }}
-                            <div>
-                                <p class="mb-0 text-center fw-semibold text-opacity-75 text-body-tertiary fs-9">{{ $user->created_at }}</p>
-                            </div>
-                        </td>
-                        <td class="align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">
-                            <div class="btn-reveal-trigger position-static">
-                                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent">
-                                    <span class="fas fa-ellipsis-h fs-10"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end py-2">
-                                    <a class="dropdown-item" href="{{ route('users.edit', $user->id) }}">Modifier</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" href="#!">Supprimer</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-                </table>
-              </div>
-              <div class="row align-items-center justify-content-between py-2 pe-0 fs-9">
-                <div class="col-auto d-flex">
-                  <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p><a class="fw-semibold" href="#!" data-list-view="*">Voir tout<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">Voir moins<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
-                </div>
-                <div class="col-auto d-flex"><button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-                  <ul class="mb-0 pagination"></ul><button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <footer class="footer position-absolute">
-          <div class="row g-0 justify-content-between align-items-center h-100">
-            <div class="col-12 col-sm-auto text-center">
-              <a class="mb-0 text-body-tertiary text-opacity-85" href="https://sicilia.ma/" target="_blank">Sicilia.ma</a>
-              <a class="mb-0 text-body-tertiary text-opacity-85"></a>
-            </div>
-            <div class="col-12 col-sm-auto text-center">
-              <p class="mb-0 text-body-tertiary text-opacity-85">Customer Relationship Management - V1.0</p>
-            </div>
-          </div>
-        </footer>
-      </div>
-    </main>
-    <script src="../../vendors/popper/popper.min.js"></script>
-    <script src="../../vendors/bootstrap/bootstrap.min.js"></script>
-    <script src="../../vendors/anchorjs/anchor.min.js"></script>
-    <script src="../../vendors/is/is.min.js"></script>
-    <script src="../../vendors/fontawesome/all.min.js"></script>
-    <script src="../../vendors/lodash/lodash.min.js"></script>
-    <script src="../../../../../polyfill.io/v3/polyfill.min58be.js?features=window.scroll"></script>
-    <script src="../../vendors/list.js/list.min.js"></script>
-    <script src="../../vendors/feather-icons/feather.min.js"></script>
-    <script src="../../vendors/dayjs/dayjs.min.js"></script>
-    <script src="../../assets/js/phoenix.js"></script>
-    <script src="../../assets/js/flatpickr.js"></script>
-  </body>
+        </main>
+        <script>
+            function refreshPage() {
+              // Recharge la page actuelle
+              location.reload();
+            }
+        </script>
+        <script src="../../vendors/popper/popper.min.js"></script>
+        <script src="../../vendors/bootstrap/bootstrap.min.js"></script>
+        <script src="../../vendors/anchorjs/anchor.min.js"></script>
+        <script src="../../vendors/is/is.min.js"></script>
+        <script src="../../vendors/fontawesome/all.min.js"></script>
+        <script src="../../vendors/lodash/lodash.min.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+        <script src="../../vendors/list.js/list.min.js"></script>
+        <script src="../../vendors/feather-icons/feather.min.js"></script>
+        <script src="../../vendors/dayjs/dayjs.min.js"></script>
+        <script src="../../assets/js/phoenix.js"></script>
+        <script src="../../assets/js/flatpickr.js"></script>
+    </body>
 </html>

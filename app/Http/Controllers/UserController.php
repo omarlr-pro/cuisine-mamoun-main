@@ -83,9 +83,10 @@ class UserController extends Controller
     return view('users.edit', ['user' => $user]);
 }
 
+    public function profile()
+        {
 
+            return view('profile');
+        }
   
-
-
-    
 }

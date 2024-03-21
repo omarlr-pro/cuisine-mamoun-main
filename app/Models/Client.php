@@ -41,4 +41,10 @@ class Client extends Model
         'description',
         'whoaddit',
     ];
+
+
+    public function relances()
+    {
+        return $this->hasMany(Relance::class);
+    }
 }
