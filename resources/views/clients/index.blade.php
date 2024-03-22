@@ -67,7 +67,41 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <p class="navbar-vertical-label">Client</p>
+                                <p class="navbar-vertical-label">Gestion des rendez-vous</p>
+                                <hr class="navbar-vertical-line" />
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">RDV net non statuer</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">RDV net jour J</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="check-square"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">RDV Brut à confirmer</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Gestion des clients</p>
                                 <hr class="navbar-vertical-line" />
                                 <div class="nav-item-wrapper">
                                     <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
@@ -85,6 +119,20 @@
                                             <span class="nav-link-icon"><span data-feather="list"></span></span>
                                             <span>
                                             <span class="nav-link-text">Voir tous les clients</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Gestion des relances</p>
+                                <hr class="navbar-vertical-line" />
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="phone"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Relance</span>
                                             </span>
                                         </div>
                                     </a>
@@ -313,19 +361,18 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="d-sm-flex justify-content-between">
-                                <h2 class="mb-4">Voir tous les clients</h2>
+                                <h3 class="mb-4">Voir tous les clients</h3>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div id="lealsTable" data-list='{"valueNames":["nom","ville","adresse","codepostal","tel","email","source","etapes","vendeur","date"],"page":20,"pagination":true}'>
+                    <div id="clientstable" data-list='{"valueNames":["1","2","3","4","5","6","7","8","9","10"],"page":20,"pagination":true}'>
                         <div class="row justify-content-between mt-3 mb-3">
                             <div class="col-auto">
                                 <div class="d-md-flex justify-content-between">
                                     <div>
                                         <a href="{{ route('clients.create') }}"><button class="btn btn-primary me-4">Enregistrer un nouveau client</button></a>
-                                        <a href="#"><button class="btn btn-link text-body px-0"><span class="fa-solid fa-file-export fs-9 me-2"></span>Exporter</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -363,36 +410,48 @@
                             </div>
                         </div>
                         <div class="mx-n4 mx-lg-n6 px-4 px-lg-6 mb-9 bg-body-emphasis border-y mt-2 position-relative top-1">
-                            <div class="table-responsive scrollbar ms-n1 ps-1">
-                                <table class="table table-sm fs-9 mb-0">
+                            <div class="table-responsive scrollbar">
+                                <table class="table fs-9 mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="sort align-middle text-center" scope="col" data-sort="nom" style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Nom</th>
-                                            <th class="sort align-middle text-center" scope="col" data-sort="ville" style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Ville</th>
-                                            <th class="sort align-middle text-center" scope="col" data-sort="adresse" style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Adresse</th>
-                                            <th class="sort align-middle text-center" scope="col" data-sort="codepostal" style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Code postal</th>
-                                            <th class="sort align-middle text-center" scope="col" data-sort="tel" style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Tél.</th>
-                                            <th class="sort align-middle text-center" scope="col" data-sort="email" style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Email</th>
-                                            <th class="sort align-middle text-center" scope="col" data-sort="source" style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Source</th>
-                                            <th class="sort align-middle text-center" scope="col" data-sort="etapes" style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Étapes achevées</th>
-                                            <th class="sort align-middle text-center" scope="col" data-sort="vendeur" style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Vendeur</th>
-                                            <th class="sort align-middle text-center" scope="col" data-sort="date" style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Date d'aout</th>
-                                            <th class="sort align-middle text-center" scope="col"style="width:auto; padding-top: 1rem; padding-bottom: 1rem">Action</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="1" style="width:auto;">Nom</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="2" style="width:auto;">Ville</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="3" style="width:auto;">Adresse</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="4" style="width:auto;">Code postal</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="5" style="width:auto;">Tél.</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="6" style="width:auto;">Email</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="7" style="width:auto;">Source</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="8" style="width:auto;">Étapes achevées</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="9" style="width:auto;">Vendeur</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="10" style="width:auto;">Date d'aout</th>
+                                            <th class="sort align-middle text-center py-3"style="width:auto;">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list" id="members-table-body">
                                         @foreach($clients as $client)
                                         <tr>
-                                            <td class="nom align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">
-                                                <div><a class="fs-9 fw-bold" href="{{ route('clients.show', $client->id) }}">{{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</a></div>
+                                            <td class="1 align-middle text-center fw-semibold py-3">
+                                                <div><a href="{{ route('clients.show', $client->id) }}">{{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</a></div>
                                             </td>
-                                            <td class="ville align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->ville }}</td>
-                                            <td class="adresse align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->address }}</td>
-                                            <td class="codepostal align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->code_postal }}</td>
-                                            <td class="tel align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->tel_mobile }}</td>
-                                            <td class="email align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->email }}</td>
-                                            <td class="source align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">{{ $client->origine_dossier }}</td>
-                                            <td class="etapes align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">
+                                            <td class="2 align-middle text-center fw-semibold py-3">
+                                                {{ $client->ville }}
+                                            </td>
+                                            <td class="3 align-middle text-center fw-semibold py-3">
+                                                {{ $client->adresse }}
+                                            </td>
+                                            <td class="4 align-middle text-center fw-semibold py-3">
+                                                {{ $client->code_postal }}
+                                            </td>
+                                            <td class="5 align-middle text-center fw-semibold py-3">
+                                                {{ $client->tel_mobile }}
+                                            </td>
+                                            <td class="6 align-middle text-center fw-semibold py-3">
+                                                {{ $client->email }}
+                                            </td>
+                                            <td class="7 align-middle text-center fw-semibold py-3">
+                                                {{ $client->origine_dossier }}
+                                            </td>
+                                            <td class="8 align-middle text-center fw-semibold py-3">
                                                 {{ $client->contact }}
                                                 {{ $client->qualification }}
                                                 {{ $client->mesure }}
@@ -404,14 +463,13 @@
                                                 {{ $client->decision }}
                                                 {{ $client->vente }}
                                             </td>
-                                            <td class="vendeur align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">{{ $client->whoaddit }}</td>
-                                            <td class="date align-middle py-1 text-center fw-semibold text-opacity-75 text-body-tertiary" style="padding-left: 1rem; padding-right: 1rem">
-                                                {{ $client->created_at->format('d/m/Y') }}
-                                                <div>
-                                                    <p class="mb-0 text-center fw-semibold text-opacity-75 text-body-tertiary fs-9">{{ $client->created_at->format('H:i') }}</p>
-                                                </div>
+                                            <td class="9 align-middle text-center fw-semibold py-3">
+                                                {{ $client->whoaddit }}
                                             </td>
-                                            <td class="align-middle py-1 text-center fw-semibold text-body-highlight" style="padding-left: 1rem; padding-right: 1rem">
+                                            <td class="10 align-middle text-center fw-semibold py-3">
+                                                {{ $client->created_at->format('d/m/Y') }} {{ $client->created_at->format('H:i') }}
+                                            </td>
+                                            <td class="align-middle py-1 text-center fw-semibold text-body-highlight">
                                                 <div class="btn-reveal-trigger position-static">
                                                     <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
                                                     <div class="dropdown-menu dropdown-menu-end py-2">

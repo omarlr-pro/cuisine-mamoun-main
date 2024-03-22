@@ -67,7 +67,41 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <p class="navbar-vertical-label">Client</p>
+                                <p class="navbar-vertical-label">Gestion des rendez-vous</p>
+                                <hr class="navbar-vertical-line" />
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">RDV net non statuer</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">RDV net jour J</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="check-square"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">RDV Brut à confirmer</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Gestion des clients</p>
                                 <hr class="navbar-vertical-line" />
                                 <div class="nav-item-wrapper">
                                     <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
@@ -85,6 +119,20 @@
                                             <span class="nav-link-icon"><span data-feather="list"></span></span>
                                             <span>
                                             <span class="nav-link-text">Voir tous les clients</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Gestion des relances</p>
+                                <hr class="navbar-vertical-line" />
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="phone"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Relance</span>
                                             </span>
                                         </div>
                                     </a>
@@ -252,7 +300,7 @@
                                     <div class="overflow-auto scrollbar p-0 border-top border-translucent" style="height: auto;">
                                         <ul class="nav d-flex flex-column mb-2 mt-2">
                                             <li class="nav-item">
-                                                <a class="nav-link px-3" href="#">
+                                                <a class="nav-link px-3" href="{{ route('profile') }}">
                                                 <span class="me-2 text-body" data-feather="user"></span>
                                                 <span>Profile</span>
                                                 </a>

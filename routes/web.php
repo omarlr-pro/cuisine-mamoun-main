@@ -15,9 +15,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/add-user', [UserController::class, 'create'])->name('users.create');
     Route::post('/add-user', [UserController::class, 'store'])->name('users.store');
     Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
     Route::get('/users/update/{id}', [UserController::class, 'edit'])->name('users.edit');
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
     Route::post('/relance', [RelanceController::class, 'store'])->name('relance.store');
+    
 
 });
 

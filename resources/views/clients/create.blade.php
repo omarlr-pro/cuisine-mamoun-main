@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html data-navigation-type="default" data-navbar-horizontal-shape="default" lang="en-US" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Phoenix</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicons/favicon-16x16.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/favicons/favicon.ico">
-    <link rel="manifest" href="../../assets/img/favicons/manifest.json">
-    <meta name="msapplication-TileImage" content="../../assets/img/favicons/mstile-150x150.png">
-    <meta name="theme-color" content="#ffffff">
-    <script src="../../vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="../../vendors/simplebar/simplebar.min.js"></script>
-    <script src="../../assets/js/config.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
-    <link href="../../vendors/simplebar/simplebar.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-    <link href="../../assets/css/theme-rtl.min.css" type="text/css" rel="stylesheet" id="style-rtl">
-    <link href="../../assets/css/theme.min.css" type="text/css" rel="stylesheet" id="style-default">
-    <link href="../../assets/css/user-rtl.min.css" type="text/css" rel="stylesheet" id="user-style-rtl">
-    <link href="../../assets/css/user.min.css" type="text/css" rel="stylesheet" id="user-style-default">
-    <link href="../../vendors/flatpickr/flatpickr.min.css" rel="stylesheet" />
-    <script>
-      var phoenixIsRTL = window.config.config.phoenixIsRTL;
-      if (phoenixIsRTL) {
-        var linkDefault = document.getElementById('style-default');
-        var userLinkDefault = document.getElementById('user-style-default');
-        linkDefault.setAttribute('disabled', true);
-        userLinkDefault.setAttribute('disabled', true);
-        document.querySelector('html').setAttribute('dir', 'rtl');
-      } else {
-        var linkRTL = document.getElementById('style-rtl');
-        var userLinkRTL = document.getElementById('user-style-rtl');
-        linkRTL.setAttribute('disabled', true);
-        userLinkRTL.setAttribute('disabled', true);
-      }
-    </script>
-  </head>
-  <body>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Phoenix</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicons/favicon-16x16.png">
+        <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/favicons/favicon.ico">
+        <link rel="manifest" href="../../assets/img/favicons/manifest.json">
+        <meta name="msapplication-TileImage" content="../../assets/img/favicons/mstile-150x150.png">
+        <meta name="theme-color" content="#ffffff">
+        <script src="../../vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>
+        <script src="../../vendors/simplebar/simplebar.min.js"></script>
+        <script src="../../assets/js/config.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
+        <link href="../../vendors/simplebar/simplebar.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+        <link href="../../assets/css/theme-rtl.min.css" type="text/css" rel="stylesheet" id="style-rtl">
+        <link href="../../assets/css/theme.min.css" type="text/css" rel="stylesheet" id="style-default">
+        <link href="../../assets/css/user-rtl.min.css" type="text/css" rel="stylesheet" id="user-style-rtl">
+        <link href="../../assets/css/user.min.css" type="text/css" rel="stylesheet" id="user-style-default">
+        <link href="../../vendors/flatpickr/flatpickr.min.css" rel="stylesheet" />
+        <script>
+            var phoenixIsRTL = window.config.config.phoenixIsRTL;
+            if (phoenixIsRTL) {
+              var linkDefault = document.getElementById('style-default');
+              var userLinkDefault = document.getElementById('user-style-default');
+              linkDefault.setAttribute('disabled', true);
+              userLinkDefault.setAttribute('disabled', true);
+              document.querySelector('html').setAttribute('dir', 'rtl');
+            } else {
+              var linkRTL = document.getElementById('style-rtl');
+              var userLinkRTL = document.getElementById('user-style-rtl');
+              linkRTL.setAttribute('disabled', true);
+              userLinkRTL.setAttribute('disabled', true);
+            }
+        </script>
+    </head>
+    <body>
         <main class="main" id="top">
             <nav class="navbar navbar-vertical navbar-expand-lg" style="display:none;">
                 <script>
@@ -67,7 +67,41 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <p class="navbar-vertical-label">Client</p>
+                                <p class="navbar-vertical-label">Gestion des rendez-vous</p>
+                                <hr class="navbar-vertical-line" />
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">RDV net non statuer</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">RDV net jour J</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="check-square"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">RDV Brut à confirmer</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Gestion des clients</p>
                                 <hr class="navbar-vertical-line" />
                                 <div class="nav-item-wrapper">
                                     <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
@@ -85,6 +119,20 @@
                                             <span class="nav-link-icon"><span data-feather="list"></span></span>
                                             <span>
                                             <span class="nav-link-text">Voir tous les clients</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Gestion des relances</p>
+                                <hr class="navbar-vertical-line" />
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="phone"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Relance</span>
                                             </span>
                                         </div>
                                     </a>
@@ -118,120 +166,120 @@
                     </div>
                 </div>
                 <div class="navbar-vertical-footer">
-          <button class="btn navbar-vertical-toggle border-0 fw-semibold w-100 white-space-nowrap d-flex align-items-center">
-            <span class="uil uil-left-arrow-to-left fs-8"></span>
-            <span class="uil uil-arrow-from-right fs-8"></span>
-            <span class="navbar-vertical-footer-text ms-2">Réduire la vue</span>
-          </button>
-        </div>
-      </nav>
-			<nav class="navbar navbar-top fixed-top navbar-expand" id="navbarDefault" style="display:none;">
-				<div class="collapse navbar-collapse justify-content-between">
-					<div class="navbar-logo">
-						<button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation">
-						<span class="navbar-toggle-icon">
-						<span class="toggle-line"></span>
-						</span>
-						</button>
-						<a href="../../index-2.html">
-							<div class="d-flex align-items-center">
-								<div class="d-flex align-items-center">
-									<img src="../../assets/img/icons/logo.png" alt="phoenix" width="27" />
-									<p class="logo-text ms-2 d-none d-sm-block">phoenix</p>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="search-box navbar-top-search-box d-none d-lg-block" data-list='{"valueNames":["title"]}' style="width:50rem;">
-						<div class="position-relative" data-bs-toggle="search" data-bs-display="static">
-							<input class="form-control search-input fuzzy-search form-control-sm" type="search" placeholder="Rechercher un client" aria-label="Search" />
-							<span class="fas fa-search search-box-icon"></span>
-						</div>
-						<div class="btn-close position-absolute end-0 top-50 translate-middle cursor-pointer shadow-none" data-bs-dismiss="search">
-							<button class="btn btn-link p-0" aria-label="Close"></button>
-						</div>
-						<div class="dropdown-menu border start-0 py-0 overflow-hidden w-100">
-							<div class="scrollbar-overlay" style="max-height: 30rem;">
-								<div class="list">
-									<h6 class="dropdown-header text-body-highlight fs-10 py-2">24 <span class="text-body-quaternary">results</span>
-									</h6>
-									<hr class="my-0" />
-									<div class="py-2">
-										<a class="dropdown-item" href="../e-commerce/landing/product-details.html">
-											<div class="d-flex align-items-center">
-												<div class="fw-normal text-body-highlight title">
-													<span class="fa-brands fa-firefox-browser text-body" data-fa-transform="shrink-2"></span> Search in the Web MacBook
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="../e-commerce/landing/product-details.html">
-											<div class="d-flex align-items-center">
-												<div class="fw-normal text-body-highlight title">
-													<span class="fa-brands fa-chrome text-body" data-fa-transform="shrink-2"></span> Store MacBook″
-												</div>
-											</div>
-										</a>
-									</div>
-								</div>
-								<div class="text-center">
-									<p class="fallback fw-bold fs-7 d-none">Aucun résultat trouvé</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<ul class="navbar-nav navbar-nav-icons flex-row">
-						<li class="nav-item">
-							<div class="theme-control-toggle fa-icon-wait px-2">
-								<input class="form-check-input ms-0 theme-control-toggle-input" type="checkbox" data-theme-control="phoenixTheme" value="dark" id="themeControlToggle" />
-								<label class="mb-0 theme-control-toggle-label theme-control-toggle-light" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme">
-								<span class="icon" data-feather="moon"></span>
-								</label>
-								<label class="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme">
-								<span class="icon" data-feather="sun"></span>
-								</label>
-							</div>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link" id="navbarDropdownNindeDots" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" data-bs-auto-close="outside" aria-expanded="false">
-								<svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<circle cx="2" cy="2" r="2" fill="currentColor"></circle>
-									<circle cx="2" cy="8" r="2" fill="currentColor"></circle>
-									<circle cx="2" cy="14" r="2" fill="currentColor"></circle>
-									<circle cx="8" cy="8" r="2" fill="currentColor"></circle>
-									<circle cx="8" cy="14" r="2" fill="currentColor"></circle>
-									<circle cx="14" cy="8" r="2" fill="currentColor"></circle>
-									<circle cx="14" cy="14" r="2" fill="currentColor"></circle>
-									<circle cx="8" cy="2" r="2" fill="currentColor"></circle>
-									<circle cx="14" cy="2" r="2" fill="currentColor"></circle>
-								</svg>
-							</a>
-							<div class="dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-nine-dots shadow border" aria-labelledby="navbarDropdownNindeDots">
-								<div class="card bg-body-emphasis position-relative border-0">
-									<div class="card-body pt-3 px-3 pb-0 overflow-auto scrollbar" style="height: auto;">
-										<div class="row text-center align-items-center gx-0 gy-0">
-											<div class="col-4">
-												<a class="d-block bg-body-secondary-hover p-2 rounded-3 text-center text-decoration-none mb-3" href="#!">
-													<img src="../../assets/img/nav-icons/behance.webp" alt="" width="30" />
-													<p class="mb-0 text-body-emphasis text-truncate fs-10 mt-1 pt-1">Behance</p>
-												</a>
-											</div>
-											<div class="col-4">
-												<a class="d-block bg-body-secondary-hover p-2 rounded-3 text-center text-decoration-none mb-3" href="#!">
-													<img src="../../assets/img/nav-icons/spotify.webp" alt="" width="30" />
-													<p class="mb-0 text-body-emphasis text-truncate fs-10 mt-1 pt-1">Spotify</p>
-												</a>
-											</div>
-											<div class="col-4">
-												<a class="d-block bg-body-secondary-hover p-2 rounded-3 text-center text-decoration-none mb-3" href="#!">
-													<img src="../../assets/img/nav-icons/behance.webp" alt="" width="30" />
-													<p class="mb-0 text-body-emphasis text-truncate fs-10 mt-1 pt-1">Behance</p>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
+                    <button class="btn navbar-vertical-toggle border-0 fw-semibold w-100 white-space-nowrap d-flex align-items-center">
+                    <span class="uil uil-left-arrow-to-left fs-8"></span>
+                    <span class="uil uil-arrow-from-right fs-8"></span>
+                    <span class="navbar-vertical-footer-text ms-2">Réduire la vue</span>
+                    </button>
+                </div>
+            </nav>
+            <nav class="navbar navbar-top fixed-top navbar-expand" id="navbarDefault" style="display:none;">
+                <div class="collapse navbar-collapse justify-content-between">
+                    <div class="navbar-logo">
+                        <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation">
+                        <span class="navbar-toggle-icon">
+                        <span class="toggle-line"></span>
+                        </span>
+                        </button>
+                        <a href="../../index-2.html">
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <img src="../../assets/img/icons/logo.png" alt="phoenix" width="27" />
+                                    <p class="logo-text ms-2 d-none d-sm-block">phoenix</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="search-box navbar-top-search-box d-none d-lg-block" data-list='{"valueNames":["title"]}' style="width:50rem;">
+                        <div class="position-relative" data-bs-toggle="search" data-bs-display="static">
+                            <input class="form-control search-input fuzzy-search form-control-sm" type="search" placeholder="Rechercher un client" aria-label="Search" />
+                            <span class="fas fa-search search-box-icon"></span>
+                        </div>
+                        <div class="btn-close position-absolute end-0 top-50 translate-middle cursor-pointer shadow-none" data-bs-dismiss="search">
+                            <button class="btn btn-link p-0" aria-label="Close"></button>
+                        </div>
+                        <div class="dropdown-menu border start-0 py-0 overflow-hidden w-100">
+                            <div class="scrollbar-overlay" style="max-height: 30rem;">
+                                <div class="list">
+                                    <h6 class="dropdown-header text-body-highlight fs-10 py-2">24 <span class="text-body-quaternary">results</span>
+                                    </h6>
+                                    <hr class="my-0" />
+                                    <div class="py-2">
+                                        <a class="dropdown-item" href="../e-commerce/landing/product-details.html">
+                                            <div class="d-flex align-items-center">
+                                                <div class="fw-normal text-body-highlight title">
+                                                    <span class="fa-brands fa-firefox-browser text-body" data-fa-transform="shrink-2"></span> Search in the Web MacBook
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="dropdown-item" href="../e-commerce/landing/product-details.html">
+                                            <div class="d-flex align-items-center">
+                                                <div class="fw-normal text-body-highlight title">
+                                                    <span class="fa-brands fa-chrome text-body" data-fa-transform="shrink-2"></span> Store MacBook″
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <p class="fallback fw-bold fs-7 d-none">Aucun résultat trouvé</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav navbar-nav-icons flex-row">
+                        <li class="nav-item">
+                            <div class="theme-control-toggle fa-icon-wait px-2">
+                                <input class="form-check-input ms-0 theme-control-toggle-input" type="checkbox" data-theme-control="phoenixTheme" value="dark" id="themeControlToggle" />
+                                <label class="mb-0 theme-control-toggle-label theme-control-toggle-light" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme">
+                                <span class="icon" data-feather="moon"></span>
+                                </label>
+                                <label class="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme">
+                                <span class="icon" data-feather="sun"></span>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" id="navbarDropdownNindeDots" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" data-bs-auto-close="outside" aria-expanded="false">
+                                <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="2" cy="2" r="2" fill="currentColor"></circle>
+                                    <circle cx="2" cy="8" r="2" fill="currentColor"></circle>
+                                    <circle cx="2" cy="14" r="2" fill="currentColor"></circle>
+                                    <circle cx="8" cy="8" r="2" fill="currentColor"></circle>
+                                    <circle cx="8" cy="14" r="2" fill="currentColor"></circle>
+                                    <circle cx="14" cy="8" r="2" fill="currentColor"></circle>
+                                    <circle cx="14" cy="14" r="2" fill="currentColor"></circle>
+                                    <circle cx="8" cy="2" r="2" fill="currentColor"></circle>
+                                    <circle cx="14" cy="2" r="2" fill="currentColor"></circle>
+                                </svg>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-nine-dots shadow border" aria-labelledby="navbarDropdownNindeDots">
+                                <div class="card bg-body-emphasis position-relative border-0">
+                                    <div class="card-body pt-3 px-3 pb-0 overflow-auto scrollbar" style="height: auto;">
+                                        <div class="row text-center align-items-center gx-0 gy-0">
+                                            <div class="col-4">
+                                                <a class="d-block bg-body-secondary-hover p-2 rounded-3 text-center text-decoration-none mb-3" href="#!">
+                                                    <img src="../../assets/img/nav-icons/behance.webp" alt="" width="30" />
+                                                    <p class="mb-0 text-body-emphasis text-truncate fs-10 mt-1 pt-1">Behance</p>
+                                                </a>
+                                            </div>
+                                            <div class="col-4">
+                                                <a class="d-block bg-body-secondary-hover p-2 rounded-3 text-center text-decoration-none mb-3" href="#!">
+                                                    <img src="../../assets/img/nav-icons/spotify.webp" alt="" width="30" />
+                                                    <p class="mb-0 text-body-emphasis text-truncate fs-10 mt-1 pt-1">Spotify</p>
+                                                </a>
+                                            </div>
+                                            <div class="col-4">
+                                                <a class="d-block bg-body-secondary-hover p-2 rounded-3 text-center text-decoration-none mb-3" href="#!">
+                                                    <img src="../../assets/img/nav-icons/behance.webp" alt="" width="30" />
+                                                    <p class="mb-0 text-body-emphasis text-truncate fs-10 mt-1 pt-1">Behance</p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link lh-1 pe-0" id="navbarDropdownUser" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
                                 <div class="avatar avatar-l ">
@@ -313,7 +361,7 @@
 					<div class="row">
 						<div class="col-xl-12">
 							<div class="d-sm-flex justify-content-between">
-								<h2 class="mb-4">Enregistrer un nouveau client</h2>
+								<h3 class="mb-4">Enregistrer un nouveau client</h3>
 			                <div class="d-flex mb-3">
 			                  <button onclick="refreshPage()" class="btn btn-phoenix-primary me-2 px-6">Annuler</button>
 			                  <a href="{{ route('clients.index') }}" class="btn btn-primary">Voir tous les clients</a>

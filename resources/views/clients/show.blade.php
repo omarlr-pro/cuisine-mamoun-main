@@ -67,7 +67,41 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <p class="navbar-vertical-label">Client</p>
+                                <p class="navbar-vertical-label">Gestion des rendez-vous</p>
+                                <hr class="navbar-vertical-line" />
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">RDV net non statuer</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">RDV net jour J</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="check-square"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">RDV Brut à confirmer</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Gestion des clients</p>
                                 <hr class="navbar-vertical-line" />
                                 <div class="nav-item-wrapper">
                                     <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
@@ -85,6 +119,20 @@
                                             <span class="nav-link-icon"><span data-feather="list"></span></span>
                                             <span>
                                             <span class="nav-link-text">Voir tous les clients</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Gestion des relances</p>
+                                <hr class="navbar-vertical-line" />
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="phone"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Relance</span>
                                             </span>
                                         </div>
                                     </a>
@@ -300,43 +348,76 @@
                   navbarVertical.setAttribute('data-navbar-appearance', 'darker');
                 }
             </script>
-            <div>
-                <div class="modal fade" id="contact" tabindex="-1" aria-labelledby="contact" aria-hidden="true">
-                    <div class="modal-dialog modal-lg modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title text-body-highlight" id="contact">Mettre à jour les informations de contact</h5>
-                                <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs-9"></span></button>
-                            </div>
-                            <form>
-                                <div class="modal-body">
-                                    <div class="table-responsive scrollbar mx-n1 px-1">
-                                        <table class="table fs-9 mb-1">
-                                            <tbody class="list" id="members-table-body">
-                                                <tr>
-                                                    <td class="align-middle text-body-highlight text-left fw-bold py-2" style="width:30%; padding-left: 1rem; padding-right: 1rem">
-                                                        <div class="d-flex align-items-center mb-1">
-                                                            <span class="me-2 uil uil-phone"></span>
-                                                            <h5 class="mb-0">Téléphone mobile</h5>
-                                                        </div>
-                                                    </td>
-                                                    <td class="align-middle text-left fw-semibold text-body-secondary py-2" style="width:30%; padding-left: 1rem; padding-right: 1rem">
-                                                        <h5 class="mb-0">{{ $client->tel_mobile }}</h5>
-                                                    </td>
-                                                    <td class="align-middle text-body-highlight text-left fw-bold py-2" style="width:40%; padding-left: 1rem; padding-right: 1rem">
-                                                        <input class="form-control form-control-sm" id="sizingInputSm" type="text" placeholder=".form-control-sm" />
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-phoenix-primary me-2 px-6" type="button" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
-                                    <button type="button" class="btn btn-primary">Mettre à jour</button>
-                                </div>
-                            </form>
+            <div class="modal fade" id="relance" tabindex="-1" aria-labelledby="relance" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-body-highlight" id="relancecallcenter">Ajouter une relance rendez-vous call center</h5>
+                            <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs-9"></span></button>
                         </div>
+                        <form action="{{ route('relance.store') }}" method="POST"  >
+                            @csrf
+                            <div class="modal-body">
+                                <div class="table-responsive scrollbar">
+                                    <table class="table fs-9 mb-1">
+                                        <tbody class="list" id="members-table-body">
+                                            <tr>
+                                                <td class="align-middle text-left fw-semibold p-2 px-3">
+                                                Prise de rendez-vous
+                                                </td>
+                                                <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                    <div class="row">
+                                                        <div class="col-sm-6 col-md-6" style="padding-right: 0.4rem;">
+                                                            <input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;"/>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6" style="padding-left: 0.4rem;">
+                                                            <input class="form-control" type="time" id="appt" name="appt"/>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="align-middle text-left fw-semibold p-2 px-3">
+                                                    Reporter la relance
+                                                </td>
+                                                <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                    <div class="row">
+                                                        <div class="col-sm-6 col-md-6" style="padding-right: 0.4rem;">
+                                                            <input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;" name="reporter_la_relance"/>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6" style="padding-left: 0.4rem;">
+                                                            <input class="form-control" type="time" id="appt" name="appt"/>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="align-middle text-left fw-semibold p-2 px-3">
+                                                    Annuler la relance
+                                                </td>
+                                                <td class="align-middle text-left fw-semibold p-2 px-3">
+                                                    <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="annuler" name="annuler" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="align-middle text-left fw-semibold p-2 px-3">
+                                                    Remarque
+                                                </td>
+                                                <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                    <textarea class="form-control"  name="remarque" id="floatingTextarea2" placeholder="Laissez une remarque" style="height: 10px"></textarea>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="text" class="form-control" name="whoaddit" value="{{ Auth::user()->nom }} {{ Auth::user()->prenom }}" readonly style="display: none;" >
+                                <input type="text" class="form-control" name="client_id" value="{{ $client->id }}" readonly style="display: none;">
+                                <button class="btn btn-phoenix-primary me-2 px-6" type="button" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
+                                <button type="submit" class="btn btn-primary">Enregistrer le relance</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -353,9 +434,9 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="d-sm-flex justify-content-between">
-                                <h2 class="mb-4">Fiche de {{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</h2>
+                                <h3 class="mb-4">Fiche de {{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</h3>
                                 <div class="d-flex mb-3">
-                                    <button class="btn btn-phoenix-secondary me-2 px-6"><span class="fa-solid fa-edit me-sm-2"></span><span class="d-none d-sm-inline">Modifier</span></button>
+                                    <button class="btn btn-phoenix-secondary me-2 px-6" data-bs-toggle="modal" data-bs-target="#information"><span class="fa-solid fa-edit me-sm-2"></span><span class="d-none d-sm-inline">Modifier</span></button>
                                     <button class="btn btn-phoenix-danger me-2 px-6" onclick="event.preventDefault(); document.getElementById('delete-client-form-{{$client->id}}').submit();"><span class="fa-solid fa-trash me-2"></span><span>Supprimer</span></button>
                                     <form id="delete-client-form-{{$client->id}}" action="{{ route('clients.destroy', $client->id) }}" method="POST" style="display: none;">
                                         @csrf
@@ -372,113 +453,79 @@
                             <div class="sticky-leads-sidebar">
                                 <div class="card mb-3">
                                     <div class="card-body">
-                                        <div class="d-flex align-items-center mb-3">
-                                            <h3>{{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</h3>
-                                        </div>
-                                        <div class="d-flex align-items-center mb-3">
-                                            <h5 class="fw-semibold me-5"><span class="d-inline-block lh-sm me-2" data-feather="grid" style="height:16px;width:16px;"></span><span class="d-inline-block lh-sm">{{ $client->type }}</span></h5>
-                                            <h5 class="fw-semibold"><span class="d-inline-block lh-sm me-2" data-feather="gift" style="height:16px;width:16px;"></span><span class="d-inline-block lh-sm">{{ $client->dob }}</span></h5>
-                                        </div>
-                                        <div class="d-md-flex d-xl-block align-items-center justify-content-between mb-3">
-                                            <div class="d-flex align-items-center">
-                                            </div>
-                                            <div>
-                                                <span class="badge badge-phoenix badge-phoenix-success">Términé</span>
-                                                <span class="badge badge-phoenix badge-phoenix-primary">En cours</span>
-                                                <span class="badge badge-phoenix badge-phoenix-secondary">En pause</span>
-                                                <span class="badge badge-phoenix badge-phoenix-info">Info</span>
-                                                <span class="badge badge-phoenix badge-phoenix-warning">Alerte</span>
-                                                <span class="badge badge-phoenix badge-phoenix-danger">Danger</span>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <p class="mb-2">Progression</p>
-                                            <div><span class="d-inline-block lh-sm me-1" data-feather="clock" style="height:16px;width:16px;"></span><span class="d-inline-block lh-sm">40%</span></div>
-                                        </div>
-                                        <div class="progress" style="height:5px">
-                                            <div class="progress-bar bg-primary-lighter" data-bs-theme="light" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                        <div class="d-flex align-items-center mb-3">
-                                            <h3 class="w-100">Contact</h3>
-                                            <button class="btn btn-link px-3" data-bs-toggle="modal" data-bs-target="#contact">Modifier</button>
-                                        </div>
-                                        <div class="mb-3">
+                                        <h5 class="mb-3">Information du client</h5>
+                                        <div class="mb-2">
                                             <div class="d-flex align-items-center mb-1">
                                                 <span class="me-2 uil uil-phone"></span>
-                                                <h5 class="mb-0">Téléphone mobile</h5>
+                                                <p class="mb-0 fw-semibold fs-9">Type du client</p>
                                             </div>
-                                            <p class="mb-0 fw-semibold text-body-secondary">{{ $client->tel_mobile }}</p>
-                                        </div>
-                                        <div class="mb-3">
-                                            <div class="d-flex align-items-center mb-1">
-                                                <span class="me-2 uil uil-phone"></span>
-                                                <h5 class="mb-0">Téléphone fixe</h5>
-                                            </div>
-                                            <p class="mb-0 fw-semibold text-body-secondary">{{ $client->tel_fixe}}</p>
+                                            <p class="mb-0 fw-semibold fs-9">{{ $client->type }}</p>
                                         </div>
                                         <div>
                                             <div class="d-flex align-items-center mb-1">
-                                                <span class="me-2 uil uil-envelope-alt"></span>
-                                                <h5 class="mb-0">Email</h5>
+                                                <span class="me-2 uil uil-gift"></span>
+                                                <p class="mb-0 fw-semibold fs-9">Date de naissance</p>
                                             </div>
-                                            <p class="mb-0 fw-semibold text-body-secondary">{{ $client->email}}</p>
+                                            <p class="mb-0 fw-semibold fs-9">{{ $client->dob }}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card mb-3">
                                     <div class="card-body">
-                                        <div class="d-flex align-items-center mb-3">
-                                            <h3 class="w-100">Adresse</h3>
-                                        </div>
-                                        <div class="mb-3">
+                                        <h5 class="mb-3">Adresse</h5>
+                                        <div class="mb-2">
                                             <div class="d-flex align-items-center mb-1">
                                                 <span class="me-2 uil uil-estate"></span>
-                                                <h5 class="mb-0">Adresse</h5>
+                                                <p class="mb-0 fw-semibold fs-9">Adresse</p>
                                             </div>
-                                            <p class="mb-0 fw-semibold text-body-secondary">{{ $client->adresse}}</p>
+                                            <p class="mb-0 fw-semibold fs-9">{{ $client->adresse }}</p>
                                         </div>
-                                        <div class="mb-3">
+                                        <div class="mb-2">
                                             <div class="d-flex align-items-center mb-1">
                                                 <span class="me-2 uil uil-estate"></span>
-                                                <h5 class="mb-0">Adresse complémentaire</h5>
+                                                <p class="mb-0 fw-semibold fs-9">Adresse complémentaire</p>
                                             </div>
-                                            <p class="mb-0 fw-semibold text-body-secondary">{{ $client->adresse_complementaire }}</p>
+                                            <p class="mb-0 fw-semibold fs-9">{{ $client->adresse_complementaire }}</p>
                                         </div>
-                                        <div class="mb-3">
+                                        <div class="mb-2">
                                             <div class="d-flex align-items-center mb-1">
                                                 <span class="me-2 uil uil-map-pin-alt"></span>
-                                                <h5 class="mb-0 text-body-highlight">Code postal</h5>
+                                                <p class="mb-0 fw-semibold fs-9">Code Postal</p>
                                             </div>
-                                            <p class="mb-0 fw-semibold text-body-secondary">{{ $client->code_postal}}</p>
+                                            <p class="mb-0 fw-semibold fs-9">{{ $client->code_postal }}</p>
                                         </div>
                                         <div>
                                             <div class="d-flex align-items-center mb-1">
                                                 <span class="me-2 uil uil-map"></span>
-                                                <h5 class="mb-0 text-body-highlight">Ville</h5>
+                                                <p class="mb-0 fw-semibold fs-9">Ville</p>
                                             </div>
-                                            <p class="mb-0 fw-semibold text-body-secondary">{{ $client->ville }}</p>
+                                            <p class="mb-0 fw-semibold fs-9">{{ $client->ville }}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="d-flex align-items-center mb-3">
-                                            <h3>Information</h3>
+                                        <h5 class="mb-3">Contact</h5>
+                                        <div class="mb-2">
+                                            <div class="d-flex align-items-center mb-1">
+                                                <span class="me-2 uil uil-phone"></span>
+                                                <p class="mb-0 fw-semibold fs-9">Téléphone mobile</p>
+                                            </div>
+                                            <p class="mb-0 fw-semibold fs-9">{{ $client->tel_mobile }}</p>
+                                        </div>
+                                        <div class="mb-2">
+                                            <div class="d-flex align-items-center mb-1">
+                                                <span class="me-2 uil uil-phone"></span>
+                                                <p class="mb-0 fw-semibold fs-9">Téléphone fixe</p>
+                                            </div>
+                                            <p class="mb-0 fw-semibold fs-9">{{ $client->tel_fixe }}</p>
                                         </div>
                                         <div>
-                                            <div class="col-12">
-                                                <div class="d-flex flex-wrap justify-content-between mb-2">
-                                                    <h5 class="mb-0 text-body-highlight me-2">Élément</h5>
-                                                    <a class="fw-bold fs-9" href="#!">Ajouter un élément</a>
-                                                </div>
-                                                <select class="form-select" aria-label="category">
-                                                    <option>Élément</option>
-                                                </select>
+                                            <div class="d-flex align-items-center mb-1">
+                                                <span class="me-2 uil uil-envelope-alt"></span>
+                                                <p class="mb-0 fw-semibold fs-9">Email</p>
                                             </div>
+                                            <p class="mb-0 fw-semibold fs-9">{{ $client->email }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -492,184 +539,117 @@
                                             <div class="d-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center">
                                                 <div class="d-flex bg-success-subtle rounded flex-center me-3 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px"><span class="text-success-dark" data-feather="check" style="width:24px; height:24px"></span></div>
                                                 <div>
-                                                    <p class="fw-semibold text-body-secondary mb-1">Étape achevée</p>
-                                                    <h5 class="fw-bolder text-nowrap">
-                                                        {{ $client->contact }}
-                                                        {{ $client->qualification }}
-                                                        {{ $client->mesure }}
-                                                        {{ $client->decouverte }}
-                                                        {{ $client->solution_plan }}
-                                                        {{ $client->argumentaire }} 
-                                                        {{ $client->annonce_prix }}
-                                                        {{ $client->passage_main }}
-                                                        {{ $client->decision }}
-                                                        {{ $client->vente }}
-                                                    </h5>
+                                                    <p class="fs-9 fw-semibold mb-1">Étape à achevée</p>
+                                                    <h6>{{ $client->contact }}</h6>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-auto">
                                             <div class="d-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center">
-                                                <div class="d-flex bg-success-subtle rounded flex-center me-3 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px"><span class="text-success-dark" data-feather="check" style="width:24px; height:24px"></span></div>
+                                                <div class="d-flex bg-warning-subtle rounded flex-center me-3 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px"><span class="text-warning-dark" data-feather="dollar-sign" style="width:24px; height:24px"></span></div>
                                                 <div>
-                                                    <p class="fw-semibold text-body-secondary mb-1">Étape achevée</p>
-                                                    <h5 class="fw-bolder text-nowrap">
-                                                        {{ $client->contact }}
-                                                        {{ $client->qualification }}
-                                                        {{ $client->mesure }}
-                                                        {{ $client->decouverte }}
-                                                        {{ $client->solution_plan }}
-                                                        {{ $client->argumentaire }} 
-                                                        {{ $client->annonce_prix }}
-                                                        {{ $client->passage_main }}
-                                                        {{ $client->decision }}
-                                                        {{ $client->vente }}
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-auto">
-                                            <div class="d-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center">
-                                                <div class="d-flex bg-success-subtle rounded flex-center me-3 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px"><span class="text-success-dark" data-feather="check" style="width:24px; height:24px"></span></div>
-                                                <div>
-                                                    <p class="fw-semibold text-body-secondary mb-1">Étape achevée</p>
-                                                    <h5 class="fw-bolder text-nowrap">
-                                                        {{ $client->contact }}
-                                                        {{ $client->qualification }}
-                                                        {{ $client->mesure }}
-                                                        {{ $client->decouverte }}
-                                                        {{ $client->solution_plan }}
-                                                        {{ $client->argumentaire }} 
-                                                        {{ $client->annonce_prix }}
-                                                        {{ $client->passage_main }}
-                                                        {{ $client->decision }}
-                                                        {{ $client->vente }}
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-auto">
-                                            <div class="d-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center">
-                                                <div class="d-flex bg-success-subtle rounded flex-center me-3 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px"><span class="text-success-dark" data-feather="check" style="width:24px; height:24px"></span></div>
-                                                <div>
-                                                    <p class="fw-semibold text-body-secondary mb-1">Étape achevée</p>
-                                                    <h5 class="fw-bolder text-nowrap">
-                                                        {{ $client->contact }}
-                                                        {{ $client->qualification }}
-                                                        {{ $client->mesure }}
-                                                        {{ $client->decouverte }}
-                                                        {{ $client->solution_plan }}
-                                                        {{ $client->argumentaire }} 
-                                                        {{ $client->annonce_prix }}
-                                                        {{ $client->passage_main }}
-                                                        {{ $client->decision }}
-                                                        {{ $client->vente }}
-                                                    </h5>
+                                                    <p class="fs-9 fw-semibold mb-1">Étape à traiter</p>
+                                                    <h6>
+                                                        @if($client->contact === 'Contact')
+                                                            {{ "Qualification" }}
+                                                        @elseif($client->qualification === 'Qualification')
+                                                            {{ "Mesure" }}
+                                                        @elseif($client->mesure === 'Mesure')
+                                                            {{ "Découverte" }}
+                                                        @elseif($client->decouverte === 'Découverte')
+                                                            {{ "Solution Plan" }}
+                                                        @elseif($client->solution_plan === 'Solution Plan')
+                                                            {{ "Argumentaire" }}
+                                                        @elseif($client->argumentaire === 'Argumentaire')
+                                                            {{ "Annonce de prix" }}
+                                                        @elseif($client->annonce_prix === 'Annonce de prix')
+                                                            {{ "Passage de main" }}
+                                                        @elseif($client->passage_main === 'Passage de main')
+                                                            {{ "Décision" }}
+                                                        @elseif($client->decision === 'Décision')
+                                                            {{ "Vente" }}
+                                                        @elseif($client->vente === 'vente')
+                                                        {{"sui"}}
+                                                           
+                                                        @endif
+                                                    </h6>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <ul class="nav nav-underline justify-content-center fs-9 deal-details scrollbar flex-nowrap w-100 mb-3" id="myTab" role="tablist" style="overflow-y: hidden;">
-                                <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link active" id="etapes-tab" data-bs-toggle="tab" href="#tab-etapes" role="tab" aria-controls="tab-activity" aria-selected="false" tabindex="-1"> <span class="fa-solid fa-chart-line me-2 tab-icon-color"></span>Étape</a></li>
-                                <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link" id="notes-tab" data-bs-toggle="tab" href="#tab-notes" role="tab" aria-controls="tab-notes" aria-selected="false" tabindex="-1"> <span class="fa-solid fa-clipboard me-2 tab-icon-color"></span>Notes</a></li>
-                                <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link" id="activity-tab" data-bs-toggle="tab" href="#tab-activity" role="tab" aria-controls="tab-activity" aria-selected="false" tabindex="-1"> <span class="fa-solid fa-clipboard me-2 tab-icon-color"></span>activity</a></li>
-                                <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link" id="meeting-tab" data-bs-toggle="tab" href="#tab-meeting" role="tab" aria-controls="tab-meeting" aria-selected="true"> <span class="fa-solid fa-video me-2 tab-icon-color"></span>Meeting</a></li>
-                                <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link" id="task-tab" data-bs-toggle="tab" href="#tab-task" role="tab" aria-controls="tab-task" aria-selected="true"> <span class="fa-solid fa-square-check me-2 tab-icon-color"></span>Task</a></li>
-                                <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link" id="call-tab" data-bs-toggle="tab" href="#tab-call" role="tab" aria-controls="tab-call" aria-selected="true"> <span class="fa-solid fa-phone me-2 tab-icon-color"></span>Call</a></li>
-                                <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link" id="emails-tab" data-bs-toggle="tab" href="#tab-emails" role="tab" aria-controls="tab-emails" aria-selected="true"> <span class="fa-solid fa-envelope me-2 tab-icon-color"></span>Emails </a></li>
-                                <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link" id="attachments-tab" data-bs-toggle="tab" href="#tab-attachments" role="tab" aria-controls="tab-attachments" aria-selected="true"> <span class="fa-solid fa-paperclip me-2 tab-icon-color"></span>Attachments</a></li>
-                            </ul>
+                              <ul class="nav nav-underline justify-content-center fs-9 deal-details scrollbar flex-nowrap mb-3" id="myTab" role="tablist" style="overflow-y: hidden;">
+                                <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link active" id="etapes-tab" data-bs-toggle="tab" href="#tab-etapes" role="tab" aria-controls="tab-activity" aria-selected="false" tabindex="-1"> <span class="fa-solid fa-chart-line me-2 tab-icon-color"></span>Activity</a></li>
+                              </ul>
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade active show" id="tab-etapes" role="tabpanel" aria-labelledby="etapes-tab">
                                     <div class="card card-body mb-3">
-                                        <div class="d-flex justify-content-between align-items-center mb-3" id="scrollspyValider">
-                                            <h3 class="mb-0">Étape à valider</h3>
-                                            <button type="button" class="btn btn-phoenix-primary" data-bs-toggle="modal" data-bs-target="#relancecallcenter" data-bs-whatever="@getbootstrap"><span class="fa-solid fa-plus me-2"></span>Ajouter une relance call center</button>
-                                            <div class="modal fade" id="relancecallcenter" tabindex="-1" aria-labelledby="relancecallcenter" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title text-body-highlight" id="relancecallcenter">Ajouter une relance rendez-vous call center</h5>
-                                                            <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs-9"></span></button>
-                                                        </div>
-                                                        <form action="{{ route('relance.store') }}" method="POST"  >
-                                                            @csrf
-                                                            <div class="modal-body">
-                                                                <div class="table-responsive scrollbar mx-n1 px-1">
-                                                                    <table class="table fs-9 mb-1">
-                                                                        <tbody class="list" id="members-table-body">
-                                                                            <tr>
-                                                                                <td class="align-middle text-body-highlight text-left fw-bold py-2" style="width:25%; padding-left: 1rem; padding-right: 1rem">Prise de rendez-vous</td>
-                                                                                <td class="align-middle text-left fw-bold py-2" style="width:75%; padding-left: 1rem; padding-right: 1rem">
-                                                                                    <div class="row">
-                                                                                        <div class="col-sm-6 col-md-6" style="padding-right: 0.4rem;">
-                                                                                            <input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;"/>
-                                                                                        </div>
-                                                                                        <div class="col-sm-6 col-md-6" style="padding-left: 0.4rem;">
-                                                                                            <input class="form-control" type="time" id="appt" name="appt" min="09:00" max="18:00"/>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td class="align-middle text-body-highlight text-left fw-bold py-2" style="width:25%; padding-left: 1rem; padding-right: 1rem">Reporter la relance</td>
-                                                                                <td class="align-middle text-left fw-bold py-2" style="width:75%; padding-left: 1rem; padding-right: 1rem">
-                                                                                    <div class="row">
-                                                                                        <div class="col-sm-6 col-md-6" style="padding-right: 0.4rem;">
-                                                                                            <input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;" name="reporter_la_relance"/>
-                                                                                        </div>
-                                                                                        <div class="col-sm-6 col-md-6" style="padding-left: 0.4rem;">
-                                                                                            <input class="form-control" type="time" id="appt" name="appt" min="09:00" max="18:00"/>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td class="align-middle text-body-highlight text-left fw-bold py-2" style="width:25%; padding-left: 1rem; padding-right: 1rem">Annuler la relance</td>
-                                                                                <td class="align-middle text-left fw-semibold text-opacity-75 text-body-tertiary py-2" style="width:75%; padding-left: 1rem; padding-right: 1rem">  <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="annuler" name="annuler" /></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td class="align-middle text-body-highlight text-left fw-bold py-2" style="width:25%; padding-left: 1rem; padding-right: 1rem">Remarque</td>
-                                                                                <td class="align-middle text-left fw-semibold text-opacity-75 text-body-tertiary py-2" style="width:75%; padding-left: 1rem; padding-right: 1rem"><textarea class="form-control"  name="remarque" id="floatingTextarea2" placeholder="Laissez une remarque" style="height: 10px"></textarea></td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <input type="text" class="form-control" name="whoaddit" value="{{ Auth::user()->nom }} {{ Auth::user()->prenom }}" readonly style="display: none;" >
-                                                                <input type="text" class="form-control" name="client_id" value="{{ $client->id }}" readonly style="display: none;">
-                                                                <button class="btn btn-phoenix-primary me-2 px-6" type="button" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
-                                                                <button type="submit" class="btn btn-primary">Enregistrer le relance</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                            <h5 class="mb-0">Étape à valider</h5>
+                                            <button type="button" class="btn btn-phoenix-primary" data-bs-toggle="modal" data-bs-target="#relance"><span class="fa-solid fa-plus me-2"></span>Ajouter une relance call center</button>
                                         </div>
                                         <div>
-                                            <div class="table-responsive scrollbar mx-n1 px-1">
-                                                <table class="table fs-9 border-top border-bottom">
+                                            <div class="table-responsive scrollbar">
+                                                <table class="table fs-9">
                                                     <thead>
                                                         <tr>
-                                                            <th class="align-middle text-center border-start border-end" style="width:15%;">Crée par</th>
-                                                            <th class="align-middle text-center border-end" style="width:15%;">Date de relance</th>
-                                                            <th class="align-middle text-center border-end" style="width:70%;">Relance pour l'étape</th>
+                                                            <th class="align-middle text-center py-3" style="width:20%;">Crée par</th>
+                                                            <th class="align-middle text-center py-3" style="width:20%;">Date de relance</th>
+                                                            <th class="align-middle text-center py-3" style="width:50%;">Étape à traiter</th>
+                                                            <th class="sort align-middle text-center py-3"style="width:10%;">Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td class="align-middle text-center border-start border-end fw-bold py-2" style="padding-left: 1rem; padding-right: 1rem">
-                                                                Mamoun Ezzidi
+                                                            <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                                {{$client->whoaddit}}
                                                                 <div>
-                                                                    <p class="mb-0 text-center fw-semibold text-opacity-75 text-body-tertiary fs-9">12/05/2024 12:30</p>
+                                                                    <p class="m-0 fw-semibold">{{$client->created_at}}</p>
                                                                 </div>
                                                             </td>
-                                                            <td class="align-middle text-center border-end fw-semibold text-opacity-75 text-body-tertiary py-2" style="padding-left: 1rem; padding-right: 1rem">12/05/2024 12:30
+                                                            <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                                12/05/2024 12:30
                                                             </td>
-                                                            <td class="align-middle text-center border-end fw-semibold py-2">Découverte</td>
+                                                            <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                                Relance pour l'étape
+                                                                <div>
+                                                                    <p class="m-0 fw-semibold">
+                                                                    @if($client->contact === 'Contact')
+                                                                        {{ "Qualification" }}
+                                                                    @elseif($client->qualification === 'Qualification')
+                                                                        {{ "Mesure" }}
+                                                                    @elseif($client->mesure === 'Mesure')
+                                                                        {{ "Découverte" }}
+                                                                    @elseif($client->decouverte === 'Découverte')
+                                                                        {{ "Solution Plan" }}
+                                                                    @elseif($client->solution_plan === 'Solution Plan')
+                                                                        {{ "Argumentaire" }}
+                                                                    @elseif($client->argumentaire === 'Argumentaire')
+                                                                        {{ "Annonce de prix" }}
+                                                                    @elseif($client->annonce_prix === 'Annonce de prix')
+                                                                        {{ "Passage de main" }}
+                                                                    @elseif($client->passage_main === 'Passage de main')
+                                                                        {{ "Décision" }}
+                                                                    @elseif($client->decision === 'Décision')
+                                                                        {{ "Vente" }}
+                                                                    @elseif($client->vente === 'vente')
+                                                                    {{"sui"}}
+                                                                       
+                                                                    @endif
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                                <div class="btn-reveal-trigger position-static">
+                                                                    <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
+                                                                    <div class="dropdown-menu dropdown-menu-end py-2">
+                                                                        <a class="dropdown-item fw-semibold" href="#!">Modifier</a>
+                                                                        <div class="dropdown-divider"></div>
+                                                                        <a class="dropdown-item fw-semibold text-danger">Supprimer</a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -677,27 +657,43 @@
                                         </div>
                                         <div id="ValiderTable" data-list='{"page":5,"pagination":true}'>
                                             <div>
-                                                <div class="table-responsive scrollbar mx-n1 px-1">
-                                                    <table class="table fs-9 mb-1 border-top border-bottom">
+                                                <div class="table-responsive scrollbar">
+                                                    <table class="table fs-9">
                                                         <thead>
                                                             <tr>
-                                                                <th class="align-middle text-center border-start border-end" style="width:15%;">Call center</th>
-                                                                <th class="align-middle text-center border-end" style="width:15%;">Date de relance</th>
-                                                                <th class="align-middle text-center border-end" style="width:70%;">Remarque</th>
+                                                                <th class="align-middle text-center py-3" style="width:20%;">Call center</th>
+                                                                <th class="align-middle text-center py-3" style="width:20%;">Date de relance</th>
+                                                                <th class="align-middle text-center py-3" style="width:50%;">Remarque</th>
+                                                                <th class="sort align-middle text-center py-3"style="width:10%;">Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody class="list" id="members-table-body">
                                                             @foreach($relances as $relance)
                                                             <tr>
-                                                                <td class="align-middle text-center border-start border-end fw-bold py-2" style="padding-left: 1rem; padding-right: 1rem">
+                                                                <td class="align-middle text-center fw-semibold p-2 px-3">
                                                                     {{ $relance->whoaddit }}
                                                                     <div>
-                                                                        <p class="mb-0 text-center fw-semibold text-opacity-75 text-body-tertiary fs-9">{{ $relance->created_at->format('m/d/Y') }} {{ $relance->created_at->format('H:i') }}</p>
+                                                                        <p class="m-0 align-middle text-center fw-semibold">{{ $relance->created_at->format('d/m/Y') }} {{ $relance->created_at->format('H:i') }}</p>
                                                                     </div>
                                                                 </td>
-                                                                <td class="align-middle text-center border-end fw-semibold text-opacity-75 text-body-tertiary py-2" style="padding-left: 1rem; padding-right: 1rem">{{ $relance->reporter_la_relance ->format('H:i') }}
+                                                                <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                                    12/05/2024 12:30
                                                                 </td>
-                                                                <td class="align-middle text-left border-end fw-semibold py-2" style="padding-left: 1rem; padding-right: 1rem;">{{ $relance->remarque }}
+                                                                <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                                    Report de la relance
+                                                                    <div>
+                                                                        <p class="m-0 fw-semibold">{{ $relance->remarque }}</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                                    <div class="btn-reveal-trigger position-static">
+                                                                        <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
+                                                                        <div class="dropdown-menu dropdown-menu-end py-2">
+                                                                            <a class="dropdown-item fw-semibold" href="#!">Modifier</a>
+                                                                            <div class="dropdown-divider"></div>
+                                                                            <a class="dropdown-item fw-semibold text-danger">Supprimer</a>
+                                                                        </div>
+                                                                    </div>
                                                                 </td>
                                                             </tr>
                                                             @endforeach
@@ -719,29 +715,30 @@
                                         </div>
                                     </div>
                                     <div class="card card-body">
-                                        <div class="d-flex justify-content-between align-items-center mb-3" id="scrollspyAchevee">
-                                            <h3 class="mb-0">Étape achevée</h3>
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                            <h5 class="mb-0">Étape à achevée</h5>
                                         </div>
                                         <div id="AcheveeTable" data-list='{"page":5,"pagination":true}'>
                                             <div>
-                                                <div class="table-responsive scrollbar mx-n1 px-1">
-                                                    <table class="table fs-9 mb-1 border-top border-bottom">
+                                                <div class="table-responsive scrollbar">
+                                                    <table class="table fs-9">
                                                         <thead>
                                                             <tr>
-                                                                <th class="align-middle text-center border-start border-end" style="width:15%;">Validée par</th>
-                                                                <th class="align-middle text-center border-start border-end" style="width:15%;">Étape</th>
-                                                                <th class="align-middle text-center border-end" style="width:70%;">Remarque</th>
+                                                                <th class="align-middle text-center py-3" style="width:20%;">Validée par</th>
+                                                                <th class="align-middle text-center py-3" style="width:20%;">Étape</th>
+                                                                <th class="align-middle text-center py-3" style="width:50%;">Remarque</th>
+                                                                <th class="sort align-middle text-center py-3"style="width:10%;">Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody class="list" id="members-table-body">
                                                             <tr>
-                                                                <td class="align-middle text-center border-start border-end fw-bold py-2" style="padding-left: 1rem; padding-right: 1rem">
-                                                                    {{ $client->whoaddit }}
+                                                                <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                                    {{ $relance->whoaddit }}
                                                                     <div>
-                                                                        <p class="mb-0 text-left fw-semibold text-opacity-75 text-body-tertiary fs-9">{{ $client->created_at->format('d/m/Y') }} {{ $client->created_at->format('H:i') }}</p>
+                                                                        <p class="m-0 fw-semibold">{{ $relance->created_at->format('d/m/Y') }} {{ $relance->created_at->format('H:i') }}</p>
                                                                     </div>
                                                                 </td>
-                                                                <td class="align-middle text-center border-start border-end fw-bold py-2" style="padding-left: 1rem; padding-right: 1rem">
+                                                                <td class="align-middle text-center fw-semibold p-2 px-3">
                                                                     {{ $client->contact }}
                                                                     {{ $client->qualification }}
                                                                     {{ $client->measure }}
@@ -752,9 +749,18 @@
                                                                     {{ $client->handover }}
                                                                     {{ $client->decision }}
                                                                     {{ $client->vente }}
-                                                                <td class="align-middle text-left border-start border-end fw-bold py-2" style="padding-left: 1rem; padding-right: 1rem">
-                                                                    <div>
-                                                                        <p class="mb-0 text-left fw-semibold fw-semibold fs-9">{{ $client->description }}</p>
+                                                                </td>
+                                                                <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                                    {{ $client->description }}
+                                                                </td>
+                                                                <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                                    <div class="btn-reveal-trigger position-static">
+                                                                        <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
+                                                                        <div class="dropdown-menu dropdown-menu-end py-2">
+                                                                            <a class="dropdown-item fw-semibold" href="#!">Modifier</a>
+                                                                            <div class="dropdown-divider"></div>
+                                                                            <a class="dropdown-item fw-semibold text-danger">Supprimer</a>
+                                                                        </div>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -772,1022 +778,6 @@
                                                         <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="tab-activity" role="tabpanel" aria-labelledby="activity-tab">
-                                    <h2 class="mb-4">Activity</h2>
-                                    <div class="row align-items-center g-3 justify-content-between justify-content-start">
-                                        <div class="col-12 col-sm-auto">
-                                            <div class="search-box mb-2 mb-sm-0">
-                                                <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input search" type="search" placeholder="Search Activity" aria-label="Search" />
-                                                    <span class="fas fa-search search-box-icon"></span>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto"><button class="btn btn-phoenix-primary px-6">Add Activity</button></div>
-                                    </div>
-                                    <div class="border-bottom border-translucent py-4">
-                                        <div class="d-flex">
-                                            <div class="d-flex bg-primary-subtle rounded-circle flex-center me-3 bg-primary-subtle" style="width:25px; height:25px"><span class="fa-solid text-primary-dark fs-9 fa-clipboard text-primary-dark"></span></div>
-                                            <div class="flex-1">
-                                                <div class="d-flex justify-content-between flex-column flex-xl-row mb-2 mb-sm-0">
-                                                    <div class="flex-1 me-2">
-                                                        <h5 class="text-body-highlight lh-sm">Assigned as a director for Project The Chewing Gum Attack</h5>
-                                                        <p class="fs-9 mb-0">by<a class="ms-1" href="#!">Jackson Pollock</a></p>
-                                                    </div>
-                                                    <div class="fs-9"><span class="fa-regular fa-calendar-days text-primary me-2"></span><span class="fw-semibold">22 September, 2022, 4:33 PM</span></div>
-                                                </div>
-                                                <p class="fs-9 mb-0">Utilizing best practices to better leverage our assets, we must engage in black sky leadership thinking, not the usual band-aid solution. </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="border-bottom border-translucent py-4">
-                                        <div class="d-flex">
-                                            <div class="d-flex bg-primary-subtle rounded-circle flex-center me-3 bg-info-subtle" style="width:25px; height:25px"><span class="fa-solid text-primary-dark fs-9 fa-video text-info-600"></span></div>
-                                            <div class="flex-1">
-                                                <div class="d-flex justify-content-between flex-column flex-xl-row mb-2 mb-sm-0">
-                                                    <div class="flex-1 me-2">
-                                                        <h5 class="text-body-highlight lh-sm">Onboarding Meeting</h5>
-                                                        <p class="fs-9 mb-0">by<a class="ms-1" href="#!">Jackson Pollock</a></p>
-                                                    </div>
-                                                    <div class="fs-9"><span class="fa-regular fa-calendar-days text-primary me-2"></span><span class="fw-semibold">20 September, 2022, 5:31pm</span></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="border-bottom border-translucent py-4">
-                                        <div class="d-flex">
-                                            <div class="d-flex bg-primary-subtle rounded-circle flex-center me-3 bg-success-subtle" style="width:25px; height:25px"><span class="fa-solid text-primary-dark fs-9 fa-square-check text-success-dark dark__text-success-light"></span></div>
-                                            <div class="flex-1">
-                                                <div class="d-flex justify-content-between flex-column flex-xl-row mb-2 mb-sm-0">
-                                                    <div class="flex-1 me-2">
-                                                        <h5 class="text-body-highlight lh-sm">Designing the dungeon</h5>
-                                                        <p class="fs-9 mb-0">by<a class="ms-1" href="#!">Jackson Pollock</a></p>
-                                                    </div>
-                                                    <div class="fs-9"><span class="fa-regular fa-calendar-days text-primary me-2"></span><span class="fw-semibold">19 September, 2022, 4:39pm </span></div>
-                                                </div>
-                                                <p class="fs-9 mb-0">To get off the runway and paradigm shift, we should take brass tacks with above-the-board actionable analytics, ramp up with viral partnering, not the usual goat rodeo putting socks on an octopus. </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="border-bottom border-translucent py-4">
-                                        <div class="d-flex">
-                                            <div class="d-flex bg-primary-subtle rounded-circle flex-center me-3 bg-warning-subtle" style="width:25px; height:25px"><span class="fa-solid text-primary-dark fs-9 fa-phone-alt text-warning-dark"></span></div>
-                                            <div class="flex-1">
-                                                <div class="d-flex justify-content-between flex-column flex-xl-row mb-2 mb-sm-0">
-                                                    <div class="flex-1 me-2">
-                                                        <h5 class="text-body-highlight lh-sm">Purchasing-Related Vendors</h5>
-                                                        <p class="fs-9 mb-0">by<a class="ms-1" href="#!">Ansolo Lazinatov</a></p>
-                                                    </div>
-                                                    <div class="fs-9"><span class="fa-regular fa-calendar-days text-primary me-2"></span><span class="fw-semibold">22 September, 2022, 4:30pm</span></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="border-bottom border-translucent py-4">
-                                        <div class="d-flex">
-                                            <div class="d-flex bg-primary-subtle rounded-circle flex-center me-3 bg-danger-subtle" style="width:25px; height:25px"><span class="fa-solid text-primary-dark fs-9 fa-envelope text-danger-dark dark__text-danger-light"></span></div>
-                                            <div class="flex-1">
-                                                <div class="d-flex justify-content-between flex-column flex-xl-row mb-2 mb-sm-0">
-                                                    <div class="flex-1 me-2">
-                                                        <h5 class="text-body-highlight lh-sm">Quary about purchased soccer socks</h5>
-                                                        <p class="fs-9 mb-0">by<a class="ms-1" href="#!">Ansolo Lazinatov</a></p>
-                                                    </div>
-                                                    <div class="fs-9"><span class="fa-regular fa-calendar-days text-primary me-2"></span><span class="fw-semibold">15 September, 2022, 3:33pm</span></div>
-                                                </div>
-                                                <p class="fs-9 mb-0">I’ve come across your posts and found some favorable deals on your page. I’ve added a load of products to the cart and I don’t know the payment options you avail. Also, can you enlighten me about any discount.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="pt-4">
-                                        <div class="d-flex">
-                                            <div class="d-flex bg-primary-subtle rounded-circle flex-center me-3 bg-primary-subtle" style="width:25px; height:25px"><span class="fa-solid text-primary-dark fs-9 fa-paperclip text-primary-dark"></span></div>
-                                            <div class="flex-1">
-                                                <div class="d-flex justify-content-between flex-column flex-xl-row mb-2 mb-sm-0">
-                                                    <div class="flex-1 me-2">
-                                                        <h5 class="text-body-highlight lh-sm">Added image</h5>
-                                                        <p class="fs-9 mb-0">by<a class="ms-1" href="#!">Ansolo Lazinatov</a></p>
-                                                    </div>
-                                                    <div class="fs-9"><span class="fa-regular fa-calendar-days text-primary me-2"></span><span class="fw-semibold">11 September, 2022, 12:15am </span></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="tab-notes" role="tabpanel" aria-labelledby="notes-tab">
-                                    <h2 class="mb-4">Notes</h2>
-                                    <textarea class="form-control mb-3" id="notes" rows="4"> </textarea>
-                                    <div class="row gy-4">
-                                        <div class="col-12 col-xl-auto flex-1">
-                                            <div class="border-2 border-dashed mb-4 pb-4 border-bottom border-translucent">
-                                                <p class="mb-1 text-body-highlight">Gave us a nice feedback</p>
-                                                <div class="d-flex">
-                                                    <div class="fs-9 text-body-tertiary text-opacity-85"><span class="fa-solid fa-clock me-2"></span><span class="fw-semibold me-1">clock 12 Nov, 2018</span></div>
-                                                    <p class="fs-9 mb-0 text-body-tertiary text-opacity-85">by<a class="ms-1 fw-semibold" href="#!">Ansolo Lazinatov</a></p>
-                                                </div>
-                                            </div>
-                                            <div class="border-2 border-dashed mb-4 pb-4 border-bottom border-translucent">
-                                                <p class="mb-1 text-body-highlight">I also want to let you know that I am available to you as your real estate insider from now on. If you have any questions about the market, even if they sound silly, call or text anytime. </p>
-                                                <div class="d-flex">
-                                                    <div class="fs-9 text-body-tertiary text-opacity-85"><span class="fa-solid fa-clock me-2"></span><span class="fw-semibold me-1"> 30 Jan, 2019</span></div>
-                                                    <p class="fs-9 mb-0 text-body-tertiary text-opacity-85">by<a class="ms-1 fw-semibold" href="#!">Ansolo Lazinatov</a></p>
-                                                </div>
-                                            </div>
-                                            <div class="border-2 border-dashed mb-4 pb-4 border-bottom border-translucent">
-                                                <p class="mb-1 text-body-highlight">To get off the runway and paradigm shift, we should take brass tacks with above-the-board actionable analytics, ramp up with viral partnering, not the usual goat rodeo putting socks on an octopus. </p>
-                                                <div class="d-flex">
-                                                    <div class="fs-9 text-body-tertiary text-opacity-85"><span class="fa-solid fa-clock me-2"></span><span class="fw-semibold me-1">19 September, 2022, 4:39pm </span></div>
-                                                    <p class="fs-9 mb-0 text-body-tertiary text-opacity-85">by<a class="ms-1 fw-semibold" href="#!">Jackson Pollock</a></p>
-                                                </div>
-                                            </div>
-                                            <div class="border-2 border-dashed">
-                                                <p class="mb-1 text-body-highlight">Utilizing best practices to better leverage our assets, we must engage in black sky leadership thinking, not the usual band-aid solution. </p>
-                                                <div class="d-flex">
-                                                    <div class="fs-9 text-body-tertiary text-opacity-85"><span class="fa-solid fa-clock me-2"></span><span class="fw-semibold me-1">22 September, 2022, 4:30pm</span></div>
-                                                    <p class="fs-9 mb-0 text-body-tertiary text-opacity-85">by<a class="ms-1 fw-semibold" href="#!">Ansolo Lazinatov</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="tab-meeting" role="tabpanel" aria-labelledby="meeting-tab">
-                                    <h2 class="mb-4">Meeting</h2>
-                                    <div class="row align-items-center g-2 flex-wrap justify-content-start mb-3">
-                                        <div class="col-12 col-sm-auto">
-                                            <div class="search-box mb-2 mb-sm-0">
-                                                <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input search" type="search" placeholder="Search meeting" aria-label="Search" />
-                                                    <span class="fas fa-search search-box-icon"></span>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto d-flex flex-md-grow-1">
-                                            <p class="mb-0 fs-9 text-body-tertiary fw-bold"><span class="fas fa-filter me-1 fw-extra-bold fs-10"></span>23 tasks</p>
-                                            <button class="btn btn-link p-0 ms-3 fs-9 text-primary fw-bold text-decoration-none"><span class="fas fa-sort me-1 fw-extra-bold fs-10"></span>Sorting</button>
-                                        </div>
-                                        <div class="col-auto"><button class="btn btn-primary"><span class="fa-solid fa-plus me-2"></span>Add Meeting </button></div>
-                                    </div>
-                                    <div class="row g-3">
-                                        <div class="col-xxl-6">
-                                            <div class="card h-100">
-                                                <div class="card-body">
-                                                    <div class="d-flex justify-content-between align-items-start flex-wrap mb-4 gap-2">
-                                                        <div class="mb-3 mb-sm-0">
-                                                            <h4 class="line-clamp-1 mb-2 mb-sm-1">Onboarding Meeting</h4>
-                                                            <div><span class="uil uil-calendar-alt text-primary me-2"></span><span class="fw-semibold text-body-secondary fs-9">5:30 pm</span><span class="text-body-tertiary text-opacity-85"> to</span><span class="fw-semibold text-body-secondary fs-9">7:00pm</span><span class="text-body-secondary fs-9"> - 1h 30min</span></div>
-                                                        </div>
-                                                        <div class="avatar-group avatar-group-dense">
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <img class="rounded-circle " src="../../assets/img/team/9.webp" alt="" />
-                                                            </div>
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <img class="rounded-circle " src="../../assets/img/team/25.webp" alt="" />
-                                                            </div>
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <img class="rounded-circle " src="../../assets/img/team/32.webp" alt="" />
-                                                            </div>
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <img class="rounded-circle " src="../../assets/img/team/35.webp" alt="" />
-                                                            </div>
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <div class="avatar-name rounded-circle "><span>+1</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="badge badge-phoenix me-2 badge-phoenix-primary ">today</span>
-                                                        <div class="d-flex align-items-center flex-1"><span class="fa-solid fa-circle me-1 text-danger" data-fa-transform="shrink-6 up-1"></span><span class="fw-bold fs-9 text-body">Urgent</span></div>
-                                                        <button class="btn btn-phoenix-primary"><span class="fa-solid fa-video me-2 d-none d-sm-inline-block"></span>Join</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xxl-6">
-                                            <div class="card h-100">
-                                                <div class="card-body">
-                                                    <div class="d-flex justify-content-between align-items-start flex-wrap mb-4 gap-2">
-                                                        <div class="mb-3 mb-sm-0">
-                                                            <h4 class="line-clamp-1 mb-2 mb-sm-1">Agile Mindset Meetup</h4>
-                                                            <div><span class="uil uil-calendar-alt text-primary me-2"></span><span class="fw-semibold text-body-secondary fs-9">4:30 pm</span><span class="text-body-tertiary text-opacity-85"> to</span><span class="fw-semibold text-body-secondary fs-9">6:00pm</span><span class="text-body-secondary fs-9"> - 1h 30min</span></div>
-                                                        </div>
-                                                        <div class="avatar-group avatar-group-dense">
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <img class="rounded-circle " src="../../assets/img/team/11.webp" alt="" />
-                                                            </div>
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <img class="rounded-circle " src="../../assets/img/team/26.webp" alt="" />
-                                                            </div>
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <img class="rounded-circle " src="../../assets/img/team/33.webp" alt="" />
-                                                            </div>
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <img class="rounded-circle " src="../../assets/img/team/30.webp" alt="" />
-                                                            </div>
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <div class="avatar-name rounded-circle "><span>+1</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="badge badge-phoenix me-2 badge-phoenix-warning">tomorrow</span>
-                                                        <div class="d-flex align-items-center flex-1"><span class="fa-solid fa-circle me-1 text-success" data-fa-transform="shrink-6 up-1"></span><span class="fw-bold fs-9 text-body">Medium</span></div>
-                                                        <button class="btn btn-phoenix-primary"><span class="fa-solid fa-video me-2 d-none d-sm-inline-block"></span>Join</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xxl-6">
-                                            <div class="card h-100">
-                                                <div class="card-body">
-                                                    <div class="d-flex justify-content-between align-items-start flex-wrap mb-4 gap-2">
-                                                        <div class="mb-3 mb-sm-0">
-                                                            <h4 class="line-clamp-1 mb-2 mb-sm-1">Meeting Fundamentals</h4>
-                                                            <div><span class="uil uil-calendar-alt text-primary me-2"></span><span class="fw-semibold text-body-secondary fs-9">6:00 pm</span><span class="text-body-tertiary text-opacity-85"> to</span><span class="fw-semibold text-body-secondary fs-9">7:20pm</span><span class="text-body-secondary fs-9"> - 1h 20min</span></div>
-                                                        </div>
-                                                        <div class="avatar-group avatar-group-dense">
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <div class="avatar-name rounded-circle"><span>R</span></div>
-                                                            </div>
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <img class="rounded-circle " src="../../assets/img/team/12.webp" alt="" />
-                                                            </div>
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <img class="rounded-circle " src="../../assets/img/team/28.webp" alt="" />
-                                                            </div>
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <img class="rounded-circle " src="../../assets/img/team/22.webp" alt="" />
-                                                            </div>
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <div class="avatar-name rounded-circle "><span>+2</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="badge badge-phoenix me-2 badge-phoenix-warning">tomorrow</span>
-                                                        <div class="d-flex align-items-center flex-1"><span class="fa-solid fa-circle me-1 text-warning" data-fa-transform="shrink-6 up-1"></span><span class="fw-bold fs-9 text-body">High</span></div>
-                                                        <button class="btn btn-phoenix-primary"><span class="fa-solid fa-video me-2 d-none d-sm-inline-block"></span>Join</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xxl-6">
-                                            <div class="card h-100">
-                                                <div class="card-body">
-                                                    <div class="d-flex justify-content-between align-items-start flex-wrap mb-4 gap-2">
-                                                        <div class="mb-3 mb-sm-0">
-                                                            <h4 class="line-clamp-1 mb-2 mb-sm-1">Design System Meeting</h4>
-                                                            <div><span class="uil uil-calendar-alt text-primary me-2"></span><span class="fw-semibold text-body-secondary fs-9">7:30 pm</span><span class="text-body-tertiary text-opacity-85"> to</span><span class="fw-semibold text-body-secondary fs-9">8:45pm</span><span class="text-body-secondary fs-9"> - 1h 45min</span></div>
-                                                        </div>
-                                                        <div class="avatar-group avatar-group-dense">
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <img class="rounded-circle " src="../../assets/img/team/13.webp" alt="" />
-                                                            </div>
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <img class="rounded-circle " src="../../assets/img/team/24.webp" alt="" />
-                                                            </div>
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <img class="rounded-circle " src="../../assets/img/team/62.webp" alt="" />
-                                                            </div>
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <img class="rounded-circle " src="../../assets/img/team/34.webp" alt="" />
-                                                            </div>
-                                                            <div class="avatar avatar-s  rounded-circle">
-                                                                <div class="avatar-name rounded-circle "><span>+4</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="badge badge-phoenix me-2 badge-phoenix-warning">tomorrow</span>
-                                                        <div class="d-flex align-items-center flex-1"><span class="fa-solid fa-circle me-1 text-info" data-fa-transform="shrink-6 up-1"></span><span class="fw-bold fs-9 text-body">Low</span></div>
-                                                        <button class="btn btn-phoenix-primary"><span class="fa-solid fa-video me-2 d-none d-sm-inline-block"></span>Join</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="tab-task" role="tabpanel" aria-labelledby="task-tab">
-                                    <h2 class="mb-4">Tasks</h2>
-                                    <div class="row align-items-center g-0 justify-content-start mb-3">
-                                        <div class="col-12 col-sm-auto">
-                                            <div class="search-box w-100 mb-2 mb-sm-0" style="max-width:30rem;">
-                                                <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input search" type="search" placeholder="Search tasks" aria-label="Search" />
-                                                    <span class="fas fa-search search-box-icon"></span>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto d-flex">
-                                            <p class="mb-0 ms-sm-3 fs-9 text-body-tertiary fw-bold"><span class="fas fa-filter me-1 fw-extra-bold fs-10"></span>23 tasks</p>
-                                            <button class="btn btn-link p-0 ms-3 fs-9 text-primary fw-bold"><span class="fas fa-sort me-1 fw-extra-bold fs-10"></span>Sorting</button>
-                                        </div>
-                                    </div>
-                                    <div class="row justify-content-between align-items-md-center hover-actions-trigger btn-reveal-trigger border-translucent py-3 gx-0 border-top">
-                                        <div class="col-12 col-lg-auto flex-1">
-                                            <div data-todo-offcanvas-toogle="data-todo-offcanvas-toogle" data-todo-offcanvas-target="todoOffcanvas-1">
-                                                <div class="form-check mb-1 mb-md-0 d-flex align-items-center lh-1"><input class="form-check-input flex-shrink-0 form-check-line-through mt-0 me-2 form-check-input-undefined" type="checkbox" id="checkbox-todo-0" /><label class="form-check-label mb-0 fs-8 me-2 line-clamp-1" for="checkbox-todo-0">Platforms for data administration</label></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-lg-auto">
-                                            <div class="d-flex ms-4 lh-1 align-items-center">
-                                                <p class="text-body-tertiary fs-10 mb-md-0 me-2 me-lg-3 mb-0">19 Nov, 2022</p>
-                                                <div class="d-none d-lg-block end-0 position-absolute" style="top: 23%;">
-                                                    <div class="hover-actions end-0"><button class="btn btn-phoenix-secondary btn-icon me-1 fs-10 text-body px-0 me-1"><span class="fas fa-edit"></span></button><button class="btn btn-phoenix-secondary btn-icon fs-10 text-danger px-0"><span class="fas fa-trash"></span></button></div>
-                                                </div>
-                                                <div class="hover-lg-hide">
-                                                    <p class="text-body-tertiary fs-10 ps-lg-3 border-start-lg fw-bold mb-md-0 mb-0">11:56 PM</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row justify-content-between align-items-md-center hover-actions-trigger btn-reveal-trigger border-translucent py-3 gx-0 border-top">
-                                        <div class="col-12 col-lg-auto flex-1">
-                                            <div data-todo-offcanvas-toogle="data-todo-offcanvas-toogle" data-todo-offcanvas-target="todoOffcanvas-2">
-                                                <div class="form-check mb-1 mb-md-0 d-flex align-items-center lh-1"><input class="form-check-input flex-shrink-0 form-check-line-through mt-0 me-2 form-check-input-undefined" type="checkbox" id="checkbox-todo-1" /><label class="form-check-label mb-0 fs-8 me-2 line-clamp-1" for="checkbox-todo-1">Make wiser business choices.</label></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-lg-auto">
-                                            <div class="d-flex ms-4 lh-1 align-items-center">
-                                                <p class="text-body-tertiary fs-10 mb-md-0 me-2 me-lg-3 mb-0">05 Nov, 2022</p>
-                                                <div class="d-none d-lg-block end-0 position-absolute" style="top: 23%;">
-                                                    <div class="hover-actions end-0"><button class="btn btn-phoenix-secondary btn-icon me-1 fs-10 text-body px-0 me-1"><span class="fas fa-edit"></span></button><button class="btn btn-phoenix-secondary btn-icon fs-10 text-danger px-0"><span class="fas fa-trash"></span></button></div>
-                                                </div>
-                                                <div class="hover-lg-hide">
-                                                    <p class="text-body-tertiary fs-10 ps-lg-3 border-start-lg fw-bold mb-md-0 mb-0">09:30 PM</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row justify-content-between align-items-md-center hover-actions-trigger btn-reveal-trigger border-translucent py-3 gx-0 border-top">
-                                        <div class="col-12 col-lg-auto flex-1">
-                                            <div data-todo-offcanvas-toogle="data-todo-offcanvas-toogle" data-todo-offcanvas-target="todoOffcanvas-3">
-                                                <div class="form-check mb-1 mb-md-0 d-flex align-items-center lh-1"><input class="form-check-input flex-shrink-0 form-check-line-through mt-0 me-2 form-check-input-undefined" type="checkbox" id="checkbox-todo-2" /><label class="form-check-label mb-0 fs-8 me-2 line-clamp-1" for="checkbox-todo-2">Market and consumer insights</label></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-lg-auto">
-                                            <div class="d-flex ms-4 lh-1 align-items-center">
-                                                <p class="text-body-tertiary fs-10 mb-md-0 me-2 me-lg-3 mb-0">02 Nov, 2022</p>
-                                                <div class="d-none d-lg-block end-0 position-absolute" style="top: 23%;">
-                                                    <div class="hover-actions end-0"><button class="btn btn-phoenix-secondary btn-icon me-1 fs-10 text-body px-0 me-1"><span class="fas fa-edit"></span></button><button class="btn btn-phoenix-secondary btn-icon fs-10 text-danger px-0"><span class="fas fa-trash"></span></button></div>
-                                                </div>
-                                                <div class="hover-lg-hide">
-                                                    <p class="text-body-tertiary fs-10 ps-lg-3 border-start-lg fw-bold mb-md-0 mb-0">05:25 AM</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row justify-content-between align-items-md-center hover-actions-trigger btn-reveal-trigger border-translucent py-3 gx-0 border-top">
-                                        <div class="col-12 col-lg-auto flex-1">
-                                            <div data-todo-offcanvas-toogle="data-todo-offcanvas-toogle" data-todo-offcanvas-target="todoOffcanvas-4">
-                                                <div class="form-check mb-1 mb-md-0 d-flex align-items-center lh-1"><input class="form-check-input flex-shrink-0 form-check-line-through mt-0 me-2 form-check-input-undefined" type="checkbox" id="checkbox-todo-3" /><label class="form-check-label mb-0 fs-8 me-2 line-clamp-1" for="checkbox-todo-3">Dashboards for business insights</label></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-lg-auto">
-                                            <div class="d-flex ms-4 lh-1 align-items-center">
-                                                <p class="text-body-tertiary fs-10 mb-md-0 me-2 me-lg-3 mb-0">29 Oct, 2022</p>
-                                                <div class="d-none d-lg-block end-0 position-absolute" style="top: 23%;">
-                                                    <div class="hover-actions end-0"><button class="btn btn-phoenix-secondary btn-icon me-1 fs-10 text-body px-0 me-1"><span class="fas fa-edit"></span></button><button class="btn btn-phoenix-secondary btn-icon fs-10 text-danger px-0"><span class="fas fa-trash"></span></button></div>
-                                                </div>
-                                                <div class="hover-lg-hide">
-                                                    <p class="text-body-tertiary fs-10 ps-lg-3 border-start-lg fw-bold mb-md-0 mb-0">08:21 PM</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row justify-content-between align-items-md-center hover-actions-trigger btn-reveal-trigger border-translucent py-3 gx-0 border-top">
-                                        <div class="col-12 col-lg-auto flex-1">
-                                            <div data-todo-offcanvas-toogle="data-todo-offcanvas-toogle" data-todo-offcanvas-target="todoOffcanvas-5">
-                                                <div class="form-check mb-1 mb-md-0 d-flex align-items-center lh-1"><input class="form-check-input flex-shrink-0 form-check-line-through mt-0 me-2 form-check-input-undefined" type="checkbox" id="checkbox-todo-4" checked="checked" /><label class="form-check-label mb-0 fs-8 me-2 line-clamp-1" for="checkbox-todo-4">Analytics and consultancy for data</label></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-lg-auto">
-                                            <div class="d-flex ms-4 lh-1 align-items-center">
-                                                <p class="text-body-tertiary fs-10 mb-md-0 me-2 me-lg-3 mb-0">21 Oct, 2022</p>
-                                                <div class="d-none d-lg-block end-0 position-absolute" style="top: 23%;">
-                                                    <div class="hover-actions end-0"><button class="btn btn-phoenix-secondary btn-icon me-1 fs-10 text-body px-0 me-1"><span class="fas fa-edit"></span></button><button class="btn btn-phoenix-secondary btn-icon fs-10 text-danger px-0"><span class="fas fa-trash"></span></button></div>
-                                                </div>
-                                                <div class="hover-lg-hide">
-                                                    <p class="text-body-tertiary fs-10 ps-lg-3 border-start-lg fw-bold mb-md-0 mb-0">03:45 PM</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row justify-content-between align-items-md-center hover-actions-trigger btn-reveal-trigger border-translucent py-3 gx-0 border-top">
-                                        <div class="col-12 col-lg-auto flex-1">
-                                            <div data-todo-offcanvas-toogle="data-todo-offcanvas-toogle" data-todo-offcanvas-target="todoOffcanvas-6">
-                                                <div class="form-check mb-1 mb-md-0 d-flex align-items-center lh-1"><input class="form-check-input flex-shrink-0 form-check-line-through mt-0 me-2 form-check-input-undefined" type="checkbox" id="checkbox-todo-5" checked="checked" /><label class="form-check-label mb-0 fs-8 me-2 line-clamp-1" for="checkbox-todo-5">Planning your locations Customer data platform</label></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-lg-auto">
-                                            <div class="d-flex ms-4 lh-1 align-items-center">
-                                                <p class="text-body-tertiary fs-10 mb-md-0 me-2 me-lg-3 mb-0">14 Oct, 2022</p>
-                                                <div class="d-none d-lg-block end-0 position-absolute" style="top: 23%;">
-                                                    <div class="hover-actions end-0"><button class="btn btn-phoenix-secondary btn-icon me-1 fs-10 text-body px-0 me-1"><span class="fas fa-edit"></span></button><button class="btn btn-phoenix-secondary btn-icon fs-10 text-danger px-0"><span class="fas fa-trash"></span></button></div>
-                                                </div>
-                                                <div class="hover-lg-hide">
-                                                    <p class="text-body-tertiary fs-10 ps-lg-3 border-start-lg fw-bold mb-md-0 mb-0">10:00 PM</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row justify-content-between align-items-md-center hover-actions-trigger btn-reveal-trigger border-translucent py-3 gx-0 border-top">
-                                        <div class="col-12 col-lg-auto flex-1">
-                                            <div data-todo-offcanvas-toogle="data-todo-offcanvas-toogle" data-todo-offcanvas-target="todoOffcanvas-7">
-                                                <div class="form-check mb-1 mb-md-0 d-flex align-items-center lh-1"><input class="form-check-input flex-shrink-0 form-check-line-through mt-0 me-2 form-check-input-undefined" type="checkbox" id="checkbox-todo-6" checked="checked" /><label class="form-check-label mb-0 fs-8 me-2 line-clamp-1" for="checkbox-todo-6">Promotion of technology</label></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-lg-auto">
-                                            <div class="d-flex ms-4 lh-1 align-items-center">
-                                                <p class="text-body-tertiary fs-10 mb-md-0 me-2 me-lg-3 mb-0">12 Oct, 2022</p>
-                                                <div class="d-none d-lg-block end-0 position-absolute" style="top: 23%;">
-                                                    <div class="hover-actions end-0"><button class="btn btn-phoenix-secondary btn-icon me-1 fs-10 text-body px-0 me-1"><span class="fas fa-edit"></span></button><button class="btn btn-phoenix-secondary btn-icon fs-10 text-danger px-0"><span class="fas fa-trash"></span></button></div>
-                                                </div>
-                                                <div class="hover-lg-hide">
-                                                    <p class="text-body-tertiary fs-10 ps-lg-3 border-start-lg fw-bold mb-md-0 mb-0">02:00 AM</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="fw-bold fs-9 mt-4" href="#!"><span class="fas fa-plus me-1"></span>Add new task</a>
-                                </div>
-                                <div class="tab-pane fade" id="tab-call" role="tabpanel" aria-labelledby="call-tab">
-                                    <div class="row align-items-center gx-4 gy-3 flex-wrap mb-3">
-                                        <div class="col-auto d-flex flex-1">
-                                            <h2 class="mb-0">Call</h2>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="d-flex gap-3 gap-sm-4">
-                                                <div class="form-check"><input class="form-check-input" id="allCall" type="radio" name="allCall" checked="checked" /><label class="form-check-label" for="allCall">All Call</label></div>
-                                                <div class="form-check"><input class="form-check-input" id="incomingCall" type="radio" name="allCall" /><label class="form-check-label" for="incomingCall">Incoming Call</label></div>
-                                                <div class="form-check"><input class="form-check-input" id="outgoingCall" type="radio" name="allCall" /><label class="form-check-label" for="outgoingCall">OutgoingCall</label></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto"><button class="btn btn-primary"><span class="fa-solid fa-plus me-2"></span>Add Call</button></div>
-                                    </div>
-                                    <div class="border-top border-bottom border-translucent" id="leadDetailsTable" data-list='{"valueNames":["name","description","create_date","create_by","last_activity"],"page":5,"pagination":true}'>
-                                        <div class="table-responsive scrollbar mx-n1 px-1">
-                                            <table class="table fs-9 mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="white-space-nowrap fs-9 align-middle ps-0" style="width:26px;">
-                                                            <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select='{"body":"lead-details-table-body"}' /></div>
-                                                        </th>
-                                                        <th class="sort white-space-nowrap align-middle pe-3 ps-0 text-uppercase" scope="col" data-sort="name" style="width:20%; min-width:100px">Name</th>
-                                                        <th class="sort align-middle pe-6 text-uppercase" scope="col" data-sort="description" style="width:20%; max-width:60px">description</th>
-                                                        <th class="sort align-middle text-start text-uppercase" scope="col" data-sort="create_date" style="width:20%; min-width:115px">create date</th>
-                                                        <th class="sort align-middle text-start text-uppercase" scope="col" data-sort="create_by" style="width:20%; min-width:150px">create by</th>
-                                                        <th class="sort align-middle ps-0 text-end text-uppercase" scope="col" data-sort="last_activity" style="width:20%; max-width:115px">Last Activity</th>
-                                                        <th class="align-middle pe-0 text-end" scope="col" style="width:15%;"></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="list" id="lead-details-table-body">
-                                                    <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                        <td class="fs-9 align-middle px-0 py-3">
-                                                            <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"Name":{"avatar":"/team/35.webp","name":"Ansolo Lazinatov","status":"online"},"description":"Purchasing-Related Vendors","date":"Dec 29, 2021","creatBy":"Ansolo Lazinarov","lastActivity":{"iconColor":"text-success","label":"Active"}}' /></div>
-                                                        </td>
-                                                        <td class="name align-middle white-space-nowrap py-2 ps-0">
-                                                            <a class="d-flex align-items-center text-body-highlight" href="#!">
-                                                                <div class="avatar avatar-m me-3 status-online"><img class="rounded-circle" src="../../assets/img/team/35.webp" alt="" /></div>
-                                                                <h6 class="mb-0 text-body-highlight fw-bold">Ansolo Lazinatov</h6>
-                                                            </a>
-                                                        </td>
-                                                        <td class="description align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2 pe-6">Purchasing-Related Vendors</td>
-                                                        <td class="create_date text-end align-middle white-space-nowrap text-body py-2">Dec 29, 2021</td>
-                                                        <td class="create_by align-middle white-space-nowrap fw-semibold text-body-highlight">Ansolo Lazinarov</td>
-                                                        <td class="last_activity align-middle text-center py-2">
-                                                            <div class="d-flex align-items-center flex-1"><span class="fa-solid fa-clock me-1 text-success" data-fa-transform="shrink-2 up-1"></span><span class="fw-bold fs-9 text-body">Active</span></div>
-                                                        </td>
-                                                        <td class="align-middle text-end white-space-nowrap pe-0 action py-2">
-                                                            <div class="btn-reveal-trigger position-static">
-                                                                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
-                                                                <div class="dropdown-menu dropdown-menu-end py-2">
-                                                                    <a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Export</a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item text-danger" href="#!">Remove</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                        <td class="fs-9 align-middle px-0 py-3">
-                                                            <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"Name":{"avatar":"/team/9.webp","name":"Jackson Pollock","status":"offline"},"description":"Based on emails sent rate, the top 10 users","date":"Mar 27, 2021","creatBy":"Jackson Pollock","lastActivity":{"iconColor":"text-body-quaternary","label":"6 hours ago"}}' /></div>
-                                                        </td>
-                                                        <td class="name align-middle white-space-nowrap py-2 ps-0">
-                                                            <a class="d-flex align-items-center text-body-highlight" href="#!">
-                                                                <div class="avatar avatar-m me-3 status-offline"><img class="rounded-circle" src="../../assets/img/team/9.webp" alt="" /></div>
-                                                                <h6 class="mb-0 text-body-highlight fw-bold">Jackson Pollock</h6>
-                                                            </a>
-                                                        </td>
-                                                        <td class="description align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2 pe-6">Based on emails sent rate, the top 10 users</td>
-                                                        <td class="create_date text-end align-middle white-space-nowrap text-body py-2">Mar 27, 2021</td>
-                                                        <td class="create_by align-middle white-space-nowrap fw-semibold text-body-highlight">Jackson Pollock</td>
-                                                        <td class="last_activity align-middle text-center py-2">
-                                                            <div class="d-flex align-items-center flex-1"><span class="fa-solid fa-clock me-1 text-body-quaternary" data-fa-transform="shrink-2 up-1"></span><span class="fw-bold fs-9 text-body">6 hours ago</span></div>
-                                                        </td>
-                                                        <td class="align-middle text-end white-space-nowrap pe-0 action py-2">
-                                                            <div class="btn-reveal-trigger position-static">
-                                                                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
-                                                                <div class="dropdown-menu dropdown-menu-end py-2">
-                                                                    <a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Export</a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item text-danger" href="#!">Remove</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                        <td class="fs-9 align-middle px-0 py-3">
-                                                            <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"Name":{"avatar":"/team/35.webp","name":"Ansolo Lazinatov","status":"online"},"description":"Based on the percentage of recipients","date":"Jun 24, 2021","creatBy":"Ansolo Lazinarov","lastActivity":{"iconColor":"text-success","label":"Active"}}' /></div>
-                                                        </td>
-                                                        <td class="name align-middle white-space-nowrap py-2 ps-0">
-                                                            <a class="d-flex align-items-center text-body-highlight" href="#!">
-                                                                <div class="avatar avatar-m me-3 status-online"><img class="rounded-circle" src="../../assets/img/team/35.webp" alt="" /></div>
-                                                                <h6 class="mb-0 text-body-highlight fw-bold">Ansolo Lazinatov</h6>
-                                                            </a>
-                                                        </td>
-                                                        <td class="description align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2 pe-6">Based on the percentage of recipients</td>
-                                                        <td class="create_date text-end align-middle white-space-nowrap text-body py-2">Jun 24, 2021</td>
-                                                        <td class="create_by align-middle white-space-nowrap fw-semibold text-body-highlight">Ansolo Lazinarov</td>
-                                                        <td class="last_activity align-middle text-center py-2">
-                                                            <div class="d-flex align-items-center flex-1"><span class="fa-solid fa-clock me-1 text-success" data-fa-transform="shrink-2 up-1"></span><span class="fw-bold fs-9 text-body">Active</span></div>
-                                                        </td>
-                                                        <td class="align-middle text-end white-space-nowrap pe-0 action py-2">
-                                                            <div class="btn-reveal-trigger position-static">
-                                                                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
-                                                                <div class="dropdown-menu dropdown-menu-end py-2">
-                                                                    <a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Export</a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item text-danger" href="#!">Remove</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                        <td class="fs-9 align-middle px-0 py-3">
-                                                            <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"Name":{"avatar":"/team/9.webp","name":"Jackson Pollock","status":"offline"},"description":"Obtaining leads today","date":"May 19, 2024","creatBy":"Jackson Pollock","lastActivity":{"iconColor":"text-body-quaternary","label":"6 hours ago"}}' /></div>
-                                                        </td>
-                                                        <td class="name align-middle white-space-nowrap py-2 ps-0">
-                                                            <a class="d-flex align-items-center text-body-highlight" href="#!">
-                                                                <div class="avatar avatar-m me-3 status-offline"><img class="rounded-circle" src="../../assets/img/team/9.webp" alt="" /></div>
-                                                                <h6 class="mb-0 text-body-highlight fw-bold">Jackson Pollock</h6>
-                                                            </a>
-                                                        </td>
-                                                        <td class="description align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2 pe-6">Obtaining leads today</td>
-                                                        <td class="create_date text-end align-middle white-space-nowrap text-body py-2">May 19, 2024</td>
-                                                        <td class="create_by align-middle white-space-nowrap fw-semibold text-body-highlight">Jackson Pollock</td>
-                                                        <td class="last_activity align-middle text-center py-2">
-                                                            <div class="d-flex align-items-center flex-1"><span class="fa-solid fa-clock me-1 text-body-quaternary" data-fa-transform="shrink-2 up-1"></span><span class="fw-bold fs-9 text-body">6 hours ago</span></div>
-                                                        </td>
-                                                        <td class="align-middle text-end white-space-nowrap pe-0 action py-2">
-                                                            <div class="btn-reveal-trigger position-static">
-                                                                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
-                                                                <div class="dropdown-menu dropdown-menu-end py-2">
-                                                                    <a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Export</a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item text-danger" href="#!">Remove</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                        <td class="fs-9 align-middle px-0 py-3">
-                                                            <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"Name":{"avatar":"/team/35.webp","name":"Ansolo Lazinatov","status":"online"},"description":"Sums up the many phases of new and existing businesses.","date":"Aug 19, 2024","creatBy":"Ansolo Lazinarov","lastActivity":{"iconColor":"text-success","label":"Active"}}' /></div>
-                                                        </td>
-                                                        <td class="name align-middle white-space-nowrap py-2 ps-0">
-                                                            <a class="d-flex align-items-center text-body-highlight" href="#!">
-                                                                <div class="avatar avatar-m me-3 status-online"><img class="rounded-circle" src="../../assets/img/team/35.webp" alt="" /></div>
-                                                                <h6 class="mb-0 text-body-highlight fw-bold">Ansolo Lazinatov</h6>
-                                                            </a>
-                                                        </td>
-                                                        <td class="description align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2 pe-6">Sums up the many phases of new and existing businesses.</td>
-                                                        <td class="create_date text-end align-middle white-space-nowrap text-body py-2">Aug 19, 2024</td>
-                                                        <td class="create_by align-middle white-space-nowrap fw-semibold text-body-highlight">Ansolo Lazinarov</td>
-                                                        <td class="last_activity align-middle text-center py-2">
-                                                            <div class="d-flex align-items-center flex-1"><span class="fa-solid fa-clock me-1 text-success" data-fa-transform="shrink-2 up-1"></span><span class="fw-bold fs-9 text-body">Active</span></div>
-                                                        </td>
-                                                        <td class="align-middle text-end white-space-nowrap pe-0 action py-2">
-                                                            <div class="btn-reveal-trigger position-static">
-                                                                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
-                                                                <div class="dropdown-menu dropdown-menu-end py-2">
-                                                                    <a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Export</a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item text-danger" href="#!">Remove</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                        <td class="fs-9 align-middle px-0 py-3">
-                                                            <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"Name":{"avatar":"/team/35.webp","name":"Ansolo Lazinatov","status":"online"},"description":"Purchasing-Related Vendors","date":"Aug 19, 2024","creatBy":"Ansolo Lazinarov","lastActivity":{"iconColor":"text-success","label":"Active"}}' /></div>
-                                                        </td>
-                                                        <td class="name align-middle white-space-nowrap py-2 ps-0">
-                                                            <a class="d-flex align-items-center text-body-highlight" href="#!">
-                                                                <div class="avatar avatar-m me-3 status-online"><img class="rounded-circle" src="../../assets/img/team/35.webp" alt="" /></div>
-                                                                <h6 class="mb-0 text-body-highlight fw-bold">Ansolo Lazinatov</h6>
-                                                            </a>
-                                                        </td>
-                                                        <td class="description align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2 pe-6">Purchasing-Related Vendors</td>
-                                                        <td class="create_date text-end align-middle white-space-nowrap text-body py-2">Aug 19, 2024</td>
-                                                        <td class="create_by align-middle white-space-nowrap fw-semibold text-body-highlight">Ansolo Lazinarov</td>
-                                                        <td class="last_activity align-middle text-center py-2">
-                                                            <div class="d-flex align-items-center flex-1"><span class="fa-solid fa-clock me-1 text-success" data-fa-transform="shrink-2 up-1"></span><span class="fw-bold fs-9 text-body">Active</span></div>
-                                                        </td>
-                                                        <td class="align-middle text-end white-space-nowrap pe-0 action py-2">
-                                                            <div class="btn-reveal-trigger position-static">
-                                                                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
-                                                                <div class="dropdown-menu dropdown-menu-end py-2">
-                                                                    <a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Export</a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item text-danger" href="#!">Remove</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="row align-items-center justify-content-between pt-2 fs-9">
-                                            <div class="col-auto d-flex">
-                                                <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
-                                                <a class="fw-semibold" href="#!" data-list-view="*">View all<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">View Less<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
-                                            </div>
-                                            <div class="col-auto d-flex">
-                                                <button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-                                                <ul class="mb-0 pagination"></ul>
-                                                <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="tab-emails" role="tabpanel" aria-labelledby="emails-tab">
-                                    <h2 class="mb-4">Emails</h2>
-                                    <div>
-                                        <div class="scrollbar">
-                                            <ul class="nav nav-underline fs-9 flex-nowrap mb-1" id="emailTab" role="tablist">
-                                                <li class="nav-item me-3"><a class="nav-link text-nowrap border-0 active" id="mail-tab" data-bs-toggle="tab" href="#tab-mail" aria-controls="mail-tab" role="tab" aria-selected="true">Mails (68)<span class="text-body-tertiary fw-normal"></span></a></li>
-                                                <li class="nav-item me-3"><a class="nav-link text-nowrap border-0" id="drafts-tab" data-bs-toggle="tab" href="#tab-drafts" aria-controls="drafts-tab" role="tab" aria-selected="true">Drafts (6)<span class="text-body-tertiary fw-normal"></span></a></li>
-                                                <li class="nav-item me-3"><a class="nav-link text-nowrap border-0" id="schedule-tab" data-bs-toggle="tab" href="#tab-schedule" aria-controls="schedule-tab" role="tab" aria-selected="true">Scheduled (17)</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="search-box w-100 mb-3">
-                                            <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input search" type="search" placeholder="Search..." aria-label="Search" />
-                                                <span class="fas fa-search search-box-icon"></span>
-                                            </form>
-                                        </div>
-                                        <div class="tab-content" id="profileTabContent">
-                                            <div class="tab-pane fade show active" id="tab-mail" role="tabpanel" aria-labelledby="mail-tab">
-                                                <div class="border-top border-bottom border-translucent" id="allEmailsTable" data-list='{"valueNames":["subject","sent","date","source","status"],"page":7,"pagination":true}'>
-                                                    <div class="table-responsive scrollbar mx-n1 px-1">
-                                                        <table class="table fs-9 mb-0">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th class="white-space-nowrap fs-9 align-middle ps-0" style="width:26px;">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select='{"body":"all-email-table-body"}' /></div>
-                                                                    </th>
-                                                                    <th class="sort white-space-nowrap align-middle pe-3 ps-0 text-uppercase" scope="col" data-sort="subject" style="width:31%; min-width:350px">Subject</th>
-                                                                    <th class="sort align-middle pe-3 text-uppercase" scope="col" data-sort="sent" style="width:15%; min-width:130px">Sent by</th>
-                                                                    <th class="sort align-middle text-start text-uppercase" scope="col" data-sort="date" style="min-width:165px">Date</th>
-                                                                    <th class="sort align-middle pe-0 text-uppercase" scope="col" style="width:15%; min-width:100px">Action</th>
-                                                                    <th class="sort align-middle text-end text-uppercase" scope="col" data-sort="status" style="width:15%; min-width:100px">Status</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody class="list" id="all-email-table-body">
-                                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                                    <td class="fs-9 align-middle px-0 py-3">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"mail":{"subject":"Quary about purchased soccer socks","email":"jackson@mail.com"},"active":true,"sent":"Jackson Pollock","date":"Dec 29, 2021 10:23 am","source":"Call","type_status":{"label":"sent","type":"badge-phoenix-success"}}' /></div>
-                                                                    </td>
-                                                                    <td class="subject order align-middle white-space-nowrap py-2 ps-0">
-                                                                        <a class="fw-semibold text-primary" href="#!">Quary about purchased soccer socks</a>
-                                                                        <div class="fs-10 d-block">jackson@mail.com</div>
-                                                                    </td>
-                                                                    <td class="sent align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2">Jackson Pollock</td>
-                                                                    <td class="date align-middle white-space-nowrap text-body py-2">Dec 29, 2021 10:23 am</td>
-                                                                    <td class="align-middle white-space-nowrap ps-3"><span class="fa-solid fa-phone text-primary me-2"></span>Call</td>
-                                                                    <td class="status align-middle fw-semibold text-end py-2"><span class="badge badge-phoenix fs-10 badge-phoenix-success">sent</span></td>
-                                                                </tr>
-                                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                                    <td class="fs-9 align-middle px-0 py-3">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"mail":{"subject":"How to take the headache out of Order","email":"ansolo45@mail.com"},"active":true,"sent":"Ansolo Lazinatov","date":"Dec 27, 2021 3:27 pm","source":"Call","type_status":{"label":"delivered","type":"badge-phoenix-info"}}' /></div>
-                                                                    </td>
-                                                                    <td class="subject order align-middle white-space-nowrap py-2 ps-0">
-                                                                        <a class="fw-semibold text-primary" href="#!">How to take the headache out of Order</a>
-                                                                        <div class="fs-10 d-block">ansolo45@mail.com</div>
-                                                                    </td>
-                                                                    <td class="sent align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2">Ansolo Lazinatov</td>
-                                                                    <td class="date align-middle white-space-nowrap text-body py-2">Dec 27, 2021 3:27 pm</td>
-                                                                    <td class="align-middle white-space-nowrap ps-3"><span class="fa-solid fa-phone text-primary me-2"></span>Call</td>
-                                                                    <td class="status align-middle fw-semibold text-end py-2"><span class="badge badge-phoenix fs-10 badge-phoenix-info">delivered</span></td>
-                                                                </tr>
-                                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                                    <td class="fs-9 align-middle px-0 py-3">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"mail":{"subject":"The Arnold Schwarzenegger of Order","email":"ansolo45@mail.com"},"active":true,"sent":"Ansolo Lazinatov","date":"Dec 24, 2021 10:44 am","source":"Call","type_status":{"label":"Bounce","type":"badge-phoenix-warning"}}' /></div>
-                                                                    </td>
-                                                                    <td class="subject order align-middle white-space-nowrap py-2 ps-0">
-                                                                        <a class="fw-semibold text-primary" href="#!">The Arnold Schwarzenegger of Order</a>
-                                                                        <div class="fs-10 d-block">ansolo45@mail.com</div>
-                                                                    </td>
-                                                                    <td class="sent align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2">Ansolo Lazinatov</td>
-                                                                    <td class="date align-middle white-space-nowrap text-body py-2">Dec 24, 2021 10:44 am</td>
-                                                                    <td class="align-middle white-space-nowrap ps-3"><span class="fa-solid fa-phone text-primary me-2"></span>Call</td>
-                                                                    <td class="status align-middle fw-semibold text-end py-2"><span class="badge badge-phoenix fs-10 badge-phoenix-warning">Bounce</span></td>
-                                                                </tr>
-                                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                                    <td class="fs-9 align-middle px-0 py-3">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"mail":{"subject":"My order is not being taken","email":"jackson@mail.com"},"active":true,"sent":"Jackson Pollock","date":"Dec 19, 2021 4:55 pm","source":"Call","type_status":{"label":"Spam","type":"badge-phoenix-danger"}}' /></div>
-                                                                    </td>
-                                                                    <td class="subject order align-middle white-space-nowrap py-2 ps-0">
-                                                                        <a class="fw-semibold text-primary" href="#!">My order is not being taken</a>
-                                                                        <div class="fs-10 d-block">jackson@mail.com</div>
-                                                                    </td>
-                                                                    <td class="sent align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2">Jackson Pollock</td>
-                                                                    <td class="date align-middle white-space-nowrap text-body py-2">Dec 19, 2021 4:55 pm</td>
-                                                                    <td class="align-middle white-space-nowrap ps-3"><span class="fa-solid fa-phone text-primary me-2"></span>Call</td>
-                                                                    <td class="status align-middle fw-semibold text-end py-2"><span class="badge badge-phoenix fs-10 badge-phoenix-danger">Spam</span></td>
-                                                                </tr>
-                                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                                    <td class="fs-9 align-middle px-0 py-3">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"mail":{"subject":"Shipment is missing","email":"jackson@mail.com"},"active":true,"sent":"Jackson Pollock","date":"Dec 19, 2021 2:43 pm","source":"Call","type_status":{"label":"sent","type":"badge-phoenix-success"}}' /></div>
-                                                                    </td>
-                                                                    <td class="subject order align-middle white-space-nowrap py-2 ps-0">
-                                                                        <a class="fw-semibold text-primary" href="#!">Shipment is missing</a>
-                                                                        <div class="fs-10 d-block">jackson@mail.com</div>
-                                                                    </td>
-                                                                    <td class="sent align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2">Jackson Pollock</td>
-                                                                    <td class="date align-middle white-space-nowrap text-body py-2">Dec 19, 2021 2:43 pm</td>
-                                                                    <td class="align-middle white-space-nowrap ps-3"><span class="fa-solid fa-phone text-primary me-2"></span>Call</td>
-                                                                    <td class="status align-middle fw-semibold text-end py-2"><span class="badge badge-phoenix fs-10 badge-phoenix-success">sent</span></td>
-                                                                </tr>
-                                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                                    <td class="fs-9 align-middle px-0 py-3">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"mail":{"subject":"How can I order something urgently?","email":"ansolo45@mail.com"},"active":true,"sent":"Jackson Pollock","date":"Dec 19, 2021 2:43 pm","source":"Call","type_status":{"label":"Delivered","type":"badge-phoenix-info"}}' /></div>
-                                                                    </td>
-                                                                    <td class="subject order align-middle white-space-nowrap py-2 ps-0">
-                                                                        <a class="fw-semibold text-primary" href="#!">How can I order something urgently?</a>
-                                                                        <div class="fs-10 d-block">ansolo45@mail.com</div>
-                                                                    </td>
-                                                                    <td class="sent align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2">Jackson Pollock</td>
-                                                                    <td class="date align-middle white-space-nowrap text-body py-2">Dec 19, 2021 2:43 pm</td>
-                                                                    <td class="align-middle white-space-nowrap ps-3"><span class="fa-solid fa-phone text-primary me-2"></span>Call</td>
-                                                                    <td class="status align-middle fw-semibold text-end py-2"><span class="badge badge-phoenix fs-10 badge-phoenix-info">Delivered</span></td>
-                                                                </tr>
-                                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                                    <td class="fs-9 align-middle px-0 py-3">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"mail":{"subject":"How the delicacy of the products will be handled?","email":"ansolo45@mail.com"},"active":true,"sent":"Ansolo Lazinatov","date":"Dec 16, 2021 5:18 pm","source":"Call","type_status":{"label":"bounced","type":"badge-phoenix-warning"}}' /></div>
-                                                                    </td>
-                                                                    <td class="subject order align-middle white-space-nowrap py-2 ps-0">
-                                                                        <a class="fw-semibold text-primary" href="#!">How the delicacy of the products will be handled?</a>
-                                                                        <div class="fs-10 d-block">ansolo45@mail.com</div>
-                                                                    </td>
-                                                                    <td class="sent align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2">Ansolo Lazinatov</td>
-                                                                    <td class="date align-middle white-space-nowrap text-body py-2">Dec 16, 2021 5:18 pm</td>
-                                                                    <td class="align-middle white-space-nowrap ps-3"><span class="fa-solid fa-phone text-primary me-2"></span>Call</td>
-                                                                    <td class="status align-middle fw-semibold text-end py-2"><span class="badge badge-phoenix fs-10 badge-phoenix-warning">bounced</span></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <div class="row align-items-center justify-content-between pt-2 fs-9">
-                                                        <div class="col-auto d-flex">
-                                                            <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
-                                                            <a class="fw-semibold" href="#!" data-list-view="*">View all<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">View Less<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
-                                                        </div>
-                                                        <div class="col-auto d-flex">
-                                                            <button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-                                                            <ul class="mb-0 pagination"></ul>
-                                                            <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="tab-drafts" role="tabpanel" aria-labelledby="drafts-tab">
-                                                <div class="border-top border-bottom border-translucent" id="draftsEmailsTable" data-list='{"valueNames":["subject","sent","date","source","status"],"page":7,"pagination":true}'>
-                                                    <div class="table-responsive scrollbar mx-n1 px-1">
-                                                        <table class="table fs-9 mb-0">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th class="white-space-nowrap fs-9 align-middle ps-0" style="width:26px;">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select='{"body":"drafts-email-table-body"}' /></div>
-                                                                    </th>
-                                                                    <th class="sort white-space-nowrap align-middle pe-3 ps-0 text-uppercase" scope="col" data-sort="subject" style="width:31%; min-width:350px">Subject</th>
-                                                                    <th class="sort align-middle pe-3 text-uppercase" scope="col" data-sort="sent" style="width:15%; min-width:130px">Sent by</th>
-                                                                    <th class="sort align-middle text-start text-uppercase" scope="col" data-sort="date" style="min-width:165px">Date</th>
-                                                                    <th class="sort align-middle pe-0 text-uppercase" scope="col" style="width:15%; min-width:100px">Action</th>
-                                                                    <th class="sort align-middle text-end text-uppercase" scope="col" data-sort="status" style="width:15%; min-width:100px">Status</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody class="list" id="drafts-email-table-body">
-                                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                                    <td class="fs-9 align-middle px-0 py-3">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"mail":{"subject":"Quary about purchased soccer socks","email":"jackson@mail.com"},"active":true,"sent":"Jackson Pollock","date":"Dec 29, 2021 10:23 am","source":"Call","type_status":{"label":"sent","type":"badge-phoenix-success"}}' /></div>
-                                                                    </td>
-                                                                    <td class="subject order align-middle white-space-nowrap py-2 ps-0">
-                                                                        <a class="fw-semibold text-primary" href="#!">Quary about purchased soccer socks</a>
-                                                                        <div class="fs-10 d-block">jackson@mail.com</div>
-                                                                    </td>
-                                                                    <td class="sent align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2">Jackson Pollock</td>
-                                                                    <td class="date align-middle white-space-nowrap text-body py-2">Dec 29, 2021 10:23 am</td>
-                                                                    <td class="align-middle white-space-nowrap ps-3"><span class="fa-solid fa-phone text-primary me-2"></span>Call</td>
-                                                                    <td class="status align-middle fw-semibold text-end py-2"><span class="badge badge-phoenix fs-10 badge-phoenix-success">sent</span></td>
-                                                                </tr>
-                                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                                    <td class="fs-9 align-middle px-0 py-3">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"mail":{"subject":"How to take the headache out of Order","email":"ansolo45@mail.com"},"active":true,"sent":"Ansolo Lazinatov","date":"Dec 27, 2021 3:27 pm","source":"Call","type_status":{"label":"delivered","type":"badge-phoenix-info"}}' /></div>
-                                                                    </td>
-                                                                    <td class="subject order align-middle white-space-nowrap py-2 ps-0">
-                                                                        <a class="fw-semibold text-primary" href="#!">How to take the headache out of Order</a>
-                                                                        <div class="fs-10 d-block">ansolo45@mail.com</div>
-                                                                    </td>
-                                                                    <td class="sent align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2">Ansolo Lazinatov</td>
-                                                                    <td class="date align-middle white-space-nowrap text-body py-2">Dec 27, 2021 3:27 pm</td>
-                                                                    <td class="align-middle white-space-nowrap ps-3"><span class="fa-solid fa-phone text-primary me-2"></span>Call</td>
-                                                                    <td class="status align-middle fw-semibold text-end py-2"><span class="badge badge-phoenix fs-10 badge-phoenix-info">delivered</span></td>
-                                                                </tr>
-                                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                                    <td class="fs-9 align-middle px-0 py-3">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"mail":{"subject":"The Arnold Schwarzenegger of Order","email":"ansolo45@mail.com"},"active":true,"sent":"Ansolo Lazinatov","date":"Dec 24, 2021 10:44 am","source":"Call","type_status":{"label":"Bounce","type":"badge-phoenix-warning"}}' /></div>
-                                                                    </td>
-                                                                    <td class="subject order align-middle white-space-nowrap py-2 ps-0">
-                                                                        <a class="fw-semibold text-primary" href="#!">The Arnold Schwarzenegger of Order</a>
-                                                                        <div class="fs-10 d-block">ansolo45@mail.com</div>
-                                                                    </td>
-                                                                    <td class="sent align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2">Ansolo Lazinatov</td>
-                                                                    <td class="date align-middle white-space-nowrap text-body py-2">Dec 24, 2021 10:44 am</td>
-                                                                    <td class="align-middle white-space-nowrap ps-3"><span class="fa-solid fa-phone text-primary me-2"></span>Call</td>
-                                                                    <td class="status align-middle fw-semibold text-end py-2"><span class="badge badge-phoenix fs-10 badge-phoenix-warning">Bounce</span></td>
-                                                                </tr>
-                                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                                    <td class="fs-9 align-middle px-0 py-3">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"mail":{"subject":"My order is not being taken","email":"jackson@mail.com"},"active":true,"sent":"Jackson Pollock","date":"Dec 19, 2021 4:55 pm","source":"Call","type_status":{"label":"Spam","type":"badge-phoenix-danger"}}' /></div>
-                                                                    </td>
-                                                                    <td class="subject order align-middle white-space-nowrap py-2 ps-0">
-                                                                        <a class="fw-semibold text-primary" href="#!">My order is not being taken</a>
-                                                                        <div class="fs-10 d-block">jackson@mail.com</div>
-                                                                    </td>
-                                                                    <td class="sent align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2">Jackson Pollock</td>
-                                                                    <td class="date align-middle white-space-nowrap text-body py-2">Dec 19, 2021 4:55 pm</td>
-                                                                    <td class="align-middle white-space-nowrap ps-3"><span class="fa-solid fa-phone text-primary me-2"></span>Call</td>
-                                                                    <td class="status align-middle fw-semibold text-end py-2"><span class="badge badge-phoenix fs-10 badge-phoenix-danger">Spam</span></td>
-                                                                </tr>
-                                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                                    <td class="fs-9 align-middle px-0 py-3">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"mail":{"subject":"Shipment is missing","email":"jackson@mail.com"},"active":true,"sent":"Jackson Pollock","date":"Dec 19, 2021 2:43 pm","source":"Call","type_status":{"label":"sent","type":"badge-phoenix-success"}}' /></div>
-                                                                    </td>
-                                                                    <td class="subject order align-middle white-space-nowrap py-2 ps-0">
-                                                                        <a class="fw-semibold text-primary" href="#!">Shipment is missing</a>
-                                                                        <div class="fs-10 d-block">jackson@mail.com</div>
-                                                                    </td>
-                                                                    <td class="sent align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2">Jackson Pollock</td>
-                                                                    <td class="date align-middle white-space-nowrap text-body py-2">Dec 19, 2021 2:43 pm</td>
-                                                                    <td class="align-middle white-space-nowrap ps-3"><span class="fa-solid fa-phone text-primary me-2"></span>Call</td>
-                                                                    <td class="status align-middle fw-semibold text-end py-2"><span class="badge badge-phoenix fs-10 badge-phoenix-success">sent</span></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <div class="row align-items-center justify-content-between pt-2 fs-9">
-                                                        <div class="col-auto d-flex">
-                                                            <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
-                                                            <a class="fw-semibold" href="#!" data-list-view="*">View all<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">View Less<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
-                                                        </div>
-                                                        <div class="col-auto d-flex">
-                                                            <button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-                                                            <ul class="mb-0 pagination"></ul>
-                                                            <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="tab-schedule" role="tabpanel" aria-labelledby="schedule-tab">
-                                                <div class="border-top border-bottom border-translucent" id="scheduledEmailsTable" data-list='{"valueNames":["subject","sent","date","source","status"],"page":7,"pagination":true}'>
-                                                    <div class="table-responsive scrollbar mx-n1 px-1">
-                                                        <table class="table fs-9 mb-0">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th class="white-space-nowrap fs-9 align-middle ps-0" style="width:26px;">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select='{"body":"scheduled-email-table-body"}' /></div>
-                                                                    </th>
-                                                                    <th class="sort white-space-nowrap align-middle pe-3 ps-0 text-uppercase" scope="col" data-sort="subject" style="width:31%; min-width:350px">Subject</th>
-                                                                    <th class="sort align-middle pe-3 text-uppercase" scope="col" data-sort="sent" style="width:15%; min-width:130px">Sent by</th>
-                                                                    <th class="sort align-middle text-start text-uppercase" scope="col" data-sort="date" style="min-width:165px">Date</th>
-                                                                    <th class="sort align-middle pe-0 text-uppercase" scope="col" style="width:15%; min-width:100px">Action</th>
-                                                                    <th class="sort align-middle text-end text-uppercase" scope="col" data-sort="status" style="width:15%; min-width:100px">Status</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody class="list" id="scheduled-email-table-body">
-                                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                                    <td class="fs-9 align-middle px-0 py-3">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"mail":{"subject":"Quary about purchased soccer socks","email":"jackson@mail.com"},"active":true,"sent":"Jackson Pollock","date":"Dec 29, 2021 10:23 am","source":"Call","type_status":{"label":"sent","type":"badge-phoenix-success"}}' /></div>
-                                                                    </td>
-                                                                    <td class="subject order align-middle white-space-nowrap py-2 ps-0">
-                                                                        <a class="fw-semibold text-primary" href="#!">Quary about purchased soccer socks</a>
-                                                                        <div class="fs-10 d-block">jackson@mail.com</div>
-                                                                    </td>
-                                                                    <td class="sent align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2">Jackson Pollock</td>
-                                                                    <td class="date align-middle white-space-nowrap text-body py-2">Dec 29, 2021 10:23 am</td>
-                                                                    <td class="align-middle white-space-nowrap ps-3"><span class="fa-solid fa-phone text-primary me-2"></span>Call</td>
-                                                                    <td class="status align-middle fw-semibold text-end py-2"><span class="badge badge-phoenix fs-10 badge-phoenix-success">sent</span></td>
-                                                                </tr>
-                                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                                    <td class="fs-9 align-middle px-0 py-3">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"mail":{"subject":"How to take the headache out of Order","email":"ansolo45@mail.com"},"active":true,"sent":"Ansolo Lazinatov","date":"Dec 27, 2021 3:27 pm","source":"Call","type_status":{"label":"delivered","type":"badge-phoenix-info"}}' /></div>
-                                                                    </td>
-                                                                    <td class="subject order align-middle white-space-nowrap py-2 ps-0">
-                                                                        <a class="fw-semibold text-primary" href="#!">How to take the headache out of Order</a>
-                                                                        <div class="fs-10 d-block">ansolo45@mail.com</div>
-                                                                    </td>
-                                                                    <td class="sent align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2">Ansolo Lazinatov</td>
-                                                                    <td class="date align-middle white-space-nowrap text-body py-2">Dec 27, 2021 3:27 pm</td>
-                                                                    <td class="align-middle white-space-nowrap ps-3"><span class="fa-solid fa-phone text-primary me-2"></span>Call</td>
-                                                                    <td class="status align-middle fw-semibold text-end py-2"><span class="badge badge-phoenix fs-10 badge-phoenix-info">delivered</span></td>
-                                                                </tr>
-                                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                                    <td class="fs-9 align-middle px-0 py-3">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"mail":{"subject":"The Arnold Schwarzenegger of Order","email":"ansolo45@mail.com"},"active":true,"sent":"Ansolo Lazinatov","date":"Dec 24, 2021 10:44 am","source":"Call","type_status":{"label":"Bounce","type":"badge-phoenix-warning"}}' /></div>
-                                                                    </td>
-                                                                    <td class="subject order align-middle white-space-nowrap py-2 ps-0">
-                                                                        <a class="fw-semibold text-primary" href="#!">The Arnold Schwarzenegger of Order</a>
-                                                                        <div class="fs-10 d-block">ansolo45@mail.com</div>
-                                                                    </td>
-                                                                    <td class="sent align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2">Ansolo Lazinatov</td>
-                                                                    <td class="date align-middle white-space-nowrap text-body py-2">Dec 24, 2021 10:44 am</td>
-                                                                    <td class="align-middle white-space-nowrap ps-3"><span class="fa-solid fa-phone text-primary me-2"></span>Call</td>
-                                                                    <td class="status align-middle fw-semibold text-end py-2"><span class="badge badge-phoenix fs-10 badge-phoenix-warning">Bounce</span></td>
-                                                                </tr>
-                                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                                    <td class="fs-9 align-middle px-0 py-3">
-                                                                        <div class="form-check mb-0 fs-8"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"mail":{"subject":"My order is not being taken","email":"jackson@mail.com"},"active":true,"sent":"Jackson Pollock","date":"Dec 19, 2021 4:55 pm","source":"Call","type_status":{"label":"Spam","type":"badge-phoenix-danger"}}' /></div>
-                                                                    </td>
-                                                                    <td class="subject order align-middle white-space-nowrap py-2 ps-0">
-                                                                        <a class="fw-semibold text-primary" href="#!">My order is not being taken</a>
-                                                                        <div class="fs-10 d-block">jackson@mail.com</div>
-                                                                    </td>
-                                                                    <td class="sent align-middle white-space-nowrap text-start fw-bold text-body-tertiary py-2">Jackson Pollock</td>
-                                                                    <td class="date align-middle white-space-nowrap text-body py-2">Dec 19, 2021 4:55 pm</td>
-                                                                    <td class="align-middle white-space-nowrap ps-3"><span class="fa-solid fa-phone text-primary me-2"></span>Call</td>
-                                                                    <td class="status align-middle fw-semibold text-end py-2"><span class="badge badge-phoenix fs-10 badge-phoenix-danger">Spam</span></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <div class="row align-items-center justify-content-between pt-2 fs-9">
-                                                        <div class="col-auto d-flex">
-                                                            <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
-                                                            <a class="fw-semibold" href="#!" data-list-view="*">View all<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">View Less<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
-                                                        </div>
-                                                        <div class="col-auto d-flex">
-                                                            <button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-                                                            <ul class="mb-0 pagination"></ul>
-                                                            <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="tab-attachments" role="tabpanel" aria-labelledby="attachments-tab">
-                                    <h2 class="mb-4">Attachments</h2>
-                                    <div class="border-top border-dashed pt-3 pb-4">
-                                        <div class="d-flex flex-between-center">
-                                            <div class="d-flex mb-1">
-                                                <span class="fa-solid fa-image me-2 text-body-tertiary fs-9"></span>
-                                                <p class="text-body-highlight mb-0 lh-1">Silly_sight_1.png</p>
-                                            </div>
-                                            <div class="btn-reveal-trigger">
-                                                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h"></span></button>
-                                                <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item" href="#!">Edit</a><a class="dropdown-item text-danger" href="#!">Delete</a><a class="dropdown-item" href="#!">Download</a><a class="dropdown-item" href="#!">Report abuse</a></div>
-                                            </div>
-                                        </div>
-                                        <p class="fs-9 text-body-tertiary mb-2"><span>768kB</span><span class="text-body-quaternary mx-1">| </span><a href="#!">Shantinan Mekalan </a><span class="text-body-quaternary mx-1">| </span><span class="text-nowrap">21st Dec, 12:56 PM</span></p>
-                                        <img class="rounded-2" src="../../assets/img/generic/40.png" alt="" />
-                                    </div>
-                                    <div class="border-top border-dashed py-4">
-                                        <div class="d-flex flex-between-center">
-                                            <div>
-                                                <div class="d-flex align-items-center mb-1">
-                                                    <span class="fa-solid fa-image me-2 fs-9 text-body-tertiary"></span>
-                                                    <p class="text-body-highlight mb-0 lh-1">All_images.zip</p>
-                                                </div>
-                                                <p class="fs-9 text-body-tertiary mb-0"><span>12.8 mB</span><span class="text-body-quaternary mx-1">|</span><a href="#!">Yves Tanguy </a><span class="text-body-quaternary mx-1">| </span><span class="text-nowrap">19th Dec, 08:56 PM</span></p>
-                                            </div>
-                                            <div class="btn-reveal-trigger">
-                                                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h"></span></button>
-                                                <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item" href="#!">Edit</a><a class="dropdown-item text-danger" href="#!">Delete</a><a class="dropdown-item" href="#!">Download</a><a class="dropdown-item" href="#!">Report abuse</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="border-top border-dashed py-4">
-                                        <div class="d-flex flex-between-center">
-                                            <div>
-                                                <div class="d-flex align-items-center mb-1">
-                                                    <span class="fa-solid fa-file-lines me-2 fs-9 text-body-tertiary"></span>
-                                                    <p class="text-body-highlight mb-0 lh-1">Project.txt</p>
-                                                </div>
-                                                <p class="fs-9 text-body-tertiary mb-0"><span>123 kB</span><span class="text-body-quaternary mx-1">| </span><a href="#!">Shantinan Mekalan </a><span class="text-body-quaternary mx-1">| </span><span class="text-nowrap">12th Dec, 12:56 PM</span></p>
-                                            </div>
-                                            <div class="btn-reveal-trigger">
-                                                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h"></span></button>
-                                                <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item" href="#!">Edit</a><a class="dropdown-item text-danger" href="#!">Delete</a><a class="dropdown-item" href="#!">Download</a><a class="dropdown-item" href="#!">Report abuse </a></div>
                                             </div>
                                         </div>
                                     </div>

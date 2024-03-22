@@ -62,8 +62,9 @@
 									<div class="divider-content-center">Accéder à votre compte</div>
 								</div>
 								@if(session('error'))
-								<div class="alert alert-danger">
-									{{ session('error') }}
+								<div class="alert alert-subtle-danger alert-dismissible fade show" role="alert" style="padding-top: 1rem; padding-bottom: 1rem; padding-left: 1.5rem; padding-right: 1rem">
+								  Les informations de connexion <strong>sont incorrectes.</strong>
+								  <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" style="padding-bottom: 0.6rem;"></button>
 								</div>
 								@endif
 								<div class="mb-3 text-start">

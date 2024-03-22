@@ -10,11 +10,11 @@ class ClientController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $clients = Client::all();
-        return view('clients.index', compact('clients'));
-    }
-
+{
+    $clients = Client::orderBy('created_at', 'desc')->get();
+    
+    return view('clients.index', compact('clients'));
+}
     /**
      * Show the form for creating a new resource.
      */
@@ -34,8 +34,8 @@ class ClientController extends Controller
         $client->prenom = $request->input('prenom');
         $client->type = $request->input('type');
         $client->dob = $request->input('dob');
-        $client->adresse = $request->input('adresse');
-        $client->adresse_complementaire = $request->input('adresse_complementaire');
+        $client->address = $request->input('adresse');
+        $client->address_complementaire = $request->input('adresse_complementaire');
         $client->code_postal = $request->input('code_postal');
         $client->ville = $request->input('ville');
         $client->tel_mobile = $request->input('tel_mobile');
@@ -71,12 +71,14 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        $client = Client::findOrFail($id);
-        $relances = $client->relances; 
-        return view('clients.show', ['client' => $client, 'relances' =>$relances]);
-    }
+
+            public function show(string $id)
+            {
+                $client = Client::findOrFail($id);
+                $relances = $client->relances()->orderBy('created_at', 'desc')->get(); 
+                return view('clients.show', ['client' => $client, 'relances' => $relances]);
+            }
+
 
     /**
      * Show the form for editing the specified resource.
