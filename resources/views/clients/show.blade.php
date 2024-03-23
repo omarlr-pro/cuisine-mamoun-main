@@ -363,7 +363,7 @@
                                         <tbody class="list" id="members-table-body">
                                             <tr>
                                                 <td class="align-middle text-left fw-semibold p-2 px-3">
-                                                Prise de rendez-vous
+                                                    Prise de rendez-vous
                                                 </td>
                                                 <td class="align-middle text-center fw-semibold p-2 px-3">
                                                     <div class="row">
@@ -414,7 +414,57 @@
                             <div class="modal-footer">
                                 <input type="text" class="form-control" name="whoaddit" value="{{ Auth::user()->nom }} {{ Auth::user()->prenom }}" readonly style="display: none;" >
                                 <input type="text" class="form-control" name="client_id" value="{{ $client->id }}" readonly style="display: none;">
-                                <button class="btn btn-phoenix-primary me-2 px-6" type="button" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
+                                <button class="btn btn-phoenix-secondary me-2 px-6" type="button" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
+                                <button type="submit" class="btn btn-primary">Enregistrer le relance</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="valider" tabindex="-1" aria-labelledby="valider" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-body-highlight" id="relancecallcenter">Valider l'étape</h5>
+                            <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs-9"></span></button>
+                        </div>
+                        <form action="{{ route('relance.store') }}" method="POST"  >
+                            @csrf
+                            <div class="modal-body">
+                                <div class="table-responsive scrollbar">
+                                    <table class="table fs-9 mb-1">
+                                        <tbody class="list" id="members-table-body">
+                                            <tr>
+                                                <td class="align-middle text-left fw-semibold p-2 px-3">
+                                                    Prise de rendez-vous
+                                                </td>
+                                                <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                    <div class="row">
+                                                        <div class="col-sm-6 col-md-6" style="padding-right: 0.4rem;">
+                                                            <input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;"/>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6" style="padding-left: 0.4rem;">
+                                                            <input class="form-control" type="time" id="appt" name="appt"/>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="align-middle text-left fw-semibold p-2 px-3">
+                                                    Remarque
+                                                </td>
+                                                <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                    <textarea class="form-control"  name="remarque" id="floatingTextarea2" placeholder="Laissez une remarque" style="height: 10px"></textarea>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="text" class="form-control" name="whoaddit" value="{{ Auth::user()->nom }} {{ Auth::user()->prenom }}" readonly style="display: none;" >
+                                <input type="text" class="form-control" name="client_id" value="{{ $client->id }}" readonly style="display: none;">
+                                <button class="btn btn-phoenix-secondary me-2 px-6" type="button" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
                                 <button type="submit" class="btn btn-primary">Enregistrer le relance</button>
                             </div>
                         </form>
@@ -436,7 +486,7 @@
                             <div class="d-sm-flex justify-content-between">
                                 <h3 class="mb-4">Fiche de {{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</h3>
                                 <div class="d-flex mb-3">
-                                    <button class="btn btn-phoenix-secondary me-2 px-6" data-bs-toggle="modal" data-bs-target="#information"><span class="fa-solid fa-edit me-sm-2"></span><span class="d-none d-sm-inline">Modifier</span></button>
+                                    <button class="btn btn-phoenix-secondary me-2 px-6"><span class="fa-solid fa-edit me-sm-2"></span><span class="d-none d-sm-inline">Modifier</span></button>
                                     <button class="btn btn-phoenix-danger me-2 px-6" onclick="event.preventDefault(); document.getElementById('delete-client-form-{{$client->id}}').submit();"><span class="fa-solid fa-trash me-2"></span><span>Supprimer</span></button>
                                     <form id="delete-client-form-{{$client->id}}" action="{{ route('clients.destroy', $client->id) }}" method="POST" style="display: none;">
                                         @csrf
@@ -453,80 +503,194 @@
                             <div class="sticky-leads-sidebar">
                                 <div class="card mb-3">
                                     <div class="card-body">
-                                        <h5 class="mb-3">Information du client</h5>
-                                        <div class="mb-2">
-                                            <div class="d-flex align-items-center mb-1">
-                                                <span class="me-2 uil uil-phone"></span>
-                                                <p class="mb-0 fw-semibold fs-9">Type du client</p>
+                                        <form method="POST" action="{{ route('clients.update', $client->id) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="d-flex align-items-center mb-3">
+                                                <h5 class="w-100">Information client</h5>
+                                                <button class="btn btn-link p-0" type="submit">Enregistrer</button>
                                             </div>
-                                            <p class="mb-0 fw-semibold fs-9">{{ $client->type }}</p>
-                                        </div>
-                                        <div>
-                                            <div class="d-flex align-items-center mb-1">
-                                                <span class="me-2 uil uil-gift"></span>
-                                                <p class="mb-0 fw-semibold fs-9">Date de naissance</p>
+                                            <div class="mb-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-phone"></span>
+                                                    <h6 class="mb-0">Civilité</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <select class="form-select form-select-sm" name="civilite" >
+                                                        <option value="{{ $client->civilite }}" selected disabled>{{ $client->civilite }}</option>
+                                                        <option value="M.">Homme</option>
+                                                        <option value="Mme">Femme</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <p class="mb-0 fw-semibold fs-9">{{ $client->dob }}</p>
-                                        </div>
+                                            <div class="mb-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-gift"></span>
+                                                    <h6 class="mb-0">Nom</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-sm" id="nom" name="nom" value="{{ $client->nom }}">
+                                                </div>
+                                            </div>
+                                            <div class="mb-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-gift"></span>
+                                                    <h6 class="mb-0">Prénom</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-sm" id="prenom" name="prenom" value="{{ $client->prenom }}">
+                                                </div>
+                                            </div>
+                                            <div class="mb-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-phone"></span>
+                                                    <h6 class="mb-0">Type du client</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-sm" id="gender" name="gender" value="{{ $client->type }}">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-gift"></span>
+                                                    <h6 class="mb-0">Date de naissance</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="date" class="form-control form-control-sm" id="dob" name="dob" value="{{ $client->dob }}">
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="card mb-3">
                                     <div class="card-body">
-                                        <h5 class="mb-3">Adresse</h5>
-                                        <div class="mb-2">
-                                            <div class="d-flex align-items-center mb-1">
-                                                <span class="me-2 uil uil-estate"></span>
-                                                <p class="mb-0 fw-semibold fs-9">Adresse</p>
+                                        <form method="POST" action="{{ route('clients.update', $client->id) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="d-flex align-items-center mb-3">
+                                                <h5 class="w-100">Adresse</h5>
+                                                <button class="btn btn-link p-0" type="submit">Enregistrer</button>
                                             </div>
-                                            <p class="mb-0 fw-semibold fs-9">{{ $client->adresse }}</p>
-                                        </div>
-                                        <div class="mb-2">
-                                            <div class="d-flex align-items-center mb-1">
-                                                <span class="me-2 uil uil-estate"></span>
-                                                <p class="mb-0 fw-semibold fs-9">Adresse complémentaire</p>
+                                            <div class="mb-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-phone"></span>
+                                                    <h6 class="mb-0">Adresse</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-sm" id="adresse" name="adresse" value="{{ $client->adresse }}">
+                                                </div>
                                             </div>
-                                            <p class="mb-0 fw-semibold fs-9">{{ $client->adresse_complementaire }}</p>
-                                        </div>
-                                        <div class="mb-2">
-                                            <div class="d-flex align-items-center mb-1">
-                                                <span class="me-2 uil uil-map-pin-alt"></span>
-                                                <p class="mb-0 fw-semibold fs-9">Code Postal</p>
+                                            <div class="mb-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-gift"></span>
+                                                    <h6 class="mb-0">Adresse complémentaire</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-sm" id="adresse_complementaire" name="adresse_complementaire" value="{{ $client->adresse_complementaire }}">
+                                                </div>
                                             </div>
-                                            <p class="mb-0 fw-semibold fs-9">{{ $client->code_postal }}</p>
-                                        </div>
-                                        <div>
-                                            <div class="d-flex align-items-center mb-1">
-                                                <span class="me-2 uil uil-map"></span>
-                                                <p class="mb-0 fw-semibold fs-9">Ville</p>
+                                            <div class="mb-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-phone"></span>
+                                                    <h6 class="mb-0">Code postal</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-sm" id="code_postal" name="code_postal" value="{{ $client->code_postal }}">
+                                                </div>
                                             </div>
-                                            <p class="mb-0 fw-semibold fs-9">{{ $client->ville }}</p>
-                                        </div>
+                                            <div>
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-phone"></span>
+                                                    <h6 class="mb-0">Ville</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <select class="form-select form-select-sm" name="ville">
+                                                        <option value="{{ $client->ville }}"selected disabled>{{ $client->ville }}</option>
+                                                        <option value="Al Hoceïma">Al Hoceïma</option>
+                                                        <option value="Azilal">Azilal</option>
+                                                        <option value="Beni Mellal">Beni Mellal</option>
+                                                        <option value="Berkane">Berkane</option>
+                                                        <option value="Berréchid">Berrechid</option>
+                                                        <option value="Casablanca">Casablanca</option>
+                                                        <option value="Chefchaouen">Chefchaouen</option>
+                                                        <option value="Dakhla">Dakhla</option>
+                                                        <option value="El Hajeb">El Hajeb</option>
+                                                        <option value="El Jadida">El Jadida</option>
+                                                        <option value="Errachidia">Errachidia</option>
+                                                        <option value="Essaouira">Essaouira</option>
+                                                        <option value="Fès">Fès</option>
+                                                        <option value="Figuig">Figuig</option>
+                                                        <option value="Guelmim">Guelmim</option>
+                                                        <option value="Ifrane">Ifrane</option>
+                                                        <option value="Kénitra">Kénitra</option>
+                                                        <option value="Khémisset">Khémisset</option>
+                                                        <option value="Khénifra">Khénifra</option>
+                                                        <option value="Khouribga">Khouribga</option>
+                                                        <option value="Laâyoune">Laâyoune</option>
+                                                        <option value="Larache">Larache</option>
+                                                        <option value="Marrakech">Marrakech</option>
+                                                        <option value="Meknès">Meknès</option>
+                                                        <option value="Mohammedia">Mohammedia</option>
+                                                        <option value="Nador">Nador</option>
+                                                        <option value="Ouarzazate">Ouarzazate</option>
+                                                        <option value="Oujda">Oujda</option>
+                                                        <option value="Rabat">Rabat</option>
+                                                        <option value="Safi">Safi</option>
+                                                        <option value="Salé">Salé</option>
+                                                        <option value="Sefrou">Sefrou</option>
+                                                        <option value="Settat">Settat</option>
+                                                        <option value="Sidi Ifni">Sidi Ifni</option>
+                                                        <option value="Tanger">Tanger</option>
+                                                        <option value="Tan-Tan">Tan-Tan</option>
+                                                        <option value="Taza">Taza</option>
+                                                        <option value="Témara">Témara</option>
+                                                        <option value="Tétouan">Tétouan</option>
+                                                        <option value="Tinghir">Tinghir</option>
+                                                        <option value="Tiznit">Tiznit</option>
+                                                        <option value="Youssoufia">Youssoufia</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="mb-3">Contact</h5>
-                                        <div class="mb-2">
-                                            <div class="d-flex align-items-center mb-1">
-                                                <span class="me-2 uil uil-phone"></span>
-                                                <p class="mb-0 fw-semibold fs-9">Téléphone mobile</p>
+                                        <form method="POST" action="{{ route('clients.update', $client->id) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="d-flex align-items-center mb-3">
+                                                <h5 class="w-100">Contact</h5>
+                                                <button class="btn btn-link p-0" type="submit">Enregistrer</button>
                                             </div>
-                                            <p class="mb-0 fw-semibold fs-9">{{ $client->tel_mobile }}</p>
-                                        </div>
-                                        <div class="mb-2">
-                                            <div class="d-flex align-items-center mb-1">
-                                                <span class="me-2 uil uil-phone"></span>
-                                                <p class="mb-0 fw-semibold fs-9">Téléphone fixe</p>
+                                            <div class="mb-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-phone"></span>
+                                                    <h6 class="mb-0">Téléphone mobile</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-sm" id="tel_mobile" name="tel_mobile" value="{{ $client->tel_mobile }}">
+                                                </div>
                                             </div>
-                                            <p class="mb-0 fw-semibold fs-9">{{ $client->tel_fixe }}</p>
-                                        </div>
-                                        <div>
-                                            <div class="d-flex align-items-center mb-1">
-                                                <span class="me-2 uil uil-envelope-alt"></span>
-                                                <p class="mb-0 fw-semibold fs-9">Email</p>
+                                            <div class="mb-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-gift"></span>
+                                                    <h6 class="mb-0">Téléphone fixe</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-sm" id="tel_fixe" name="tel_fixe" value="{{ $client->tel_fixe }}">
+                                                </div>
                                             </div>
-                                            <p class="mb-0 fw-semibold fs-9">{{ $client->email }}</p>
-                                        </div>
+                                            <div>
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-phone"></span>
+                                                    <h6 class="mb-0">Email</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-sm" id="email" name="email" value="{{ $client->email }}">
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -551,26 +715,25 @@
                                                     <p class="fs-9 fw-semibold mb-1">Étape à traiter</p>
                                                     <h6>
                                                         @if($client->contact === 'Contact')
-                                                            {{ "Qualification" }}
+                                                        {{ "Qualification" }}
                                                         @elseif($client->qualification === 'Qualification')
-                                                            {{ "Mesure" }}
+                                                        {{ "Mesure" }}
                                                         @elseif($client->mesure === 'Mesure')
-                                                            {{ "Découverte" }}
+                                                        {{ "Découverte" }}
                                                         @elseif($client->decouverte === 'Découverte')
-                                                            {{ "Solution Plan" }}
+                                                        {{ "Solution Plan" }}
                                                         @elseif($client->solution_plan === 'Solution Plan')
-                                                            {{ "Argumentaire" }}
+                                                        {{ "Argumentaire" }}
                                                         @elseif($client->argumentaire === 'Argumentaire')
-                                                            {{ "Annonce de prix" }}
+                                                        {{ "Annonce de prix" }}
                                                         @elseif($client->annonce_prix === 'Annonce de prix')
-                                                            {{ "Passage de main" }}
+                                                        {{ "Passage de main" }}
                                                         @elseif($client->passage_main === 'Passage de main')
-                                                            {{ "Décision" }}
+                                                        {{ "Décision" }}
                                                         @elseif($client->decision === 'Décision')
-                                                            {{ "Vente" }}
+                                                        {{ "Vente" }}
                                                         @elseif($client->vente === 'vente')
                                                         {{"sui"}}
-                                                           
                                                         @endif
                                                     </h6>
                                                 </div>
@@ -579,66 +742,69 @@
                                     </div>
                                 </div>
                             </div>
-                              <ul class="nav nav-underline justify-content-center fs-9 deal-details scrollbar flex-nowrap mb-3" id="myTab" role="tablist" style="overflow-y: hidden;">
-                                <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link active" id="etapes-tab" data-bs-toggle="tab" href="#tab-etapes" role="tab" aria-controls="tab-activity" aria-selected="false" tabindex="-1"> <span class="fa-solid fa-chart-line me-2 tab-icon-color"></span>Activity</a></li>
-                              </ul>
+                            <ul class="nav nav-underline justify-content-center fs-9 deal-details scrollbar flex-nowrap mb-3" id="myTab" role="tablist" style="overflow-y: hidden;">
+                                <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link active" id="etapes-tab" data-bs-toggle="tab" href="#tab-etapes" role="tab" aria-controls="tab-activity" aria-selected="false" tabindex="-1"> <span class="fa-solid fa-chart-line me-2 tab-icon-color"></span>Étape</a></li>
+                            </ul>
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade active show" id="tab-etapes" role="tabpanel" aria-labelledby="etapes-tab">
                                     <div class="card card-body mb-3">
                                         <div class="d-flex justify-content-between align-items-center mb-4">
                                             <h5 class="mb-0">Étape à valider</h5>
-                                            <button type="button" class="btn btn-phoenix-primary" data-bs-toggle="modal" data-bs-target="#relance"><span class="fa-solid fa-plus me-2"></span>Ajouter une relance call center</button>
+                                            <button type="button" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#valider"><span class="fa-solid fa-plus me-2"></span>Valider l'étape</button>
                                         </div>
                                         <div>
                                             <div class="table-responsive scrollbar">
-                                                <table class="table fs-9">
+                                                <table class="table fs-9 m-0">
                                                     <thead>
                                                         <tr>
-                                                            <th class="align-middle text-center py-3" style="width:20%;">Crée par</th>
-                                                            <th class="align-middle text-center py-3" style="width:20%;">Date de relance</th>
-                                                            <th class="align-middle text-center py-3" style="width:50%;">Étape à traiter</th>
-                                                            <th class="sort align-middle text-center py-3"style="width:10%;">Action</th>
+                                                            <th class="align-middle text-start py-2 px-3" style="width:20%;">Crée par</th>
+                                                            <th class="align-middle text-start py-2 px-3" style="width:20%;">Date de relance</th>
+                                                            <th class="align-middle text-start py-2 px-3" style="width:40%;">Étape à traiter</th>
+                                                            <th class="align-middle text-center py-2 px-3"style="width:10%;">Statut</th>
+                                                            <th class="align-middle text-center py-2 px-3"style="width:10%;">Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                            <td class="align-middle text-start fw-semibold p-2 px-3">
                                                                 {{$client->whoaddit}}
                                                                 <div>
                                                                     <p class="m-0 fw-semibold">{{$client->created_at}}</p>
                                                                 </div>
                                                             </td>
-                                                            <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                            <td class="align-middle text-start fw-semibold p-2 px-3">
                                                                 12/05/2024 12:30
                                                             </td>
-                                                            <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                            <td class="align-middle text-start fw-semibold p-2 px-3">
                                                                 Relance pour l'étape
                                                                 <div>
                                                                     <p class="m-0 fw-semibold">
-                                                                    @if($client->contact === 'Contact')
+                                                                        @if($client->contact === 'Contact')
                                                                         {{ "Qualification" }}
-                                                                    @elseif($client->qualification === 'Qualification')
+                                                                        @elseif($client->qualification === 'Qualification')
                                                                         {{ "Mesure" }}
-                                                                    @elseif($client->mesure === 'Mesure')
+                                                                        @elseif($client->mesure === 'Mesure')
                                                                         {{ "Découverte" }}
-                                                                    @elseif($client->decouverte === 'Découverte')
+                                                                        @elseif($client->decouverte === 'Découverte')
                                                                         {{ "Solution Plan" }}
-                                                                    @elseif($client->solution_plan === 'Solution Plan')
+                                                                        @elseif($client->solution_plan === 'Solution Plan')
                                                                         {{ "Argumentaire" }}
-                                                                    @elseif($client->argumentaire === 'Argumentaire')
+                                                                        @elseif($client->argumentaire === 'Argumentaire')
                                                                         {{ "Annonce de prix" }}
-                                                                    @elseif($client->annonce_prix === 'Annonce de prix')
+                                                                        @elseif($client->annonce_prix === 'Annonce de prix')
                                                                         {{ "Passage de main" }}
-                                                                    @elseif($client->passage_main === 'Passage de main')
+                                                                        @elseif($client->passage_main === 'Passage de main')
                                                                         {{ "Décision" }}
-                                                                    @elseif($client->decision === 'Décision')
+                                                                        @elseif($client->decision === 'Décision')
                                                                         {{ "Vente" }}
-                                                                    @elseif($client->vente === 'vente')
-                                                                    {{"sui"}}
-                                                                       
-                                                                    @endif
+                                                                        @elseif($client->vente === 'vente')
+                                                                        {{"sui"}}
+                                                                        @endif
                                                                     </p>
                                                                 </div>
+                                                            </td>
+                                                            <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                                <span class="badge badge-phoenix badge-phoenix-primary">Primary</span>
                                                             </td>
                                                             <td class="align-middle text-center fw-semibold p-2 px-3">
                                                                 <div class="btn-reveal-trigger position-static">
@@ -655,61 +821,69 @@
                                                 </table>
                                             </div>
                                         </div>
-                                        <div id="ValiderTable" data-list='{"page":5,"pagination":true}'>
-                                            <div>
-                                                <div class="table-responsive scrollbar">
-                                                    <table class="table fs-9">
-                                                        <thead>
-                                                            <tr>
-                                                                <th class="align-middle text-center py-3" style="width:20%;">Call center</th>
-                                                                <th class="align-middle text-center py-3" style="width:20%;">Date de relance</th>
-                                                                <th class="align-middle text-center py-3" style="width:50%;">Remarque</th>
-                                                                <th class="sort align-middle text-center py-3"style="width:10%;">Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody class="list" id="members-table-body">
-                                                            @foreach($relances as $relance)
-                                                            <tr>
-                                                                <td class="align-middle text-center fw-semibold p-2 px-3">
-                                                                    {{ $relance->whoaddit }}
-                                                                    <div>
-                                                                        <p class="m-0 align-middle text-center fw-semibold">{{ $relance->created_at->format('d/m/Y') }} {{ $relance->created_at->format('H:i') }}</p>
+                                    </div>
+                                    <div class="card card-body mb-3">
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                            <h5 class="mb-0">Étape à valider</h5>
+                                            <button type="button" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#relance"><span class="fa-solid fa-plus me-2"></span>Ajouter une relance call center</button>
+                                        </div>
+                                        <div id="2" data-list='{"page":5,"pagination":true}'>
+                                            <div class="table-responsive scrollbar">
+                                                <table class="table fs-9 mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="align-middle text-start py-2 px-3" style="width:20%;">Call center</th>
+                                                            <th class="align-middle text-start py-2 px-3" style="width:20%;">Date de relance</th>
+                                                            <th class="align-middle text-start py-2 px-3" style="width:40%;">Remarque</th>
+                                                            <th class="align-middle text-center py-2 px-3"style="width:10%;">Statut</th>
+                                                            <th class="align-middle text-center py-2 px-3"style="width:10%;">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="list" id="members-table-body">
+                                                        @foreach($relances as $relance)
+                                                        <tr>
+                                                            <td class="align-middle text-start fw-semibold p-2 px-3">
+                                                                {{ $relance->whoaddit }}
+                                                                <div>
+                                                                    <p class="m-0 fw-semibold">{{ $relance->created_at->format('d M Y') }} {{ $relance->created_at->format('H:i') }}</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="align-middle text-start fw-semibold p-2 px-3">
+                                                                {{ $relance->reporter_la_relance }}
+                                                            </td>
+                                                            <td class="align-middle text-start fw-semibold p-2 px-3">
+                                                                Report de la relance
+                                                                <div>
+                                                                    <p class="m-0 fw-semibold">{{ $relance->remarque }}</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                                <span class="badge badge-phoenix badge-phoenix-primary">Primary</span>
+                                                            </td>
+                                                            <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                                <div class="btn-reveal-trigger position-static">
+                                                                    <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
+                                                                    <div class="dropdown-menu dropdown-menu-end py-2">
+                                                                        <a class="dropdown-item fw-semibold" href="#!">Modifier</a>
+                                                                        <div class="dropdown-divider"></div>
+                                                                        <a class="dropdown-item fw-semibold text-danger">Supprimer</a>
                                                                     </div>
-                                                                </td>
-                                                                <td class="align-middle text-center fw-semibold p-2 px-3">
-                                                                    12/05/2024 12:30
-                                                                </td>
-                                                                <td class="align-middle text-center fw-semibold p-2 px-3">
-                                                                    Report de la relance
-                                                                    <div>
-                                                                        <p class="m-0 fw-semibold">{{ $relance->remarque }}</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="align-middle text-center fw-semibold p-2 px-3">
-                                                                    <div class="btn-reveal-trigger position-static">
-                                                                        <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
-                                                                        <div class="dropdown-menu dropdown-menu-end py-2">
-                                                                            <a class="dropdown-item fw-semibold" href="#!">Modifier</a>
-                                                                            <div class="dropdown-divider"></div>
-                                                                            <a class="dropdown-item fw-semibold text-danger">Supprimer</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="row align-items-center justify-content-between pt-2 pe-0 fs-9">
+                                                <div class="col-auto d-flex">
+                                                    <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
+                                                    <a class="fw-semibold" href="#!" data-list-view="*">View all<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">View Less<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
                                                 </div>
-                                                <div class="row align-items-center justify-content-between pt-2 fs-9">
-                                                    <div class="col-auto d-flex">
-                                                        <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
-                                                        <a class="fw-semibold" href="#!" data-list-view="*">Voir tout<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">Voir moins<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
-                                                    </div>
-                                                    <div class="col-auto d-flex">
-                                                        <button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-                                                        <ul class="mb-0 pagination"></ul>
-                                                        <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
-                                                    </div>
+                                                <div class="col-auto d-flex">
+                                                    <button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
+                                                    <ul class="mb-0 pagination"></ul>
+                                                    <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -721,24 +895,25 @@
                                         <div id="AcheveeTable" data-list='{"page":5,"pagination":true}'>
                                             <div>
                                                 <div class="table-responsive scrollbar">
-                                                    <table class="table fs-9">
+                                                    <table class="table fs-9 m-0">
                                                         <thead>
                                                             <tr>
-                                                                <th class="align-middle text-center py-3" style="width:20%;">Validée par</th>
-                                                                <th class="align-middle text-center py-3" style="width:20%;">Étape</th>
-                                                                <th class="align-middle text-center py-3" style="width:50%;">Remarque</th>
-                                                                <th class="sort align-middle text-center py-3"style="width:10%;">Action</th>
+                                                                <th class="align-middle text-start py-2 px-3" style="width:20%;">Validée par</th>
+                                                                <th class="align-middle text-start py-2 px-3" style="width:20%;">Étape</th>
+                                                                <th class="align-middle text-start py-2 px-3" style="width:40%;">Remarque</th>
+                                                                <th class="align-middle text-center py-2 px-3"style="width:10%;">Statut</th>
+                                                                <th class="align-middle text-center py-2 px-3"style="width:10%;">Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody class="list" id="members-table-body">
                                                             <tr>
-                                                                <td class="align-middle text-center fw-semibold p-2 px-3">
-                                                                    {{ $relance->whoaddit }}
+                                                                <td class="align-middle text-start fw-semibold p-2 px-3">
+                                                                    {{ $client->whoaddit }}
                                                                     <div>
-                                                                        <p class="m-0 fw-semibold">{{ $relance->created_at->format('d/m/Y') }} {{ $relance->created_at->format('H:i') }}</p>
+                                                                        <p class="m-0 fw-semibold">{{ $client->created_at->format('d M Y') }} {{ $client->created_at->format('H:i') }}</p>
                                                                     </div>
                                                                 </td>
-                                                                <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                                <td class="align-middle text-start fw-semibold p-2 px-3">
                                                                     {{ $client->contact }}
                                                                     {{ $client->qualification }}
                                                                     {{ $client->measure }}
@@ -750,8 +925,11 @@
                                                                     {{ $client->decision }}
                                                                     {{ $client->vente }}
                                                                 </td>
-                                                                <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                                <td class="align-middle text-start fw-semibold p-2 px-3">
                                                                     {{ $client->description }}
+                                                                </td>
+                                                                <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                                    <span class="badge badge-phoenix badge-phoenix-primary">Primary</span>
                                                                 </td>
                                                                 <td class="align-middle text-center fw-semibold p-2 px-3">
                                                                     <div class="btn-reveal-trigger position-static">

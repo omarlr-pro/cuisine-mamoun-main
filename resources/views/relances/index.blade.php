@@ -67,41 +67,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <p class="navbar-vertical-label">Gestion des rendez-vous</p>
-                                <hr class="navbar-vertical-line" />
-                                <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
-                                        <div class="d-flex align-items-center">
-                                            <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
-                                            <span>
-                                            <span class="nav-link-text">RDV net non statuer</span>
-                                            </span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
-                                        <div class="d-flex align-items-center">
-                                            <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
-                                            <span>
-                                            <span class="nav-link-text">RDV net jour J</span>
-                                            </span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
-                                        <div class="d-flex align-items-center">
-                                            <span class="nav-link-icon"><span data-feather="check-square"></span></span>
-                                            <span>
-                                            <span class="nav-link-text">RDV Brut à confirmer</span>
-                                            </span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <p class="navbar-vertical-label">Gestion des clients</p>
+                                <p class="navbar-vertical-label">Client</p>
                                 <hr class="navbar-vertical-line" />
                                 <div class="nav-item-wrapper">
                                     <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
@@ -119,20 +85,6 @@
                                             <span class="nav-link-icon"><span data-feather="list"></span></span>
                                             <span>
                                             <span class="nav-link-text">Voir tous les clients</span>
-                                            </span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <p class="navbar-vertical-label">Gestion des relances</p>
-                                <hr class="navbar-vertical-line" />
-                                <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="{{ route('relances.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
-                                        <div class="d-flex align-items-center">
-                                            <span class="nav-link-icon"><span data-feather="phone"></span></span>
-                                            <span>
-                                            <span class="nav-link-text">Relance</span>
                                             </span>
                                         </div>
                                     </a>
@@ -354,25 +306,25 @@
                         <li class="breadcrumb-item">
                             <a>Client</a>
                         </li>
-                        <li class="breadcrumb-item">Voir tous les clients</li>
+                        <li class="breadcrumb-item">Voir toutes les relances call center</li>
                     </ol>
                 </nav>
                 <div class="border-bottom border-translucent mx-n3 px-2 mx-lg-n6 px-lg-6">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="d-sm-flex justify-content-between">
-                                <h3 class="mb-4">Voir tous les clients</h3>
+                                <h3 class="mb-4">Voir toutes les relances call center</h3>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div id="clientstable" data-list='{"valueNames":["1","2","3","4","5","6","7","8","9","10"],"page":20,"pagination":true}'>
+                    <div id="clientstable" data-list='{"valueNames":["1","2","3","4","5","6","7","8","9"],"page":20,"pagination":true}'>
                         <div class="row justify-content-between mt-3 mb-3">
                             <div class="col-auto">
                                 <div class="d-md-flex justify-content-between">
                                     <div>
-                                        <a href="{{ route('clients.create') }}"><button class="btn btn-primary me-4">Enregistrer un nouveau client</button></a>
+                                        <a href="{{ route('clients.create') }}"></a>
                                     </div>
                                 </div>
                             </div>
@@ -414,60 +366,77 @@
                                 <table class="table fs-9 mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="sort align-middle text-center py-3" data-sort="1" style="width:auto;">Nom</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="2" style="width:auto;">Ville</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="3" style="width:auto;">Adresse</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="4" style="width:auto;">Code postal</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="5" style="width:auto;">Tél.</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="6" style="width:auto;">Email</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="7" style="width:auto;">Source</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="8" style="width:auto;">Étapes achevées</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="9" style="width:auto;">Vendeur</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="10" style="width:auto;">Date d'aout</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="1" style="width:auto;">Client</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="2" style="width:auto;">Qualiticien</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="3" style="width:auto;">Ville</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="4" style="width:auto;">Téléphone</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="6" style="width:auto;">Date du rendez-vous</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="7" style="width:auto;">Étape à traiter</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="8" style="width:auto;">Date de la relance</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="9" style="width:auto;">Source</th>
+                                            <th class="sort align-middle text-center py-3"style="width:auto;">commantaire de la relance </th>
                                             <th class="sort align-middle text-center py-3"style="width:auto;">Action</th>
+
                                         </tr>
                                     </thead>
                                     <tbody class="list" id="members-table-body">
-                                        @foreach($clients as $client)
+                                        @foreach ($clients as $client)
                                         <tr>
                                             <td class="1 align-middle text-center fw-semibold py-3">
                                                 <div><a href="{{ route('clients.show', $client->id) }}">{{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</a></div>
                                             </td>
                                             <td class="2 align-middle text-center fw-semibold py-3">
-                                                {{ $client->ville }}
+                                                {{ $client->qualiticien }}
                                             </td>
                                             <td class="3 align-middle text-center fw-semibold py-3">
-                                                {{ $client->adresse }}
+                                                {{ $client->ville }}
                                             </td>
                                             <td class="4 align-middle text-center fw-semibold py-3">
-                                                {{ $client->code_postal }}
+                                                {{ $client->tel_mobile   }}
                                             </td>
                                             <td class="5 align-middle text-center fw-semibold py-3">
-                                                {{ $client->tel_mobile }}
-                                            </td>
+                                            ----
+                                                                 
+                                        </td>
                                             <td class="6 align-middle text-center fw-semibold py-3">
-                                                {{ $client->email }}
+                                                @if($client->contact === 'Contact')
+                                                {{ "Qualification" }}
+                                                @elseif($client->qualification === 'Qualification')
+                                                {{ "Mesure" }}
+                                                @elseif($client->mesure === 'Mesure')
+                                                {{ "Découverte" }}
+                                                @elseif($client->decouverte === 'Découverte')
+                                                {{ "Solution Plan" }}
+                                                @elseif($client->solution_plan === 'Solution Plan')
+                                                {{ "Argumentaire" }}
+                                                @elseif($client->argumentaire === 'Argumentaire')
+                                                {{ "Annonce de prix" }}
+                                                @elseif($client->annonce_prix === 'Annonce de prix')
+                                                {{ "Passage de main" }}
+                                                @elseif($client->passage_main === 'Passage de main')
+                                                {{ "Décision" }}
+                                                @elseif($client->decision === 'Décision')
+                                                {{ "Vente" }}
+                                                @elseif($client->vente === 'vente')
+                                                {{"sui"}}
+                                                @endif
                                             </td>
                                             <td class="7 align-middle text-center fw-semibold py-3">
+                                                @if ($client->relances->isNotEmpty())
+                                                {{ $client->relances->first()->reporter_la_relance }}
+                                            @else
+                                                Aucune relance disponible
+                                            @endif
+                                            </td>
+                                            <td class="8 align-middle text-center fw-semibold py-3">
                                                 {{ $client->origine_dossier }}
                                             </td>
                                             <td class="8 align-middle text-center fw-semibold py-3">
-                                                {{ $client->contact }}
-                                                {{ $client->qualification }}
-                                                {{ $client->mesure }}
-                                                {{ $client->decouverte }}
-                                                {{ $client->solution_plan }}
-                                                {{ $client->argumentaire }} 
-                                                {{ $client->annonce_prix }}
-                                                {{ $client->passage_main }}
-                                                {{ $client->decision }}
-                                                {{ $client->vente }}
-                                            </td>
-                                            <td class="9 align-middle text-center fw-semibold py-3">
-                                                {{ $client->whoaddit }}
-                                            </td>
-                                            <td class="10 align-middle text-center fw-semibold py-3">
-                                                {{ $client->created_at->format('d/m/Y') }} {{ $client->created_at->format('H:i') }}
+                                                @if ($client->relances->isNotEmpty())
+                                                {{ $client->relances->first()->remarque }}
+                                            @else
+                                                Aucune relance disponible
+                                            @endif
                                             </td>
                                             <td class="align-middle py-1 text-center fw-semibold text-body-highlight">
                                                 <div class="btn-reveal-trigger position-static">
@@ -475,11 +444,7 @@
                                                     <div class="dropdown-menu dropdown-menu-end py-2">
                                                         <a class="dropdown-item" href="#!">Modifier</a>
                                                         <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item text-danger" onclick="event.preventDefault(); document.getElementById('delete-client-form-{{$client->id}}').submit();">Supprimer</a>
-                                                        <form id="delete-client-form-{{$client->id}}" action="{{ route('clients.destroy', $client->id) }}" method="POST" style="display: none;">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                        </form>
+                                                        <a class="dropdown-item text-danger">Supprimer</a>
                                                     </div>
                                                 </div>
                                             </td>

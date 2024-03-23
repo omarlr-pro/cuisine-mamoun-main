@@ -14,10 +14,10 @@ class Relance extends Model
         'whoaddit',
         'remarque',
         'annuler',
-        'Reporter_la_relance',
+        'reporter_la_relance',
     ];
 
-    protected $dates = ['Reporter_la_relance'];
+    protected $dates = ['reporter_la_relance'];
 
     public function client()
     {
