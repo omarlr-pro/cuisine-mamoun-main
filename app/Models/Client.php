@@ -50,4 +50,10 @@ class Client extends Model
     {
         return $this->hasMany(Relance::class);
     }
+    
+    public function etapes()
+{
+    return $this->hasMany(Etape::class);
+}
+
 }

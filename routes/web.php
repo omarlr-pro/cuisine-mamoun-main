@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RelanceController;
+use App\Http\Controllers\EtapeController;
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -20,9 +21,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
     Route::get('/users/update/{id}', [UserController::class, 'edit'])->name('users.edit');
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
-    Route::post('/relance', [RelanceController::class, 'store'])->name('relance.store');
     Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::post('/relance', [RelanceController::class, 'store'])->name('relance.store');
     Route::get('/relances', [ClientController::class, 'showRelances'])->name('relances.index');
+    Route::post('/etape', [EtapeController::class, 'store'])->name('etapes.store');
 });
 
 Route::group(['middleware' => 'guest'], function () { 

@@ -381,76 +381,83 @@
                                     </thead>
                                     <tbody class="list" id="members-table-body">
                                         @foreach ($clients as $client)
-                                        <tr>
-                                            <td class="1 align-middle text-center fw-semibold py-3">
-                                                <div><a href="{{ route('clients.show', $client->id) }}">{{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</a></div>
-                                            </td>
-                                            <td class="2 align-middle text-center fw-semibold py-3">
-                                                {{ $client->qualiticien }}
-                                            </td>
-                                            <td class="3 align-middle text-center fw-semibold py-3">
-                                                {{ $client->ville }}
-                                            </td>
-                                            <td class="4 align-middle text-center fw-semibold py-3">
-                                                {{ $client->tel_mobile   }}
-                                            </td>
-                                            <td class="5 align-middle text-center fw-semibold py-3">
-                                            ----
-                                                                 
-                                        </td>
-                                            <td class="6 align-middle text-center fw-semibold py-3">
-                                                @if($client->contact === 'Contact')
-                                                {{ "Qualification" }}
-                                                @elseif($client->qualification === 'Qualification')
-                                                {{ "Mesure" }}
-                                                @elseif($client->mesure === 'Mesure')
-                                                {{ "Découverte" }}
-                                                @elseif($client->decouverte === 'Découverte')
-                                                {{ "Solution Plan" }}
-                                                @elseif($client->solution_plan === 'Solution Plan')
-                                                {{ "Argumentaire" }}
-                                                @elseif($client->argumentaire === 'Argumentaire')
-                                                {{ "Annonce de prix" }}
-                                                @elseif($client->annonce_prix === 'Annonce de prix')
-                                                {{ "Passage de main" }}
-                                                @elseif($client->passage_main === 'Passage de main')
-                                                {{ "Décision" }}
-                                                @elseif($client->decision === 'Décision')
-                                                {{ "Vente" }}
-                                                @elseif($client->vente === 'vente')
-                                                {{"sui"}}
+                                            <tr>
+                                                <td class="1 align-middle text-center fw-semibold py-3">
+                                                    <div><a href="{{ route('clients.show', $client->id) }}">{{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</a></div>
+                                                </td>
+                                                <td class="2 align-middle text-center fw-semibold py-3">
+                                                    {{ $client->qualiticien }}
+                                                </td>
+                                                <td class="3 align-middle text-center fw-semibold py-3">
+                                                    {{ $client->ville }}
+                                                </td>
+                                                <td class="4 align-middle text-center fw-semibold py-3">
+                                                    {{ $client->tel_mobile }}
+                                                </td>
+                                                <td class="5 align-middle text-center fw-semibold py-3">
+                                                    ----
+                                                </td>
+                                                <td class="6 align-middle text-center fw-semibold py-3">
+                                                    @if($client->contact === 'Contact')
+                                                        {{ "Qualification" }}
+                                                    @elseif($client->qualification === 'Qualification')
+                                                        {{ "Mesure" }}
+                                                    @elseif($client->mesure === 'Mesure')
+                                                        {{ "Découverte" }}
+                                                    @elseif($client->decouverte === 'Découverte')
+                                                        {{ "Solution Plan" }}
+                                                    @elseif($client->solution_plan === 'Solution Plan')
+                                                        {{ "Argumentaire" }}
+                                                    @elseif($client->argumentaire === 'Argumentaire')
+                                                        {{ "Annonce de prix" }}
+                                                    @elseif($client->annonce_prix === 'Annonce de prix')
+                                                        {{ "Passage de main" }}
+                                                    @elseif($client->passage_main === 'Passage de main')
+                                                        {{ "Décision" }}
+                                                    @elseif($client->decision === 'Décision')
+                                                        {{ "Vente" }}
+                                                    @elseif($client->vente === 'vente')
+                                                        {{"sui"}}
+                                                    @endif
+                                                </td>
+                                                <td class="7 align-middle text-center fw-semibold py-3">
+                                                    @if ($client->relances->isNotEmpty())
+                                                    @foreach ($client->relances as $relance)
+                                                        @if ($relance->isannuler=="nest pas annuler")
+                                                            {{ $relance->reporter_la_relance }}
+                                                        @endif
+                                                    @endforeach
+                                                @else
+                                                    Aucune relance disponible
                                                 @endif
-                                            </td>
-                                            <td class="7 align-middle text-center fw-semibold py-3">
-                                                @if ($client->relances->isNotEmpty())
-                                                {{ $client->relances->first()->reporter_la_relance }}
-                                            @else
-                                                Aucune relance disponible
-                                            @endif
-                                            </td>
-                                            <td class="8 align-middle text-center fw-semibold py-3">
-                                                {{ $client->origine_dossier }}
-                                            </td>
-                                            <td class="8 align-middle text-center fw-semibold py-3">
-                                                @if ($client->relances->isNotEmpty())
-                                                {{ $client->relances->first()->remarque }}
-                                            @else
-                                                Aucune relance disponible
-                                            @endif
-                                            </td>
-                                            <td class="align-middle py-1 text-center fw-semibold text-body-highlight">
-                                                <div class="btn-reveal-trigger position-static">
-                                                    <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
-                                                    <div class="dropdown-menu dropdown-menu-end py-2">
-                                                        <a class="dropdown-item" href="#!">Modifier</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item text-danger">Supprimer</a>
+                                            
+                                                </td>
+                                                <td class="8 align-middle text-center fw-semibold py-3">
+                                                    {{ $client->origine_dossier }}
+                                                </td>
+                                                <td class="9 align-middle text-center fw-semibold py-3">
+                                                    @foreach ($client->relances as $relance)
+                                                        @if ($relance->isannuler=="nest pas annuler")
+                                                            {{ $relance->remarque }}
+                                                            @break
+                                                        @endif
+                                                    @endforeach
+                                                </td>
+                                                <td class="align-middle py-1 text-center fw-semibold text-body-highlight">
+                                                    <div class="btn-reveal-trigger position-static">
+                                                        <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
+                                                        <div class="dropdown-menu dropdown-menu-end py-2">
+                                                            <a class="dropdown-item" href="#!">Modifier</a>
+                                                            <div class="dropdown-divider"></div>
+                                                            <a class="dropdown-item text-danger">Supprimer</a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
+                                    
+                                  
                                 </table>
                             </div>
                             <div class="row align-items-center justify-content-between py-2 pe-0 fs-9">

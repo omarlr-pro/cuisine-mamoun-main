@@ -128,11 +128,21 @@
                                 <p class="navbar-vertical-label">Gestion des relances</p>
                                 <hr class="navbar-vertical-line" />
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="{{ route('relances.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
-                                            <span class="nav-link-icon"><span data-feather="phone"></span></span>
+                                            <span class="nav-link-icon"><span data-feather="clock"></span></span>
                                             <span>
-                                            <span class="nav-link-text">Relance</span>
+                                            <span class="nav-link-text">Relance reporté</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="x-circle"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Relance annulée</span>
                                             </span>
                                         </div>
                                     </a>
@@ -428,7 +438,7 @@
                             <h5 class="modal-title text-body-highlight" id="relancecallcenter">Valider l'étape</h5>
                             <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs-9"></span></button>
                         </div>
-                        <form action="{{ route('relance.store') }}" method="POST"  >
+                        <form action="{{ route('etapes.store') }}" method="POST"  >
                             @csrf
                             <div class="modal-body">
                                 <div class="table-responsive scrollbar">
@@ -441,7 +451,7 @@
                                                 <td class="align-middle text-center fw-semibold p-2 px-3">
                                                     <div class="row">
                                                         <div class="col-sm-6 col-md-6" style="padding-right: 0.4rem;">
-                                                            <input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;"/>
+                                                            <input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;" name="date"/>
                                                         </div>
                                                         <div class="col-sm-6 col-md-6" style="padding-left: 0.4rem;">
                                                             <input class="form-control" type="time" id="appt" name="appt"/>
@@ -450,11 +460,31 @@
                                                 </td>
                                             </tr>
                                             <tr>
+                                                <input type="text" class="form-control" name="whoaddit" value="{{ Auth::user()->nom }} {{ Auth::user()->prenom }}" readonly style="display: none;" >
+
                                                 <td class="align-middle text-left fw-semibold p-2 px-3">
                                                     Remarque
                                                 </td>
                                                 <td class="align-middle text-center fw-semibold p-2 px-3">
                                                     <textarea class="form-control"  name="remarque" id="floatingTextarea2" placeholder="Laissez une remarque" style="height: 10px"></textarea>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="align-middle text-left fw-semibold p-2 px-3">
+                                                    Étape à valider
+                                                </td>
+                                                <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                    <select class="form-select" aria-label="Default select example" name="etape">
+                                                      <option value="Contact">Contact</option>
+                                                      <option value="Qualification">Qualification</option>
+                                                      <option value="Mesure">Mesure</option>
+                                                      <option value="Découverte">Découverte</option>
+                                                      <option value="Solution - Plan">Solution - Plan</option>
+                                                      <option value="Argumentaire">Argumentaire</option>
+                                                      <option value="Passage de main">Passage de main</option>
+                                                      <option value="Décision">Décision</option>
+                                                      <option value="Vente">Vente</option>
+                                                    </select>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -465,7 +495,7 @@
                                 <input type="text" class="form-control" name="whoaddit" value="{{ Auth::user()->nom }} {{ Auth::user()->prenom }}" readonly style="display: none;" >
                                 <input type="text" class="form-control" name="client_id" value="{{ $client->id }}" readonly style="display: none;">
                                 <button class="btn btn-phoenix-secondary me-2 px-6" type="button" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
-                                <button type="submit" class="btn btn-primary">Enregistrer le relance</button>
+                                <button type="submit" class="btn btn-primary">Valider l'étape</button>
                             </div>
                         </form>
                     </div>
@@ -704,7 +734,7 @@
                                                 <div class="d-flex bg-success-subtle rounded flex-center me-3 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px"><span class="text-success-dark" data-feather="check" style="width:24px; height:24px"></span></div>
                                                 <div>
                                                     <p class="fs-9 fw-semibold mb-1">Étape à achevée</p>
-                                                    <h6>{{ $client->contact }}</h6>
+                                                    <h5>{{ $client->contact }}</h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -713,7 +743,7 @@
                                                 <div class="d-flex bg-warning-subtle rounded flex-center me-3 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px"><span class="text-warning-dark" data-feather="dollar-sign" style="width:24px; height:24px"></span></div>
                                                 <div>
                                                     <p class="fs-9 fw-semibold mb-1">Étape à traiter</p>
-                                                    <h6>
+                                                    <h5>
                                                         @if($client->contact === 'Contact')
                                                         {{ "Qualification" }}
                                                         @elseif($client->qualification === 'Qualification')
@@ -735,7 +765,16 @@
                                                         @elseif($client->vente === 'vente')
                                                         {{"sui"}}
                                                         @endif
-                                                    </h6>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-auto">
+                                            <div class="d-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center">
+                                                <div class="d-flex bg-danger-subtle rounded flex-center me-3 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px"><span class="text-danger-dark" data-feather="x-circle" style="width:24px; height:24px"></span></div>
+                                                <div>
+                                                    <p class="fs-9 fw-semibold mb-1">État de la relance</p>
+                                                    <h5>Annulée</h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -743,7 +782,7 @@
                                 </div>
                             </div>
                             <ul class="nav nav-underline justify-content-center fs-9 deal-details scrollbar flex-nowrap mb-3" id="myTab" role="tablist" style="overflow-y: hidden;">
-                                <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link active" id="etapes-tab" data-bs-toggle="tab" href="#tab-etapes" role="tab" aria-controls="tab-activity" aria-selected="false" tabindex="-1"> <span class="fa-solid fa-chart-line me-2 tab-icon-color"></span>Étape</a></li>
+                                <li class="nav-item text-nowrap me-2" role="presentation"><a class="nav-link active" id="etapes-tab" data-bs-toggle="tab" href="#tab-etapes" role="tab" aria-controls="tab-activity" aria-selected="false" tabindex="-1"> <span class="fa-solid fa-chart-line me-2 tab-icon-color"></span>Étapes et relances</a></li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade active show" id="tab-etapes" role="tabpanel" aria-labelledby="etapes-tab">
@@ -804,7 +843,7 @@
                                                                 </div>
                                                             </td>
                                                             <td class="align-middle text-center fw-semibold p-2 px-3">
-                                                                <span class="badge badge-phoenix badge-phoenix-primary">Primary</span>
+                                                                <span class="badge badge-phoenix badge-phoenix-secondary">En cours</span>
                                                             </td>
                                                             <td class="align-middle text-center fw-semibold p-2 px-3">
                                                                 <div class="btn-reveal-trigger position-static">
@@ -822,9 +861,67 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="card card-body mb-10">
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                            <h5 class="mb-0">Étape à achevée</h5>
+                                        </div>
+                                        <div id="AcheveeTable" data-list='{"page":5,"pagination":true}'>
+                                            <div>
+                                                <div class="table-responsive scrollbar">
+                                                    <table class="table fs-9 m-0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="align-middle text-start py-2 px-3" style="width:20%;">Validée par</th>
+                                                                <th class="align-middle text-start py-2 px-3" style="width:20%;">Étape</th>
+                                                                <th class="align-middle text-start py-2 px-3" style="width:40%;">Prise de rendez-vous</th>
+                                                                <th class="align-middle text-start py-2 px-3" style="width:40%;">Commentaire</th>
+                                                                <th class="align-middle text-center py-2 px-3"style="width:10%;">Statut</th>
+                                                                <th class="align-middle text-center py-2 px-3"style="width:10%;">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </tbody>
+                                                    @foreach($client->etapes as $etape)
+                                                    <tr>
+                                                        <td class="align-middle text-start fw-semibold p-2 px-3">{{ $etape->valide_par }} {{ $etape->created_at }}</td>
+                                                        <td class="align-middle text-start fw-semibold p-2 px-3">{{ $etape->etape }}</td>
+                                                        <td class="align-middle text-start fw-semibold p-2 px-3">{{ $etape->date }}</td>
+                                                        <td class="align-middle text-start fw-semibold p-2 px-3">{{ $etape->remarque }}</td>
+                                                        <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                            <span class="badge badge-phoenix badge-phoenix-success">Achevée</span>
+                                                        </td>
+                                                        <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                            <div class="btn-reveal-trigger position-static">
+                                                                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
+                                                                <div class="dropdown-menu dropdown-menu-end py-2">
+                                                                    <a class="dropdown-item fw-semibold" href="#!">Modifier</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item fw-semibold text-danger">Supprimer</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                                        
+                                                    </table>
+                                                </div>
+                                                <div class="row align-items-center justify-content-between pt-2 fs-9">
+                                                    <div class="col-auto d-flex">
+                                                        <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
+                                                        <a class="fw-semibold" href="#!" data-list-view="*">Voir tout<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">Voir moins<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
+                                                    </div>
+                                                    <div class="col-auto d-flex">
+                                                        <button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
+                                                        <ul class="mb-0 pagination"></ul>
+                                                        <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="card card-body mb-3">
                                         <div class="d-flex justify-content-between align-items-center mb-4">
-                                            <h5 class="mb-0">Étape à valider</h5>
+                                            <h5 class="mb-0">Report des relances</h5>
                                             <button type="button" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#relance"><span class="fa-solid fa-plus me-2"></span>Ajouter une relance call center</button>
                                         </div>
                                         <div id="2" data-list='{"page":5,"pagination":true}'>
@@ -834,7 +931,7 @@
                                                         <tr>
                                                             <th class="align-middle text-start py-2 px-3" style="width:20%;">Call center</th>
                                                             <th class="align-middle text-start py-2 px-3" style="width:20%;">Date de relance</th>
-                                                            <th class="align-middle text-start py-2 px-3" style="width:40%;">Remarque</th>
+                                                            <th class="align-middle text-start py-2 px-3" style="width:40%;">Commentaire</th>
                                                             <th class="align-middle text-center py-2 px-3"style="width:10%;">Statut</th>
                                                             <th class="align-middle text-center py-2 px-3"style="width:10%;">Action</th>
                                                         </tr>
@@ -852,13 +949,14 @@
                                                                 {{ $relance->reporter_la_relance }}
                                                             </td>
                                                             <td class="align-middle text-start fw-semibold p-2 px-3">
-                                                                Report de la relance
-                                                                <div>
-                                                                    <p class="m-0 fw-semibold">{{ $relance->remarque }}</p>
-                                                                </div>
+                                                                {{ $relance->remarque }}
                                                             </td>
                                                             <td class="align-middle text-center fw-semibold p-2 px-3">
-                                                                <span class="badge badge-phoenix badge-phoenix-primary">Primary</span>
+                                                                @if ($relance->isannuler == "nest pas annuler")
+                                                                <span class="badge badge-phoenix badge-phoenix-primary">relancée</span>
+                                                                @else
+                                                                <span class="badge badge-phoenix badge-phoenix-danger">annulée</span>
+                                                                @endif
                                                             </td>
                                                             <td class="align-middle text-center fw-semibold p-2 px-3">
                                                                 <div class="btn-reveal-trigger position-static">
@@ -884,77 +982,6 @@
                                                     <button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
                                                     <ul class="mb-0 pagination"></ul>
                                                     <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card card-body">
-                                        <div class="d-flex justify-content-between align-items-center mb-4">
-                                            <h5 class="mb-0">Étape à achevée</h5>
-                                        </div>
-                                        <div id="AcheveeTable" data-list='{"page":5,"pagination":true}'>
-                                            <div>
-                                                <div class="table-responsive scrollbar">
-                                                    <table class="table fs-9 m-0">
-                                                        <thead>
-                                                            <tr>
-                                                                <th class="align-middle text-start py-2 px-3" style="width:20%;">Validée par</th>
-                                                                <th class="align-middle text-start py-2 px-3" style="width:20%;">Étape</th>
-                                                                <th class="align-middle text-start py-2 px-3" style="width:40%;">Remarque</th>
-                                                                <th class="align-middle text-center py-2 px-3"style="width:10%;">Statut</th>
-                                                                <th class="align-middle text-center py-2 px-3"style="width:10%;">Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody class="list" id="members-table-body">
-                                                            <tr>
-                                                                <td class="align-middle text-start fw-semibold p-2 px-3">
-                                                                    {{ $client->whoaddit }}
-                                                                    <div>
-                                                                        <p class="m-0 fw-semibold">{{ $client->created_at->format('d M Y') }} {{ $client->created_at->format('H:i') }}</p>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="align-middle text-start fw-semibold p-2 px-3">
-                                                                    {{ $client->contact }}
-                                                                    {{ $client->qualification }}
-                                                                    {{ $client->measure }}
-                                                                    {{ $client->discovery }}
-                                                                    {{ $client->solution_plan }}
-                                                                    {{ $client->argumentation }} 
-                                                                    {{ $client->price_announcement }}
-                                                                    {{ $client->handover }}
-                                                                    {{ $client->decision }}
-                                                                    {{ $client->vente }}
-                                                                </td>
-                                                                <td class="align-middle text-start fw-semibold p-2 px-3">
-                                                                    {{ $client->description }}
-                                                                </td>
-                                                                <td class="align-middle text-center fw-semibold p-2 px-3">
-                                                                    <span class="badge badge-phoenix badge-phoenix-primary">Primary</span>
-                                                                </td>
-                                                                <td class="align-middle text-center fw-semibold p-2 px-3">
-                                                                    <div class="btn-reveal-trigger position-static">
-                                                                        <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
-                                                                        <div class="dropdown-menu dropdown-menu-end py-2">
-                                                                            <a class="dropdown-item fw-semibold" href="#!">Modifier</a>
-                                                                            <div class="dropdown-divider"></div>
-                                                                            <a class="dropdown-item fw-semibold text-danger">Supprimer</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div class="row align-items-center justify-content-between pt-2 fs-9">
-                                                    <div class="col-auto d-flex">
-                                                        <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
-                                                        <a class="fw-semibold" href="#!" data-list-view="*">Voir tout<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">Voir moins<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
-                                                    </div>
-                                                    <div class="col-auto d-flex">
-                                                        <button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-                                                        <ul class="mb-0 pagination"></ul>
-                                                        <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

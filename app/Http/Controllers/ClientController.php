@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Client;
+use App\Models\Etape;
+
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -29,6 +31,8 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
+       
+
         $client = new Client();
         $client->civilite = $request->input('civilite');
         $client->nom = $request->input('nom');
@@ -63,8 +67,16 @@ class ClientController extends Controller
         $client->whoaddit = $request->input('whoaddit'); 
         $client->step_completed_date = $request->input('step_completed_date');
         $client->description = $request->input('description');
-
         $client->save();
+        $etape = new Etape();   
+        $etape->client_id = $client->id;
+        $etape->valide_par = $request->input('whoaddit');
+        $etape->etape = $request->input('contact');
+        $etape->date = $request->input('step_completed_date');
+        $etape->remarque = $request->input('description');
+    
+        $etape->save();
+    
 
         return redirect()->route('clients.index')->with('success', 'Client created successfully!');
     }
@@ -126,10 +138,20 @@ class ClientController extends Controller
     public function showRelances()
     {
         $clients = Client::with(['relances' => function ($query) {
-            $query->latest();
-        }])->get();
+            $query->where('isannuler', '!=', 'annuler')->latest()->take(1);
+        }])->whereHas('relances', function ($query) {
+            $query->where('isannuler', '!=', 'annuler');
+        })->get();
         
         return view('relances.index', compact('clients'));
+    }
+    
+    public function showEtape($clientId)
+    {
+        $client = Client::findOrFail($clientId);
+        $etapes = $client->etapes;
+    
+        return view('client.show', compact('client', 'etapes'));
     }
     
 }

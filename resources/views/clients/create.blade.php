@@ -130,9 +130,19 @@
                                 <div class="nav-item-wrapper">
                                     <a class="nav-link label-1" href="{{ route('relances.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
-                                            <span class="nav-link-icon"><span data-feather="phone"></span></span>
+                                            <span class="nav-link-icon"><span data-feather="clock"></span></span>
                                             <span>
-                                            <span class="nav-link-text">Relance</span>
+                                            <span class="nav-link-text">Relance reporté</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="x-circle"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Relance annulée</span>
                                             </span>
                                         </div>
                                     </a>
@@ -363,8 +373,8 @@
 							<div class="d-sm-flex justify-content-between">
 								<h3 class="mb-4">Enregistrer un nouveau client</h3>
 			                <div class="d-flex mb-3">
-			                  <button onclick="refreshPage()" class="btn btn-phoenix-primary me-2 px-6">Annuler</button>
-			                  <a href="{{ route('clients.index') }}" class="btn btn-primary">Voir tous les clients</a>
+			                  <button onclick="refreshPage()" class="btn btn-phoenix-secondary me-2 px-6">Annuler</button>
+			                  <a href="{{ route('clients.index') }}" class="btn btn-phoenix-primary">Voir tous les clients</a>
 			                </div>
 							</div>
 						</div>
@@ -574,49 +584,23 @@
 								</div>
 							</div>
 							<h5 class="mt-3">Étape réalisée</h5>
-							<div class="col-sm-6 col-md-12">
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" id="contact" type="checkbox" value="Contact" name="contact" />
-									<label class="form-check-label" for="contact">Contact</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" id="qualification" type="checkbox" value="Qualification" name="qualification" />
-									<label class="form-check-label" for="qualification">Qualification</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" id="measure" type="checkbox" value="Mesure" name="mesure" />
-									<label class="form-check-label" for="measure">Mesure</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" id="discovery" type="checkbox" value="Découverte" name="decouverte" />
-									<label class="form-check-label" for="discovery">Découverte</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" id="solution_plan" type="checkbox" value="Solution - Plan" name="solution_plan" />
-									<label class="form-check-label" for="solution_plan">Solution - Plan</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" id="argumentation" type="checkbox" value="Argumentaire" name="argumentaire" />
-									<label class="form-check-label" for="argumentation">Argumentaire</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" id="price_announcement" type="checkbox" value="Annonce de prix" name="annonce_prix" />
-									<label class="form-check-label" for="price_announcement">Annonce de prix</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" id="handover" type="checkbox" value="Passage de main" name="passage_main" />
-									<label class="form-check-label" for="handover">Passage de main</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" id="decision" type="checkbox" value="Décision" name="decision" />
-									<label class="form-check-label" for="decision">Décision</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" id="vente" type="checkbox" value="Vente" name="vente" />
-									<label class="form-check-label" for="vente">Vente</label>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-12">
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-floating">
+                                    <select class="form-select" style="padding-top: 9.5px;" name="contact">
+                                        <option value="Contact">Contact</option>
+                                        <option value="Qualification">Qualification</option>
+                                        <option value="Mesure">Mesure</option>
+                                        <option value="Decouverte">Découverte</option>
+                                        <option value="Solution_plan">Solution - Plan</option>
+                                        <option value="Argumentaire">Argumentaire</option>
+                                        <option value="Annonce_prix">Annonce de prix</option>
+                                        <option value="Passage_main">Passage de main</option>
+                                        <option value="Decision">Décision</option>
+                                        <option value="Vente">Vente</option>
+                                    </select>
+                                </div>
+                            </div>
+							<div class="col-sm-6 col-md-8">
 								<div class="form-floating">
 									<input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;" name="step_completed_date"/>
 								</div>
@@ -624,7 +608,7 @@
 							<h5 class="mt-3">Description</h5>
 							<div class="col-12">
 								<div class="form-floating">
-									<textarea class="form-control" placeholder="Laissez un commentaire ici" style="height: 128px" name="description"></textarea>
+									<textarea class="form-control" placeholder="Laissez un commentaire ici" style="height: 64px" name="description"></textarea>
 									<label for="floatingProjectOverview">Laissez un commentaire ici</label>
 								</div>
 							</div>
