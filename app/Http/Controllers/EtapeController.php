@@ -28,4 +28,5 @@ class EtapeController extends Controller
 
         return redirect()->route('clients.index');
     }
+    
 }

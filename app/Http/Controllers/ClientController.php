@@ -149,9 +149,16 @@ class ClientController extends Controller
     public function showEtape($clientId)
     {
         $client = Client::findOrFail($clientId);
-        $etapes = $client->etapes;
+        $etapes = $client->etapes()->orderBy('created_at')->get(); 
     
         return view('client.show', compact('client', 'etapes'));
+    }
+    public function showEtape_last($clientId)
+    {
+        $client = Client::findOrFail($clientId);
+        $etapess = $client->etapes()->latest()->first(); 
+    
+        return view('client.show', compact('client', 'etapess'));
     }
     
 }

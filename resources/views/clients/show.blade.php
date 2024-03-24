@@ -806,9 +806,9 @@
                                                     <tbody>
                                                         <tr>
                                                             <td class="align-middle text-start fw-semibold p-2 px-3">
-                                                                {{$client->whoaddit}}
+                                                                {{ $client->etapes->last()->valide_par}}
                                                                 <div>
-                                                                    <p class="m-0 fw-semibold">{{$client->created_at}}</p>
+                                                                    <p class="m-0 fw-semibold">{{ $client->etapes->last()->date}}<p>
                                                                 </div>
                                                             </td>
                                                             <td class="align-middle text-start fw-semibold p-2 px-3">
@@ -818,32 +818,39 @@
                                                                 Relance pour l'étape
                                                                 <div>
                                                                     <p class="m-0 fw-semibold">
-                                                                        @if($client->contact === 'Contact')
-                                                                        {{ "Qualification" }}
-                                                                        @elseif($client->qualification === 'Qualification')
+                                                                        @if ($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Contact')
+                                                                            {{"Qualification"}}
+                                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Qualification')
                                                                         {{ "Mesure" }}
-                                                                        @elseif($client->mesure === 'Mesure')
+                                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Mesure')
                                                                         {{ "Découverte" }}
-                                                                        @elseif($client->decouverte === 'Découverte')
+                                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Découverte')
                                                                         {{ "Solution Plan" }}
-                                                                        @elseif($client->solution_plan === 'Solution Plan')
+                                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Solution - Plan')
                                                                         {{ "Argumentaire" }}
-                                                                        @elseif($client->argumentaire === 'Argumentaire')
+                                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Argumentaire')
                                                                         {{ "Annonce de prix" }}
-                                                                        @elseif($client->annonce_prix === 'Annonce de prix')
+                                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Annonce de prix')
                                                                         {{ "Passage de main" }}
-                                                                        @elseif($client->passage_main === 'Passage de main')
+                                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Passage de main')
                                                                         {{ "Décision" }}
-                                                                        @elseif($client->decision === 'Décision')
+                                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Décision')
                                                                         {{ "Vente" }}
-                                                                        @elseif($client->vente === 'vente')
-                                                                        {{"sui"}}
+                                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Vente')
+                                                                        {{"Vente"}}
                                                                         @endif
                                                                     </p>
                                                                 </div>
                                                             </td>
                                                             <td class="align-middle text-center fw-semibold p-2 px-3">
-                                                                <span class="badge badge-phoenix badge-phoenix-secondary">En cours</span>
+                                                                <span class="badge badge-phoenix badge-phoenix-secondary">
+                                                                    @if ($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Vente')
+                                                                        {{ "terminer" }}
+                                                                    @else
+                                                                        {{ "En cours" }}
+                                                                    @endif
+                            
+                                                                </span>
                                                             </td>
                                                             <td class="align-middle text-center fw-semibold p-2 px-3">
                                                                 <div class="btn-reveal-trigger position-static">
