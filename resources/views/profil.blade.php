@@ -354,135 +354,135 @@
                         <li class="breadcrumb-item">
                             <a>Utilisateur</a>
                         </li>
-                        <li class="breadcrumb-item">Voir tous les utilisateur</li>
+                        <li class="breadcrumb-item">Voir mon profil</li>
                     </ol>
                 </nav>
                 <div class="border-bottom border-translucent mx-n3 px-2 mx-lg-n6 px-lg-6">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="d-sm-flex justify-content-between">
-                                <h3 class="mb-4">Voir tous les utilisateurs</h3>
+                                <h3 class="mb-4">Mon profil {{ Auth::user()->civilite }} {{ Auth::user()->nom }} {{ Auth::user()->prenom }}</h3>
+                                <div class="d-flex mb-3">
+                                    <button class="btn btn-phoenix-secondary me-2 px-6"><span class="fa-solid fa-edit me-sm-2"></span><span class="d-none d-sm-inline">Modifier</span></button>
+                                    <button class="btn btn-phoenix-danger me-2 px-6"><span class="fa-solid fa-trash me-2"></span><span>Supprimer</span></button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div id="userstable" data-list='{"valueNames":["1","2","3","4","5","6","7"],"page":20,"pagination":true}'>
-                        <div class="row justify-content-between mt-3 mb-3">
-                            <div class="col-auto">
-                                <div class="d-md-flex justify-content-between">
-                                    <div>
-                                        <a href="{{ route('users.create') }}"><button class="btn btn-primary me-4">Enregistrer un nouvel utilisateur</button></a>
+                <div class="mt-4 mb-4">
+                    <div class="row g-4 g-xl-6">
+                        <div class="col-xl-5 col-xxl-3">
+                            <div class="sticky-leads-sidebar">
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="mb-3">
+                                            <div class="d-flex align-items-center mb-1"><span class="me-2 uil uil-building"></span>
+                                                <h5 class="text-body-highlight mb-0">Adresse</h5>
+                                            </div>
+                                            <p class="mb-0 text-body-secondary fs-9">{{ Auth::user()->adresse }}</p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="d-flex align-items-center mb-1"><span class="me-2 uil uil-building"></span>
+                                                <h5 class="text-body-highlight mb-0">Adresse complémentaire</h5>
+                                            </div>
+                                            <p class="mb-0 text-body-secondary fs-9">{{ Auth::user()->adresse_complementaire }}</p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="d-flex align-items-center mb-1"><span class="me-2 uil uil-building"></span>
+                                                <h5 class="text-body-highlight mb-0">Code postal</h5>
+                                            </div>
+                                            <p class="mb-0 text-body-secondary fs-9">{{ Auth::user()->code_postal }}</p>
+                                        </div>
+                                        <div>
+                                            <div class="d-flex align-items-center mb-1"><span class="me-2 uil uil-building"></span>
+                                                <h5 class="text-body-highlight mb-0">Ville</h5>
+                                            </div>
+                                            <p class="mb-0 text-body-secondary fs-9">{{ Auth::user()->ville }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="mb-3">
+                                            <div class="d-flex align-items-center mb-1"><span class="me-2 uil uil-building"></span>
+                                                <h5 class="text-body-highlight mb-0">Téléphone mobile</h5>
+                                            </div>
+                                            <p class="mb-0 text-body-secondary fs-9">{{ Auth::user()->tel_mobile }}</p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="d-flex align-items-center mb-1"><span class="me-2 uil uil-building"></span>
+                                                <h5 class="text-body-highlight mb-0">Téléphone fixe</h5>
+                                            </div>
+                                            <p class="mb-0 text-body-secondary fs-9">{{ Auth::user()->tel_fixe }}</p>
+                                        </div>
+                                        <div>
+                                            <div class="d-flex align-items-center mb-1"><span class="me-2 uil uil-building"></span>
+                                                <h5 class="text-body-highlight mb-0">Email</h5>
+                                            </div>
+                                            <p class="mb-0 text-body-secondary fs-9">{{ Auth::user()->email }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-auto">
-                            </div>
-                            <div class="col-auto">
-                                <div class="d-flex">
-                                    <div class="search-box me-2">
-                                        <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input search" type="search" placeholder="Rechercher un utilisateur" aria-label="Search" />
-                                            <span class="fas fa-search search-box-icon"></span>
-                                        </form>
-                                    </div>
-                                    <button class="btn px-3 btn-phoenix-secondary" type="button" data-bs-toggle="modal" data-bs-target="#filterModal" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fa-solid fa-filter text-primary" data-fa-transform="down-3"></span></button>
-                                    <div class="modal fade" id="filterModal" tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content border border-translucent">
-                                                <form id="addEventForm" autocomplete="off">
-                                                    <div class="modal-header border-translucent p-4">
-                                                        <h5 class="modal-title text-body-highlight fs-6 lh-sm">Filtre par</h5>
-                                                        <button class="btn p-1 text-body" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs-9"></span></button>
-                                                    </div>
-                                                    <div class="modal-body pt-4 pb-2 px-4">
-                                                        <div class="mb-3">
-                                                            <label class="fw-bold mb-2 text-body-highlight" for="ville">Ville</label>
-                                                            <select class="form-select" id="ville">
-                                                                <option value="Casablanca" selected="selected">Casablanca</option>
-                                                                <option value="Rabat">Rabat</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer d-flex justify-content-end align-items-center px-4 pb-4 border-0 pt-3"><button class="btn btn-sm btn-phoenix-primary px-4 fs-10 my-0" type="submit"> <span class="fas fa-arrows-rotate me-2 fs-10"></span>Réinitialiser</button><button class="btn btn-sm btn-primary px-9 fs-10 my-0" type="submit">Valider</button></div>
-                                                </form>
+                        </div>
+                        <div class="col-12 col-xxl-9">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="row g-4 g-xl-1 g-xxl-3 justify-content-between">
+                                        <div class="col-sm-auto">
+                                            <div class="d-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center">
+                                                <div class="d-flex flex-center me-4 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px">
+                                                    <span class="fa-stack" style="min-height: 46px;min-width: 46px;">
+                                                    <span class="fa-solid fa-square fa-stack-2x dark__text-opacity-50 text-success-light" data-fa-transform="down-4 rotate--10 left-4"></span>
+                                                    <span class="fa-solid fa-circle fa-stack-2x stack-circle text-stats-circle-success" data-fa-transform="up-4 right-3 grow-2"></span>
+                                                    <span class="fa-stack-1x fa-solid fa-star text-success " data-fa-transform="shrink-2 up-8 right-6"></span>
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <p class="fs-9 fw-semibold mb-1">Rendez-vous brut à confirmer</p>
+                                                    <h5>150</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-auto">
+                                            <div class="d-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center">
+                                                <div class="d-flex flex-center me-4 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px">
+                                                    <span class="fa-stack" style="min-height: 46px;min-width: 46px;">
+                                                    <span class="fa-solid fa-square fa-stack-2x dark__text-opacity-50 text-warning-light" data-fa-transform="down-4 rotate--10 left-4"></span>
+                                                    <span class="fa-solid fa-circle fa-stack-2x stack-circle text-stats-circle-warning" data-fa-transform="up-4 right-3 grow-2"></span>
+                                                    <span class="fa-stack-1x fa-solid fa-pause text-warning " data-fa-transform="shrink-2 up-8 right-6"></span>
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <p class="fs-9 fw-semibold mb-1">Rendez-vous net jour J</p>
+                                                    <h5>15</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-auto">
+                                            <div class="d-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center">
+                                                <div class="d-flex flex-center me-4 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px">
+                                                    <span class="fa-stack" style="min-height: 46px;min-width: 46px;">
+                                                    <span class="fa-solid fa-square fa-stack-2x dark__text-opacity-50 text-danger-light" data-fa-transform="down-4 rotate--10 left-4"></span>
+                                                    <span class="fa-solid fa-circle fa-stack-2x stack-circle text-stats-circle-danger" data-fa-transform="up-4 right-3 grow-2"></span>
+                                                    <span class="fa-stack-1x fa-solid fa-xmark text-danger " data-fa-transform="shrink-2 up-8 right-6"></span>
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <p class="fs-9 fw-semibold mb-1">Rendez-vous non statuer</p>
+                                                    <h5>2</h5>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="mx-n4 mx-lg-n6 px-4 px-lg-6 mb-9 bg-body-emphasis border-y mt-2 position-relative top-1">
-                            <div class="table-responsive scrollbar">
-                                <table class="table fs-9 mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th class="sort align-middle text-center py-3" data-sort="1" style="width:auto;">Nom</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="2" style="width:auto;">Ville</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="3" style="width:auto;">Adresse</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="4" style="width:auto;">Tél.</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="5" style="width:auto;">Email</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="6" style="width:auto;">Statut</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="7" style="width:auto;">Date d'aout</th>
-                                            <th class="sort align-middle text-center py-3" style="width:auto;">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="list" id="members-table-body">
-                                        @foreach($users as $user)
-                                        <tr>
-                                            <td class="1 align-middle text-center fw-semibold py-3">
-                                                <div><a href="{{ route('users.show', $user->id) }}">{{ $user->civilite }} {{ $user->nom }} {{ $user->prenom }}</a></div>
-                                            </td>
-                                            <td class="2 align-middle text-center fw-semibold py-3">
-                                                {{ $user->ville }}
-                                            </td>
-                                            <td class="3 align-middle text-center fw-semibold py-3">
-                                                {{ $user->adresse }}
-                                            </td>
-                                            <td class="4 align-middle text-center fw-semibold py-3">
-                                                {{ $user->tel_mobile }}
-                                            </td>
-                                            <td class="5 align-middle text-center fw-semibold py-3">
-                                                {{ $user->email }}
-                                            </td>
-                                            <td class="6 align-middle text-center fw-semibold py-3">
-                                                {{ $user->statut }}
-                                            </td>
-                                            <td class="7 align-middle text-center fw-semibold py-3">
-                                                {{ $user->created_at->format('d/m/Y') }} {{ $user->created_at->format('H:i') }}
-                                            </td>
-                                            <td class="align-middle py-1 text-center fw-semibold text-body-highlight">
-                                                <div class="btn-reveal-trigger position-static">
-                                                    <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
-                                                    <div class="dropdown-menu dropdown-menu-end py-2">
-                                                                <a class="dropdown-item" href="{{ route('users.edit', $user->id) }}">Modifier</a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <form action="{{ route('users.destroy', $user->id) }}" method="POST">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" class="dropdown-item text-danger" onclick="return confirm('Voulez-vous vraiement supprimer ce client ?')">Supprimer</button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="row align-items-center justify-content-between py-2 pe-0 fs-9">
-                                <div class="col-auto d-flex">
-                                    <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
-                                    <a class="fw-semibold" href="#!" data-list-view="*">Voir tout<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">Voir moins<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
-                                </div>
-                                <div class="col-auto d-flex">
-                                    <button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-                                    <ul class="mb-0 pagination"></ul>
-                                    <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                </div>
+                <div class="navbar-bottom d-xl-none">
+                    <div class="nav"><a class="nav-link" aria-current="page" href="../../apps/social/feed.html"><span class="fa-solid fa-home nav-icon"></span><span class="nav-label">Home</span></a><a class="nav-link active" href="../../apps/social/profile.html"><span class="fa-solid fa-user nav-icon"></span><span class="nav-label">Profile</span></a><a class="nav-link" href="#!"><span class="fa-solid fa-image nav-icon"></span><span class="nav-label">Photos</span></a><a class="nav-link" href="../../apps/chat.html"><span class="fa-solid fa-message nav-icon"></span><span class="nav-label">Messages</span></a><a class="nav-link" href="../../apps/events/event-detail.html"><span class="fa-solid fa-calendar-days nav-icon"></span><span class="nav-label">Events</span></a></div>
                 </div>
                 <footer class="footer position-absolute">
                     <div class="row g-0 justify-content-between align-items-center h-100">
@@ -497,13 +497,19 @@
                 </footer>
             </div>
         </main>
+        <script>
+            function refreshPage() {
+              // Recharge la page actuelle
+              location.reload();
+            }
+        </script>
         <script src="../../vendors/popper/popper.min.js"></script>
         <script src="../../vendors/bootstrap/bootstrap.min.js"></script>
         <script src="../../vendors/anchorjs/anchor.min.js"></script>
         <script src="../../vendors/is/is.min.js"></script>
         <script src="../../vendors/fontawesome/all.min.js"></script>
         <script src="../../vendors/lodash/lodash.min.js"></script>
-        <script src="../../../../../polyfill.io/v3/polyfill.min58be.js?features=window.scroll"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
         <script src="../../vendors/list.js/list.min.js"></script>
         <script src="../../vendors/feather-icons/feather.min.js"></script>
         <script src="../../vendors/dayjs/dayjs.min.js"></script>

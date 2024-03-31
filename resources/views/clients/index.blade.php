@@ -70,7 +70,7 @@
                                 <p class="navbar-vertical-label">Gestion des rendez-vous</p>
                                 <hr class="navbar-vertical-line" />
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="{{ route('rendezvous.rdv_net_non_statuer') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
                                             <span>
@@ -80,7 +80,7 @@
                                     </a>
                                 </div>
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="{{ route('rendezvous.rdv_net_jour_j') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
                                             <span>
@@ -90,7 +90,7 @@
                                     </a>
                                 </div>
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="{{ route('rendezvous.rdv_brut_a_confirmer') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-icon"><span data-feather="check-square"></span></span>
                                             <span>
@@ -130,9 +130,9 @@
                                 <div class="nav-item-wrapper">
                                     <a class="nav-link label-1" href="{{ route('relances.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
-                                            <span class="nav-link-icon"><span data-feather="phone"></span></span>
+                                            <span class="nav-link-icon"><span data-feather="clock"></span></span>
                                             <span>
-                                            <span class="nav-link-text">Relance</span>
+                                            <span class="nav-link-text">Relance call center</span>
                                             </span>
                                         </div>
                                     </a>
@@ -190,43 +190,62 @@
                             </div>
                         </a>
                     </div>
-                    <div class="search-box navbar-top-search-box d-none d-lg-block" data-list='{"valueNames":["title"]}' style="width:50rem;">
-                        <div class="position-relative" data-bs-toggle="search" data-bs-display="static">
-                            <input class="form-control search-input fuzzy-search form-control-sm" type="search" placeholder="Rechercher un client" aria-label="Search" />
+                    <div class="search-box navbar-top-search-box d-none d-lg-block" data-list='{"valueNames":["1","2","3","4","5","6","7","8","9","10"]}' style="width:50rem;">
+                        <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input search" type="search" placeholder="Rechercher un client" aria-label="Search" />
                             <span class="fas fa-search search-box-icon"></span>
-                        </div>
+                        </form>
                         <div class="btn-close position-absolute end-0 top-50 translate-middle cursor-pointer shadow-none" data-bs-dismiss="search">
                             <button class="btn btn-link p-0" aria-label="Close"></button>
                         </div>
                         <div class="dropdown-menu border start-0 py-0 overflow-hidden w-100">
                             <div class="scrollbar-overlay" style="max-height: 30rem;">
-                                <div class="list">
-                                    <h6 class="dropdown-header text-body-highlight fs-10 py-2">24 <span class="text-body-quaternary">results</span>
-                                    </h6>
-                                    <hr class="my-0" />
-                                    <div class="py-2">
-                                        <a class="dropdown-item" href="../e-commerce/landing/product-details.html">
-                                            <div class="d-flex align-items-center">
-                                                <div class="fw-normal text-body-highlight title">
-                                                    <span class="fa-brands fa-firefox-browser text-body" data-fa-transform="shrink-2"></span> Search in the Web MacBook
-                                                </div>
+                                <div id="clientstable" data-list='{"valueNames":["1","2","3","4"],"page":15,"pagination":true}'>
+                                    <div>
+                                        <div class="table-responsive scrollbar">
+                                            <table class="table fs-9 mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="sort align-middle text-center py-3" data-sort="1" style="width:auto;">Nom</th>
+                                                        <th class="sort align-middle text-center py-3" data-sort="2" style="width:auto;">Ville</th>
+                                                        <th class="sort align-middle text-center py-3" data-sort="3" style="width:auto;">Adresse</th>
+                                                        <th class="sort align-middle text-center py-3" data-sort="4" style="width:auto;">Tél.</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="list" id="members-table-body">
+                                                    @foreach($clients as $client)
+                                                    <tr>
+                                                        <td class="1 align-middle text-center fw-semibold py-3">
+                                                            <div><a href="{{ route('clients.show', $client->id) }}">{{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</a></div>
+                                                        </td>
+                                                        <td class="2 align-middle text-center fw-semibold py-3">
+                                                            {{ $client->ville }}
+                                                        </td>
+                                                        <td class="3 align-middle text-center fw-semibold py-3">
+                                                            {{ $client->adresse }}
+                                                        </td>
+                                                        <td class="4 align-middle text-center fw-semibold py-3">
+                                                            {{ $client->tel_mobile }}
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="row align-items-center justify-content-between py-2 px-0 fs-9 m-0">
+                                            <div class="col-auto d-flex">
+                                                <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
                                             </div>
-                                        </a>
-                                        <a class="dropdown-item" href="../e-commerce/landing/product-details.html">
-                                            <div class="d-flex align-items-center">
-                                                <div class="fw-normal text-body-highlight title">
-                                                    <span class="fa-brands fa-chrome text-body" data-fa-transform="shrink-2"></span> Store MacBook″
-                                                </div>
+                                            <div class="col-auto d-flex">
+                                                <button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
+                                                <ul class="mb-0 pagination"></ul>
+                                                <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
                                             </div>
-                                        </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="text-center">
-                                    <p class="fallback fw-bold fs-7 d-none">Aucun résultat trouvé</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                   </div>
                     <ul class="navbar-nav navbar-nav-icons flex-row">
                         <li class="nav-item">
                             <div class="theme-control-toggle fa-icon-wait px-2">
@@ -300,9 +319,9 @@
                                     <div class="overflow-auto scrollbar p-0 border-top border-translucent" style="height: auto;">
                                         <ul class="nav d-flex flex-column mb-2 mt-2">
                                             <li class="nav-item">
-                                                <a class="nav-link px-3" href="{{ route('profile') }}">
+                                                <a class="nav-link px-3" href="{{ route('profil') }}">
                                                 <span class="me-2 text-body" data-feather="user"></span>
-                                                <span>Profile</span>
+                                                <span>Profil</span>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
@@ -429,6 +448,7 @@
                                     </thead>
                                     <tbody class="list" id="members-table-body">
                                         @foreach($clients as $client)
+                                        
                                         <tr>
                                             <td class="1 align-middle text-center fw-semibold py-3">
                                                 <div><a href="{{ route('clients.show', $client->id) }}">{{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</a></div>
@@ -452,16 +472,7 @@
                                                 {{ $client->origine_dossier }}
                                             </td>
                                             <td class="8 align-middle text-center fw-semibold py-3">
-                                                {{ $client->contact }}
-                                                {{ $client->qualification }}
-                                                {{ $client->mesure }}
-                                                {{ $client->decouverte }}
-                                                {{ $client->solution_plan }}
-                                                {{ $client->argumentaire }} 
-                                                {{ $client->annonce_prix }}
-                                                {{ $client->passage_main }}
-                                                {{ $client->decision }}
-                                                {{ $client->vente }}
+                                                {{ ($client->etapes->last()->etape) }}
                                             </td>
                                             <td class="9 align-middle text-center fw-semibold py-3">
                                                 {{ $client->whoaddit }}
@@ -484,6 +495,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        
                                         @endforeach
                                     </tbody>
                                 </table>

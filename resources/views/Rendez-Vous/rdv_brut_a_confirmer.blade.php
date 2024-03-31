@@ -352,36 +352,27 @@
                 <nav class="mb-3" aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item">
-                            <a>Utilisateur</a>
+                            <a>Rendez-vous</a>
                         </li>
-                        <li class="breadcrumb-item">Voir tous les utilisateur</li>
+                        <li class="breadcrumb-item">Rendez-vous brut à confirmer</li>
                     </ol>
                 </nav>
                 <div class="border-bottom border-translucent mx-n3 px-2 mx-lg-n6 px-lg-6">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="d-sm-flex justify-content-between">
-                                <h3 class="mb-4">Voir tous les utilisateurs</h3>
+                                <h3 class="mb-4">Rendez-vous brut à confirmer</h3>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div id="userstable" data-list='{"valueNames":["1","2","3","4","5","6","7"],"page":20,"pagination":true}'>
-                        <div class="row justify-content-between mt-3 mb-3">
-                            <div class="col-auto">
-                                <div class="d-md-flex justify-content-between">
-                                    <div>
-                                        <a href="{{ route('users.create') }}"><button class="btn btn-primary me-4">Enregistrer un nouvel utilisateur</button></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                            </div>
+                    <div id="clientstable" data-list='{"valueNames":["1","2","3","4","5","6","7","8","9","10"],"page":20,"pagination":true}'>
+                        <div class="row justify-content-end mt-3 mb-3">
                             <div class="col-auto">
                                 <div class="d-flex">
                                     <div class="search-box me-2">
-                                        <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input search" type="search" placeholder="Rechercher un utilisateur" aria-label="Search" />
+                                        <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input search" type="search" placeholder="Rechercher un client" aria-label="Search" />
                                             <span class="fas fa-search search-box-icon"></span>
                                         </form>
                                     </div>
@@ -418,55 +409,50 @@
                                         <tr>
                                             <th class="sort align-middle text-center py-3" data-sort="1" style="width:auto;">Nom</th>
                                             <th class="sort align-middle text-center py-3" data-sort="2" style="width:auto;">Ville</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="3" style="width:auto;">Adresse</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="4" style="width:auto;">Tél.</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="5" style="width:auto;">Email</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="6" style="width:auto;">Statut</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="7" style="width:auto;">Date d'aout</th>
-                                            <th class="sort align-middle text-center py-3" style="width:auto;">Action</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="3" style="width:auto;">Tél.</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="4" style="width:auto;">Date du rendez-vous</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="5" style="width:auto;">Vendeur</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="6" style="width:auto;">Prospecteur (VR1)</th>
+                                            <th class="sort align-middle text-center py-3" data-sort="7" style="width:auto;">Étapes à traiter</th>
+                                            <th class="sort align-middle text-center py-3"style="width:auto;">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list" id="members-table-body">
-                                        @foreach($users as $user)
+                                        
                                         <tr>
                                             <td class="1 align-middle text-center fw-semibold py-3">
-                                                <div><a href="{{ route('users.show', $user->id) }}">{{ $user->civilite }} {{ $user->nom }} {{ $user->prenom }}</a></div>
+                                                <div><a href="#">Mamoun Ezzidi</a></div>
                                             </td>
                                             <td class="2 align-middle text-center fw-semibold py-3">
-                                                {{ $user->ville }}
+                                                Mohammedia
                                             </td>
                                             <td class="3 align-middle text-center fw-semibold py-3">
-                                                {{ $user->adresse }}
+                                                0679000085
                                             </td>
                                             <td class="4 align-middle text-center fw-semibold py-3">
-                                                {{ $user->tel_mobile }}
+                                                26 Mar 2024 15:30
                                             </td>
                                             <td class="5 align-middle text-center fw-semibold py-3">
-                                                {{ $user->email }}
+                                                Mamoun Ezzidi
                                             </td>
                                             <td class="6 align-middle text-center fw-semibold py-3">
-                                                {{ $user->statut }}
+                                                Prospecteur 1
                                             </td>
                                             <td class="7 align-middle text-center fw-semibold py-3">
-                                                {{ $user->created_at->format('d/m/Y') }} {{ $user->created_at->format('H:i') }}
+                                                Contact
                                             </td>
                                             <td class="align-middle py-1 text-center fw-semibold text-body-highlight">
                                                 <div class="btn-reveal-trigger position-static">
                                                     <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
                                                     <div class="dropdown-menu dropdown-menu-end py-2">
-                                                                <a class="dropdown-item" href="{{ route('users.edit', $user->id) }}">Modifier</a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <form action="{{ route('users.destroy', $user->id) }}" method="POST">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" class="dropdown-item text-danger" onclick="return confirm('Voulez-vous vraiement supprimer ce client ?')">Supprimer</button>
-                                                            </form>
-                                                        </div>
+                                                        <a class="dropdown-item" href="#!">Modifier</a>
+                                                        <div class="dropdown-divider"></div>
+                                                        <a class="dropdown-item text-danger">Supprimer</a>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
-                                        @endforeach
+                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -497,6 +483,12 @@
                 </footer>
             </div>
         </main>
+        <script>
+            function refreshPage() {
+              // Recharge la page actuelle
+              location.reload();
+            }
+        </script>
         <script src="../../vendors/popper/popper.min.js"></script>
         <script src="../../vendors/bootstrap/bootstrap.min.js"></script>
         <script src="../../vendors/anchorjs/anchor.min.js"></script>

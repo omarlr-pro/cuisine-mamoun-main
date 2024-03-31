@@ -67,7 +67,41 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <p class="navbar-vertical-label">Client</p>
+                                <p class="navbar-vertical-label">Gestion des rendez-vous</p>
+                                <hr class="navbar-vertical-line" />
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="{{ route('rendezvous.rdv_net_non_statuer') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">RDV net non statuer</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="{{ route('rendezvous.rdv_net_jour_j') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">RDV net jour J</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="{{ route('rendezvous.rdv_brut_a_confirmer') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="check-square"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">RDV Brut à confirmer</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Gestion des clients</p>
                                 <hr class="navbar-vertical-line" />
                                 <div class="nav-item-wrapper">
                                     <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
@@ -85,6 +119,20 @@
                                             <span class="nav-link-icon"><span data-feather="list"></span></span>
                                             <span>
                                             <span class="nav-link-text">Voir tous les clients</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <p class="navbar-vertical-label">Gestion des relances</p>
+                                <hr class="navbar-vertical-line" />
+                                <div class="nav-item-wrapper">
+                                    <a class="nav-link label-1" href="{{ route('relances.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-icon"><span data-feather="clock"></span></span>
+                                            <span>
+                                            <span class="nav-link-text">Relance call center</span>
                                             </span>
                                         </div>
                                     </a>
@@ -252,9 +300,9 @@
                                     <div class="overflow-auto scrollbar p-0 border-top border-translucent" style="height: auto;">
                                         <ul class="nav d-flex flex-column mb-2 mt-2">
                                             <li class="nav-item">
-                                                <a class="nav-link px-3" href="{{ route('profile') }}">
+                                                <a class="nav-link px-3" href="{{ route('profil') }}">
                                                 <span class="me-2 text-body" data-feather="user"></span>
-                                                <span>Profile</span>
+                                                <span>Profil</span>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
@@ -304,7 +352,7 @@
                 <nav class="mb-3" aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item">
-                            <a>Client</a>
+                            <a>Relances</a>
                         </li>
                         <li class="breadcrumb-item">Voir toutes les relances call center</li>
                     </ol>
@@ -322,11 +370,10 @@
                     <div id="clientstable" data-list='{"valueNames":["1","2","3","4","5","6","7","8","9"],"page":20,"pagination":true}'>
                         <div class="row justify-content-between mt-3 mb-3">
                             <div class="col-auto">
-                                <div class="d-md-flex justify-content-between">
-                                    <div>
-                                        <a href="{{ route('clients.create') }}"></a>
-                                    </div>
-                                </div>
+                                <ul class="nav nav-underline fs-9" id="myTab" role="tablist">
+                                  <li class="nav-item me-3"><a class="nav-link active" id="reporter-tab" data-bs-toggle="tab" href="#tab-reporter" role="tab" aria-controls="tab-reporter" aria-selected="true">Relances reportées</a></li>
+                                  <li class="nav-item"><a class="nav-link" id="annuler-tab" data-bs-toggle="tab" href="#tab-annuler" role="tab" aria-controls="tab-annuler" aria-selected="false">Relances annulées</a></li>
+                                </ul>
                             </div>
                             <div class="col-auto">
                                 <div class="d-flex">
@@ -361,114 +408,187 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mx-n4 mx-lg-n6 px-4 px-lg-6 mb-9 bg-body-emphasis border-y mt-2 position-relative top-1">
-                            <div class="table-responsive scrollbar">
-                                <table class="table fs-9 mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th class="sort align-middle text-center py-3" data-sort="1" style="width:auto;">Client</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="2" style="width:auto;">Qualiticien</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="3" style="width:auto;">Ville</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="4" style="width:auto;">Téléphone</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="6" style="width:auto;">Date du rendez-vous</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="7" style="width:auto;">Étape à traiter</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="8" style="width:auto;">Date de la relance</th>
-                                            <th class="sort align-middle text-center py-3" data-sort="9" style="width:auto;">Source</th>
-                                            <th class="sort align-middle text-center py-3"style="width:auto;">commantaire de la relance </th>
-                                            <th class="sort align-middle text-center py-3"style="width:auto;">Action</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody class="list" id="members-table-body">
-                                        @foreach ($clients as $client)
-                                            <tr>
-                                                <td class="1 align-middle text-center fw-semibold py-3">
-                                                    <div><a href="{{ route('clients.show', $client->id) }}">{{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</a></div>
-                                                </td>
-                                                <td class="2 align-middle text-center fw-semibold py-3">
-                                                    {{ $client->qualiticien }}
-                                                </td>
-                                                <td class="3 align-middle text-center fw-semibold py-3">
-                                                    {{ $client->ville }}
-                                                </td>
-                                                <td class="4 align-middle text-center fw-semibold py-3">
-                                                    {{ $client->tel_mobile }}
-                                                </td>
-                                                <td class="5 align-middle text-center fw-semibold py-3">
-                                                    ----
-                                                </td>
-                                                <td class="6 align-middle text-center fw-semibold py-3">
-                                                    @if($client->contact === 'Contact')
-                                                        {{ "Qualification" }}
-                                                    @elseif($client->qualification === 'Qualification')
-                                                        {{ "Mesure" }}
-                                                    @elseif($client->mesure === 'Mesure')
-                                                        {{ "Découverte" }}
-                                                    @elseif($client->decouverte === 'Découverte')
-                                                        {{ "Solution Plan" }}
-                                                    @elseif($client->solution_plan === 'Solution Plan')
-                                                        {{ "Argumentaire" }}
-                                                    @elseif($client->argumentaire === 'Argumentaire')
-                                                        {{ "Annonce de prix" }}
-                                                    @elseif($client->annonce_prix === 'Annonce de prix')
-                                                        {{ "Passage de main" }}
-                                                    @elseif($client->passage_main === 'Passage de main')
-                                                        {{ "Décision" }}
-                                                    @elseif($client->decision === 'Décision')
-                                                        {{ "Vente" }}
-                                                    @elseif($client->vente === 'vente')
-                                                        {{"sui"}}
-                                                    @endif
-                                                </td>
-                                                <td class="7 align-middle text-center fw-semibold py-3">
-                                                    @if ($client->relances->isNotEmpty())
-                                                    @foreach ($client->relances as $relance)
-                                                        @if ($relance->isannuler=="nest pas annuler")
-                                                            {{ $relance->reporter_la_relance }}
-                                                        @endif
-                                                    @endforeach
-                                                @else
-                                                    Aucune relance disponible
-                                                @endif
-                                            
-                                                </td>
-                                                <td class="8 align-middle text-center fw-semibold py-3">
-                                                    {{ $client->origine_dossier }}
-                                                </td>
-                                                <td class="9 align-middle text-center fw-semibold py-3">
-                                                    @foreach ($client->relances as $relance)
-                                                        @if ($relance->isannuler=="nest pas annuler")
-                                                            {{ $relance->remarque }}
-                                                            @break
-                                                        @endif
-                                                    @endforeach
-                                                </td>
-                                                <td class="align-middle py-1 text-center fw-semibold text-body-highlight">
-                                                    <div class="btn-reveal-trigger position-static">
-                                                        <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
-                                                        <div class="dropdown-menu dropdown-menu-end py-2">
-                                                            <a class="dropdown-item" href="#!">Modifier</a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a class="dropdown-item text-danger">Supprimer</a>
+                        <div class="tab-content mt-3" id="myTabContent">
+                            <div class="tab-pane fade show active" id="tab-reporter" role="tabpanel" aria-labelledby="reporter-tab">
+                                <div class="mx-n4 mx-lg-n6 px-4 px-lg-6 mb-9 bg-body-emphasis border-y mt-2 position-relative top-1">
+                                    <div class="table-responsive scrollbar">
+                                        <table class="table fs-9 mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="sort align-middle text-center py-3" data-sort="1" style="width:auto;">Client</th>
+                                                    <th class="sort align-middle text-center py-3" data-sort="2" style="width:auto;">Qualiticien</th>
+                                                    <th class="sort align-middle text-center py-3" data-sort="3" style="width:auto;">Ville</th>
+                                                    <th class="sort align-middle text-center py-3" data-sort="4" style="width:auto;">Téléphone</th>
+                                                    <th class="sort align-middle text-center py-3" data-sort="6" style="width:auto;">Date du rendez-vous</th>
+                                                    <th class="sort align-middle text-center py-3" data-sort="7" style="width:auto;">Étape à traiter</th>
+                                                    <th class="sort align-middle text-center py-3" data-sort="8" style="width:auto;">Date de la relance</th>
+                                                    <th class="sort align-middle text-center py-3" data-sort="9" style="width:auto;">Source</th>
+                                                    <th class="sort align-middle text-center py-3"style="width:auto;">commantaire de la relance </th>
+                                                    <th class="sort align-middle text-center py-3"style="width:auto;">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="list" id="members-table-body">
+                                                @foreach ($clients as $client)
+                                                @foreach ($client->relances as $relance)
+                                                @if($client->relances->last()->isannuler == 'nest pas annuler')
+                                                <tr>
+                                                    <td class="align-middle text-center fw-semibold py-3">
+                                                        <div><a href="{{ route('clients.show', $client->id) }}">{{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</a></div>
+                                                    </td>
+                                                    <td class="align-middle text-center fw-semibold py-3">
+                                                        {{ $client->qualiticien }}
+                                                    </td>
+                                                    <td class="align-middle text-center fw-semibold py-3">
+                                                        {{ $client->ville }}
+                                                    </td>
+                                                    <td class="align-middle text-center fw-semibold py-3">
+                                                        {{ $client->tel_mobile }}
+                                                    </td>
+                                                    <td class="align-middle text-center fw-semibold py-3">
+                                                        {{ $relance->rdv_relance_date }} {{ $relance->rdv_relance_heure }}
+                                                    </td>
+                                                    <td class="align-middle text-center fw-semibold py-3">
+                                                        {{ ($client->etapes->last()->etape) }}
+                                                    </td>
+                                                    <td class="align-middle text-center fw-semibold py-3">
+                                                        {{ $relance->relance_date }} {{ $relance->relance_heure }}
+                                                    </td>
+                                                    <td class="align-middle text-center fw-semibold py-3">
+                                                        {{ $client->origine_dossier }}
+                                                    </td>
+                                                    <td class="align-middle text-center fw-semibold py-3">
+                                                        {{ $relance->remarque }}
+                                                    </td>
+                                                    <td class="align-middle py-1 text-center fw-semibold text-body-highlight">
+                                                        <div class="btn-reveal-trigger position-static">
+                                                            <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
+                                                            <div class="dropdown-menu dropdown-menu-end py-2">
+                                                                <a class="dropdown-item" href="#!">Modifier</a>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item text-danger">Supprimer</a>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                    
-                                  
-                                </table>
-                            </div>
-                            <div class="row align-items-center justify-content-between py-2 pe-0 fs-9">
-                                <div class="col-auto d-flex">
-                                    <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
-                                    <a class="fw-semibold" href="#!" data-list-view="*">Voir tout<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">Voir moins<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
+                                                    </td>
+                                                </tr>
+                                                @else
+                                                @endif
+                                                @endforeach
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="row align-items-center justify-content-between py-2 pe-0 fs-9">
+                                        <div class="col-auto d-flex">
+                                            <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
+                                            <a class="fw-semibold" href="#!" data-list-view="*">Voir tout<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">Voir moins<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
+                                        </div>
+                                        <div class="col-auto d-flex">
+                                            <button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
+                                            <ul class="mb-0 pagination"></ul>
+                                            <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-auto d-flex">
-                                    <button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-                                    <ul class="mb-0 pagination"></ul>
-                                    <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
+                            </div>
+                            <div class="tab-pane fade" id="tab-annuler" role="tabpanel" aria-labelledby="annuler-tab">
+                                <div class="mx-n4 mx-lg-n6 px-4 px-lg-6 mb-9 bg-body-emphasis border-y mt-2 position-relative top-1">
+                                    <div class="table-responsive scrollbar">
+                                        <table class="table fs-9 mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="sort align-middle text-center py-3" data-sort="1" style="width:auto;">Client</th>
+                                                    <th class="sort align-middle text-center py-3" data-sort="2" style="width:auto;">Qualiticien</th>
+                                                    <th class="sort align-middle text-center py-3" data-sort="3" style="width:auto;">Ville</th>
+                                                    <th class="sort align-middle text-center py-3" data-sort="4" style="width:auto;">Téléphone</th>
+                                                    <th class="sort align-middle text-center py-3" data-sort="6" style="width:auto;">Date du rendez-vous</th>
+                                                    <th class="sort align-middle text-center py-3" data-sort="7" style="width:auto;">Étape à traiter</th>
+                                                    <th class="sort align-middle text-center py-3" data-sort="8" style="width:auto;">Date de la relance</th>
+                                                    <th class="sort align-middle text-center py-3" data-sort="9" style="width:auto;">Source</th>
+                                                    <th class="sort align-middle text-center py-3"style="width:auto;">commantaire de la relance </th>
+                                                    <th class="sort align-middle text-center py-3"style="width:auto;">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="list" id="members-table-body">
+                                                @foreach ($clients as $client)
+                                                @foreach ($client->relances as $relance)
+                                                @if($client->relances->last()->isannuler == 'nest pas annuler')
+                                                @else
+                                                <tr>
+                                                    <td class="align-middle text-center fw-semibold py-3">
+                                                        <div><a href="{{ route('clients.show', $client->id) }}">{{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</a></div>
+                                                    </td>
+                                                    <td class="align-middle text-center fw-semibold py-3">
+                                                        {{ $client->qualiticien }}
+                                                    </td>
+                                                    <td class="align-middle text-center fw-semibold py-3">
+                                                        {{ $client->ville }}
+                                                    </td>
+                                                    <td class="align-middle text-center fw-semibold py-3">
+                                                        {{ $client->tel_mobile }}
+                                                    </td>
+                                                    <td class="align-middle text-center fw-semibold py-3">
+                                                        {{ $relance->isannuler }}
+                                                    </td>
+                                                    <td class="align-middle text-center fw-semibold py-3">
+                                                        @if ($relance->contact === 'Contact')
+                                                        Qualification
+                                                        @elseif ($relance->qualification === 'Qualification')
+                                                        Mesure
+                                                        @elseif ($relance->mesure === 'Mesure')
+                                                        Découverte
+                                                        @elseif ($relance->decouverte === 'Découverte')
+                                                        Solution Plan
+                                                        @elseif ($relance->solution_plan === 'Solution Plan')
+                                                        Argumentaire
+                                                        @elseif ($relance->argumentaire === 'Argumentaire')
+                                                        Annonce de prix
+                                                        @elseif ($relance->annonce_prix === 'Annonce de prix')
+                                                        Passage de main
+                                                        @elseif ($relance->passage_main === 'Passage de main')
+                                                        Décision
+                                                        @elseif ($relance->decision === 'Décision')
+                                                        Vente
+                                                        @elseif ($relance->vente === 'vente')
+                                                        sui
+                                                        @endif
+                                                    </td>
+                                                    <td class="align-middle text-center fw-semibold py-3">
+                                                        {{ $relance->reporter_la_relance }}
+                                                    </td>
+                                                    <td class="align-middle text-center fw-semibold py-3">
+                                                        {{ $client->origine_dossier }}
+                                                    </td>
+                                                    <td class="align-middle text-center fw-semibold py-3">
+                                                        {{ $relance->remarque }}
+                                                    </td>
+                                                    <td class="align-middle py-1 text-center fw-semibold text-body-highlight">
+                                                        <div class="btn-reveal-trigger position-static">
+                                                            <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
+                                                            <div class="dropdown-menu dropdown-menu-end py-2">
+                                                                <a class="dropdown-item" href="#!">Modifier</a>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item text-danger">Supprimer</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                @endif
+                                                @endforeach
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="row align-items-center justify-content-between py-2 pe-0 fs-9">
+                                        <div class="col-auto d-flex">
+                                            <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
+                                            <a class="fw-semibold" href="#!" data-list-view="*">Voir tout<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">Voir moins<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
+                                        </div>
+                                        <div class="col-auto d-flex">
+                                            <button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
+                                            <ul class="mb-0 pagination"></ul>
+                                            <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

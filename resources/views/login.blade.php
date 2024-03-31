@@ -62,14 +62,14 @@
 									<div class="divider-content-center">Accéder à votre compte</div>
 								</div>
 								@if(session('error'))
-								<div class="alert alert-subtle-danger alert-dismissible fade show" role="alert" style="padding-top: 1rem; padding-bottom: 1rem; padding-left: 1.5rem; padding-right: 1rem">
-								  Les informations de connexion <strong>sont incorrectes.</strong>
-								  <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" style="padding-bottom: 0.6rem;"></button>
+								<div class="alert alert-subtle-danger alert-dismissible fade show fs-9" role="alert" style="padding-top: 1rem; padding-bottom: 1rem; padding-left: 1.5rem; padding-right: 1rem">
+									{{ session('error') }}
+									<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close" style="padding-bottom: 0.6rem;"></button>
 								</div>
-								@endif
+							@endif
 								<div class="mb-3 text-start">
 									<label class="form-label" for="email">Identifiant</label>
-									<div class="form-icon-container"><input class="form-control form-icon-input" type="email" placeholder="name@example.com" name="email"/><span class="fas fa-user text-body fs-9 form-icon"></span></div>
+									<div class="form-icon-container"><input class="form-control form-icon-input" type="identifiant" placeholder="Identifiant" name="identifiant"/><span class="fas fa-user text-body fs-9 form-icon"></span></div>
 								</div>
 								<div class="mb-3 text-start">
 									<label class="form-label" for="password">Mot de passe</label>

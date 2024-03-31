@@ -70,7 +70,7 @@
                                 <p class="navbar-vertical-label">Gestion des rendez-vous</p>
                                 <hr class="navbar-vertical-line" />
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="{{ route('rendezvous.rdv_net_non_statuer') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
                                             <span>
@@ -80,7 +80,7 @@
                                     </a>
                                 </div>
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="{{ route('rendezvous.rdv_net_jour_j') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
                                             <span>
@@ -90,7 +90,7 @@
                                     </a>
                                 </div>
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="{{ route('rendezvous.rdv_brut_a_confirmer') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-icon"><span data-feather="check-square"></span></span>
                                             <span>
@@ -128,11 +128,11 @@
                                 <p class="navbar-vertical-label">Gestion des relances</p>
                                 <hr class="navbar-vertical-line" />
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="{{ route('relances.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
-                                            <span class="nav-link-icon"><span data-feather="phone"></span></span>
+                                            <span class="nav-link-icon"><span data-feather="clock"></span></span>
                                             <span>
-                                            <span class="nav-link-text">Relance</span>
+                                            <span class="nav-link-text">Relance call center</span>
                                             </span>
                                         </div>
                                     </a>
@@ -300,9 +300,9 @@
                                     <div class="overflow-auto scrollbar p-0 border-top border-translucent" style="height: auto;">
                                         <ul class="nav d-flex flex-column mb-2 mt-2">
                                             <li class="nav-item">
-                                                <a class="nav-link px-3" href="{{ route('profile') }}">
+                                                <a class="nav-link px-3" href="{{ route('profil') }}">
                                                 <span class="me-2 text-body" data-feather="user"></span>
-                                                <span>Profile</span>
+                                                <span>Profil</span>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
@@ -349,189 +349,318 @@
                 }
             </script>
             <div class="content">
-                <div class="pb-5">
-                    <div class="card mb-5">
-                        <div class="card-header hover-actions-trigger d-flex justify-content-center align-items-end position-relative mb-7 mb-xxl-0" style="height: 125px; ">
-                            <div class="bg-holder rounded-top" style="background-image:url(../../assets/img/generic/cover-photo.png);"></div>
-                            <input class="d-none" id="upload-cover-image" type="file" /><label class="cover-image-file-input" for="upload-cover-image"></label>
-                            <div class="hover-actions end-0 bottom-0 pe-1 pb-2 text-white dark__text-gray-1100"><span class="fa-solid fa-camera me-2 overlay-icon"></span></div>
-                            <input class="d-none" id="upload-porfile-picture" type="file" />
-                            <div class="hoverbox feed-profile" style="width: 150px; height: 150px">
-                                <div class="hoverbox-content rounded-circle d-flex flex-center z-1" style="--phoenix-bg-opacity: .56;"><span class="fa-solid fa-camera fs-1 text-body-quaternary" data-bs-theme="light"></span></div>
-                                <div class="position-relative rounded-soft cursor-pointer d-flex flex-center mb-xxl-7">
-                                    <div class="avatar avatar-5xl"><img class="rounded-soft rounded-soft img-thumbnail shadow-sm border-0" src="../../assets/img/team/9.webp" alt="" /></div>
-                                    <label class="w-100 h-100 position-absolute z-1" for="upload-porfile-picture"></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="row justify-content-xl-between">
-                                <div class="col-auto">
-                                    <div class="d-flex flex-wrap mb-3 align-items-center">
-                                        <h3>{{ $user->civilite }} {{ $user->prenom }} {{ $user->nom }}</h3>
-                                    </div>
-                                    <p class="fw-semibold text-body-secondary m-0">“Whenever you find yourself on the side of the majority, it is time to pause and reflect.”</p>
-                                </div>
-                                <div class="col-auto d-flex align-items-center">
-                                    <div class="row g-2">
-                                        <div class="col-auto order-xxl-2"><button class="btn btn-primary lh-1"><span class="fa-solid fa-user-plus me-2"></span>Follow Request</button></div>
-                                        <div class="col-auto order-xxl-1"><button class="btn btn-phoenix-primary lh-1"><span class="fa-solid fa-message me-2"></span>Send Message</button></div>
-                                    </div>
+                <nav class="mb-3" aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item">
+                            <a>Utilisateur</a>
+                        </li>
+                        <li class="breadcrumb-item">Fiche de l'utilisateur</li>
+                    </ol>
+                </nav>
+                <div class="border-bottom border-translucent mx-n3 px-2 mx-lg-n6 px-lg-6">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="d-sm-flex justify-content-between">
+                                <h3 class="mb-4">Fiche de {{ $user->civilite }} {{ $user->nom }} {{ $user->prenom }}</h3>
+                                <div class="d-flex mb-3">
+                                    <button class="btn btn-phoenix-secondary me-2 px-6"><span class="fa-solid fa-edit me-sm-2"></span><span class="d-none d-sm-inline">Modifier</span></button>
+                                    <button class="btn btn-phoenix-danger me-2 px-6"><span class="fa-solid fa-trash me-2"></span><span>Supprimer</span></button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="position-relative">
-                        <hr class="bg-body-secondary mt-5 mb-5" />
-                        <div class="divider-content-center"></div>
-                    </div>
+                </div>
+                <div class="mt-4 mb-4">
                     <div class="row g-4 g-xl-6">
-                        <div class="col-xl-3 col-xxl-3">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <h3>Contact</h3>
-                                    </div>
-                                    <div class="mb-3">
-                                        <div class="d-flex align-items-center mb-1">
-                                            <span class="me-2 uil uil-phone"></span>
-                                            <h5 class="mb-0">Téléphone mobile</h5>
-                                        </div>
-                                        <p class="mb-0 fw-semibold text-body-secondary">{{ $user->tel_mobile }}</p>
-                                    </div>
-                                    <div class="mb-3">
-                                        <div class="d-flex align-items-center mb-1">
-                                            <span class="me-2 uil uil-phone"></span>
-                                            <h5 class="mb-0">Téléphone fixe</h5>
-                                        </div>
-                                        <p class="mb-0 fw-semibold text-body-secondary">{{ $user->tel_fixe}}</p>
-                                    </div>
-                                    <div>
-                                        <div class="d-flex align-items-center mb-1">
-                                            <span class="me-2 uil uil-envelope-alt"></span>
-                                            <h5 class="mb-0">Email</h5>
-                                        </div>
-                                        <p class="mb-0 fw-semibold text-body-secondary">{{ $user->email}}</p>
+                        <div class="col-xl-5 col-xxl-3">
+                            <div class="sticky-leads-sidebar">
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <form method="POST" action="#">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="d-flex align-items-center mb-3">
+                                                <h5 class="w-100">Information de l'utilisateur</h5>
+                                                <button class="btn btn-link p-0" type="submit">Enregistrer</button>
+                                            </div>
+                                            @if(session('success'))
+                                                <div class="alert alert-success">
+                                                    {{ session('success') }}
+                                                </div>
+                                            @endif
+                                            <div class="mb-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-phone"></span>
+                                                    <h6 class="mb-0">Civilité</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <select class="form-select form-select-sm" name="civilite" >
+                                                        <option value="{{ $user->civilite }}" selected disabled>{{ $user->civilite }}</option>
+                                                        <option value="M.">Homme</option>
+                                                        <option value="Mme">Femme</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="mb-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-gift"></span>
+                                                    <h6 class="mb-0">Nom</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-sm" id="nom" name="nom" value="{{ $user->nom }}">
+                                                </div>
+                                            </div>
+                                            <div class="mb-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-gift"></span>
+                                                    <h6 class="mb-0">Prénom</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-sm" id="prenom" name="prenom" value="{{ $user->prenom }}">
+                                                </div>
+                                            </div>
+                                            <div class="mb-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-gift"></span>
+                                                    <h6 class="mb-0">Cin</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-sm" id="cin" name="cin" value="{{ $user->cin }}">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-gift"></span>
+                                                    <h6 class="mb-0">Date de naissance</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="date" class="form-control form-control-sm" id="dob" name="dob" value="{{ $user->dob }}">
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <h3>Adresse</h3>
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <form method="POST" action="#">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="d-flex align-items-center mb-3">
+                                                <h5 class="w-100">Adresse</h5>
+                                                <button class="btn btn-link p-0" type="submit">Enregistrer</button>
+                                            </div>
+                                            <div class="mb-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-phone"></span>
+                                                    <h6 class="mb-0">Adresse</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-sm" id="adresse" name="adresse" value="{{ $user->adresse }}">
+                                                </div>
+                                            </div>
+                                            <div class="mb-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-gift"></span>
+                                                    <h6 class="mb-0">Adresse complémentaire</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-sm" id="adresse_complementaire" name="adresse_complementaire" value="{{ $user->adresse_complementaire }}">
+                                                </div>
+                                            </div>
+                                            <div class="mb-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-phone"></span>
+                                                    <h6 class="mb-0">Code postal</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-sm" id="code_postal" name="code_postal" value="{{ $user->code_postal }}">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-phone"></span>
+                                                    <h6 class="mb-0">Ville</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <select class="form-select form-select-sm" name="ville">
+                                                        <option value="{{ $user->ville }}"selected disabled>{{ $user->ville }}</option>
+                                                        <option value="Al Hoceïma">Al Hoceïma</option>
+                                                        <option value="Azilal">Azilal</option>
+                                                        <option value="Beni Mellal">Beni Mellal</option>
+                                                        <option value="Berkane">Berkane</option>
+                                                        <option value="Berréchid">Berrechid</option>
+                                                        <option value="Casablanca">Casablanca</option>
+                                                        <option value="Chefchaouen">Chefchaouen</option>
+                                                        <option value="Dakhla">Dakhla</option>
+                                                        <option value="El Hajeb">El Hajeb</option>
+                                                        <option value="El Jadida">El Jadida</option>
+                                                        <option value="Errachidia">Errachidia</option>
+                                                        <option value="Essaouira">Essaouira</option>
+                                                        <option value="Fès">Fès</option>
+                                                        <option value="Figuig">Figuig</option>
+                                                        <option value="Guelmim">Guelmim</option>
+                                                        <option value="Ifrane">Ifrane</option>
+                                                        <option value="Kénitra">Kénitra</option>
+                                                        <option value="Khémisset">Khémisset</option>
+                                                        <option value="Khénifra">Khénifra</option>
+                                                        <option value="Khouribga">Khouribga</option>
+                                                        <option value="Laâyoune">Laâyoune</option>
+                                                        <option value="Larache">Larache</option>
+                                                        <option value="Marrakech">Marrakech</option>
+                                                        <option value="Meknès">Meknès</option>
+                                                        <option value="Mohammedia">Mohammedia</option>
+                                                        <option value="Nador">Nador</option>
+                                                        <option value="Ouarzazate">Ouarzazate</option>
+                                                        <option value="Oujda">Oujda</option>
+                                                        <option value="Rabat">Rabat</option>
+                                                        <option value="Safi">Safi</option>
+                                                        <option value="Salé">Salé</option>
+                                                        <option value="Sefrou">Sefrou</option>
+                                                        <option value="Settat">Settat</option>
+                                                        <option value="Sidi Ifni">Sidi Ifni</option>
+                                                        <option value="Tanger">Tanger</option>
+                                                        <option value="Tan-Tan">Tan-Tan</option>
+                                                        <option value="Taza">Taza</option>
+                                                        <option value="Témara">Témara</option>
+                                                        <option value="Tétouan">Tétouan</option>
+                                                        <option value="Tinghir">Tinghir</option>
+                                                        <option value="Tiznit">Tiznit</option>
+                                                        <option value="Youssoufia">Youssoufia</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <div class="mb-3">
-                                        <div class="d-flex align-items-center mb-1">
-                                            <span class="me-2 uil uil-phone"></span>
-                                            <h5 class="mb-0">Adresse</h5>
-                                        </div>
-                                        <p class="mb-0 fw-semibold text-body-secondary">{{ $user->adresse }}</p>
-                                    </div>
-                                    <div class="mb-3">
-                                        <div class="d-flex align-items-center mb-1">
-                                            <span class="me-2 uil uil-phone"></span>
-                                            <h5 class="mb-0">Adresse Complémentaire</h5>
-                                        </div>
-                                        <p class="mb-0 fw-semibold text-body-secondary">{{ $user->adresse_complementaire}}</p>
-                                    </div>
-                                    <div class="mb-3">
-                                        <div class="d-flex align-items-center mb-1">
-                                            <span class="me-2 uil uil-envelope-alt"></span>
-                                            <h5 class="mb-0">Code postal</h5>
-                                        </div>
-                                        <p class="mb-0 fw-semibold text-body-secondary">{{ $user->code_postal}}</p>
-                                    </div>
-                                    <div>
-                                        <div class="d-flex align-items-center mb-1">
-                                            <span class="me-2 uil uil-envelope-alt"></span>
-                                            <h5 class="mb-0">Ville</h5>
-                                        </div>
-                                        <p class="mb-0 fw-semibold text-body-secondary">{{ $user->ville}}</p>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form method="POST" action="#">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="d-flex align-items-center mb-3">
+                                                <h5 class="w-100">Contact</h5>
+                                                <button class="btn btn-link p-0" type="submit">Enregistrer</button>
+                                            </div>
+                                            <div class="mb-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-phone"></span>
+                                                    <h6 class="mb-0">Téléphone mobile</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-sm" id="tel_mobile" name="tel_mobile" value="{{ $user->tel_mobile }}">
+                                                </div>
+                                            </div>
+                                            <div class="mb-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-gift"></span>
+                                                    <h6 class="mb-0">Téléphone fixe</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-sm" id="tel_fixe" name="tel_fixe" value="{{ $user->tel_fixe }}">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="me-2 uil uil-phone"></span>
+                                                    <h6 class="mb-0">Email</h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-sm" id="email" name="email" value="{{ $user->email }}">
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-9 col-xxl-9">
+                        <div class="col-12 col-xxl-9">
                             <div class="card mb-3">
-                                <div class="card-body p-3 p-sm-4">
-                                    <div>
-                                        <div class="d-flex align-items-center mb-3">
-                                            <a href="../../apps/social/profile.html">
-                                                <div class="avatar avatar-xl  me-3">
-                                                    <img class="rounded-soft " src="../../assets/img//team/9.webp" alt="" />
+                                <div class="card-body">
+                                    <div class="row g-4 g-xl-1 g-xxl-3 justify-content-between">
+                                        <div class="col-sm-auto">
+                                            <div class="d-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center">
+                                                <div class="d-flex flex-center me-4 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px">
+                                                    <span class="fa-stack" style="min-height: 46px;min-width: 46px;">
+                                                    <span class="fa-solid fa-square fa-stack-2x dark__text-opacity-50 text-success-light" data-fa-transform="down-4 rotate--10 left-4"></span>
+                                                    <span class="fa-solid fa-circle fa-stack-2x stack-circle text-stats-circle-success" data-fa-transform="up-4 right-3 grow-2"></span>
+                                                    <span class="fa-stack-1x fa-solid fa-star text-success " data-fa-transform="shrink-2 up-8 right-6"></span>
+                                                    </span>
                                                 </div>
-                                            </a>
-                                            <div class="flex-1">
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <a class="fw-bold text-body-emphasis">{{ $user->civilite }} {{ $user->prenom }} {{ $user->nom }}</a>
-                                                    <button type="button" class="btn btn-phoenix-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap"><span class="fa-solid fa-plus me-2"></span>Ajouter le statut</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating">
-                                                <textarea class="form-control" placeholder="Laissez un commentaire ici" style="height: 50px" name="description"></textarea>
-                                                <label for="floatingProjectOverview">Ajouter un statut sur votre porfil</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card mb-3">
-                                <div class="card-body p-3 p-sm-4">
-                                    <div>
-                                        <div class="d-flex align-items-center mb-3">
-                                            <a href="../../apps/social/profile.html">
-                                                <div class="avatar avatar-xl  me-3">
-                                                    <img class="rounded-soft " src="../../assets/img//team/9.webp" alt="" />
-                                                </div>
-                                            </a>
-                                            <div class="flex-1">
-                                                <a class="fw-bold mb-2 text-body-emphasis">{{ $user->civilite }} {{ $user->prenom }} {{ $user->nom }}</a>
-                                                <p class="fs-9 mb-0 text-body-tertiary text-opacity-85 fw-semibold">le 18/03/2024 à 23:45</p>
-                                            </div>
-                                            <div class="btn-reveal-trigger">
-                                                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none d-flex btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent">
-                                                <span class="fas fa-ellipsis-h"></span>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end py-2">
-                                                    <a class="dropdown-item" href="#!">Modifier</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item text-danger" href="#!">Supprimer</a>
+                                                <div>
+                                                    <p class="fs-9 fw-semibold mb-1">Rendez-vous brut à confirmer</p>
+                                                    <h5>150</h5>
                                                 </div>
                                             </div>
                                         </div>
-                                        <p class="text-body-highlight m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                        </p>
+                                        <div class="col-sm-auto">
+                                            <div class="d-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center">
+                                                <div class="d-flex flex-center me-4 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px">
+                                                    <span class="fa-stack" style="min-height: 46px;min-width: 46px;">
+                                                    <span class="fa-solid fa-square fa-stack-2x dark__text-opacity-50 text-warning-light" data-fa-transform="down-4 rotate--10 left-4"></span>
+                                                    <span class="fa-solid fa-circle fa-stack-2x stack-circle text-stats-circle-warning" data-fa-transform="up-4 right-3 grow-2"></span>
+                                                    <span class="fa-stack-1x fa-solid fa-pause text-warning " data-fa-transform="shrink-2 up-8 right-6"></span>
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <p class="fs-9 fw-semibold mb-1">Rendez-vous net jour J</p>
+                                                    <h5>15</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-auto">
+                                            <div class="d-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center">
+                                                <div class="d-flex flex-center me-4 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px">
+                                                    <span class="fa-stack" style="min-height: 46px;min-width: 46px;">
+                                                    <span class="fa-solid fa-square fa-stack-2x dark__text-opacity-50 text-danger-light" data-fa-transform="down-4 rotate--10 left-4"></span>
+                                                    <span class="fa-solid fa-circle fa-stack-2x stack-circle text-stats-circle-danger" data-fa-transform="up-4 right-3 grow-2"></span>
+                                                    <span class="fa-stack-1x fa-solid fa-xmark text-danger " data-fa-transform="shrink-2 up-8 right-6"></span>
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <p class="fs-9 fw-semibold mb-1">Rendez-vous non statuer</p>
+                                                    <h5>2</h5>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="card">
-                                <div class="card-body p-3 p-sm-4">
-                                    <div>
-                                        <div class="d-flex align-items-center mb-3">
-                                            <a href="../../apps/social/profile.html">
-                                                <div class="avatar avatar-xl  me-3">
-                                                    <img class="rounded-soft " src="../../assets/img//team/9.webp" alt="" />
-                                                </div>
-                                            </a>
-                                            <div class="flex-1">
-                                                <a class="fw-bold mb-2 text-body-emphasis">{{ $user->civilite }} {{ $user->prenom }} {{ $user->nom }}</a>
-                                                <p class="fs-9 mb-0 text-body-tertiary text-opacity-85 fw-semibold">le 18/03/2024 à 23:45</p>
-                                            </div>
-                                            <div class="btn-reveal-trigger">
-                                                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none d-flex btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent">
-                                                <span class="fas fa-ellipsis-h"></span>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end py-2">
-                                                    <a class="dropdown-item" href="#!">Modifier</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item text-danger" href="#!">Supprimer</a>
-                                                </div>
-                                            </div>
+                                <div class="card-body">
+                                    @if ($user->is_active)
+                                    <div class="row gy-5">
+
+                                     <div class="col-12 col-md-3 border-end">
+                                            <h5 class="text-body-emphasis mb-3">Désactiver</h5>
+                                            <p class="fs-9 fw-semibold mb-3">Désactiver le compte</p>
+                                            <form action="{{ route('deactivate-user', $user->id) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit" class="btn btn-danger">Deactivate</button>
+                                            </form>
                                         </div>
-                                        <p class="text-body-highlight m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                        </p>
+                                        @else
+                                        <div class="row gy-5">
+                                            <div class="col-12 col-md-3 border-end">
+                                                <h5 class="text-body-emphasis mb-3">Réactiver</h5>
+                                                <p class="fs-9 fw-semibold mb-3">Réactiver le compte</p>
+                                                <form method="POST" action="{{ route('user.activate', $user->id) }}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button type="submit" class="btn btn-phoenix-primary">Réactiver</button>
+                                                </form>
+                                            </div>
+                                        @endif
+                                        <div class="col-12 col-md-3 border-end">
+                                            <h5 class="text-body-emphasis mb-3">Archiver</h5>
+                                            <p class="fs-9 fw-semibold mb-3">Archiver le compte</p>
+                                            <button class="btn btn-phoenix-warning">Archiver</button>
+                                        </div>
+                                        <div class="col-12 col-md-3">
+                                            <h5 class="text-body-emphasis mb-3">Supprimer</h5>
+                                            <p class="fs-9 fw-semibold mb-3">Supprimer le compte</p>
+                                            <button class="btn btn-phoenix-danger">Supprimer</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -561,6 +690,7 @@
             }
         </script>
         <script src="../../vendors/popper/popper.min.js"></script>
+        <script src="../../vendors/popper/popper.min.js"></script>
         <script src="../../vendors/bootstrap/bootstrap.min.js"></script>
         <script src="../../vendors/anchorjs/anchor.min.js"></script>
         <script src="../../vendors/is/is.min.js"></script>
@@ -570,7 +700,8 @@
         <script src="../../vendors/list.js/list.min.js"></script>
         <script src="../../vendors/feather-icons/feather.min.js"></script>
         <script src="../../vendors/dayjs/dayjs.min.js"></script>
+        <script src="../../vendors/dropzone/dropzone.min.js"></script>
+        <script src="../../vendors/echarts/echarts.min.js"></script>
         <script src="../../assets/js/phoenix.js"></script>
-        <script src="../../assets/js/flatpickr.js"></script>
     </body>
 </html>

@@ -15,13 +15,17 @@ class RelanceController extends Controller
      */
     public function store(Request $request)
     {
-     
         $relance = new Relance();
         $relance->client_id = $request->client_id;
         $relance->whoaddit = $request->whoaddit;
         $relance->remarque = $request->remarque;
         $relance->isannuler = $request->annuler ?? "nest pas annuler";
-        $relance->reporter_la_relance = $request->reporter_la_relance;
+
+        $relance->rdv_relance_date = $request->rdv_relance_date;
+        $relance->rdv_relance_heure = $request->rdv_relance_heure;
+        
+        $relance->relance_date = $request->relance_date;
+        $relance->relance_heure = $request->relance_heure;
 
         $relance->save();
 

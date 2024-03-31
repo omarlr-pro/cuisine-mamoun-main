@@ -72,7 +72,6 @@ class ClientController extends Controller
         $etape->client_id = $client->id;
         $etape->valide_par = $request->input('whoaddit');
         $etape->etape = $request->input('contact');
-        $etape->date = $request->input('step_completed_date');
         $etape->remarque = $request->input('description');
     
         $etape->save();
@@ -134,17 +133,22 @@ class ClientController extends Controller
     
         return redirect()->route('clients.index')->with('success', 'Client deleted successfully');
     }
-    
+
     public function showRelances()
-    {
-        $clients = Client::with(['relances' => function ($query) {
-            $query->where('isannuler', '!=', 'annuler')->latest()->take(1);
-        }])->whereHas('relances', function ($query) {
-            $query->where('isannuler', '!=', 'annuler');
-        })->get();
-        
-        return view('relances.index', compact('clients'));
-    }
+        {
+            $clients = Client::with(['relances' => function ($query) {
+                $query->latest()->take(1);
+            }])->orderByDesc(function ($query) {
+                $query->select('created_at')
+                    ->from('relances')
+                    ->whereColumn('client_id', 'clients.id')
+                    ->latest()
+                    ->take(1);
+            })->get();
+
+            return view('relances.index', compact('clients'));
+        }
+    
     
     public function showEtape($clientId)
     {

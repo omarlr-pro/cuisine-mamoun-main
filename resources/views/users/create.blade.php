@@ -70,7 +70,7 @@
                                 <p class="navbar-vertical-label">Gestion des rendez-vous</p>
                                 <hr class="navbar-vertical-line" />
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="{{ route('rendezvous.rdv_net_non_statuer') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
                                             <span>
@@ -80,7 +80,7 @@
                                     </a>
                                 </div>
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="{{ route('rendezvous.rdv_net_jour_j') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
                                             <span>
@@ -90,7 +90,7 @@
                                     </a>
                                 </div>
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="{{ route('rendezvous.rdv_brut_a_confirmer') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-icon"><span data-feather="check-square"></span></span>
                                             <span>
@@ -128,11 +128,11 @@
                                 <p class="navbar-vertical-label">Gestion des relances</p>
                                 <hr class="navbar-vertical-line" />
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="{{ route('clients.create') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="{{ route('relances.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
-                                            <span class="nav-link-icon"><span data-feather="phone"></span></span>
+                                            <span class="nav-link-icon"><span data-feather="clock"></span></span>
                                             <span>
-                                            <span class="nav-link-text">Relance</span>
+                                            <span class="nav-link-text">Relance call center</span>
                                             </span>
                                         </div>
                                     </a>
@@ -300,9 +300,9 @@
                                     <div class="overflow-auto scrollbar p-0 border-top border-translucent" style="height: auto;">
                                         <ul class="nav d-flex flex-column mb-2 mt-2">
                                             <li class="nav-item">
-                                                <a class="nav-link px-3" href="{{ route('profile') }}">
+                                                <a class="nav-link px-3" href="{{ route('profil') }}">
                                                 <span class="me-2 text-body" data-feather="user"></span>
-                                                <span>Profile</span>
+                                                <span>Profil</span>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
@@ -523,6 +523,8 @@
                            <input id="password" type="password" class="form-control" name="password" required placeholder="">
                            <label for="floatingInputEmail">Mot de passe</label>
                         </div>
+                        <input id="isactive" type="text" class="form-control" name="isactive" value="True" readonly style="display: none;">
+
                      </div>
                      <div class="col-12 d-flex justify-content-end mt-4">
                         <button type="submit" class="btn btn-primary">

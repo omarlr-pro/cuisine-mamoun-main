@@ -12,7 +12,11 @@ class CreateEtapeAValiderTable  extends Migration
             $table->id();
             $table->foreignId('client_id')->constrained()->onDelete('cascade');
             $table->string('valide_par');
-            $table->date('date');
+            $table->date('rdv_relance_date')->nullable();
+            $table->time('rdv_relance_heure')->nullable();
+            $table->date('relance_date')->nullable();
+            $table->time('relance_heure')->nullable();
+            $table->string('isannuler')->default("false");
             $table->text('remarque')->nullable();
             $table->string('etape');
             $table->timestamps();

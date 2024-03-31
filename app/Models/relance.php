@@ -14,7 +14,10 @@ class Relance extends Model
         'whoaddit',
         'remarque',
         'annuler',
-        'reporter_la_relance',
+        'rdv_relance_date',
+        'rdv_relance_heure',
+        'relance_date',
+        'relance_heure',
     ];
 
     protected $dates = ['reporter_la_relance'];

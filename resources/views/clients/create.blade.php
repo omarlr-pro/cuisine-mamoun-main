@@ -70,7 +70,7 @@
                                 <p class="navbar-vertical-label">Gestion des rendez-vous</p>
                                 <hr class="navbar-vertical-line" />
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="{{ route('rendezvous.rdv_net_non_statuer') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
                                             <span>
@@ -80,7 +80,7 @@
                                     </a>
                                 </div>
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="{{ route('rendezvous.rdv_net_jour_j') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-icon"><span data-feather="user-plus"></span></span>
                                             <span>
@@ -90,7 +90,7 @@
                                     </a>
                                 </div>
                                 <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                                    <a class="nav-link label-1" href="{{ route('rendezvous.rdv_brut_a_confirmer') }}" role="button" data-bs-toggle="" aria-expanded="false">
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-icon"><span data-feather="check-square"></span></span>
                                             <span>
@@ -132,17 +132,7 @@
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-icon"><span data-feather="clock"></span></span>
                                             <span>
-                                            <span class="nav-link-text">Relance reporté</span>
-                                            </span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
-                                        <div class="d-flex align-items-center">
-                                            <span class="nav-link-icon"><span data-feather="x-circle"></span></span>
-                                            <span>
-                                            <span class="nav-link-text">Relance annulée</span>
+                                            <span class="nav-link-text">Relance call center</span>
                                             </span>
                                         </div>
                                     </a>
@@ -310,9 +300,9 @@
                                     <div class="overflow-auto scrollbar p-0 border-top border-translucent" style="height: auto;">
                                         <ul class="nav d-flex flex-column mb-2 mt-2">
                                             <li class="nav-item">
-                                                <a class="nav-link px-3" href="{{ route('profile') }}">
+                                                <a class="nav-link px-3" href="{{ route('profil') }}">
                                                 <span class="me-2 text-body" data-feather="user"></span>
-                                                <span>Profile</span>
+                                                <span>Profil</span>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
@@ -337,28 +327,28 @@
                 </div>
             </nav>
             <script>
-				var navbarTopShape = window.config.config.phoenixNavbarTopShape;
-				var navbarPosition = window.config.config.phoenixNavbarPosition;
-				var body = document.querySelector('body');
-				var navbarDefault = document.querySelector('#navbarDefault');
-				var navbarTop = document.querySelector('#navbarTop');
-				var documentElement = document.documentElement;
-				var navbarVertical = document.querySelector('.navbar-vertical');
-				if (navbarTopShape === 'default' && navbarPosition === 'horizontal') {
-				  navbarDefault.remove();
-				  navbarVertical.remove();
-				  document.documentElement.setAttribute('data-navigation-type', 'horizontal');
-				} else {
-				  navbarDefault.removeAttribute('style');
-				  navbarVertical.removeAttribute('style');
-				}
-				var navbarVerticalStyle = window.config.config.phoenixNavbarVerticalStyle;
-				var navbarVertical = document.querySelector('.navbar-vertical');
-				if (navbarVerticalStyle === 'darker') {
-				  navbarVertical.setAttribute('data-navbar-appearance', 'darker');
-				}
-			</script>
-			<div class="content">
+                var navbarTopShape = window.config.config.phoenixNavbarTopShape;
+                var navbarPosition = window.config.config.phoenixNavbarPosition;
+                var body = document.querySelector('body');
+                var navbarDefault = document.querySelector('#navbarDefault');
+                var navbarTop = document.querySelector('#navbarTop');
+                var documentElement = document.documentElement;
+                var navbarVertical = document.querySelector('.navbar-vertical');
+                if (navbarTopShape === 'default' && navbarPosition === 'horizontal') {
+                  navbarDefault.remove();
+                  navbarVertical.remove();
+                  document.documentElement.setAttribute('data-navigation-type', 'horizontal');
+                } else {
+                  navbarDefault.removeAttribute('style');
+                  navbarVertical.removeAttribute('style');
+                }
+                var navbarVerticalStyle = window.config.config.phoenixNavbarVerticalStyle;
+                var navbarVertical = document.querySelector('.navbar-vertical');
+                if (navbarVerticalStyle === 'darker') {
+                  navbarVertical.setAttribute('data-navbar-appearance', 'darker');
+                }
+            </script>
+            <div class="content">
 				<nav class="mb-3" aria-label="breadcrumb">
 					<ol class="breadcrumb mb-0">
 						<li class="breadcrumb-item">
@@ -544,8 +534,8 @@
 								<div class="form-floating">
 									<select class="form-select" name="qualiticien">
 										<option disabled selected></option>
-										<option value="agadir">Agadir</option>
-										<option value="casablanca">Casablanca</option>
+										<option value="Qualiticien 1">Qualiticien 1</option>
+										<option value="Qualiticien 2">Qualiticien 2</option>
 									</select>
 									<label for="floatingSelectCity">Qualiticien</label>
 								</div>
@@ -609,7 +599,7 @@
 							<div class="col-12">
 								<div class="form-floating">
 									<textarea class="form-control" placeholder="Laissez un commentaire ici" style="height: 64px" name="description"></textarea>
-									<label for="floatingProjectOverview">Laissez un commentaire ici</label>
+									<label for="floatingProjectOverview">Laissez une description ici</label>
 								</div>
 							</div>
 							<div class="col-12 d-flex justify-content-end mt-4">  

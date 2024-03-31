@@ -64,8 +64,8 @@ class UserController extends Controller
         $user->statut = $request->input('statut');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
+        $user->password = $request->input('isactive');
 
-        
         $user->save();
     
         return redirect()->route('users.create')->with('success', 'User created successfully!');
@@ -83,10 +83,16 @@ class UserController extends Controller
     return view('users.edit', ['user' => $user]);
 }
 
-    public function profile()
+    public function profil()
         {
 
-            return view('profile');
+            return view('profil');
+        }
+
+    public function calendrier()
+        {
+
+            return view('calendrier');
         }
   
     public function destroy($id)

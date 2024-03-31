@@ -132,17 +132,7 @@
                                         <div class="d-flex align-items-center">
                                             <span class="nav-link-icon"><span data-feather="clock"></span></span>
                                             <span>
-                                            <span class="nav-link-text">Relance reporté</span>
-                                            </span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="nav-item-wrapper">
-                                    <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
-                                        <div class="d-flex align-items-center">
-                                            <span class="nav-link-icon"><span data-feather="x-circle"></span></span>
-                                            <span>
-                                            <span class="nav-link-text">Relance annulée</span>
+                                            <span class="nav-link-text">Relance call center</span>
                                             </span>
                                         </div>
                                     </a>
@@ -310,7 +300,7 @@
                                     <div class="overflow-auto scrollbar p-0 border-top border-translucent" style="height: auto;">
                                         <ul class="nav d-flex flex-column mb-2 mt-2">
                                             <li class="nav-item">
-                                                <a class="nav-link px-3" href="{{ route('profile') }}">
+                                                <a class="nav-link px-3" href="{{ route('profil') }}">
                                                 <span class="me-2 text-body" data-feather="user"></span>
                                                 <span>Profile</span>
                                                 </a>
@@ -362,7 +352,7 @@
                 <div class="modal-dialog modal-lg modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title text-body-highlight" id="relancecallcenter">Ajouter une relance rendez-vous call center</h5>
+                            <h5 class="modal-title text-body-highlight" id="relancecallcenter">Ajouter une relance call center</h5>
                             <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs-9"></span></button>
                         </div>
                         <form action="{{ route('relance.store') }}" method="POST"  >
@@ -378,10 +368,10 @@
                                                 <td class="align-middle text-center fw-semibold p-2 px-3">
                                                     <div class="row">
                                                         <div class="col-sm-6 col-md-6" style="padding-right: 0.4rem;">
-                                                            <input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;"/>
+                                                            <input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;" name="rdv_relance_date"/>
                                                         </div>
                                                         <div class="col-sm-6 col-md-6" style="padding-left: 0.4rem;">
-                                                            <input class="form-control" type="time" id="appt" name="appt"/>
+                                                            <input class="form-control" type="time" id="appt" name="rdv_relance_heure"/>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -393,10 +383,10 @@
                                                 <td class="align-middle text-center fw-semibold p-2 px-3">
                                                     <div class="row">
                                                         <div class="col-sm-6 col-md-6" style="padding-right: 0.4rem;">
-                                                            <input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;" name="reporter_la_relance"/>
+                                                            <input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;" name="relance_date"/>
                                                         </div>
                                                         <div class="col-sm-6 col-md-6" style="padding-left: 0.4rem;">
-                                                            <input class="form-control" type="time" id="appt" name="appt"/>
+                                                            <input class="form-control" type="time" id="appt" name="relance_heure"/>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -435,7 +425,9 @@
                 <div class="modal-dialog modal-lg modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title text-body-highlight" id="relancecallcenter">Valider l'étape</h5>
+                            <h5 class="modal-title text-body-highlight" id="relancecallcenter">
+                                Ajouter une relance vendeur
+                            </h5>
                             <button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs-9"></span></button>
                         </div>
                         <form action="{{ route('etapes.store') }}" method="POST"  >
@@ -451,17 +443,39 @@
                                                 <td class="align-middle text-center fw-semibold p-2 px-3">
                                                     <div class="row">
                                                         <div class="col-sm-6 col-md-6" style="padding-right: 0.4rem;">
-                                                            <input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;" name="date"/>
+                                                            <input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;" name="rdv_relance_date"/>
                                                         </div>
                                                         <div class="col-sm-6 col-md-6" style="padding-left: 0.4rem;">
-                                                            <input class="form-control" type="time" id="appt" name="appt"/>
+                                                            <input class="form-control" type="time" id="appt" name="rdv_relance_heure"/>
                                                         </div>
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr>
+                                                <td class="align-middle text-left fw-semibold p-2 px-3">
+                                                    Reporter la relance
+                                                </td>
+                                                <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                    <div class="row">
+                                                        <div class="col-sm-6 col-md-6" style="padding-right: 0.4rem;">
+                                                            <input class="form-control" id="basic-form-dob" type="date" style="padding-top: 9.5px;" name="relance_date"/>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6" style="padding-left: 0.4rem;">
+                                                            <input class="form-control" type="time" id="appt" name="relance_heure"/>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="align-middle text-left fw-semibold p-2 px-3">
+                                                    Annuler la relance
+                                                </td>
+                                                <td class="align-middle text-left fw-semibold p-2 px-3">
+                                                    <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="annuler" name="annuler" />
+                                                </td>
+                                            </tr>
+                                            <tr>
                                                 <input type="text" class="form-control" name="whoaddit" value="{{ Auth::user()->nom }} {{ Auth::user()->prenom }}" readonly style="display: none;" >
-
                                                 <td class="align-middle text-left fw-semibold p-2 px-3">
                                                     Remarque
                                                 </td>
@@ -469,21 +483,13 @@
                                                     <textarea class="form-control"  name="remarque" id="floatingTextarea2" placeholder="Laissez une remarque" style="height: 10px"></textarea>
                                                 </td>
                                             </tr>
-                                            <tr>
+                                            <tr hidden>
                                                 <td class="align-middle text-left fw-semibold p-2 px-3">
-                                                    Étape à valider
+                                                    Relance pour l'étape
                                                 </td>
                                                 <td class="align-middle text-center fw-semibold p-2 px-3">
                                                     <select class="form-select" aria-label="Default select example" name="etape">
-                                                      <option value="Contact">Contact</option>
-                                                      <option value="Qualification">Qualification</option>
-                                                      <option value="Mesure">Mesure</option>
-                                                      <option value="Découverte">Découverte</option>
-                                                      <option value="Solution - Plan">Solution - Plan</option>
-                                                      <option value="Argumentaire">Argumentaire</option>
-                                                      <option value="Passage de main">Passage de main</option>
-                                                      <option value="Décision">Décision</option>
-                                                      <option value="Vente">Vente</option>
+                                                        <option value="{{ ($client->etapes->last()->etape) }}">{{ ($client->etapes->last()->etape) }}</option>
                                                     </select>
                                                 </td>
                                             </tr>
@@ -531,6 +537,95 @@
                     <div class="row g-4 g-xl-6">
                         <div class="col-xl-5 col-xxl-3">
                             <div class="sticky-leads-sidebar">
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="row align-items-center g-3">
+                                            <div class="col-12 col-sm-auto flex-1">
+                                                @if ($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Contact')
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                    <p class="mb-0 fs-9">Progression</p>
+                                                    <div><span class="d-inline-block fs-9">10%</span></div>
+                                                </div>
+                                                <div class="progress" style="height:5px">
+                                                    <div class="progress-bar bg-primary" data-bs-theme="light" role="progressbar" style="width: 10%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Qualification')
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                    <p class="mb-0 fs-9">Progression</p>
+                                                    <div><span class="d-inline-block fs-9">20%</span></div>
+                                                </div>
+                                                <div class="progress" style="height:5px">
+                                                    <div class="progress-bar bg-primary" data-bs-theme="light" role="progressbar" style="width: 20%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Mesure')
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                    <p class="mb-0 fs-9">Progression</p>
+                                                    <div><span class="d-inline-block fs-9">30%</span></div>
+                                                </div>
+                                                <div class="progress" style="height:5px">
+                                                    <div class="progress-bar bg-primary" data-bs-theme="light" role="progressbar" style="width: 30%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Découverte')
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                    <p class="mb-0 fs-9">Progression</p>
+                                                    <div><span class="d-inline-block fs-9">40%</span></div>
+                                                </div>
+                                                <div class="progress" style="height:5px">
+                                                    <div class="progress-bar bg-primary" data-bs-theme="light" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Solution Plan')
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                    <p class="mb-0 fs-9">Progression</p>
+                                                    <div><span class="d-inline-block fs-9">50%</span></div>
+                                                </div>
+                                                <div class="progress" style="height:5px">
+                                                    <div class="progress-bar bg-primary" data-bs-theme="light" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Argumentaire')
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                    <p class="mb-0 fs-9">Progression</p>
+                                                    <div><span class="d-inline-block fs-9">60%</span></div>
+                                                </div>
+                                                <div class="progress" style="height:5px">
+                                                    <div class="progress-bar bg-primary" data-bs-theme="light" role="progressbar" style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Annonce de prix')
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                    <p class="mb-0 fs-9">Progression</p>
+                                                    <div><span class="d-inline-block fs-9">70%</span></div>
+                                                </div>
+                                                <div class="progress" style="height:5px">
+                                                    <div class="progress-bar bg-primary" data-bs-theme="light" role="progressbar" style="width: 70%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Passage de main')
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                    <p class="mb-0 fs-9">Progression</p>
+                                                    <div><span class="d-inline-block fs-9">80%</span></div>
+                                                </div>
+                                                <div class="progress" style="height:5px">
+                                                    <div class="progress-bar bg-primary" data-bs-theme="light" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Décision')
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                    <p class="mb-0 fs-9">Progression</p>
+                                                    <div><span class="d-inline-block fs-9">90%</span></div>
+                                                </div>
+                                                <div class="progress" style="height:5px">
+                                                    <div class="progress-bar bg-primary" data-bs-theme="light" role="progressbar" style="width: 90%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Vente')
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                    <p class="mb-0 fs-9">Progression</p>
+                                                    <div><span class="d-inline-block fs-9">100%</span></div>
+                                                </div>
+                                                <div class="progress" style="height:5px">
+                                                    <div class="progress-bar bg-primary" data-bs-theme="light" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <form method="POST" action="{{ route('clients.update', $client->id) }}">
@@ -734,50 +829,128 @@
                                                 <div class="d-flex bg-success-subtle rounded flex-center me-3 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px"><span class="text-success-dark" data-feather="check" style="width:24px; height:24px"></span></div>
                                                 <div>
                                                     <p class="fs-9 fw-semibold mb-1">Étape à achevée</p>
-                                                    <h5>{{ $client->contact }}</h5>
+                                                    <h5>
+                                                        @if ($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Contact')
+                                                        {{"Contact"}}
+                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Qualification')
+                                                        {{ "Qualification" }}
+                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Mesure')
+                                                        {{ "Mesure" }}
+                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Découverte')
+                                                        {{ "Découverte" }}
+                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Solution Plan')
+                                                        {{ "Solution - Plan" }}
+                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Argumentaire')
+                                                        {{ "Argumentaire" }}
+                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Annonce de prix')
+                                                        {{ "Annonce de prix" }}
+                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Passage de main')
+                                                        {{ "Passage de main" }}
+                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Décision')
+                                                        {{ "Décision" }}
+                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Vente')
+                                                        {{"Vente"}}
+                                                        @endif
+                                                    </h5>
                                                 </div>
                                             </div>
                                         </div>
+                                        @if ($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Vente')
+                                        @else
                                         <div class="col-sm-auto">
                                             <div class="d-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center">
                                                 <div class="d-flex bg-warning-subtle rounded flex-center me-3 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px"><span class="text-warning-dark" data-feather="dollar-sign" style="width:24px; height:24px"></span></div>
                                                 <div>
                                                     <p class="fs-9 fw-semibold mb-1">Étape à traiter</p>
                                                     <h5>
-                                                        @if($client->contact === 'Contact')
-                                                        {{ "Qualification" }}
-                                                        @elseif($client->qualification === 'Qualification')
+                                                        @if ($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Contact')
+                                                        {{"Qualification"}}
+                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Qualification')
                                                         {{ "Mesure" }}
-                                                        @elseif($client->mesure === 'Mesure')
+                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Mesure')
                                                         {{ "Découverte" }}
-                                                        @elseif($client->decouverte === 'Découverte')
+                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Découverte')
                                                         {{ "Solution Plan" }}
-                                                        @elseif($client->solution_plan === 'Solution Plan')
+                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Solution Plan')
                                                         {{ "Argumentaire" }}
-                                                        @elseif($client->argumentaire === 'Argumentaire')
+                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Argumentaire')
                                                         {{ "Annonce de prix" }}
-                                                        @elseif($client->annonce_prix === 'Annonce de prix')
+                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Annonce de prix')
                                                         {{ "Passage de main" }}
-                                                        @elseif($client->passage_main === 'Passage de main')
+                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Passage de main')
                                                         {{ "Décision" }}
-                                                        @elseif($client->decision === 'Décision')
+                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Décision')
                                                         {{ "Vente" }}
-                                                        @elseif($client->vente === 'vente')
-                                                        {{"sui"}}
+                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Vente')
+                                                        {{"Vente"}}
                                                         @endif
                                                     </h5>
                                                 </div>
                                             </div>
                                         </div>
+                                        @endif
+                                        @if ($client->etapes->IsNotEmpty() && $client->etapes->last()->isannuler == "nest pas annuler") 
+                                        <div class="col-sm-auto">
+                                            <div class="d-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center">
+                                                <div class="d-flex bg-info-subtle rounded flex-center me-3 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px"><span class="text-info-dark" data-feather="check-circle" style="width:24px; height:24px"></span></div>
+                                                <div>
+                                                    <p class="fs-9 fw-semibold mb-1">État de la relance vendeur</p>
+                                                    <h5>Relancée</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @elseif ($client->etapes->IsNotEmpty() && $client->etapes->last()->isannuler == "annuler") 
                                         <div class="col-sm-auto">
                                             <div class="d-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center">
                                                 <div class="d-flex bg-danger-subtle rounded flex-center me-3 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px"><span class="text-danger-dark" data-feather="x-circle" style="width:24px; height:24px"></span></div>
                                                 <div>
-                                                    <p class="fs-9 fw-semibold mb-1">État de la relance</p>
+                                                    <p class="fs-9 fw-semibold mb-1">État de la relance vendeur</p>
                                                     <h5>Annulée</h5>
                                                 </div>
                                             </div>
                                         </div>
+                                        @elseif ($client->etapes->Empty()) 
+                                        <div class="col-sm-auto">
+                                            <div class="d-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center">
+                                                <div class="d-flex bg-warning-subtle rounded flex-center me-3 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px"><span class="text-warning-dark" data-feather="slash" style="width:24px; height:24px"></span></div>
+                                                <div>
+                                                    <p class="fs-9 fw-semibold mb-1">État de la relance vendeur</p>
+                                                    <h5>Aucune relance</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endif
+                                        @if ($client->relances->IsNotEmpty() && $client->relances->last()->isannuler == "nest pas annuler") 
+                                        <div class="col-sm-auto">
+                                            <div class="d-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center">
+                                                <div class="d-flex bg-info-subtle rounded flex-center me-3 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px"><span class="text-info-dark" data-feather="check-circle" style="width:24px; height:24px"></span></div>
+                                                <div>
+                                                    <p class="fs-9 fw-semibold mb-1">État de la relance call center</p>
+                                                    <h5>Relancée</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @elseif ($client->relances->IsNotEmpty() && $client->relances->last()->isannuler == "annuler") 
+                                        <div class="col-sm-auto">
+                                            <div class="d-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center">
+                                                <div class="d-flex bg-danger-subtle rounded flex-center me-3 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px"><span class="text-danger-dark" data-feather="x-circle" style="width:24px; height:24px"></span></div>
+                                                <div>
+                                                    <p class="fs-9 fw-semibold mb-1">État de la relance call center</p>
+                                                    <h5>Annulée</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @elseif ($client->relances->Empty()) 
+                                        <div class="col-sm-auto">
+                                            <div class="d-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center">
+                                                <div class="d-flex bg-warning-subtle rounded flex-center me-3 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0" style="width:32px; height:32px"><span class="text-warning-dark" data-feather="slash" style="width:24px; height:24px"></span></div>
+                                                <div>
+                                                    <p class="fs-9 fw-semibold mb-1">État de la relance call center</p>
+                                                    <h5>Aucune relance</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -786,10 +959,18 @@
                             </ul>
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade active show" id="tab-etapes" role="tabpanel" aria-labelledby="etapes-tab">
+                                    @if ($client->etapes->last()->etape === 'Vente')
+                                    <div class="card card-body mb-3">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h5 class="mb-0">Toutes les étapes ont étés achevées</h5>
+                                        </div>
+                                    </div>
+                                    @else
                                     <div class="card card-body mb-3">
                                         <div class="d-flex justify-content-between align-items-center mb-4">
                                             <h5 class="mb-0">Étape à valider</h5>
-                                            <button type="button" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#valider"><span class="fa-solid fa-plus me-2"></span>Valider l'étape</button>
+                                            <button type="button" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#valider"><span class="fa-solid fa-plus me-2"></span>
+                                            Ajouter une relance vendeur</button>
                                         </div>
                                         <div>
                                             <div class="table-responsive scrollbar">
@@ -799,8 +980,7 @@
                                                             <th class="align-middle text-start py-2 px-3" style="width:20%;">Crée par</th>
                                                             <th class="align-middle text-start py-2 px-3" style="width:20%;">Date de relance</th>
                                                             <th class="align-middle text-start py-2 px-3" style="width:40%;">Étape à traiter</th>
-                                                            <th class="align-middle text-center py-2 px-3"style="width:10%;">Statut</th>
-                                                            <th class="align-middle text-center py-2 px-3"style="width:10%;">Action</th>
+                                                            <th class="align-middle text-center py-2 px-3"style="width:10%;">Etat</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -808,59 +988,41 @@
                                                             <td class="align-middle text-start fw-semibold p-2 px-3">
                                                                 {{ $client->etapes->last()->valide_par}}
                                                                 <div>
-                                                                    <p class="m-0 fw-semibold">{{ $client->etapes->last()->date}}<p>
+                                                                    <p class="m-0 fw-semibold">{{ $client->etapes->last()->created_at }}</p>
                                                                 </div>
                                                             </td>
                                                             <td class="align-middle text-start fw-semibold p-2 px-3">
-                                                                12/05/2024 12:30
+                                                                {{ $client->etapes->last()->relance_date }} {{ $client->etapes->last()->relance_heure }}
                                                             </td>
                                                             <td class="align-middle text-start fw-semibold p-2 px-3">
-                                                                Relance pour l'étape
-                                                                <div>
-                                                                    <p class="m-0 fw-semibold">
-                                                                        @if ($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Contact')
-                                                                            {{"Qualification"}}
-                                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Qualification')
-                                                                        {{ "Mesure" }}
-                                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Mesure')
-                                                                        {{ "Découverte" }}
-                                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Découverte')
-                                                                        {{ "Solution Plan" }}
-                                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Solution - Plan')
-                                                                        {{ "Argumentaire" }}
-                                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Argumentaire')
-                                                                        {{ "Annonce de prix" }}
-                                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Annonce de prix')
-                                                                        {{ "Passage de main" }}
-                                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Passage de main')
-                                                                        {{ "Décision" }}
-                                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Décision')
-                                                                        {{ "Vente" }}
-                                                                        @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Vente')
-                                                                        {{"Vente"}}
-                                                                        @endif
-                                                                    </p>
-                                                                </div>
+                                                                @if ($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Contact')
+                                                                {{"Qualification"}}
+                                                                @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Qualification')
+                                                                {{ "Mesure" }}
+                                                                @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Mesure')
+                                                                {{ "Découverte" }}
+                                                                @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Decouverte')
+                                                                {{ "Solution Plan" }}
+                                                                @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Solution Plan')
+                                                                {{ "Argumentaire" }}
+                                                                @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Argumentaire')
+                                                                {{ "Annonce de prix" }}
+                                                                @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Annonce de prix')
+                                                                {{ "Passage de main" }}
+                                                                @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Passage de main')
+                                                                {{ "Décision" }}
+                                                                @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Décision')
+                                                                {{ "Vente" }}
+                                                                @elseif($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Vente')
+                                                                {{"Vente"}}
+                                                                @endif
                                                             </td>
                                                             <td class="align-middle text-center fw-semibold p-2 px-3">
-                                                                <span class="badge badge-phoenix badge-phoenix-secondary">
-                                                                    @if ($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Vente')
-                                                                        {{ "terminer" }}
-                                                                    @else
-                                                                        {{ "En cours" }}
-                                                                    @endif
-                            
-                                                                </span>
-                                                            </td>
-                                                            <td class="align-middle text-center fw-semibold p-2 px-3">
-                                                                <div class="btn-reveal-trigger position-static">
-                                                                    <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
-                                                                    <div class="dropdown-menu dropdown-menu-end py-2">
-                                                                        <a class="dropdown-item fw-semibold" href="#!">Modifier</a>
-                                                                        <div class="dropdown-divider"></div>
-                                                                        <a class="dropdown-item fw-semibold text-danger">Supprimer</a>
-                                                                    </div>
-                                                                </div>
+                                                                @if ($client->etapes->IsNotEmpty() && $client->etapes->last()->isannuler == "nest pas annuler") 
+                                                                <span class="badge badge-phoenix badge-phoenix-primary">relancée</span>
+                                                                @elseif ($client->etapes->IsNotEmpty() && $client->etapes->last()->isannuler == "annuler") 
+                                                                <span class="badge badge-phoenix badge-phoenix-danger">annulée</span>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -868,64 +1030,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card card-body mb-10">
-                                        <div class="d-flex justify-content-between align-items-center mb-4">
-                                            <h5 class="mb-0">Étape à achevée</h5>
-                                        </div>
-                                        <div id="AcheveeTable" data-list='{"page":5,"pagination":true}'>
-                                            <div>
-                                                <div class="table-responsive scrollbar">
-                                                    <table class="table fs-9 m-0">
-                                                        <thead>
-                                                            <tr>
-                                                                <th class="align-middle text-start py-2 px-3" style="width:20%;">Validée par</th>
-                                                                <th class="align-middle text-start py-2 px-3" style="width:20%;">Étape</th>
-                                                                <th class="align-middle text-start py-2 px-3" style="width:40%;">Prise de rendez-vous</th>
-                                                                <th class="align-middle text-start py-2 px-3" style="width:40%;">Commentaire</th>
-                                                                <th class="align-middle text-center py-2 px-3"style="width:10%;">Statut</th>
-                                                                <th class="align-middle text-center py-2 px-3"style="width:10%;">Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                    </tbody>
-                                                    @foreach($client->etapes as $etape)
-                                                    <tr>
-                                                        <td class="align-middle text-start fw-semibold p-2 px-3">{{ $etape->valide_par }} {{ $etape->created_at }}</td>
-                                                        <td class="align-middle text-start fw-semibold p-2 px-3">{{ $etape->etape }}</td>
-                                                        <td class="align-middle text-start fw-semibold p-2 px-3">{{ $etape->date }}</td>
-                                                        <td class="align-middle text-start fw-semibold p-2 px-3">{{ $etape->remarque }}</td>
-                                                        <td class="align-middle text-center fw-semibold p-2 px-3">
-                                                            <span class="badge badge-phoenix badge-phoenix-success">Achevée</span>
-                                                        </td>
-                                                        <td class="align-middle text-center fw-semibold p-2 px-3">
-                                                            <div class="btn-reveal-trigger position-static">
-                                                                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
-                                                                <div class="dropdown-menu dropdown-menu-end py-2">
-                                                                    <a class="dropdown-item fw-semibold" href="#!">Modifier</a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item fw-semibold text-danger">Supprimer</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    @endforeach
-                                                </tbody>
-                                                        
-                                                    </table>
-                                                </div>
-                                                <div class="row align-items-center justify-content-between pt-2 fs-9">
-                                                    <div class="col-auto d-flex">
-                                                        <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
-                                                        <a class="fw-semibold" href="#!" data-list-view="*">Voir tout<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">Voir moins<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
-                                                    </div>
-                                                    <div class="col-auto d-flex">
-                                                        <button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-                                                        <ul class="mb-0 pagination"></ul>
-                                                        <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endif
+                                    @if ($client->relances->IsNotEmpty()) 
                                     <div class="card card-body mb-3">
                                         <div class="d-flex justify-content-between align-items-center mb-4">
                                             <h5 class="mb-0">Report des relances</h5>
@@ -939,8 +1045,7 @@
                                                             <th class="align-middle text-start py-2 px-3" style="width:20%;">Call center</th>
                                                             <th class="align-middle text-start py-2 px-3" style="width:20%;">Date de relance</th>
                                                             <th class="align-middle text-start py-2 px-3" style="width:40%;">Commentaire</th>
-                                                            <th class="align-middle text-center py-2 px-3"style="width:10%;">Statut</th>
-                                                            <th class="align-middle text-center py-2 px-3"style="width:10%;">Action</th>
+                                                            <th class="align-middle text-center py-2 px-3"style="width:10%;">Etat</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody class="list" id="members-table-body">
@@ -953,7 +1058,7 @@
                                                                 </div>
                                                             </td>
                                                             <td class="align-middle text-start fw-semibold p-2 px-3">
-                                                                {{ $relance->reporter_la_relance }}
+                                                                {{ $relance->relance_date }} {{ $relance->relance_heure }}
                                                             </td>
                                                             <td class="align-middle text-start fw-semibold p-2 px-3">
                                                                 {{ $relance->remarque }}
@@ -965,22 +1070,12 @@
                                                                 <span class="badge badge-phoenix badge-phoenix-danger">annulée</span>
                                                                 @endif
                                                             </td>
-                                                            <td class="align-middle text-center fw-semibold p-2 px-3">
-                                                                <div class="btn-reveal-trigger position-static">
-                                                                    <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
-                                                                    <div class="dropdown-menu dropdown-menu-end py-2">
-                                                                        <a class="dropdown-item fw-semibold" href="#!">Modifier</a>
-                                                                        <div class="dropdown-divider"></div>
-                                                                        <a class="dropdown-item fw-semibold text-danger">Supprimer</a>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
                                                         </tr>
                                                         @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <div class="row align-items-center justify-content-between pt-2 pe-0 fs-9">
+                                            <div class="row align-items-center justify-content-between pt-4 pe-0 fs-9">
                                                 <div class="col-auto d-flex">
                                                     <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
                                                     <a class="fw-semibold" href="#!" data-list-view="*">View all<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!" data-list-view="less">View Less<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
@@ -989,6 +1084,59 @@
                                                     <button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
                                                     <ul class="mb-0 pagination"></ul>
                                                     <button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @elseif ($client->relances->Empty())
+                                    <div class="card card-body mb-3">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h5 class="mb-0">Aucune relance pour ce client</h5>
+                                            <button type="button" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#relance"><span class="fa-solid fa-plus me-2"></span>Ajouter une relance call center</button>
+                                        </div>
+                                    </div>
+                                    @endif
+                                    <div class="card card-body">
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                            <h5 class="mb-0">Étape à achevée</h5>
+                                        </div>
+                                        <div id="AcheveeTable" data-list='{"page":5,"pagination":true}'>
+                                            <div>
+                                                <div class="table-responsive scrollbar">
+                                                    <table class="table fs-9 m-0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="align-middle text-start py-2 px-3" style="width:20%;">Validée par</th>
+                                                                <th class="align-middle text-start py-2 px-3" style="width:20%;">Étape</th>
+                                                                <th class="align-middle text-start py-2 px-3" style="width:40%;">Commentaire</th>
+                                                                <th class="align-middle text-center py-2 px-3"style="width:10%;">Etat</th>
+                                                            </tr>
+                                                        </thead>
+                                                        </tbody>
+                                                        @foreach($client->etapes->reverse() as $etape)
+                                                        <tr>
+                                                            <td class="align-middle text-start fw-semibold p-2 px-3">
+                                                                {{ $etape->valide_par }}
+                                                                <div>
+                                                                    <p class="m-0 fw-semibold">{{ $etape->created_at->format('d M Y') }} {{ $etape->created_at->format('H:i') }}</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="align-middle text-start fw-semibold p-2 px-3">
+                                                                {{ $etape->etape }}</td>
+                                                            <td class="align-middle text-start fw-semibold p-2 px-3">{{ $etape->remarque }}</td>
+                                                            <td class="align-middle text-center fw-semibold p-2 px-3">
+                                                                @if ($etape->isannuler == "nest pas annuler")
+                                                                <span class="badge badge-phoenix badge-phoenix-primary">relancée</span>
+                                                                @elseif ($etape->isannuler == "annuler")
+                                                                <span class="badge badge-phoenix badge-phoenix-danger">annulée</span>
+                                                                @else
+                                                                <span class="badge badge-phoenix badge-phoenix-success">achevée</span>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>

@@ -16,7 +16,10 @@ class CreateRelancesTable extends Migration
         Schema::create('relances', function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_id') ->constrained()->onDelete('cascade');;
-            $table->dateTime('reporter_la_relance')->nullable();
+            $table->date('rdv_relance_date')->nullable();
+            $table->time('rdv_relance_heure')->nullable();
+            $table->date('relance_date')->nullable();
+            $table->time('relance_heure')->nullable();
             $table->string('isannuler')->default("false");
             $table->text('remarque')->nullable();
             $table->string("whoaddit")->default("inkonnu");
