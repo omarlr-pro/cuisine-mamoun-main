@@ -354,20 +354,20 @@
                         <li class="breadcrumb-item">
                             <a>Rendez-vous</a>
                         </li>
-                        <li class="breadcrumb-item">Rendez-vous net non statuer</li>
+                        <li class="breadcrumb-item">Rendez-vous brut à confirmer</li>
                     </ol>
                 </nav>
                 <div class="border-bottom border-translucent mx-n3 px-2 mx-lg-n6 px-lg-6">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="d-sm-flex justify-content-between">
-                                <h3 class="mb-4">Rendez-vous net non statuer</h3>
+                                <h3 class="mb-4">Rendez-vous brut à confirmer</h3>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div id="clientstable" data-list='{"valueNames":["1","2","3","4","5","6","7"],"page":20,"pagination":true}'>
+                    <div id="clientstable" data-list='{"valueNames":["1","2","3","4","5","6","7","8","9","10"],"page":20,"pagination":true}'>
                         <div class="row justify-content-end mt-3 mb-3">
                             <div class="col-auto">
                                 <div class="d-flex">
@@ -419,10 +419,9 @@
                                     </thead>
                                     <tbody class="list" id="members-table-body">
                                         @foreach($clients as $client)
-                                        @foreach ($client->etapes as $etape)
                                         <tr>
                                             <td class="1 align-middle text-center fw-semibold py-3">
-                                                <div><a href="#">{{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</a></div>
+                                                <div><a href="{{ route('clients.show', $client->id) }}">{{ $client->civilite }} {{ $client->nom }} {{ $client->prenom }}</a></div>
                                             </td>
                                             <td class="2 align-middle text-center fw-semibold py-3">
                                                 {{ $client->ville }}
@@ -431,16 +430,16 @@
                                                 {{ $client->tel_mobile }}
                                             </td>
                                             <td class="4 align-middle text-center fw-semibold py-3">
-                                                26 Mar 2024 15:30
+                                                {{ $client->dob }}
                                             </td>
                                             <td class="5 align-middle text-center fw-semibold py-3">
-                                                {{ $client->whoaddit }}
-                                            </td>
-                                            <td class="6 align-middle text-center fw-semibold py-3">
                                                 {{ $client->prospecteur }}
                                             </td>
-                                            <td class="7 align-middle text-center fw-semibold py-3">
-                                                {{ ($client->etapes->last()->etape) }}
+                                            <td class="6 align-middle text-center fw-semibold py-3">
+                                                {{ $client->contact }}
+                                            </td>
+                                            <td class="6 align-middle text-center fw-semibold py-3">
+                                                {{ $client->contact }}
                                             </td>
                                             <td class="align-middle py-1 text-center fw-semibold text-body-highlight">
                                                 <div class="btn-reveal-trigger position-static">
@@ -454,8 +453,8 @@
                                             </td>
                                         </tr>
                                         @endforeach
-                                        @endforeach
                                     </tbody>
+                                    
                                 </table>
                             </div>
                             <div class="row align-items-center justify-content-between py-2 pe-0 fs-9">

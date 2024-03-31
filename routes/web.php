@@ -33,9 +33,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/relance', [RelanceController::class, 'store'])->name('relance.store');
     Route::get('/relances/index', [ClientController::class, 'showRelances'])->name('relances.index');
     Route::post('/etape', [EtapeController::class, 'store'])->name('etapes.store');
-    Route::get('/rendezvous/rdv_net_non_statuer', [RendezVousController::class, 'rdvNetNonStatuer'])->name('rendezvous.rdv_net_non_statuer');
-    Route::get('/rendezvous/rdv_net_jour_j', [RendezVousController::class, 'rdvNetJourJ'])->name('rendezvous.rdv_net_jour_j');
-    Route::get('/rendezvous/rdv_brut_a_confirmer', [RendezVousController::class, 'rdvBrutAConfirmer'])->name('rendezvous.rdv_brut_a_confirmer');
+    Route::get('/rendezvous/rdv_net_non_statuer', [ClientController::class, 'rdvNetNonStatuer'])->name('rendezvous.rdv_net_non_statuer');
+    Route::get('/rendezvous/rdv_net_jour_j', [ClientController::class, 'rdvNetJourJ'])->name('rendezvous.rdv_net_jour_j');
+    Route::get('/rendezvous/rdv_brut_a_confirmer', [ClientController::class, 'rdvBrutAConfirmer'])->name('rendezvous.rdv_brut_a_confirmer');
 });
 
 Route::group(['middleware' => 'guest'], function () { 

@@ -3,23 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Client;
 
 class RendezVousController extends Controller
 {
-
-    public function rdvNetNonStatuer()
+    public function rdvNetNonStatuer(Client $client)
     {
-        return view('Rendez-Vous.rdv_net_non_statuer');
+        return view('Rendez-Vous.rdv_net_non_statuer', compact('client'));
     }
 
-    public function rdvNetJourJ()
+    public function rdvNetJourJ(Client $client)
     {
-        return view('Rendez-Vous.rdv_net_jour_j');
+        return view('Rendez-Vous.rdv_net_jour_j', compact('client'));
     }
 
-    public function rdvBrutAConfirmer()
+    public function rdvBrutAConfirmer(Client $client)
     {
-        return view('Rendez-Vous.rdv_brut_a_confirmer');
+        return view('Rendez-Vous.rdv_brut_a_confirmer', compact('client'));
     }
-
 }

@@ -20,7 +20,7 @@ class CreateRelancesTable extends Migration
             $table->time('rdv_relance_heure')->nullable();
             $table->date('relance_date')->nullable();
             $table->time('relance_heure')->nullable();
-            $table->string('isannuler')->default("false");
+            $table->string('isannuler');
             $table->text('remarque')->nullable();
             $table->string("whoaddit")->default("inkonnu");
             $table->timestamps();

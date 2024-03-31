@@ -47,7 +47,7 @@ class LoginController extends Controller
     public function deactivateUser(User $user)
     {
         DB::table('users')->where('id', $user->id)->update(['is_active' => false]);
-        
+
         return redirect()->back()->with('success', 'User deactivated successfully');
     }
 
