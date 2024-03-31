@@ -63,8 +63,7 @@ class UserController extends Controller
         $user->identifiant = $request->input('identifiant');
         $user->statut = $request->input('statut');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
-        $user->password = $request->input('isactive');
+        $user->password = bcrypt($request->input('password')); // Hash the password
 
         $user->save();
     
