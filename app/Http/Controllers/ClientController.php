@@ -21,56 +21,41 @@ class ClientController extends Controller
     }
 
 
-        public function rdvBrutAConfirmer(Client $client)
-        {       
-            $today = Carbon::today();
+        public function rdvNetNonStatuer()
+        {
+            $today = now()->toDateString();
 
-            $clients = Client::whereHas('etapes', function ($query) use ($today) {
-                $query->whereDate('rdv_relance_date', '>=', $today);
-            })->orderBy('created_at', 'desc')->get();
+            $clients = Client::where('rdv_relance_date', '<', $today)
+                        ->where('isannuler', '=', "nest pas annuler")
+                        ->orderByDesc('created_at')
+                        ->get();
 
-            return view('Rendez-Vous.rdv_brut_a_confirmer', compact('clients'));
+            return view('Rendez-Vous.rdv_net_non_statuer', compact('clients'));
         }
 
-    public function rdvNetJourJ(Client $client)
-    {       
-        $today = Carbon::today();
-
-        $clients = Client::with(['relances' => function ($query) use ($today) {
-            $query->whereDate('rdv_relance_date', $today)->latest()->take(1);
-        }])
-        ->whereHas('relances', function ($query) use ($today) {
-            $query->whereDate('rdv_relance_date', $today);
-        })
-        ->orderByDesc(function ($query) {
-            $query->select('created_at')
-                ->from('relances')
-                ->whereColumn('client_id', 'clients.id')
-                ->latest()
-                ->take(1);
-        })
-        ->get();
-    
-        return view('Rendez-Vous.rdv_net_jour_j', compact('clients'));
-    }
-
-
-    public function rdvNetNonStatuer(Client $client)
-    {       
-        $clients = Client::select('clients.*', 'relances.*')
-            ->join(DB::raw('(SELECT client_id, MAX(id) as max_relance_id FROM relances WHERE isannuler = 0 GROUP BY client_id) as latest_relance'), function ($join) {
-                $join->on('clients.id', '=', 'latest_relance.client_id');
-            })
-            ->join('relances', function ($join) {
-                $join->on('clients.id', '=', 'relances.client_id')
-                     ->on('relances.id', '=', 'latest_relance.max_relance_id');
-            })
-            ->orderBy('clients.created_at', 'desc')
-            ->get();
-    
-        return view('Rendez-Vous.rdv_net_non_statuer', compact('clients'));
-    }
-    
+        public function rdvNetJourJ()
+        {
+            $today = now()->toDateString();
+        
+            $clients = Client::where('rdv_relance_date', '=', $today)
+            ->where('isannuler', '=', "nest pas annuler")
+                ->orderByDesc('created_at')
+                ->get();
+        
+            return view('Rendez-Vous.rdv_net_jour_j', compact('clients'));
+        }
+         
+        public function rdvBrutAConfirmer()
+        {
+            $today = now()->toDateString();
+        
+            $clients = Client::where('rdv_relance_date', '>', $today)
+                ->orderByDesc('created_at')
+                ->get();
+        
+            return view('Rendez-Vous.rdv_brut_a_confirmer', compact('clients'));
+        }
+     
     
 
 

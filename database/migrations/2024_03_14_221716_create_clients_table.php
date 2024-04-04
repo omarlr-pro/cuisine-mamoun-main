@@ -47,7 +47,14 @@ return new class extends Migration
             $table->date('step_completed_date')->nullable();
             $table->text('description')->nullable();
             $table->text('whoaddit')->default("inconnu");
-
+            $table->string('valide_par')->nullable();
+            $table->date('rdv_relance_date')->nullable();
+            $table->time('rdv_relance_heure')->nullable();
+            $table->date('relance_date')->nullable();
+            $table->time('relance_heure')->nullable();
+            $table->string('isannuler')->default("false");
+            $table->text('remarque')->nullable();
+            $table->string('etape')->nullable();
             $table->timestamps();
         });
     }

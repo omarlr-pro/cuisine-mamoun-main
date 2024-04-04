@@ -354,14 +354,14 @@
                         <li class="breadcrumb-item">
                             <a>Rendez-vous</a>
                         </li>
-                        <li class="breadcrumb-item">Rendez-vous brut à confirmer</li>
+                        <li class="breadcrumb-item">Rendez-vous  jour J/li>
                     </ol>
                 </nav>
                 <div class="border-bottom border-translucent mx-n3 px-2 mx-lg-n6 px-lg-6">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="d-sm-flex justify-content-between">
-                                <h3 class="mb-4">Rendez-vous brut à confirmer</h3>
+                                <h3 class="mb-4">Rendez-vous  jour J</h3>
                             </div>
                         </div>
                     </div>

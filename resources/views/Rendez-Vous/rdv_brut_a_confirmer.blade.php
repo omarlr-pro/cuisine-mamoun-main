@@ -430,8 +430,8 @@
                                                 {{ $client->tel_mobile }}
                                             </td>
                                             <td class="4 align-middle text-center fw-semibold py-3">
-                                                {{ $client->dob }}
-                                            </td>
+                                                    {{ $client->rdv_relance_date }}
+                                            </td>>
                                             <td class="5 align-middle text-center fw-semibold py-3">
                                                 {{ $client->prospecteur }}
                                             </td>
