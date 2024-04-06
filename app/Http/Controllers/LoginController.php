@@ -57,5 +57,6 @@ class LoginController extends Controller
             
             return redirect()->back()->with('success', 'User activated successfully');
         }
+        
     
 }

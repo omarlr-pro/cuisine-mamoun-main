@@ -475,7 +475,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <input type="text" class="form-control" name="whoaddit" value="{{ Auth::user()->nom }} {{ Auth::user()->prenom }}" readonly style="display: none;" >
+                                                <input type="text" class="form-control" name="whoaddit" value="{{ Auth::user()->id }} " readonly style="display: none;" >
                                                 <td class="align-middle text-left fw-semibold p-2 px-3">
                                                     Remarque
                                                 </td>
@@ -498,7 +498,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <input type="text" class="form-control" name="whoaddit" value="{{ Auth::user()->nom }} {{ Auth::user()->prenom }}" readonly style="display: none;" >
+                                <input type="text" class="form-control" name="whoaddit" value="{{ Auth::user()->nom }} " readonly style="display: none;" >
                                 <input type="text" class="form-control" name="client_id" value="{{ $client->id }}" readonly style="display: none;">
                                 <button class="btn btn-phoenix-secondary me-2 px-6" type="button" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
                                 <button type="submit" class="btn btn-primary">Valider l'étape</button>
@@ -988,11 +988,16 @@
                                                             <td class="align-middle text-start fw-semibold p-2 px-3">
                                                                 {{ $client->etapes->last()->valide_par}}
                                                                 <div>
-                                                                    <p class="m-0 fw-semibold">{{ $client->etapes->last()->created_at }}</p>
+                                                                    <p class="m-0 fw-semibold">{{ $client->etapes->last()->created_at->format('d M Y') }}
+                                                                        
+                                                                        
+                            
+                                                                        {{$client->etapes->last()->created_at->format('H:i') }}</p>
                                                                 </div>
                                                             </td>
                                                             <td class="align-middle text-start fw-semibold p-2 px-3">
-                                                                {{ $client->etapes->last()->relance_date }} {{ $client->etapes->last()->relance_heure }}
+                                                                {{ $client->etapes->last()->relance_date }}{{ $client->step_completed_date ? \Illuminate\Support\Carbon::parse($client->step_completed_date)->format('d M Y') : '' }}
+
                                                             </td>
                                                             <td class="align-middle text-start fw-semibold p-2 px-3">
                                                                 @if ($client->etapes->isNotEmpty() && $client->etapes->last()->etape === 'Contact')

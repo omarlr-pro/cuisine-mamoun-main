@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Etape;
-use Carbon\Carbon;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
@@ -21,17 +21,22 @@ class ClientController extends Controller
     }
 
 
-        public function rdvNetNonStatuer()
-        {
-            $today = now()->toDateString();
-
-            $clients = Client::where('rdv_relance_date', '<', $today)
-                        ->where('isannuler', '=', "nest pas annuler")
-                        ->orderByDesc('created_at')
-                        ->get();
-
-            return view('Rendez-Vous.rdv_net_non_statuer', compact('clients'));
+    public function rdvNetNonStatuer()
+    {
+        $today = now()->toDateString();
+    
+        $clients = Client::where('rdv_relance_date', '<', $today)
+                    ->where('isannuler', '!=', 'annuler')
+                    ->orderByDesc('created_at')
+                    ->get();
+    
+        foreach ($clients as $client) {
+            DB::table('users')->where('nom', $client->valide_par)->update(['is_active' => false]);
         }
+    
+        return view('Rendez-Vous.rdv_net_non_statuer', compact('clients'));
+    }
+    
 
         public function rdvNetJourJ()
         {
